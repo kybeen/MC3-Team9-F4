@@ -19,6 +19,7 @@
 		C9804AC22A5BDB8400CF97A8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC12A5BDB8400CF97A8 /* DataModel.swift */; };
 		C9804AC52A5BDBAB00CF97A8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC42A5BDBAB00CF97A8 /* Resource.swift */; };
 		C9804AC72A5BDBC000CF97A8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */; };
+		C9804ACA2A5BDD3C00CF97A8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC92A5BDD3C00CF97A8 /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		C9804AC12A5BDB8400CF97A8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		C9804AC42A5BDBAB00CF97A8 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		C9804AC92A5BDD3C00CF97A8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 		C9804ABE2A5BDAE500CF97A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C9804AC82A5BDD2F00CF97A8 /* MainView */,
 				C9804AC32A5BDB9600CF97A8 /* Extension */,
 				168AD6932A57EF030097985C /* ContentView.swift */,
 			);
@@ -168,6 +171,14 @@
 				C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		C9804AC82A5BDD2F00CF97A8 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				C9804AC92A5BDD3C00CF97A8 /* MainView.swift */,
+			);
+			path = MainView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				168AD6942A57EF030097985C /* ContentView.swift in Sources */,
+				C9804ACA2A5BDD3C00CF97A8 /* MainView.swift in Sources */,
 				C9804AC52A5BDBAB00CF97A8 /* Resource.swift in Sources */,
 				168AD6922A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */,
 				C9804AC22A5BDB8400CF97A8 /* DataModel.swift in Sources */,

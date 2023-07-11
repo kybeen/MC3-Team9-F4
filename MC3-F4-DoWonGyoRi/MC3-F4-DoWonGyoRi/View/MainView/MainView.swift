@@ -30,20 +30,21 @@ struct MainView: View {
     @State var isAnimationEnabled = false
     
     var body: some View {
-        
-        VStack(spacing: 0) {
-            containerView()
-            namespaceContainer()
-            
+        NavigationStack {
             VStack(spacing: 0) {
-                tabsContainer()
-                tabViewContainer()
+                containerView()
+                namespaceContainer()
+                
+                VStack(spacing: 0) {
+                    tabsContainer()
+                    tabViewContainer()
+                }
             }
-        }
-        .ignoresSafeArea(.all, edges: .bottom)
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                isAnimationEnabled = true
+            .ignoresSafeArea(.all, edges: .bottom)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    isAnimationEnabled = true
+                }
             }
         }
     }

@@ -9,8 +9,26 @@ import SwiftUI
 
 struct SwingCountView: View {
     let swingList: SwingList
+    @State private var isReadyViewActive = false
+    
     var body: some View {
-        Text(swingList.name)
+        VStack(alignment: .leading) {
+            Text("이번 목표 스윙 개수는 얼마인가요?")
+                .font(.system(size: 16, weight: .semibold))
+            Spacer()
+            HStack {
+                Text("개수 넣는 공간")
+            }
+            Spacer()
+            NavigationLink(destination: ReadyView()) {
+                Text("시작")
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(Color.black)
+            }
+            .background(Color.watchColor.lightGreen)
+            .cornerRadius(20)
+            
+        }
     }
 }
 

@@ -7,38 +7,78 @@
 
 import SwiftUI
 
+let title1 = "정의로운"
+let title2 = "테니스왕자"
+let nickname = "김배찌"
+let suffix = "님"
+
 struct MainView: View {
+    @State private var selectedTab = 0
+    
     var body: some View {
-        //        GeometryReader { geometry in
-        VStack {
+        
+        VStack(spacing: 0) {
             containerView()
+            namespaceContainer()
             
-            VStack(alignment: .leading) {
-                Text("어서오세요")
-                    .font(.custom("Inter-SemiBold", size: 28))
-                Text("용사님")
-            }
-            .frame(maxWidth: .infinity, maxHeight: 150, alignment: .leading)
-            .padding(.leading, 27)
-            
-            ScrollView {
-                ForEach(0 ..< 100) {_ in
-                    Text("안녕")
-                        .frame(maxWidth: .infinity)
+            VStack(spacing: 0) {
+                HStack {
+                    Button(action: {
+                        selectedTab = 0
+                    }) {
+                        Text("오늘의 스윙")
+                            .font(.custom("Inter-medium", size: 20))
+                            .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                    }
+                    Button(action: {
+                        selectedTab = 1
+                    }) {
+                        Text("기록")
+                            .font(.custom("Inter-medium", size: 20))
+                            .foregroundColor(selectedTab == 0 ? .gray : .blue)
+                    }
                 }
-                .border(.blue)
+                .frame(maxWidth: .infinity, maxHeight: 42, alignment: .topLeading)
+                
+                
+                TabView(selection: $selectedTab) {
+                    GeometryReader { geometry in
+                        ScrollView {
+                            ForEach(0 ..< 50) { _ in
+                                Text("안녕")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            
+                        }
+                        .background(.purple)
+                        .cornerRadius(20)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        
+                    }
+                    .tag(0)
+                    
+                    GeometryReader { geometry in
+                        ScrollView {
+                            ForEach(0 ..< 50) { _ in
+                                Text("안녕")
+                                    .frame(maxWidth: .infinity)
+                            }
+                            
+                        }
+                        .background(.purple)
+                        .cornerRadius(20)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        
+                    }
+                    .tag(1)
+                    
+                }
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             }
-            .frame(maxWidth: .infinity - 40, minHeight: 200, maxHeight: 700)
-            .background(.red)
-            
-            
+//            .frame(maxHeight: .infinity)
         }
         
         .frame(maxHeight: .infinity, alignment: .top)
-        //        .safeAreaInset(edge: .bottom, content: {
-        //        })
-        
-        .border(.red)
         //        }
         
         
@@ -73,6 +113,21 @@ extension MainView {
         }
     }
     
+    private func namespaceContainer() -> some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("어서오세요")
+                .font(.custom("Inter-SemiBold", size: 28))
+                .padding(.bottom, 2)
+            Text(title1 + " " + title2 + " " + nickname + suffix)
+                .font(.custom("Inter-SemiBold", size: 28))
+            //                NameSpaceText()
+        }
+        .frame(maxWidth: .infinity, maxHeight: 150, alignment: .leading)
+        .padding(.leading, 27)
+    }
+    
+    
+    
     private func scrollContainer() -> some View {
         GeometryReader { geometry in
             ScrollView {
@@ -84,6 +139,7 @@ extension MainView {
         }
     }
 }
+
 
 struct MainView_Provider: PreviewProvider {
     static var previews: some View {

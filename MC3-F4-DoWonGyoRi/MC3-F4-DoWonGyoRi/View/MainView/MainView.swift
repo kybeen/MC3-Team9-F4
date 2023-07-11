@@ -57,10 +57,10 @@ extension MainView {
             Button(action: {
                 
             }) {
-                Image(systemName: "figure.strengthtraining.functional")
+                Image(systemName: "figure.tennis")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.theme.teWhite)
                     .frame(width: 35, height: 35)
                     .padding(.leading, 27)
             }
@@ -71,7 +71,7 @@ extension MainView {
                 Image(systemName: "person.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.theme.teWhite)
                     .frame(width: 35, height: 35)
                     .padding(.trailing, 27)
                 
@@ -84,12 +84,25 @@ extension MainView {
             Text("어서오세요")
                 .font(.custom("Inter-SemiBold", size: 28))
                 .padding(.bottom, 2)
-            Text(title1 + " " + title2 + " " + nickname + suffix)
-                .font(.custom("Inter-SemiBold", size: 28))
-            //                NameSpaceText()
+            HStack(alignment: .firstTextBaseline, spacing: 0) {
+                Text(title1)
+                    .font(.custom("Inter-Bold", size: 28))
+                    .foregroundColor(Color.theme.teGreen)
+                    .padding(.trailing, 10)
+                Text(title2)
+                    .font(.custom("Inter-Bold", size: 28))
+                    .foregroundColor(Color.theme.teSkyBlue)
+                    .padding(.trailing, 10)
+                Text(nickname + suffix)
+                    .font(.custom("Inter-SemiBold", size: 28))
+                    .foregroundColor(Color.theme.teWhite)
+                    
+            }
+            
         }
-        .frame(maxWidth: .infinity, maxHeight: 150, alignment: .leading)
+        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 150, alignment: .leading)
         .padding(.leading, 27)
+    
     }
     
     private func tabsContainer() -> some View {
@@ -100,12 +113,12 @@ extension MainView {
                 VStack(spacing: 3) {
                     Text("오늘의 스윙")
                         .font(.custom("Inter-medium", size: 20))
-                        .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                        .foregroundColor(selectedTab == 0 ? Color.theme.teGreen : Color.theme.teWhite)
                     
                     
                     Rectangle()
                         .frame(maxWidth: 118, maxHeight: 3)
-                        .foregroundColor(selectedTab == 0 ? .blue : .black)
+                        .foregroundColor(selectedTab == 0 ? Color.theme.teGreen : Color.theme.teBlack)
                     
                 }
                 .frame(maxWidth: 100)
@@ -116,11 +129,11 @@ extension MainView {
                 VStack(spacing: 3) {
                     Text("기록")
                         .font(.custom("Inter-medium", size: 20))
-                        .foregroundColor(selectedTab == 0 ? .gray : .blue)
+                        .foregroundColor(selectedTab == 0 ? Color.theme.teWhite : Color.theme.teGreen)
                     
                     Rectangle()
                         .frame(maxWidth: 40, maxHeight: 3)
-                        .foregroundColor(selectedTab == 0 ? .black : .blue)
+                        .foregroundColor(selectedTab == 0 ? Color.theme.teBlack : Color.theme.teGreen)
                     
                 }
             }
@@ -152,6 +165,8 @@ extension MainView {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+        .background(Color.theme.teBlack)
+        .cornerRadius(20)
     }
     
     private func scrollContainer() -> some View {
@@ -172,16 +187,16 @@ extension MainView {
             ZStack {
                 Circle()
                     .frame(maxWidth: UIScreen.main.bounds.width - 46, maxHeight: UIScreen.main.bounds.width - 46)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color.theme.teRealBlack)
                 VStack {
-                    RingChartsView(values: [220, 20], colors: [[.gray, .green], [.gray, .blue]], ringsMaxValue: 100, lineWidth: 25, isAnimated: true)
+                    RingChartsView(values: [220, 20], colors: [[Color.theme.teDarkGray, Color.theme.teGreen], [Color.theme.teLightGray, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 25, isAnimated: true)
                         .frame(width: UIScreen.main.bounds.width - 90, height: UIScreen.main.bounds.width - 90, alignment: .center)
                 }
                 VStack(spacing: 0) {
                     Text("Perfect")
                         .font(.custom("Inter-Bold", size: 24))
                         .padding(.bottom, 12)
-                        .foregroundColor(.blue)
+                        .foregroundColor(Color.theme.teSkyBlue)
                     Text("\(todayPerfectCount)회")
                         .font(.custom("Inter-Bold", size: 30))
                 }
@@ -195,6 +210,7 @@ extension MainView {
             Text("하루 요약")
                 .font(.custom("Inter-Bold", size: 24))
                 .frame(maxWidth: .infinity, alignment: .leading)
+                
             summaryCountBox("오늘의 포핸드 Perfect 횟수가", "지난번보다")
             summaryCountBox("오늘의 백핸드 Perfect 횟수가", "지난번보다")
             summaryTimeBox()
@@ -208,21 +224,22 @@ extension MainView {
             Rectangle()
                 .foregroundColor(.clear)
                 .frame(maxWidth: .infinity, minHeight: 254)
-                .background(Color(red: 0.13, green: 0.13, blue: 0.13))
+                .background(Color.theme.teDarkGray)
                 .cornerRadius(13)
                 .padding(.top, 14)
             VStack(spacing: 0) {
                 Text("\(firstLineString) \(compareString)\n\(abs(perfectDifference))회 \(perfectDifference > 0 ? "늘었습니다" : "줄었습니다").")
                     .font(.custom("Inter-SemiBold", size: 16))
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(Color.theme.teWhite)
                 
                 Rectangle()
-                    .foregroundColor(.white)
                     .frame(height: 0.5)
                     .padding(.top, 10)
+                    .foregroundColor(Color.theme.teWhite)
                 
                 // TODO: .animation 활용 -> 스크롤이 내려가서 그 부분이 보일 때, 애니메이션이 되어서 막대그래프가 나타나도록 구현
-                horizontalBarGraphContainer(1500, 2000, leftColor: Color(red: 0.24, green: 0.95, blue: 0.23), rightColor: Color(red: 0.23, green: 0.88, blue: 0.95))
+                horizontalBarGraphContainer(1500, 2000, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue)
                 
                 horizontalBarGraphContainer(500, 2000)
                     
@@ -240,20 +257,21 @@ extension MainView {
             Rectangle()
                 .foregroundColor(.clear)
                 .frame(maxWidth: .infinity, minHeight: 254)
-                .background(Color(red: 0.13, green: 0.13, blue: 0.13))
+                .background(Color.theme.teDarkGray)
                 .cornerRadius(13)
                 .padding(.top, 14)
             VStack(spacing: 0) {
                 Text("오늘은 지난 연습 대비 \(abs(time))분을 \(time < 0 ? "덜" : "더")\n연습했습니다.")
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(Color.theme.teWhite)
                 
                 Rectangle()
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.theme.teWhite)
                     .frame(height: 0.5)
                     .padding(.top, 10)
                 
                 // TODO: .animation 활용 -> 스크롤이 내려가서 그 부분이 보일 때, 애니메이션이 되어서 막대그래프가 나타나도록 구현
-                horizontalBarGraphContainer(0, 0, leftColor: Color(red: 0.24, green: 0.95, blue: 0.23), rightColor: Color(red: 0.23, green: 0.88, blue: 0.95), true, 1600, 12000)
+                horizontalBarGraphContainer(0, 0, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, true, 1600, 12000)
                 
                 horizontalBarGraphContainer(0, 0, true, 12000, 1600)
                     
@@ -265,26 +283,30 @@ extension MainView {
     }
     
     
-    private func horizontalBarGraphContainer(_ swingCount: Int, _ totalSwing: Int, leftColor: Color = .white, rightColor: Color = .white, _ isTime: Bool = false, _ standardTime: Int = 0, _ comparisonTime: Int = 0) -> some View {
+    private func horizontalBarGraphContainer(_ swingCount: Int, _ totalSwing: Int, leftColor: Color = Color.theme.teWhite, rightColor: Color = Color.theme.teWhite, _ isTime: Bool = false, _ standardTime: Int = 0, _ comparisonTime: Int = 0) -> some View {
+        
         let standardTimeHour = standardTime / 60
         let standardTimeMinutes = standardTime % 60
-        
-       
         
         return VStack(spacing: 0) {
             HStack(spacing: 2) {
                 Text("\(isTime ? standardTimeHour : swingCount)")
                     .font(.custom("Inter-SemiBold", size: 30))
+                    .foregroundColor(Color.theme.teWhite)
                 
                 Text("\(isTime ? "시간" : "회")")
                     .font(.custom("Inter-SemiBold", size: 24))
+                    .foregroundColor(Color.theme.teWhite)
                 
                 if isTime {
                     Text("\(standardTimeMinutes)")
                         .font(.custom("Inter-SemiBold", size: 30))
+                        .foregroundColor(Color.theme.teWhite)
                         .padding(.leading, 10)
+                    
                     Text("분")
                         .font(.custom("Inter-SemiBold", size: 24))
+                        .foregroundColor(Color.theme.teWhite)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)

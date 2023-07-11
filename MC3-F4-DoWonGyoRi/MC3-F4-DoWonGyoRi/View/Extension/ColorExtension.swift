@@ -21,11 +21,9 @@ struct ColorTheme {
     let teSkyBlue = Color("TennisSkyBlue")
     let teBlue = Color("TennisBlue")
     let teBlack = Color("TennisBlack")
+    let teRealBlack = Color("TennisRealBlack")
     let teDarkGray = Color("TennisDarkGray")
+    let teLightGray = Color("TennisLightGray")
     let teGray = Color("TennisGray")
     let teWhite = Color("TennisWhite")
-    let teRedPurple = Color("TennisRedPurple")
-    let tePurple = Color("TennisPurple")
-    let teLightRed = Color("TennisLightRed")
-    let teRed = Color("TennisRed")
 }

@@ -11,7 +11,10 @@ let title1 = "정의로운"
 let title2 = "테니스왕자"
 let nickname = "김배찌"
 let suffix = "님"
+let yesterdayPerfectCount = 200
 let todayPerfectCount = 100
+let perfectDifference = todayPerfectCount - yesterdayPerfectCount
+
 struct MainView: View {
     @State private var selectedTab = 0
     
@@ -64,30 +67,102 @@ struct MainView: View {
                 TabView(selection: $selectedTab) {
                     GeometryReader { geometry in
                         ScrollView {
+//                            VStack(spacing: 0) {
+//                                ZStack {
+//                                    Circle()
+//                                        .frame(maxWidth: geometry.size.width - 46, maxHeight: geometry.size.width - 46)
+//                                        .foregroundColor(.black)
+//                                    VStack {
+//                                        RingChartsView(values: [220, 20], colors: [[.gray, .green], [.gray, .blue]], ringsMaxValue: 100, lineWidth: 25, isAnimated: true)
+//
+//                                            .frame(width: geometry.size.width - 90, height: geometry.size.width - 90, alignment: .center)
+//                                    }
+//                                    VStack(spacing: 0) {
+//                                        Text("Perfect")
+//                                            .font(.custom("Inter-Bold", size: 24))
+//
+//                                            .padding(.bottom, 12)
+//                                            .foregroundColor(.blue)
+//                                        Text("\(todayPerfectCount)회")
+//                                            .font(.custom("Inter-Bold", size: 30))
+//                                    }
+//                                }
+//
+//                            }
+//                            .frame(maxWidth: geometry.size.width, minHeight: geometry.size.width)
+//
+                            /**
+                             하루 요약
+                             */
                             VStack(spacing: 0) {
+                                Text("하루 요약")
+                                    .font(.custom("Inter-Bold", size: 24))
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                                
                                 ZStack {
-                                    Circle()
-                                        .frame(maxWidth: geometry.size.width - 46, maxHeight: geometry.size.width - 46)
-                                        .foregroundColor(.black)
-                                    VStack {
-                                        RingChartsView(values: [220, 20], colors: [[.gray, .green], [.gray, .blue]], ringsMaxValue: 100, lineWidth: 25, isAnimated: true)
-                                        
-                                            .frame(width: geometry.size.width - 90, height: geometry.size.width - 90, alignment: .center)
-                                    }
+                                    Rectangle()
+                                        .foregroundColor(.clear)
+                                        .frame(maxWidth: .infinity, minHeight: 254)
+                                        .background(Color(red: 0.13, green: 0.13, blue: 0.13))
+                                        .cornerRadius(13)
+                                        .padding(.top, 14)
                                     VStack(spacing: 0) {
-                                        Text("Perfect")
-                                            .font(.custom("Inter-", size: <#T##CGFloat#>))
-                                        Text("\(todayPerfectCount)회")
-                                            .font(.custom())
+                                        Text("오늘의 포핸드 Perfect 횟수가 지난번보다\n\(abs(perfectDifference))회 \(perfectDifference > 0 ? "늘었습니다" : "줄었습니다").")
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                            
+                                        Rectangle()
+                                            .foregroundColor(.white)
+                                            .frame(height: 0.5)
+                                            .padding(.top, 10)
+                                    }
+                                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
+                                }
+                                
+                                ZStack {
+                                    Rectangle()
+                                        .foregroundColor(.clear)
+                                        .frame(width: .infinity, height: 254)
+                                        .background(Color(red: 0.13, green: 0.13, blue: 0.13))
+                                        .cornerRadius(13)
+                                        .padding(.top, 14)
+                                    VStack(spacing: 0) {
+                                        Text("오늘의 백핸드 Perfect 횟수가 지난번보다\n\(abs(perfectDifference))회 \(perfectDifference > 0 ? "늘었습니다" : "줄었습니다").")
+                                        
+                                    }
+                                }
+                                
+                                ZStack {
+                                    Rectangle()
+                                        .foregroundColor(.clear)
+                                        .frame(width: .infinity, height: 254)
+                                        .background(Color(red: 0.13, green: 0.13, blue: 0.13))
+                                        .cornerRadius(13)
+                                        .padding(.top, 14)
+                                    VStack(spacing: 0) {
+                                        Text("오늘의 포핸드 Perfect 횟수가 지난번보다\n\(abs(perfectDifference))회 \(perfectDifference > 0 ? "늘었습니다" : "줄었습니다").")
+                                    }
+                                }
+                                
+                                ZStack {
+                                    Rectangle()
+                                        .foregroundColor(.clear)
+                                        .frame(width: .infinity, height: 254)
+                                        .background(Color(red: 0.13, green: 0.13, blue: 0.13))
+                                        .cornerRadius(13)
+                                        .padding(.top, 14)
+                                    VStack(spacing: 0) {
+                                        Text("오늘의 포핸드 Perfect 횟수가 지난번보다\n\(abs(perfectDifference))회 \(perfectDifference > 0 ? "늘었습니다" : "줄었습니다").")
                                     }
                                 }
                                 
                             }
-                            .frame(maxWidth: geometry.size.width, minHeight: geometry.size.width)
-                        }
+                            .padding(.leading, 17)
+                            .padding(.trailing, 17)
+                        } // end scroll view
                         
                         
-                    }
+                    } // end geometryreader
                     .tag(0)
                     
                     ScrollView {

@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1673DC0C2A5CD4A9000F9EB1 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC0B2A5CD4A9000F9EB1 /* ColorExtension.swift */; };
+		1673DC102A5CDA9F000F9EB1 /* SwingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC0F2A5CDA9F000F9EB1 /* SwingListView.swift */; };
+		1673DC152A5CE7A0000F9EB1 /* SwingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC142A5CE7A0000F9EB1 /* SwingList.swift */; };
+		1673DC172A5CE914000F9EB1 /* SwingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC162A5CE914000F9EB1 /* SwingListCellView.swift */; };
 		168AD6922A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6912A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift */; };
 		168AD6942A57EF030097985C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6932A57EF030097985C /* ContentView.swift */; };
 		168AD6962A57EF050097985C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6952A57EF050097985C /* Assets.xcassets */; };
 		168AD6992A57EF050097985C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6982A57EF050097985C /* Preview Assets.xcassets */; };
 		168AD69F2A57EF050097985C /* MC3-F4-DoWonGyoRi Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 168AD69E2A57EF050097985C /* MC3-F4-DoWonGyoRi Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		168AD6A42A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */; };
-		168AD6A62A57EF050097985C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6A52A57EF050097985C /* ContentView.swift */; };
 		168AD6A82A57EF060097985C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6A72A57EF060097985C /* Assets.xcassets */; };
 		168AD6AB2A57EF060097985C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6AA2A57EF060097985C /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -45,6 +47,9 @@
 
 /* Begin PBXFileReference section */
 		1673DC0B2A5CD4A9000F9EB1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		1673DC0F2A5CDA9F000F9EB1 /* SwingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingListView.swift; sourceTree = "<group>"; };
+		1673DC142A5CE7A0000F9EB1 /* SwingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingList.swift; sourceTree = "<group>"; };
+		1673DC162A5CE914000F9EB1 /* SwingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingListCellView.swift; sourceTree = "<group>"; };
 		168AD68E2A57EF030097985C /* MC3-F4-DoWonGyoRi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC3-F4-DoWonGyoRi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		168AD6912A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_F4_DoWonGyoRiApp.swift; sourceTree = "<group>"; };
 		168AD6932A57EF030097985C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,7 +57,6 @@
 		168AD6982A57EF050097985C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		168AD69E2A57EF050097985C /* MC3-F4-DoWonGyoRi Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC3-F4-DoWonGyoRi Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_F4_DoWonGyoRiApp.swift; sourceTree = "<group>"; };
-		168AD6A52A57EF050097985C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		168AD6A72A57EF060097985C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		168AD6AA2A57EF060097985C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +85,23 @@
 				1673DC0B2A5CD4A9000F9EB1 /* ColorExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		1673DC0D2A5CDA5A000F9EB1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1673DC0F2A5CDA9F000F9EB1 /* SwingListView.swift */,
+				1673DC162A5CE914000F9EB1 /* SwingListCellView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1673DC112A5CE61F000F9EB1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1673DC142A5CE7A0000F9EB1 /* SwingList.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		168AD6852A57EF030097985C = {
@@ -124,8 +145,9 @@
 			isa = PBXGroup;
 			children = (
 				168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */,
+				1673DC112A5CE61F000F9EB1 /* Model */,
+				1673DC0D2A5CDA5A000F9EB1 /* View */,
 				1673DC0A2A5CD497000F9EB1 /* Extension */,
-				168AD6A52A57EF050097985C /* ContentView.swift */,
 				168AD6A72A57EF060097985C /* Assets.xcassets */,
 				168AD6A92A57EF060097985C /* Preview Content */,
 			);
@@ -252,8 +274,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1673DC0C2A5CD4A9000F9EB1 /* ColorExtension.swift in Sources */,
-				168AD6A62A57EF050097985C /* ContentView.swift in Sources */,
+				1673DC102A5CDA9F000F9EB1 /* SwingListView.swift in Sources */,
+				1673DC152A5CE7A0000F9EB1 /* SwingList.swift in Sources */,
 				168AD6A42A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */,
+				1673DC172A5CE914000F9EB1 /* SwingListCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

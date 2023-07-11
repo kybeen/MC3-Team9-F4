@@ -27,18 +27,34 @@ struct MainView: View {
                         Button(action: {
                             selectedTab = 0
                         }) {
-                            Text("오늘의 스윙")
-                                .font(.custom("Inter-medium", size: 20))
-                                .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                            VStack(spacing: 3) {
+                                Text("오늘의 스윙")
+                                    .font(.custom("Inter-medium", size: 20))
+                                    .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                                
+                                
+                                    Rectangle()
+                                        .frame(maxWidth: 118, maxHeight: 3)
+                                        .foregroundColor(selectedTab == 0 ? .blue : .black)
+                                
+                            }
+                            .frame(maxWidth: 150)
                         }
                     }
                     
                     Button(action: {
                         selectedTab = 1
                     }) {
-                        Text("기록")
-                            .font(.custom("Inter-medium", size: 20))
-                            .foregroundColor(selectedTab == 0 ? .gray : .blue)
+                        VStack(spacing: 3) {
+                            Text("기록")
+                                .font(.custom("Inter-medium", size: 20))
+                                .foregroundColor(selectedTab == 0 ? .gray : .blue)
+                            
+                            Rectangle()
+                                .frame(maxWidth: 40, maxHeight: 3)
+                                .foregroundColor(selectedTab == 0 ? .black : .blue)
+                            
+                        }
                     }
                     .padding(.leading, 27)
                 }
@@ -150,27 +166,4 @@ struct MeasureSizeModifier: ViewModifier {
                 }
             }
     }
-    
-    
-}
-
-extension View {
-    func measureSize(_ callback: @escaping (CGSize) -> Void) -> some View {
-        modifier(MeasureSizeModifier(callback: callback))
-    }
-    
-    func frameSize(width: CGFloat, height: CGFloat) -> some View {
-        self.frame(
-            width: convertToCGFloat(point: width, isWidth: true) * UIScreen.main.bounds.width,
-            height: convertToCGFloat(point: height, isWidth: false) * UIScreen.main.bounds.height
-        )
-    }
-    
-    func convertToCGFloat(point: CGFloat, isWidth: Bool) -> CGFloat {
-        let baseSize = isWidth ? 393.0 : 852.0
-        
-        return point / baseSize
-    }
-    
-    
 }

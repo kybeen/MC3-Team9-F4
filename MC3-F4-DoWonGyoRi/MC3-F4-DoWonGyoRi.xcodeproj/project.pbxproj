@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1673DC0C2A5CD4A9000F9EB1 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC0B2A5CD4A9000F9EB1 /* ColorExtension.swift */; };
 		168AD6922A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6912A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift */; };
 		168AD6942A57EF030097985C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6932A57EF030097985C /* ContentView.swift */; };
 		168AD6962A57EF050097985C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6952A57EF050097985C /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1673DC0B2A5CD4A9000F9EB1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		168AD68E2A57EF030097985C /* MC3-F4-DoWonGyoRi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC3-F4-DoWonGyoRi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		168AD6912A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_F4_DoWonGyoRiApp.swift; sourceTree = "<group>"; };
 		168AD6932A57EF030097985C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1673DC0A2A5CD497000F9EB1 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				1673DC0B2A5CD4A9000F9EB1 /* ColorExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		168AD6852A57EF030097985C = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */,
+				1673DC0A2A5CD497000F9EB1 /* Extension */,
 				168AD6A52A57EF050097985C /* ContentView.swift */,
 				168AD6A72A57EF060097985C /* Assets.xcassets */,
 				168AD6A92A57EF060097985C /* Preview Content */,
@@ -240,6 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1673DC0C2A5CD4A9000F9EB1 /* ColorExtension.swift in Sources */,
 				168AD6A62A57EF050097985C /* ContentView.swift in Sources */,
 				168AD6A42A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */,
 			);

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SwingListCellView: View {
     let swingList: SwingList
+    @State private var isGuideViewPresented = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -19,6 +21,12 @@ struct SwingListCellView: View {
                     .foregroundColor(Color.watchColor.lightGreen)
                     .padding(.top, 8)
                     .padding(.trailing, 8)
+                    .onTapGesture {
+                        isGuideViewPresented = true
+                    }
+                    .sheet(isPresented: $isGuideViewPresented) {
+                        GuideView(swingList: swingList)
+                    }
             }
             Spacer()
             Text(swingList.name)

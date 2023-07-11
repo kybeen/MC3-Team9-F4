@@ -10,7 +10,8 @@ import SwiftUI
 struct GuideView: View {
     let swingList: SwingList
     var body: some View {
-        Text("가이드")
+        Image(systemName: swingList.gifImage)
+            .resizable()
     }
 }
 

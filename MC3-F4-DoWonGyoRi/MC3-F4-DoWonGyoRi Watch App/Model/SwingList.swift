@@ -15,7 +15,7 @@ struct SwingList: Identifiable {
 }
 
 let swingLists = [
-    SwingList(name: "포핸드", guideButton: "questionmark.circle", gifImage: "heart.fill"),
-    SwingList(name: "백핸드", guideButton: "questionmark.circle", gifImage: "heart"),
+    SwingList(name: "포핸드", guideButton: "questionmark.circle", gifImage: "square"),
+    SwingList(name: "백핸드", guideButton: "questionmark.circle", gifImage: "square.fill"),
     SwingList(name: "서브(예정)", guideButton: "questionmark.circle", gifImage: "circle")
 ]

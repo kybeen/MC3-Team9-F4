@@ -11,7 +11,7 @@ let title1 = "정의로운"
 let title2 = "테니스왕자"
 let nickname = "김배찌"
 let suffix = "님"
-
+let todayPerfectCount = 100
 struct MainView: View {
     @State private var selectedTab = 0
     
@@ -22,7 +22,7 @@ struct MainView: View {
             namespaceContainer()
             
             VStack(spacing: 0) {
-                HStack {
+                HStack(spacing: 0) {
                     VStack(spacing: 0) {
                         Button(action: {
                             selectedTab = 0
@@ -38,7 +38,7 @@ struct MainView: View {
                                         .foregroundColor(selectedTab == 0 ? .blue : .black)
                                 
                             }
-                            .frame(maxWidth: 150)
+                            .frame(maxWidth: 100)
                         }
                     }
                     
@@ -62,16 +62,33 @@ struct MainView: View {
                 .padding(.leading, 27)
                 
                 TabView(selection: $selectedTab) {
-                    
-                    ScrollView {
-                        ForEach(0 ..< 50) { _ in
-                            Text("오늘의 스윙스")
-                                .frame(maxWidth: .infinity)
+                    GeometryReader { geometry in
+                        ScrollView {
+                            VStack(spacing: 0) {
+                                ZStack {
+                                    Circle()
+                                        .frame(maxWidth: geometry.size.width - 46, maxHeight: geometry.size.width - 46)
+                                        .foregroundColor(.black)
+                                    VStack {
+                                        RingChartsView(values: [220, 20], colors: [[.gray, .green], [.gray, .blue]], ringsMaxValue: 100, lineWidth: 25, isAnimated: true)
+                                        
+                                            .frame(width: geometry.size.width - 90, height: geometry.size.width - 90, alignment: .center)
+                                    }
+                                    VStack(spacing: 0) {
+                                        Text("Perfect")
+                                            .font(.custom("Inter-", size: <#T##CGFloat#>))
+                                        Text("\(todayPerfectCount)회")
+                                            .font(.custom())
+                                    }
+                                }
+                                
+                            }
+                            .frame(maxWidth: geometry.size.width, minHeight: geometry.size.width)
                         }
-                        .padding(.bottom, 50)
+                        
+                        
                     }
                     .tag(0)
-                    
                     
                     ScrollView {
                         ForEach(0 ..< 50) { _ in
@@ -83,6 +100,7 @@ struct MainView: View {
                     .tag(1)
                     
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             }
         }

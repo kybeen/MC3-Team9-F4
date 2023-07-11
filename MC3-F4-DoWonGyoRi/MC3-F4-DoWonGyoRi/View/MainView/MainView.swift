@@ -23,13 +23,16 @@ struct MainView: View {
             
             VStack(spacing: 0) {
                 HStack {
-                    Button(action: {
-                        selectedTab = 0
-                    }) {
-                        Text("오늘의 스윙")
-                            .font(.custom("Inter-medium", size: 20))
-                            .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                    VStack(spacing: 0) {
+                        Button(action: {
+                            selectedTab = 0
+                        }) {
+                            Text("오늘의 스윙")
+                                .font(.custom("Inter-medium", size: 20))
+                                .foregroundColor(selectedTab == 0 ? .blue : .gray)
+                        }
                     }
+                    
                     Button(action: {
                         selectedTab = 1
                     }) {
@@ -37,51 +40,37 @@ struct MainView: View {
                             .font(.custom("Inter-medium", size: 20))
                             .foregroundColor(selectedTab == 0 ? .gray : .blue)
                     }
+                    .padding(.leading, 27)
                 }
                 .frame(maxWidth: .infinity, maxHeight: 42, alignment: .topLeading)
-                
+                .padding(.leading, 27)
                 
                 TabView(selection: $selectedTab) {
-                    GeometryReader { geometry in
-                        ScrollView {
-                            ForEach(0 ..< 50) { _ in
-                                Text("안녕")
-                                    .frame(maxWidth: .infinity)
-                            }
-                            
+                    
+                    ScrollView {
+                        ForEach(0 ..< 50) { _ in
+                            Text("오늘의 스윙스")
+                                .frame(maxWidth: .infinity)
                         }
-                        .background(.purple)
-                        .cornerRadius(20)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                        
+                        .padding(.bottom, 50)
                     }
                     .tag(0)
                     
-                    GeometryReader { geometry in
-                        ScrollView {
-                            ForEach(0 ..< 50) { _ in
-                                Text("안녕")
-                                    .frame(maxWidth: .infinity)
-                            }
-                            
+                    
+                    ScrollView {
+                        ForEach(0 ..< 50) { _ in
+                            Text("기록")
+                                .frame(maxWidth: .infinity)
                         }
-                        .background(.purple)
-                        .cornerRadius(20)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                        
+                        .padding(.bottom, 50)
                     }
                     .tag(1)
                     
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             }
-//            .frame(maxHeight: .infinity)
         }
-        
-        .frame(maxHeight: .infinity, alignment: .top)
-        //        }
-        
-        
+        .ignoresSafeArea(.all, edges: .bottom)
     }
 }
 
@@ -129,14 +118,14 @@ extension MainView {
     
     
     private func scrollContainer() -> some View {
-        GeometryReader { geometry in
-            ScrollView {
-                ForEach(0 ..< 100) {_ in
-                    Text("안녕")
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                }
+        
+        ScrollView {
+            ForEach(0 ..< 100) {_ in
+                Text("안녕")
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
         }
+        
     }
 }
 

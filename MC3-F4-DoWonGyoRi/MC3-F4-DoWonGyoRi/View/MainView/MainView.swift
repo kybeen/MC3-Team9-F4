@@ -8,9 +8,9 @@
 import SwiftUI
 import Charts
 
-let title1 = "정의로운"
-let title2 = "테니스왕자"
-let nickname = "김배찌"
+let title1 = "고독한"
+let title2 = "승부사"
+let nickname = "장필우"
 let suffix = "님"
 let totalSwing = 500
 let totalYesterdaySwing = 300
@@ -184,7 +184,6 @@ extension MainView {
             summaryCountBox()
             summaryCountBox()
             summaryTimeBox()
-            summaryCountBox()
         }
         .padding(.leading, 17)
         .padding(.trailing, 17)
@@ -250,9 +249,7 @@ extension MainView {
     
     
     private func horizontalBarGraphContainer(_ swingCount: Int, _ totalSwing: Int, _ isTime: Bool = false, _ standardTime: Int = 0, _ comparisonTime: Int = 0) -> some View {
-        let comparisonTimeHour = comparisonTime / 60
         let standardTimeHour = standardTime / 60
-        let comparisonTimeMinutes = comparisonTime % 60
         let standardTimeMinutes = standardTime % 60
         
         return VStack(spacing: 0) {
@@ -302,7 +299,6 @@ extension MainView {
     }
     
 }
-
 
 struct MainView_Provider: PreviewProvider {
     static var previews: some View {

@@ -9,8 +9,12 @@ import SwiftUI
 
 struct SettingView: View {
     var body: some View {
-        VStack(spacing: 0) {
-            namespaceContainer()
+        NavigationStack {
+            VStack(spacing: 0) {
+                profilePhotoContainer()
+                namespaceContainer()
+                modifyProfileButton()
+            }
         }
     }
 }
@@ -22,7 +26,24 @@ struct SettingView_Proviewr: PreviewProvider {
 }
 
 extension SettingView {
-        
+    private func profilePhotoContainer() -> some View {
+        Button(action: {
+            
+        }) {
+            ZStack(alignment: .center) {
+                Circle()
+                    .foregroundColor(Color.theme.teGray)
+                Image(systemName: "photo")
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(Color.theme.teWhite)
+                    .frame(width: 45)
+            }
+            .frame(maxWidth: 129, maxHeight: 129)
+            .padding(.bottom, 32)
+        }
+        .disabled(true)
+    }
     
     private func namespaceContainer() -> some View {
         VStack(alignment: .center, spacing: 0) {
@@ -38,10 +59,29 @@ extension SettingView {
             }
             .padding(.bottom, 20)
             Text(nickname)
-                .font(.custom("Inter-SemiBold", size: 24))
+                .font(.custom("Inter-Bold", size: 24))
                 .foregroundColor(Color.theme.teWhite)
             
         }
-        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 150, alignment: .center)
+        .frame(maxWidth: UIScreen.main.bounds.width, alignment: .center)
+        .padding(.bottom, 24)
+    }
+    
+    private func modifyProfileButton() -> some View {
+        NavigationLink(destination: EmptyView()) {
+            Text("프로필 수정")
+                .font(.custom("Inter-Bold", size: 16))
+                .multilineTextAlignment(.center)
+                .foregroundColor(Color.theme.teGreen)
+                .padding(.horizontal, 28)
+                .padding(.vertical, 9)
+                .cornerRadius(30)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 30)
+                        .inset(by: 0.5)
+                        .stroke(Color(red: 0.24, green: 0.95, blue: 0.23), lineWidth: 1)
+                )
+        }
+                       
     }
 }

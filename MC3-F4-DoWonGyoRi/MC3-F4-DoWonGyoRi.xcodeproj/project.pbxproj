@@ -25,6 +25,31 @@
 		168AD6A42A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */; };
 		168AD6A82A57EF060097985C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6A72A57EF060097985C /* Assets.xcassets */; };
 		168AD6AB2A57EF060097985C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6AA2A57EF060097985C /* Preview Assets.xcassets */; };
+		C96600B92A5CF873008287EF /* RingChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96600B82A5CF873008287EF /* RingChartsView.swift */; };
+		C96600BB2A5CFFBD008287EF /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96600BA2A5CFFBD008287EF /* File.swift */; };
+		C9804AC22A5BDB8400CF97A8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC12A5BDB8400CF97A8 /* DataModel.swift */; };
+		C9804AC52A5BDBAB00CF97A8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC42A5BDBAB00CF97A8 /* Resource.swift */; };
+		C9804AC72A5BDBC000CF97A8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */; };
+		C9804ACA2A5BDD3C00CF97A8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC92A5BDD3C00CF97A8 /* MainView.swift */; };
+		C9804B0C2A5C6A9000CF97A8 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804AF92A5C6A8F00CF97A8 /* Inter-Bold.otf */; };
+		C9804B0D2A5C6A9000CF97A8 /* Inter-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804AFA2A5C6A8F00CF97A8 /* Inter-ExtraBoldItalic.otf */; };
+		C9804B0E2A5C6A9000CF97A8 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804AFB2A5C6A8F00CF97A8 /* Inter-BoldItalic.otf */; };
+		C9804B0F2A5C6A9000CF97A8 /* Inter-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804AFC2A5C6A8F00CF97A8 /* Inter-BlackItalic.otf */; };
+		C9804B102A5C6A9000CF97A8 /* Inter-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804AFD2A5C6A8F00CF97A8 /* Inter-ExtraLight.otf */; };
+		C9804B112A5C6A9000CF97A8 /* Inter-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804AFE2A5C6A8F00CF97A8 /* Inter-ExtraBold.otf */; };
+		C9804B122A5C6A9000CF97A8 /* Inter-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804AFF2A5C6A8F00CF97A8 /* Inter-Black.otf */; };
+		C9804B132A5C6A9000CF97A8 /* Inter-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B002A5C6A8F00CF97A8 /* Inter-ExtraLightItalic.otf */; };
+		C9804B142A5C6A9000CF97A8 /* Inter-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B012A5C6A8F00CF97A8 /* Inter-LightItalic.otf */; };
+		C9804B152A5C6A9000CF97A8 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B022A5C6A8F00CF97A8 /* Inter-SemiBold.otf */; };
+		C9804B162A5C6A9000CF97A8 /* Inter-V.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B032A5C6A8F00CF97A8 /* Inter-V.ttf */; };
+		C9804B172A5C6A9000CF97A8 /* Inter-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B042A5C6A8F00CF97A8 /* Inter-SemiBoldItalic.otf */; };
+		C9804B182A5C6A9000CF97A8 /* Inter-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B052A5C6A8F00CF97A8 /* Inter-Medium.otf */; };
+		C9804B192A5C6A9000CF97A8 /* Inter-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B062A5C6A8F00CF97A8 /* Inter-Light.otf */; };
+		C9804B1A2A5C6A9000CF97A8 /* Inter-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B072A5C6A8F00CF97A8 /* Inter-MediumItalic.otf */; };
+		C9804B1B2A5C6A9000CF97A8 /* Inter-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B082A5C6A8F00CF97A8 /* Inter-Thin.otf */; };
+		C9804B1C2A5C6A9000CF97A8 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B092A5C6A8F00CF97A8 /* Inter-Regular.otf */; };
+		C9804B1D2A5C6A9000CF97A8 /* Inter-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B0A2A5C6A8F00CF97A8 /* Inter-ThinItalic.otf */; };
+		C9804B1E2A5C6A9000CF97A8 /* Inter-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B0B2A5C6A9000CF97A8 /* Inter-Italic.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +96,32 @@
 		168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_F4_DoWonGyoRiApp.swift; sourceTree = "<group>"; };
 		168AD6A72A57EF060097985C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		168AD6AA2A57EF060097985C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C96600B82A5CF873008287EF /* RingChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingChartsView.swift; sourceTree = "<group>"; };
+		C96600BA2A5CFFBD008287EF /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		C9804AC12A5BDB8400CF97A8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		C9804AC42A5BDBAB00CF97A8 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		C9804AC92A5BDD3C00CF97A8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		C9804ACD2A5C67A000CF97A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C9804AF92A5C6A8F00CF97A8 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
+		C9804AFA2A5C6A8F00CF97A8 /* Inter-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		C9804AFB2A5C6A8F00CF97A8 /* Inter-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BoldItalic.otf"; sourceTree = "<group>"; };
+		C9804AFC2A5C6A8F00CF97A8 /* Inter-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BlackItalic.otf"; sourceTree = "<group>"; };
+		C9804AFD2A5C6A8F00CF97A8 /* Inter-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.otf"; sourceTree = "<group>"; };
+		C9804AFE2A5C6A8F00CF97A8 /* Inter-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.otf"; sourceTree = "<group>"; };
+		C9804AFF2A5C6A8F00CF97A8 /* Inter-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.otf"; sourceTree = "<group>"; };
+		C9804B002A5C6A8F00CF97A8 /* Inter-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		C9804B012A5C6A8F00CF97A8 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
+		C9804B022A5C6A8F00CF97A8 /* Inter-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.otf"; sourceTree = "<group>"; };
+		C9804B032A5C6A8F00CF97A8 /* Inter-V.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-V.ttf"; sourceTree = "<group>"; };
+		C9804B042A5C6A8F00CF97A8 /* Inter-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		C9804B052A5C6A8F00CF97A8 /* Inter-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf"; sourceTree = "<group>"; };
+		C9804B062A5C6A8F00CF97A8 /* Inter-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.otf"; sourceTree = "<group>"; };
+		C9804B072A5C6A8F00CF97A8 /* Inter-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-MediumItalic.otf"; sourceTree = "<group>"; };
+		C9804B082A5C6A8F00CF97A8 /* Inter-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.otf"; sourceTree = "<group>"; };
+		C9804B092A5C6A8F00CF97A8 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
+		C9804B0A2A5C6A8F00CF97A8 /* Inter-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ThinItalic.otf"; sourceTree = "<group>"; };
+		C9804B0B2A5C6A9000CF97A8 /* Inter-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Italic.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,10 +192,14 @@
 		168AD6902A57EF030097985C /* MC3-F4-DoWonGyoRi */ = {
 			isa = PBXGroup;
 			children = (
+				C9804ACD2A5C67A000CF97A8 /* Info.plist */,
 				168AD6912A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift */,
-				168AD6932A57EF030097985C /* ContentView.swift */,
+				C9804AC02A5BDB7900CF97A8 /* Resource */,
+				C9804ABF2A5BDAF000CF97A8 /* Model */,
+				C9804ABE2A5BDAE500CF97A8 /* View */,
 				168AD6952A57EF050097985C /* Assets.xcassets */,
 				168AD6972A57EF050097985C /* Preview Content */,
+				C96600BA2A5CFFBD008287EF /* File.swift */,
 			);
 			path = "MC3-F4-DoWonGyoRi";
 			sourceTree = "<group>";
@@ -178,6 +233,76 @@
 				168AD6AA2A57EF060097985C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C9804ABE2A5BDAE500CF97A8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C9804AC82A5BDD2F00CF97A8 /* MainView */,
+				C9804AC32A5BDB9600CF97A8 /* Extension */,
+				168AD6932A57EF030097985C /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C9804ABF2A5BDAF000CF97A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9804AC12A5BDB8400CF97A8 /* DataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C9804AC02A5BDB7900CF97A8 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				C9804AF82A5C6A6500CF97A8 /* Font */,
+				C9804AC42A5BDBAB00CF97A8 /* Resource.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		C9804AC32A5BDB9600CF97A8 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C9804AC82A5BDD2F00CF97A8 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				C9804AC92A5BDD3C00CF97A8 /* MainView.swift */,
+				C96600B82A5CF873008287EF /* RingChartsView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		C9804AF82A5C6A6500CF97A8 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C9804AFF2A5C6A8F00CF97A8 /* Inter-Black.otf */,
+				C9804AFC2A5C6A8F00CF97A8 /* Inter-BlackItalic.otf */,
+				C9804AF92A5C6A8F00CF97A8 /* Inter-Bold.otf */,
+				C9804AFB2A5C6A8F00CF97A8 /* Inter-BoldItalic.otf */,
+				C9804AFE2A5C6A8F00CF97A8 /* Inter-ExtraBold.otf */,
+				C9804AFA2A5C6A8F00CF97A8 /* Inter-ExtraBoldItalic.otf */,
+				C9804AFD2A5C6A8F00CF97A8 /* Inter-ExtraLight.otf */,
+				C9804B002A5C6A8F00CF97A8 /* Inter-ExtraLightItalic.otf */,
+				C9804B0B2A5C6A9000CF97A8 /* Inter-Italic.otf */,
+				C9804B062A5C6A8F00CF97A8 /* Inter-Light.otf */,
+				C9804B012A5C6A8F00CF97A8 /* Inter-LightItalic.otf */,
+				C9804B052A5C6A8F00CF97A8 /* Inter-Medium.otf */,
+				C9804B072A5C6A8F00CF97A8 /* Inter-MediumItalic.otf */,
+				C9804B092A5C6A8F00CF97A8 /* Inter-Regular.otf */,
+				C9804B022A5C6A8F00CF97A8 /* Inter-SemiBold.otf */,
+				C9804B042A5C6A8F00CF97A8 /* Inter-SemiBoldItalic.otf */,
+				C9804B082A5C6A8F00CF97A8 /* Inter-Thin.otf */,
+				C9804B0A2A5C6A8F00CF97A8 /* Inter-ThinItalic.otf */,
+				C9804B032A5C6A8F00CF97A8 /* Inter-V.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +387,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				168AD6992A57EF050097985C /* Preview Assets.xcassets in Resources */,
+				C9804B122A5C6A9000CF97A8 /* Inter-Black.otf in Resources */,
+				C9804B102A5C6A9000CF97A8 /* Inter-ExtraLight.otf in Resources */,
+				C9804B172A5C6A9000CF97A8 /* Inter-SemiBoldItalic.otf in Resources */,
 				168AD6962A57EF050097985C /* Assets.xcassets in Resources */,
+				C9804B0F2A5C6A9000CF97A8 /* Inter-BlackItalic.otf in Resources */,
+				C9804B0D2A5C6A9000CF97A8 /* Inter-ExtraBoldItalic.otf in Resources */,
+				C9804B1D2A5C6A9000CF97A8 /* Inter-ThinItalic.otf in Resources */,
+				C9804B1B2A5C6A9000CF97A8 /* Inter-Thin.otf in Resources */,
+				C9804B0C2A5C6A9000CF97A8 /* Inter-Bold.otf in Resources */,
+				C9804B112A5C6A9000CF97A8 /* Inter-ExtraBold.otf in Resources */,
+				C9804B132A5C6A9000CF97A8 /* Inter-ExtraLightItalic.otf in Resources */,
+				C9804B1E2A5C6A9000CF97A8 /* Inter-Italic.otf in Resources */,
+				C9804B1A2A5C6A9000CF97A8 /* Inter-MediumItalic.otf in Resources */,
+				C9804B142A5C6A9000CF97A8 /* Inter-LightItalic.otf in Resources */,
+				C9804B1C2A5C6A9000CF97A8 /* Inter-Regular.otf in Resources */,
+				C9804B0E2A5C6A9000CF97A8 /* Inter-BoldItalic.otf in Resources */,
+				C9804B162A5C6A9000CF97A8 /* Inter-V.ttf in Resources */,
+				C9804B192A5C6A9000CF97A8 /* Inter-Light.otf in Resources */,
+				C9804B182A5C6A9000CF97A8 /* Inter-Medium.otf in Resources */,
+				C9804B152A5C6A9000CF97A8 /* Inter-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +429,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				168AD6942A57EF030097985C /* ContentView.swift in Sources */,
+				C9804ACA2A5BDD3C00CF97A8 /* MainView.swift in Sources */,
+				C9804AC52A5BDBAB00CF97A8 /* Resource.swift in Sources */,
+				C96600B92A5CF873008287EF /* RingChartsView.swift in Sources */,
 				168AD6922A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */,
+				C96600BB2A5CFFBD008287EF /* File.swift in Sources */,
+				C9804AC22A5BDB8400CF97A8 /* DataModel.swift in Sources */,
+				C9804AC72A5BDBC000CF97A8 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,13 +648,16 @@
 				DEVELOPMENT_TEAM = 49256BK4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MC3-F4-DoWonGyoRi/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "MC3-F4-DoWonGyoRi";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -513,9 +666,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "mc3.MC3-F4-DoWonGyoRi";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -531,13 +687,16 @@
 				DEVELOPMENT_TEAM = 49256BK4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MC3-F4-DoWonGyoRi/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "MC3-F4-DoWonGyoRi";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -546,9 +705,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "mc3.MC3-F4-DoWonGyoRi";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

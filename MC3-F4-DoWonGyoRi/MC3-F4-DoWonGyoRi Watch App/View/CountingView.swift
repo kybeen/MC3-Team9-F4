@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct CountingView: View {
+    @State private var isMeasuringViewPresented = false
+
     var body: some View {
         TabView {
-            //2. 여기에tabview안에 subview를 만들어주시면 됩니다.
             ZStack {
                 Circle()
                     .frame(width: 150, height: 150, alignment: .center)
@@ -21,6 +22,13 @@ struct CountingView: View {
                     Text("50")
                         .font(.system(size: 56, weight: .bold))
                         .foregroundColor(Color.black)
+                    
+                    //MARK: - 이 버튼 없으면 정중앙에 정렬됨
+                    NavigationLink(destination: MeasuringView(), isActive: $isMeasuringViewPresented) {
+                        Text("시작")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(Color.black)
+                    }
                 }
             }
             .tabItem{

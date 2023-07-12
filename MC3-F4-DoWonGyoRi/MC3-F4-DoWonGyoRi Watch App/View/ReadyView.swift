@@ -42,6 +42,7 @@ struct ReadyView: View {
                 self.countValue = readyStatus[counting]
                 if self.countValue == "시작!" {
                     self.isCountingViewPresented = true
+                    return
                 }
                 
             } else {

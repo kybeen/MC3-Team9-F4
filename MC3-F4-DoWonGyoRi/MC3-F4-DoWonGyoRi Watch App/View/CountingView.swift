@@ -8,58 +8,59 @@
 import SwiftUI
 
 struct CountingView: View {
-    @State private var isMeasuringViewPresented = false
 
     var body: some View {
-        TabView {
-            ZStack {
-                Circle()
-                    .frame(width: 150, height: 150, alignment: .center)
-                VStack {
-                    Text("남은 횟수")
-                        .font(.system(size: 16, weight: .bold))
-                        .foregroundColor(Color.black)
-                    Text("50")
-                        .font(.system(size: 56, weight: .bold))
-                        .foregroundColor(Color.black)
-                    
-                    //MARK: - 이 버튼 없으면 정중앙에 정렬됨
-                    NavigationLink(destination: MeasuringView(), isActive: $isMeasuringViewPresented) {
-                        Text("시작")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(Color.black)
-                    }
-                }
-            }
-            .tabItem{
-                Image(systemName: "tennisball.fill")
-                    .foregroundColor(Color.watchColor.lightGreen)
-            }
-            .tag(0)
-
-            VStack {
-                Spacer()
+        NavigationStack {
+            TabView {
                 ZStack {
                     Circle()
-                        .frame(width: 94, height: 94)
-                        .foregroundColor(Color.watchColor.lightRed)
-                    Rectangle()
-                        .frame(width: 38, height: 38, alignment: .center)
-                        .foregroundColor(Color.watchColor.black)
+                        .frame(width: 150, height: 150, alignment: .center)
+                    VStack {
+                        Text("남은 횟수")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(Color.black)
+                        Text("50")
+                            .font(.system(size: 56, weight: .bold))
+                            .foregroundColor(Color.black)
+                        
+                        //MARK: - 이 버튼 없으면 정중앙에 정렬됨
+                        NavigationLink(destination: MeasuringView()) {
+                            Text("시작")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(Color.black)
+                        }
+                    }
                 }
-                .frame(alignment: .center)
-                .padding(.bottom, 8)
+                .tabItem{
+                    Image(systemName: "tennisball.fill")
+                        .foregroundColor(Color.watchColor.lightGreen)
+                }
+                .tag(0)
                 
-                Text("종료")
-                    .font(.system(size: 20, weight: .semibold))
+                VStack {
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            .frame(width: 94, height: 94)
+                            .foregroundColor(Color.watchColor.lightRed)
+                        Rectangle()
+                            .frame(width: 38, height: 38, alignment: .center)
+                            .foregroundColor(Color.watchColor.black)
+                    }
+                    .frame(alignment: .center)
+                    .padding(.bottom, 8)
+                    
+                    Text("종료")
+                        .font(.system(size: 20, weight: .semibold))
+                }
+                .tabItem{
+                    Image(systemName: "tennisball.fill")
+                        .foregroundColor(Color.watchColor.lightGreen)
+                }
+                .tag(1)
             }
-            .tabItem{
-                Image(systemName: "tennisball.fill")
-                    .foregroundColor(Color.watchColor.lightGreen)
-            }
-            .tag(1)
+            .navigationBarBackButtonHidden()
         }
-        .navigationBarBackButtonHidden()
     }
 }
 

@@ -23,4 +23,5 @@ struct WatchColor {
     let lightBlack = Color("LightBlack")
     let gray = Color("Gray")
     let black = Color("Black")
+    let lightRed = Color("LightRed")
 }

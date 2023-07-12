@@ -29,10 +29,21 @@ struct CountingView: View {
             }
             .tag(0)
 
-            ZStack {
-                Circle()
-                    .frame(width: 94, height: 94, alignment: .center)
-                    .foregroundColor(Color.red)
+            VStack {
+                Spacer()
+                ZStack {
+                    Circle()
+                        .frame(width: 94, height: 94)
+                        .foregroundColor(Color.watchColor.lightRed)
+                    Rectangle()
+                        .frame(width: 38, height: 38, alignment: .center)
+                        .foregroundColor(Color.watchColor.black)
+                }
+                .frame(alignment: .center)
+                .padding(.bottom, 8)
+                
+                Text("종료")
+                    .font(.system(size: 20, weight: .semibold))
             }
             .tabItem{
                 Image(systemName: "tennisball.fill")

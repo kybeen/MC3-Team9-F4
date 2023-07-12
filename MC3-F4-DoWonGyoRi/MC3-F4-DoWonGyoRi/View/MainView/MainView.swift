@@ -66,16 +66,13 @@ extension MainView {
                     .padding(.leading, 27)
             }
             Spacer()
-            Button(action: {
-                
-            }) {
+            NavigationLink(destination: SettingView()) {
                 Image(systemName: "person.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .foregroundColor(Color.theme.teWhite)
                     .frame(width: 35, height: 35)
                     .padding(.trailing, 27)
-                
             }
         }
         .padding(.top, 15)

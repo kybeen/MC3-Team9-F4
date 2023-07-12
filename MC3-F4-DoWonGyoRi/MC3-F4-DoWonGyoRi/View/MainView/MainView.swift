@@ -61,7 +61,7 @@ extension MainView {
                 Image(systemName: "figure.tennis")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(Color.theme.teWhite)
+                    .foregroundColor(Color.theme.teGreen)
                     .frame(width: 35, height: 35)
                     .padding(.leading, 27)
             }
@@ -78,6 +78,7 @@ extension MainView {
                 
             }
         }
+        .padding(.top, 15)
     }
     
     private func namespaceContainer() -> some View {
@@ -149,6 +150,7 @@ extension MainView {
             
             ScrollView {
                 ringChartsContainer()
+                    .padding(.bottom, 40)
                 todaySummaryCountainer()
             } // end scroll view
             
@@ -190,8 +192,9 @@ extension MainView {
                     .frame(maxWidth: UIScreen.main.bounds.width - 46, maxHeight: UIScreen.main.bounds.width - 46)
                     .foregroundColor(Color.theme.teRealBlack)
                 VStack {
-                    RingChartsView(values: [220, 20], colors: [[Color.theme.teDarkGray, Color.theme.teGreen], [Color.theme.teLightGray, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 25, isAnimated: true)
-                        .frame(width: UIScreen.main.bounds.width - 90, height: UIScreen.main.bounds.width - 90, alignment: .center)
+                    RingChartsView(values: [220, 20], colors: [[Color.theme.teDarkGray, Color.theme.teGreen], [Color.theme.teLightGray, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
+                        .frame(width: UIScreen.main.bounds.width - 80, height: UIScreen.main.bounds.width - 80, alignment: .center)
+                        
                 }
                 VStack(spacing: 0) {
                     Text("Perfect")
@@ -202,6 +205,7 @@ extension MainView {
                         .font(.custom("Inter-Bold", size: 30))
                 }
             }
+            .padding(.top, 40)
             .frame(maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.width)
         }
     }

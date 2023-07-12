@@ -19,6 +19,7 @@
 		1673DC2B2A5D4617000F9EB1 /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC2A2A5D4617000F9EB1 /* ReadyView.swift */; };
 		1673DC302A5E2652000F9EB1 /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC2F2A5E2652000F9EB1 /* CircleProgressBar.swift */; };
 		1673DC322A5E3F3F000F9EB1 /* CountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC312A5E3F3F000F9EB1 /* CountingView.swift */; };
+		1673DC342A5E4F3E000F9EB1 /* MeasuringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC332A5E4F3E000F9EB1 /* MeasuringView.swift */; };
 		168AD6922A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6912A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift */; };
 		168AD6942A57EF030097985C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6932A57EF030097985C /* ContentView.swift */; };
 		168AD6962A57EF050097985C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6952A57EF050097985C /* Assets.xcassets */; };
@@ -92,6 +93,7 @@
 		1673DC2A2A5D4617000F9EB1 /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
 		1673DC2F2A5E2652000F9EB1 /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
 		1673DC312A5E3F3F000F9EB1 /* CountingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingView.swift; sourceTree = "<group>"; };
+		1673DC332A5E4F3E000F9EB1 /* MeasuringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasuringView.swift; sourceTree = "<group>"; };
 		168AD68E2A57EF030097985C /* MC3-F4-DoWonGyoRi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC3-F4-DoWonGyoRi.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		168AD6912A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_F4_DoWonGyoRiApp.swift; sourceTree = "<group>"; };
 		168AD6932A57EF030097985C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				1673DC0F2A5CDA9F000F9EB1 /* SwingListView.swift */,
+				1673DC332A5E4F3E000F9EB1 /* MeasuringView.swift */,
 				1673DC2A2A5D4617000F9EB1 /* ReadyView.swift */,
 				1673DC222A5D361D000F9EB1 /* SwingCountView.swift */,
 				1673DC202A5D3605000F9EB1 /* GuideView.swift */,
@@ -461,6 +464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1673DC342A5E4F3E000F9EB1 /* MeasuringView.swift in Sources */,
 				1673DC2B2A5D4617000F9EB1 /* ReadyView.swift in Sources */,
 				1673DC0C2A5CD4A9000F9EB1 /* ColorExtension.swift in Sources */,
 				1673DC102A5CDA9F000F9EB1 /* SwingListView.swift in Sources */,

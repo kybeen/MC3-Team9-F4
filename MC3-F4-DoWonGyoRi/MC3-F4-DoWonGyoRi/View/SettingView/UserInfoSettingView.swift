@@ -270,6 +270,7 @@ extension UserInfoSettingView {
     private func saveButton(_ buttonTitle: String) -> some View {
         
         return Button(action: {
+            dismiss()
         }) {
             ZStack {
                 Rectangle()

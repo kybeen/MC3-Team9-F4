@@ -17,8 +17,9 @@ struct SwingListView: View {
                 NavigationLink(destination: SwingCountView(swingList: swingList)) {
                     SwingListCellView(swingList: swingList)
                 }
-                .frame(height: 108)
+                .frame(height: 120)
             }
+            .cornerRadius(20)
         }
     }
 }

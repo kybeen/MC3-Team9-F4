@@ -34,6 +34,7 @@
 		C9533A052A5E578000FA7DC7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9533A042A5E578000FA7DC7 /* SettingView.swift */; };
 		C9533A092A5E667000FA7DC7 /* UserInfoSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9533A082A5E667000FA7DC7 /* UserInfoSettingView.swift */; };
 		C9533A0B2A5F82E900FA7DC7 /* UserStrokeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9533A0A2A5F82E900FA7DC7 /* UserStrokeSettingView.swift */; };
+		C9533A0D2A60393200FA7DC7 /* UserProfileSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9533A0C2A60393200FA7DC7 /* UserProfileSettingView.swift */; };
 		C96600B92A5CF873008287EF /* RingChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96600B82A5CF873008287EF /* RingChartsView.swift */; };
 		C96600BB2A5CFFBD008287EF /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96600BA2A5CFFBD008287EF /* File.swift */; };
 		C9804AC22A5BDB8400CF97A8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC12A5BDB8400CF97A8 /* DataModel.swift */; };
@@ -114,6 +115,7 @@
 		C9533A042A5E578000FA7DC7 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		C9533A082A5E667000FA7DC7 /* UserInfoSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSettingView.swift; sourceTree = "<group>"; };
 		C9533A0A2A5F82E900FA7DC7 /* UserStrokeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStrokeSettingView.swift; sourceTree = "<group>"; };
+		C9533A0C2A60393200FA7DC7 /* UserProfileSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileSettingView.swift; sourceTree = "<group>"; };
 		C96600B82A5CF873008287EF /* RingChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingChartsView.swift; sourceTree = "<group>"; };
 		C96600BA2A5CFFBD008287EF /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		C9804AC12A5BDB8400CF97A8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				C9533A042A5E578000FA7DC7 /* SettingView.swift */,
 				C9533A082A5E667000FA7DC7 /* UserInfoSettingView.swift */,
 				C9533A0A2A5F82E900FA7DC7 /* UserStrokeSettingView.swift */,
+				C9533A0C2A60393200FA7DC7 /* UserProfileSettingView.swift */,
 			);
 			path = SettingView;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				C9533A0B2A5F82E900FA7DC7 /* UserStrokeSettingView.swift in Sources */,
 				168AD6942A57EF030097985C /* ContentView.swift in Sources */,
 				C9804ACA2A5BDD3C00CF97A8 /* MainView.swift in Sources */,
+				C9533A0D2A60393200FA7DC7 /* UserProfileSettingView.swift in Sources */,
 				C9804AC52A5BDBAB00CF97A8 /* Resource.swift in Sources */,
 				C9533A052A5E578000FA7DC7 /* SettingView.swift in Sources */,
 				C96600B92A5CF873008287EF /* RingChartsView.swift in Sources */,
@@ -695,6 +699,7 @@
 				INFOPLIST_FILE = "MC3-F4-DoWonGyoRi/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "MC3-F4-DoWonGyoRi";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 등록하기 위해 사진 저장 공간 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -734,6 +739,7 @@
 				INFOPLIST_FILE = "MC3-F4-DoWonGyoRi/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "MC3-F4-DoWonGyoRi";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 등록하기 위해 사진 저장 공간 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

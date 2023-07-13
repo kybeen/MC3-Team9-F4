@@ -25,7 +25,7 @@ struct UserInfoSettingView: View {
     let startDate = Calendar.current.date(from: DateComponents(year: 1900, month: 1, day: 1))!
     let endDate = Date()
     
-                                        var body: some View {
+    var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
                 titleContainer("정확한 자세 코칭 제공을 위해", "정보를 입력해주세요.")

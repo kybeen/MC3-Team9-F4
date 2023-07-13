@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import _PhotosUI_SwiftUI
 
 struct UserStrokeSettingView: View {
     @Environment(\.dismiss) var dismiss
@@ -17,12 +18,10 @@ struct UserStrokeSettingView: View {
             titleContainer("\(isBackhandSetting ? "백핸드" : "포핸드")")
             Spacer()
             countViewContainer()
-                .border(.blue)
             Spacer()
             saveButton("저장")
         }
         .padding(EdgeInsets(top: 80, leading: 25, bottom: 80, trailing: 25))
-        .border(.blue)
     }
 }
 
@@ -102,6 +101,8 @@ extension UserStrokeSettingView {
             }
         }
     }
+    
+    
 }
 
 struct UserStrokeSettingView_Preview: PreviewProvider {

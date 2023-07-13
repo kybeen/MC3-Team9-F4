@@ -51,6 +51,7 @@ struct ResultView: View {
             }
             .navigationTitle("Result")
         }
+//        .navigationBarBackButtonHidden(false)
     }
 }
 

@@ -27,8 +27,9 @@ struct SwingCountView: View {
             }
             .background(Color.watchColor.lightGreen)
             .cornerRadius(20)
-            
         }
+        .navigationTitle("목록")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

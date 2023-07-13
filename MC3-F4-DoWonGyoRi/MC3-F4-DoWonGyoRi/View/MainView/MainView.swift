@@ -28,9 +28,10 @@ let perfectDifference = 30
 struct MainView: View {
     @State private var selectedTab = 0
     @State var isAnimationEnabled = false
+    @State private var path: [Int] = []
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             VStack(spacing: 0) {
                 containerView()
                 namespaceContainer()
@@ -52,7 +53,6 @@ struct MainView: View {
 
 
 extension MainView {
-    
     private func containerView() -> some View {
         HStack {
             Button(action: {
@@ -74,6 +74,7 @@ extension MainView {
                     .frame(width: 35, height: 35)
                     .padding(.trailing, 27)
             }
+            
         }
         .padding(.top, 15)
     }
@@ -95,9 +96,7 @@ extension MainView {
                 Text(nickname + suffix)
                     .font(.custom("Inter-SemiBold", size: 28))
                     .foregroundColor(Color.theme.teWhite)
-                    
             }
-            
         }
         .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 150, alignment: .leading)
         .padding(.leading, 27)
@@ -113,12 +112,9 @@ extension MainView {
                     Text("오늘의 스윙")
                         .font(.custom("Inter-medium", size: 20))
                         .foregroundColor(selectedTab == 0 ? Color.theme.teGreen : Color.theme.teWhite)
-                    
-                    
                     Rectangle()
                         .frame(maxWidth: 118, maxHeight: 3)
                         .foregroundColor(selectedTab == 0 ? Color.theme.teGreen : Color.theme.teBlack)
-                    
                 }
                 .frame(maxWidth: 100)
             }

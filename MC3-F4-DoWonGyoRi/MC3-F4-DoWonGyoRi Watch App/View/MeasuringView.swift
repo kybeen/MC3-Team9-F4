@@ -25,6 +25,7 @@ struct MeasuringView: View {
             }
             .hidden()
         )
+        .navigationBarBackButtonHidden()
     }
 }
 

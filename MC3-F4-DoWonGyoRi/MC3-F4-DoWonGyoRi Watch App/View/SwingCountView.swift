@@ -10,7 +10,7 @@ import SwiftUI
 struct SwingCountView: View {
     let swingList: SwingList
     @State private var isReadyViewActive = false
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text("이번 목표 스윙 개수는 얼마인가요?")
@@ -27,8 +27,9 @@ struct SwingCountView: View {
             }
             .background(Color.watchColor.lightGreen)
             .cornerRadius(20)
-            
         }
+        .navigationTitle("목록")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

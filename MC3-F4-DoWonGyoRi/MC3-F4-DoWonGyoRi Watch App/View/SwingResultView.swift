@@ -34,6 +34,7 @@ struct SwingResultView: View {
             }
             .hidden()
         )
+        .navigationBarBackButtonHidden()
     }
 }
 

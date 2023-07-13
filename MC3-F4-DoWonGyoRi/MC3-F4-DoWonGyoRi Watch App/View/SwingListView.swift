@@ -12,7 +12,7 @@ import SwiftUI
 struct SwingListView: View {
     let swingList: SwingList
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List(swingLists) { swingList in
                 NavigationLink(destination: SwingCountView(swingList: swingList)) {
                     SwingListCellView(swingList: swingList)
@@ -20,6 +20,9 @@ struct SwingListView: View {
                 .frame(height: 120)
             }
             .cornerRadius(20)
+            
+            //추후에 색상 변경 가능
+            .navigationTitle("자세")
         }
     }
 }

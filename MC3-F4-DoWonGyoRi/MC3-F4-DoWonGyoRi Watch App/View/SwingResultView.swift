@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SwingResultView: View {
+    @State private var isSwingCountViewPresented = false
+    
     var body: some View {
         VStack {
             Spacer()
@@ -21,6 +23,17 @@ struct SwingResultView: View {
             Text("잘 쳤는지 아닌 지")
                 .font(.system(size: 12, weight: .bold))
         }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                self.isSwingCountViewPresented = true
+            }
+        }
+        .background(
+            NavigationLink(destination: CountingView(), isActive: $isSwingCountViewPresented) {
+                EmptyView()
+            }
+            .hidden()
+        )
     }
 }
 

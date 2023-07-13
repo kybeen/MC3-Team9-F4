@@ -59,8 +59,8 @@ struct CountingView: View {
                 }
                 .tag(1)
             }
-            .navigationBarBackButtonHidden()
         }
+        .navigationBarBackButtonHidden()
     }
 }
 

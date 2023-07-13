@@ -33,6 +33,32 @@ struct CircleProgressBar: View {
     }
 }
 
+struct ResultCircleProgressBar: View {
+    @Binding var progress: Float
+    @Binding var count: String
+    @Binding var fontSize: CGFloat
+    var perfectColor: Color = Color.watchColor.lightGreen
+    
+    var body: some View {
+        ZStack {
+            Circle()
+                .stroke(lineWidth: 20.0)
+                .opacity(0.20)
+                .foregroundColor(Color.watchColor.pink)
+            
+            Circle()
+                .trim(from: 0.0, to: CGFloat(min(self.progress, 1.0)))
+                .stroke(style: StrokeStyle(lineWidth: 12.0, lineCap: .round, lineJoin: .round))
+                .fill(perfectColor)
+                .rotationEffect(Angle(degrees: 270))
+                .animation(.easeInOut(duration: 1.0))
+
+            Text(self.count)
+                .font(.system(size: self.fontSize, weight: .bold))
+        }
+    }
+}
+
 
 //MARK: - 확인용
 

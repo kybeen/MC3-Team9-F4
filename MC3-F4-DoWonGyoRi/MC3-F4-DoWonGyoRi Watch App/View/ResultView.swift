@@ -32,12 +32,7 @@ struct ResultView: View {
                 .tag(1)
                 
                 VStack {
-                    Text("운동 요약")
-                    NavigationLink(destination: CompleteView()) {
-                        Text("완료 버튼")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(Color.black)
-                    }
+                    HealthKitView()
                 }
                 .tabItem{
                     Image(systemName: "tennisball.fill")
@@ -54,6 +49,8 @@ struct ResultView: View {
     }
 }
 
+
+//MARK: - Tag(1)
 struct SwingRateView: View {
     @State var progressValue: Float = 0.0
     @State var perfectCount: Int = 30
@@ -73,6 +70,49 @@ struct SwingRateView: View {
     
     private func perfectRate() {
         progressValue = Float(perfectCount) / Float((perfectCount + badCount))
+    }
+}
+
+struct HealthKitView: View {
+    //우선 타입 임의로 지정
+    @State var workingMin: String = "00:00.00"
+    @State var bpm: Int = 150
+    @State var kcal: Int = 160
+    var body: some View {
+        VStack(alignment: .leading) {
+            Spacer()
+            Text(workingMin)
+                .font(.system(size: 36, weight: .medium))
+                .foregroundColor(Color.watchColor.lightGreen)
+                .padding(.bottom, 8)
+            Text("\(bpm) BPM")
+                .font(.system(size: 20, weight: .medium))
+                .padding(.bottom, 8)
+
+            Text("\(kcal) kcal")
+                .font(.system(size: 20, weight: .medium))
+                .padding(.bottom, 16)
+            
+            Spacer()
+//            NavigationLink(destination: CompleteView()) {
+//                Text("완료")
+//                    .font(.system(size: 16, weight: .bold))
+//                    .foregroundColor(Color.black)
+//            }
+//            .tint(Color.watchColor.lightGreen)
+            
+            Button(action: {
+                print("clicked")
+            }) {
+                Text("완료")
+                    .font(.system(size: 20, weight: .bold))
+            }
+            .foregroundColor(Color.watchColor.black) // 2
+            .background(Color.watchColor.lightGreen) // 3
+            .cornerRadius(20)
+
+            
+        }
     }
 }
 

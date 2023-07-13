@@ -40,7 +40,7 @@ struct CountingView: View {
                 Spacer()
                 
                 //MARK: - 이 버튼 없으면 정중앙에 정렬됨
-                NavigationLink(destination: CompleteView()) {
+                NavigationLink(destination: ResultView()) {
                     ZStack {
                         Circle()
                             .frame(width: 94, height: 94)

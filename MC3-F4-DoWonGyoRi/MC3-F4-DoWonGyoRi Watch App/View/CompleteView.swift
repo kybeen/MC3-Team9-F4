@@ -25,17 +25,23 @@ struct CompleteView: View {
         }
         .navigationBarBackButtonHidden()
         .background(
-            NavigationLink(destination: CountingView(), isActive: $isResultViewPresented) {
+            NavigationLink(destination: ResultView(), isActive: $isResultViewPresented) {
                 EmptyView()
             }
             .hidden()
         )
     }
     
-    func startProgressAnimation() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            withAnimation(.easeInOut(duration: 2.0)) {
+    private func startProgressAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            withAnimation(.easeInOut(duration: 0.5)) {
                 self.progressValue = 1
+                
+                if self.progressValue == 1 {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                        self.isResultViewPresented = true
+                    }
+                }
             }
         }
     }

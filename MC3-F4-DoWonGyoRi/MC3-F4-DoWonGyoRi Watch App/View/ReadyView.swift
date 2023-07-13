@@ -36,7 +36,7 @@ struct ReadyView: View {
         )
     }
 
-    func startProgressAnimation() {
+    private func startProgressAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             withAnimation(.easeInOut(duration: 1.0)) {
                 self.progressValue += 0.33

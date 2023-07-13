@@ -11,7 +11,7 @@ struct CompleteView: View {
     @State private var progressValue: Float = 0.0
     @State private var message: String = "스윙완료!"
     @State private var isResultViewPresented: Bool = false
-    @State private var fontSize: CGFloat = 24.0
+    @State private var fontSize: CGFloat = 28.0
 
     var body: some View {
         VStack {
@@ -23,13 +23,13 @@ struct CompleteView: View {
                     startProgressAnimation()
                 }
         }
-//        .navigationBarBackButtonHidden()
         .background(
             NavigationLink(destination: ResultView(), isActive: $isResultViewPresented) {
                 EmptyView()
             }
             .hidden()
         )
+        .navigationBarBackButtonHidden()
     }
     
     private func startProgressAnimation() {

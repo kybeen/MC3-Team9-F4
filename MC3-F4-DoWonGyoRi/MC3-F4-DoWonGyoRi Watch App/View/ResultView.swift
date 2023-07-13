@@ -49,9 +49,9 @@ struct ResultView: View {
             .onAppear {
                 selectedTab = 1
             }
-            .navigationTitle("Result")
         }
-//        .navigationBarBackButtonHidden(false)
+        .navigationTitle("요약")
+        .navigationBarBackButtonHidden()
     }
 }
 

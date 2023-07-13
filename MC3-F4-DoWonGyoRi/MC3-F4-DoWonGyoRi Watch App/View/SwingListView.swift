@@ -12,7 +12,7 @@ import SwiftUI
 struct SwingListView: View {
     let swingList: SwingList
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List(swingLists) { swingList in
                 NavigationLink(destination: SwingCountView(swingList: swingList)) {
                     SwingListCellView(swingList: swingList)

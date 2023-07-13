@@ -27,13 +27,14 @@ struct ReadyView: View {
                     startProgressAnimation()
                 }
         }
-        .navigationBarBackButtonHidden()
         .background(
-            NavigationLink(destination: CountingView(), isActive: $isCountingViewPresented) {
+            NavigationLink(destination: CountingView(),
+                           isActive: $isCountingViewPresented) {
                 EmptyView()
             }
             .hidden()
         )
+        .navigationBarBackButtonHidden()
     }
 
     private func startProgressAnimation() {

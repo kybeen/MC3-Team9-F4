@@ -10,7 +10,7 @@ import SwiftUI
 struct CountingView: View {
 
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             TabView {
                 ZStack {
                     Circle()
@@ -65,7 +65,7 @@ struct CountingView: View {
                 }
                 .tag(1)
             }
-        }
+//        }
         .navigationBarBackButtonHidden()
     }
 }

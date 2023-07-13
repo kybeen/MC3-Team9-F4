@@ -19,7 +19,7 @@ struct SwingResultView: View {
                 Text("PERFECT! or BAD!")
                     .foregroundColor(Color.watchColor.black)
             }
-            
+            Spacer()
             Text("잘 쳤는지 아닌 지")
                 .font(.system(size: 12, weight: .bold))
         }

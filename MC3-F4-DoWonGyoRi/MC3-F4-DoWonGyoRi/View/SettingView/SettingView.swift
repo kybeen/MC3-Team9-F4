@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SettingView: View {
-    @Binding var path: [Int]
     
     var body: some View {
         VStack(spacing: 0) {
@@ -89,7 +88,7 @@ extension SettingView {
     
     private func navigationLinkContainer() -> some View {
         VStack(spacing: 0) {
-            navigationLinkButtonSet("내 신체 정보", EmptyView())
+            navigationLinkButtonSet("내 신체 정보", UserInfoSettingView())
             navigationLinkButtonSet("목표 설정", EmptyView())
             navigationLinkButtonSet("소리 및 햅틱", EmptyView())
         }
@@ -97,9 +96,7 @@ extension SettingView {
     
     private func navigationLinkButtonSet<Destination: View>(_ buttonName: String, _ destination: Destination) -> some View {
         VStack(spacing: 0) {
-            Button(action: {
-                path.append(1)
-            }) {
+            NavigationLink(destination: destination) {
                 HStack(spacing: 0) {
                     Text(buttonName)
                         .font(.custom("Inter-Bold", size: 16))
@@ -111,9 +108,6 @@ extension SettingView {
                         .frame(height: 17)
                         .foregroundColor(Color.theme.teWhite)
                 }
-            }
-            .navigationDestination(for: Int.self) { _ in
-                UserInfoSettingView()
             }
             .padding(.vertical, 35)
             .padding(.horizontal, 47.5)

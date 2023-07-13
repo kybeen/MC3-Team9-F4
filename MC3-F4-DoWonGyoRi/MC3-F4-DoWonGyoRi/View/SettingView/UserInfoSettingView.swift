@@ -14,6 +14,7 @@ struct UserInfoSettingView: View {
     @State private var isSetAge: Bool = false
     @State private var isSetWeight: Bool = false
     @State private var isSetHeight: Bool = false
+    @State private var isLeftHand: Bool = false
     private let sexList = ["남성", "여성", "기타"]
     @State private var sex = "남성"
     
@@ -21,8 +22,11 @@ struct UserInfoSettingView: View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
                 titleContainer("정확한 자세 코칭 제공을 위해", "정보를 입력해주세요.")
+                    .padding(.horizontal, 30)
+                Spacer()
+                Spacer()
                 List {
-                    Section(header: Text("신상")) {
+                    Section {
                         HStack(spacing: 0) {
                             Text("생년월일")
                                 .foregroundColor(Color.theme.teWhite)
@@ -106,18 +110,18 @@ struct UserInfoSettingView: View {
                     
                     Section {
                         HStack {
-                            Text("왼손잡이")
-                            Spacer()
-                            
+                            Toggle(isOn: $isLeftHand) {
+                                Text("왼손잡이")
+                            }
                         }
                         .frame(height: 45)
                         
                     }
                 }
-                saveButton("햅틱 세기 저장")
+                saveButton("저장")
                     .padding(.horizontal, 18)
             }
-            .padding(EdgeInsets(top: 150, leading: 0, bottom: 90, trailing: 0))
+            .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
         }
     }
 }
@@ -140,11 +144,11 @@ extension UserInfoSettingView {
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(maxWidth: .infinity, maxHeight: 45)
-                    .background(Color.theme.teLightGray)
+                    .background(Color.theme.teGreen)
                     .cornerRadius(30)
                 Text(buttonTitle)
-                    .foregroundColor(.white)
-                    .font(.custom("Inter-SemiBold", size: 16))
+                    .foregroundColor(Color.theme.teBlack)
+                    .font(.custom("Inter-Bold", size: 16))
             }
         }
     }

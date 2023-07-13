@@ -8,23 +8,24 @@
 import SwiftUI
 
 struct SettingView: View {
+    @Binding var path: [Int]
+    let count: Int
+    
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 0) {
-                profilePhotoContainer()
-                namespaceContainer()
-                modifyProfileButton()
-                navigationLinkContainer()
-            }
+        VStack(spacing: 0) {
+            profilePhotoContainer()
+            namespaceContainer()
+            modifyProfileButton()
+            navigationLinkContainer()
         }
     }
 }
-
-struct SettingView_Proviewr: PreviewProvider {
-    static var previews: some View {
-        SettingView()
-    }
-}
+//
+//struct SettingView_Proviewr: PreviewProvider {
+//    static var previews: some View {
+//        SettingView()
+//    }
+//}
 
 extension SettingView {
     private func profilePhotoContainer() -> some View {
@@ -90,7 +91,6 @@ extension SettingView {
     private func navigationLinkContainer() -> some View {
         VStack(spacing: 0) {
             navigationLinkButtonSet("내 신체 정보", EmptyView())
-            
             navigationLinkButtonSet("목표 설정", EmptyView())
             navigationLinkButtonSet("소리 및 햅틱", EmptyView())
         }
@@ -98,7 +98,9 @@ extension SettingView {
     
     private func navigationLinkButtonSet<Destination: View>(_ buttonName: String, _ destination: Destination) -> some View {
         VStack(spacing: 0) {
-            NavigationLink(destination: destination) {
+            Button(action: {
+                path.append(count + 1)
+            }) {
                 HStack(spacing: 0) {
                     Text(buttonName)
                         .font(.custom("Inter-Bold", size: 16))
@@ -110,7 +112,9 @@ extension SettingView {
                         .frame(height: 17)
                         .foregroundColor(Color.theme.teWhite)
                 }
-                
+            }
+            .navigationDestination(for: Int.self) { _ in 
+                UserInfoSettingView(path: $path, count: count)
             }
             .padding(.vertical, 35)
             .padding(.horizontal, 47.5)
@@ -119,7 +123,7 @@ extension SettingView {
                 .frame(maxWidth: UIScreen.main.bounds.width - 36)
                 .frame(height: 1)
                 .padding(.leading, 36)
-            
+
         }
     }
 }

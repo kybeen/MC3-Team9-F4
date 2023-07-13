@@ -18,12 +18,12 @@ struct SettingView: View {
         }
     }
 }
-//
-//struct SettingView_Proviewr: PreviewProvider {
-//    static var previews: some View {
-//        SettingView()
-//    }
-//}
+
+struct SettingView_Proviewr: PreviewProvider {
+    static var previews: some View {
+        SettingView()
+    }
+}
 
 extension SettingView {
     private func profilePhotoContainer() -> some View {
@@ -89,8 +89,8 @@ extension SettingView {
     private func navigationLinkContainer() -> some View {
         VStack(spacing: 0) {
             navigationLinkButtonSet("내 신체 정보", UserInfoSettingView())
-            navigationLinkButtonSet("목표 설정", EmptyView())
-            navigationLinkButtonSet("소리 및 햅틱", EmptyView())
+            navigationLinkButtonSet("포핸드 목표 설정", UserStrokeSettingView(isBackhandSetting: false))
+            navigationLinkButtonSet("백핸드 목표 설정", UserStrokeSettingView(isBackhandSetting: true))
         }
     }
     

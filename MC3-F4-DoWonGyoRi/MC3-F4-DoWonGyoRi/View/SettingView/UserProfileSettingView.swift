@@ -26,65 +26,12 @@ struct UserProfileSettingView: View {
                 profilePhotoContainer()
                 modifyProfileButton()
             }
-            
-            List {
-                Section(content: {
-                    Button(action: {
-                        
-                    }) {
-                        Text(userNickname)
-                            .font(.custom("Inter-Medium", size: 16))
-                            .foregroundColor(.gray)
-                    }
-                    .frame(maxHeight: 60)
-                }, header: {
-                    Text("닉네임")
-                        .font(.custom("Inter-Medium", size: 16))
-                        .foregroundColor(Color.theme.teWhite)
-                        .padding(.bottom, 15)
-                })
-                
-            }
-            .frame(maxHeight: 185)
-            VStack(spacing: 0) {
-                Text("칭호")
-                    .font(.custom("Inter-Medium", size: 16))
-                    .foregroundColor(Color.theme.teWhite)
-                    .frame(maxWidth: UIScreen.main.bounds.width, alignment: .leading)
-                    .padding(.bottom, 17)
-                    .padding(.leading, 18)
-                
-                HStack(spacing: 0) {
-                    Picker("타이틀1", selection: $userTitle1, content: {
-                        ForEach(userTitle1Array, id: \.self) {
-                            Text("\($0)")
-                                .font(.custom("Inter-Medium", size: 16))
-                                .foregroundColor(Color.theme.teWhite)
-                        }
-                    })
-                    .presentationDetents([.fraction(0.4)])
-                    .pickerStyle(.wheel)
-                    
-                    Picker("타이틀2", selection: $userTitle2, content: {
-                        ForEach(userTitle2Array, id: \.self) {
-                            Text("\($0)")
-                                .font(.custom("Inter-Medium", size: 16))
-                                .foregroundColor(Color.theme.teWhite)
-                                
-                        }
-                    })
-                    .frame(alignment: .leading)
-                    .presentationDetents([.fraction(0.4)])
-                    .pickerStyle(.wheel)
-                }
-                
-                .background(Color.theme.teDarkGray)
-                .cornerRadius(20)
-            }
-            .padding(.horizontal, 18)
-            .frame(maxHeight: 210)
+            nicknameViewerContainer()
+            userTitlePickerContainer()
             Spacer()
         }
+        .navigationTitle("프로필 수정").foregroundColor(Color.theme.teWhite)
+        
     }
 }
 
@@ -155,7 +102,71 @@ extension UserProfileSettingView {
             }
         
     }
+    
+    private func nicknameViewerContainer() -> some View {
+        List {
+            Section(content: {
+                Button(action: {
+                    
+                }) {
+                    Text(userNickname)
+                        .font(.custom("Inter-Medium", size: 16))
+                        .foregroundColor(.gray)
+                }
+                .frame(maxHeight: 60)
+            }, header: {
+                Text("닉네임")
+                    .font(.custom("Inter-Medium", size: 16))
+                    .foregroundColor(Color.theme.teWhite)
+                    .padding(.bottom, 15)
+            })
+            
+        }
+        .frame(maxHeight: 185)
+    }
+    
+    private func userTitlePickerContainer() -> some View {
+        VStack(spacing: 0) {
+            Text("칭호")
+                .font(.custom("Inter-Medium", size: 16))
+                .foregroundColor(Color.theme.teWhite)
+                .frame(maxWidth: UIScreen.main.bounds.width, alignment: .leading)
+                .padding(.bottom, 17)
+                .padding(.leading, 18)
+            
+            HStack(spacing: 0) {
+                Picker("타이틀1", selection: $userTitle1, content: {
+                    ForEach(userTitle1Array, id: \.self) {
+                        Text("\($0)")
+                            .font(.custom("Inter-Medium", size: 16))
+                            .foregroundColor(Color.theme.teWhite)
+                    }
+                })
+                .presentationDetents([.fraction(0.4)])
+                .pickerStyle(.wheel)
+                
+                Picker("타이틀2", selection: $userTitle2, content: {
+                    ForEach(userTitle2Array, id: \.self) {
+                        Text("\($0)")
+                            .font(.custom("Inter-Medium", size: 16))
+                            .foregroundColor(Color.theme.teWhite)
+                            
+                    }
+                })
+                .frame(alignment: .leading)
+                .presentationDetents([.fraction(0.4)])
+                .pickerStyle(.wheel)
+            }
+            
+            .background(Color.theme.teDarkGray)
+            .cornerRadius(20)
+        }
+        .padding(.horizontal, 18)
+        .frame(maxHeight: 210)
+    }
+    
 }
+
 
 struct UserProfileSettingView_Preview: PreviewProvider {
     static var previews: some View {

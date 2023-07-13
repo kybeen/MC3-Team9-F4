@@ -84,9 +84,10 @@ extension MainView {
                     .frame(width: 35, height: 35)
                     .padding(.trailing, 27)
             }
-            .navigationDestination(for: Int.self) { int in
-                SettingView(path: $path, count: int)
+            .navigationDestination(for: Int.self) { _ in
+                SettingView(path: $path)
             }
+            
         }
         .padding(.top, 15)
     }

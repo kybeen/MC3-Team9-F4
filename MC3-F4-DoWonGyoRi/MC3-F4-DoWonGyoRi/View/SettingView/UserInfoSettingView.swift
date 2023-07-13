@@ -8,19 +8,116 @@
 import SwiftUI
 
 struct UserInfoSettingView: View {
-    @Binding var path: [Int]
-    let count: Int
+    @State private var height: Double = 170
+    @State private var weight: Double = 60
+    @State private var age: Int = 25
+    @State private var isSetAge: Bool = false
+    @State private var isSetWeight: Bool = false
+    @State private var isSetHeight: Bool = false
+    private let sexList = ["남성", "여성", "기타"]
+    @State private var sex = "남성"
     
     var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
-                titleContainer("알맞은 자세 교정 제공을 위하여", "\(count == 1 ? "햅틱" : "소리") 크기를 설정해주세요.")
-                Spacer()
-                
-                Spacer()
-                saveButton(count == 1 ? "햅틱 세기 저장" : "소리 세기 저장")
+                titleContainer("정확한 자세 코칭 제공을 위해", "정보를 입력해주세요.")
+                List {
+                    Section(header: Text("신상")) {
+                        HStack(spacing: 0) {
+                            Text("생년월일")
+                                .foregroundColor(Color.theme.teWhite)
+                            Spacer()
+                            Text("")
+                                .foregroundColor(.gray)
+                        }
+                        .frame(height: 45)
+                        
+                        Button(action: {
+                            isSetHeight.toggle()
+                        }) {
+                            HStack {
+                                Text("키 (cm)")
+                                    .foregroundColor(Color.theme.teWhite)
+                                Spacer()
+                                Text("\(Int(height))")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .sheet(isPresented: $isSetHeight, content: {
+                            Picker("키", selection: $height, content: {
+                                ForEach(130 ... 240, id: \.self) {
+                                    Text("\($0)cm")
+                                }
+                            })
+                            .presentationDetents([.fraction(0.4)])
+                            .pickerStyle(.wheel)
+                            
+                        })
+                        .frame(height: 45)
+                        
+                        Button(action: {
+                            isSetWeight.toggle()
+                        }) {
+                            HStack {
+                                Text("체중 (kg)")
+                                    .foregroundColor(Color.theme.teWhite)
+                                Spacer()
+                                Text("\(Int(weight))kg")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .sheet(isPresented: $isSetWeight, content: {
+                            Picker("체중", selection: $weight, content: {
+                                ForEach(30 ... 300, id: \.self) {
+                                    Text("\($0)kg")
+                                }
+                            })
+                            .presentationDetents([.fraction(0.4)])
+                            .pickerStyle(.wheel)
+                            
+                        })
+                        .frame(height: 45)
+                        
+                        Button(action: {
+                            isSetAge.toggle()
+                        }) {
+                            HStack {
+                                Text("성별")
+                                    .foregroundColor(Color.theme.teWhite)
+                                Spacer()
+                                Text(sex)
+                                    .foregroundColor(.gray)
+                                    
+                            }
+                            
+                        }
+                        .sheet(isPresented: $isSetAge, content: {
+                            Picker("성별", selection: $age, content: {
+                                ForEach(sexList, id: \.self) {
+                                    Text($0)
+                                }
+                            })
+                            .presentationDetents([.fraction(0.4)])
+                            .pickerStyle(.wheel)
+                            
+                        })
+                        .frame(height: 45)
+                    }
+                    
+                    Section {
+                        HStack {
+                            Text("왼손잡이")
+                            Spacer()
+                            
+                        }
+                        .frame(height: 45)
+                        
+                    }
+                }
+                saveButton("햅틱 세기 저장")
+                    .padding(.horizontal, 18)
             }
-            .padding(EdgeInsets(top: 150, leading: 25, bottom: 90, trailing: 25))
+            .padding(EdgeInsets(top: 150, leading: 0, bottom: 90, trailing: 0))
         }
     }
 }
@@ -38,12 +135,6 @@ extension UserInfoSettingView {
     private func saveButton(_ buttonTitle: String) -> some View {
         
         return Button(action: {
-            if count == 1 {
-                path.removeAll()
-                path.append(0)
-            } else {
-                path.append(count + 1)
-            }
         }) {
             ZStack {
                 Rectangle()
@@ -62,6 +153,6 @@ extension UserInfoSettingView {
 struct UserInfoSettingView_Preview: PreviewProvider {
     @State static var array: [Int] = []
     static var previews: some View {
-        UserInfoSettingView(path: $array, count: 1)
+        UserInfoSettingView()
     }
 }

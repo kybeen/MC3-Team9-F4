@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SettingView: View {
     @Binding var path: [Int]
-    let count: Int
     
     var body: some View {
         VStack(spacing: 0) {
@@ -99,7 +98,7 @@ extension SettingView {
     private func navigationLinkButtonSet<Destination: View>(_ buttonName: String, _ destination: Destination) -> some View {
         VStack(spacing: 0) {
             Button(action: {
-                path.append(count + 1)
+                path.append(1)
             }) {
                 HStack(spacing: 0) {
                     Text(buttonName)
@@ -113,8 +112,8 @@ extension SettingView {
                         .foregroundColor(Color.theme.teWhite)
                 }
             }
-            .navigationDestination(for: Int.self) { _ in 
-                UserInfoSettingView(path: $path, count: count)
+            .navigationDestination(for: Int.self) { _ in
+                UserInfoSettingView()
             }
             .padding(.vertical, 35)
             .padding(.horizontal, 47.5)

@@ -20,6 +20,9 @@ struct ReadyView: View {
             CircleProgressBar(progress: self.$progressValue, count: self.$countValue)
                 .frame(width: 150, height: 150, alignment: .center)
                 .onAppear {
+                    //초기화
+                    progressValue = 0.0
+                    counting = 0
                     startProgressAnimation()
                 }
         }

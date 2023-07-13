@@ -23,8 +23,7 @@ struct ResultView: View {
                 .tag(0)
                 
                 VStack {
-                    Text("PERFECT, BAD 개수")
-                        .font(.system(size: 20, weight: .semibold))
+                    SwingRateView()
                 }
                 .tabItem{
                     Image(systemName: "tennisball.fill")
@@ -54,6 +53,29 @@ struct ResultView: View {
         .navigationBarBackButtonHidden()
     }
 }
+
+struct SwingRateView: View {
+    @State var progressValue: Float = 0.0
+    @State var perfectCount: Int = 30
+    @State var badCount: Int = 30
+    @State var fontSize: CGFloat = 20.0
+
+    var body: some View {
+        VStack {
+            Spacer()
+            ResultCircleProgressBar(progress: self.$progressValue, perfectCount: self.$perfectCount, badCount: self.$badCount, fontSize: self.$fontSize)
+                .frame(width: 150, height: 150, alignment: .center)
+        }
+        .onAppear {
+            perfectRate()
+        }
+    }
+    
+    private func perfectRate() {
+        progressValue = Float(perfectCount) / Float((perfectCount + badCount))
+    }
+}
+
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {

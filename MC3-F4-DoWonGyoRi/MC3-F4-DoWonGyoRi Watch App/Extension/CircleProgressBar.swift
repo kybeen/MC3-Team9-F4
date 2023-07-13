@@ -10,6 +10,7 @@ import SwiftUI
 struct CircleProgressBar: View {
     @Binding var progress: Float
     @Binding var count: String
+    @Binding var fontSize: CGFloat
     var gradientColors: [Color] = [Color.watchColor.lightGreen, Color.watchColor.lightBlue]
     
     var body: some View {
@@ -27,7 +28,7 @@ struct CircleProgressBar: View {
                 .animation(.easeInOut(duration: 1.0))
 
             Text(self.count)
-                .font(.system(size: 48, weight: .medium))
+                .font(.system(size: self.fontSize, weight: .bold))
         }
     }
 }
@@ -39,12 +40,13 @@ struct ContentView: View {
     @State var progressValue: Float = 0.0
     @State var countValue: String = ""
     @State var counting: Int = 0
+    @State var fontSize: CGFloat = 48.0
     let readyStatus = ["준비", "3", "2", "1", "시작!"]
     
 
     var body: some View {
         VStack {
-            CircleProgressBar(progress: self.$progressValue, count: self.$countValue)
+            CircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
                 .frame(width: 180, height: 180, alignment: .center)
                 .onAppear {
                     startProgressAnimation()

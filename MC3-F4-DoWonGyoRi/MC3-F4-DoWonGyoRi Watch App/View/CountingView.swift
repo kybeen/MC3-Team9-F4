@@ -52,6 +52,12 @@ struct CountingView: View {
                     
                     Text("종료")
                         .font(.system(size: 20, weight: .semibold))
+                    //MARK: - 이 버튼 없으면 정중앙에 정렬됨
+                    NavigationLink(destination: CompleteView()) {
+                        Text("스윙완료로 가기")
+                            .font(.system(size: 16, weight: .bold))
+                            .foregroundColor(Color.black)
+                    }
                 }
                 .tabItem{
                     Image(systemName: "tennisball.fill")

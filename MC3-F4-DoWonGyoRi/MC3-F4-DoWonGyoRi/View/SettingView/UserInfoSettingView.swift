@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct UserInfoSettingView: View {
-    @State private var height: Double = 170
-    @State private var weight: Double = 60
-    @State private var age: Int = 25
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var height = 170
+    @State private var weight = 60
     @State private var isSetAge: Bool = false
     @State private var isSetWeight: Bool = false
     @State private var isSetHeight: Bool = false
-    @State private var isLeftHand: Bool = false
+    @State private var isSetBirthDay: Bool = false
+    @State private var isLeftHand: Bool = true
+    @State private var selectedDate = Date()
     private let sexList = ["남성", "여성", "기타"]
     @State private var sex = "남성"
+//    @State private var viewBirthdady = (selectedDate.formatted(.iso8601).substring(to: )
     
-    var body: some View {
+    let startDate = Calendar.current.date(from: DateComponents(year: 1900, month: 1, day: 1))!
+    let endDate = Date()
+    
+                                        var body: some View {
         VStack(spacing: 0) {
             VStack(spacing: 0) {
                 titleContainer("정확한 자세 코칭 제공을 위해", "정보를 입력해주세요.")
@@ -27,13 +34,64 @@ struct UserInfoSettingView: View {
                 Spacer()
                 List {
                     Section {
-                        HStack(spacing: 0) {
-                            Text("생년월일")
-                                .foregroundColor(Color.theme.teWhite)
-                            Spacer()
-                            Text("")
-                                .foregroundColor(.gray)
+                        
+                        Button(action: {
+                            isSetBirthDay.toggle()
+                        }) {
+                            HStack(spacing: 0) {
+                                Text("생년월일")
+                                    .foregroundColor(Color.theme.teWhite)
+                                Spacer()
+                                Text(dateFormat(selectedDate))
+                                    .foregroundColor(.gray)
+                            }
                         }
+                        .sheet(isPresented: $isSetBirthDay, content: {
+                            HStack(spacing: 0) {
+                                VStack {
+                                    
+                                    HStack(spacing: 0) {
+                                        Button(action: {
+                                            isSetBirthDay.toggle()
+                                        }) {
+                                            Text("취소")
+                                                .font(.custom("Inter-Bold", size: 16))
+                                                .foregroundColor(Color.theme.teWhite)
+                                        }
+                                        Spacer()
+                                        Button(action: {
+                                            isSetBirthDay.toggle()
+                                        }) {
+                                            Text("완료")
+                                                .font(.custom("Inter-Bold", size: 16))
+                                                .foregroundColor(Color.theme.teGreen)
+                                        }
+                                    }
+                                    .padding(.horizontal, 28)
+                                    .padding(.vertical, 24)
+                                    
+                                    DatePicker(
+                                        "",
+                                        selection: $selectedDate,
+                                        in: startDate...endDate,
+                                        displayedComponents: [.date]
+                                    )
+                                    .datePickerStyle(.wheel)
+                                    .labelsHidden()
+                                    .frame(height: 200)
+                                    .padding()
+                                    .environment(\.locale, .init(identifier: "ko_KR"))
+                                    .onChange(of: selectedDate, perform: { date in
+                                        if selectedDate > endDate {
+                                            selectedDate = endDate
+                                        }
+                                    })
+                                }
+                                .presentationDetents([.fraction(0.4)])
+                                
+                                
+                            }
+                        })
                         .frame(height: 45)
                         
                         Button(action: {
@@ -43,11 +101,32 @@ struct UserInfoSettingView: View {
                                 Text("키 (cm)")
                                     .foregroundColor(Color.theme.teWhite)
                                 Spacer()
-                                Text("\(Int(height))")
+                                Text("\(Int(height))cm")
                                     .foregroundColor(.gray)
                             }
                         }
                         .sheet(isPresented: $isSetHeight, content: {
+                            
+                            HStack(spacing: 0) {
+                                Button(action: {
+                                    isSetHeight.toggle()
+                                }) {
+                                    Text("취소")
+                                        .font(.custom("Inter-Bold", size: 16))
+                                        .foregroundColor(Color.theme.teWhite)
+                                }
+                                Spacer()
+                                Button(action: {
+                                    isSetHeight.toggle()
+                                }) {
+                                    Text("완료")
+                                        .font(.custom("Inter-Bold", size: 16))
+                                        .foregroundColor(Color.theme.teGreen)
+                                }
+                            }
+                            .padding(.horizontal, 28)
+                            .padding(.vertical, 24)
+                            
                             Picker("키", selection: $height, content: {
                                 ForEach(130 ... 240, id: \.self) {
                                     Text("\($0)cm")
@@ -71,6 +150,26 @@ struct UserInfoSettingView: View {
                             }
                         }
                         .sheet(isPresented: $isSetWeight, content: {
+                            HStack(spacing: 0) {
+                                Button(action: {
+                                    isSetWeight.toggle()
+                                }) {
+                                    Text("취소")
+                                        .font(.custom("Inter-Bold", size: 16))
+                                        .foregroundColor(Color.theme.teWhite)
+                                }
+                                Spacer()
+                                Button(action: {
+                                    isSetWeight.toggle()
+                                }) {
+                                    Text("완료")
+                                        .font(.custom("Inter-Bold", size: 16))
+                                        .foregroundColor(Color.theme.teGreen)
+                                }
+                            }
+                            .padding(.horizontal, 28)
+                            .padding(.vertical, 24)
+                            
                             Picker("체중", selection: $weight, content: {
                                 ForEach(30 ... 300, id: \.self) {
                                     Text("\($0)kg")
@@ -91,12 +190,33 @@ struct UserInfoSettingView: View {
                                 Spacer()
                                 Text(sex)
                                     .foregroundColor(.gray)
-                                    
+                                
                             }
                             
                         }
                         .sheet(isPresented: $isSetAge, content: {
-                            Picker("성별", selection: $age, content: {
+                            
+                            HStack(spacing: 0) {
+                                Button(action: {
+                                    isSetAge.toggle()
+                                }) {
+                                    Text("취소")
+                                        .font(.custom("Inter-Bold", size: 16))
+                                        .foregroundColor(Color.theme.teWhite)
+                                }
+                                Spacer()
+                                Button(action: {
+                                    isSetAge.toggle()
+                                }) {
+                                    Text("완료")
+                                        .font(.custom("Inter-Bold", size: 16))
+                                        .foregroundColor(Color.theme.teGreen)
+                                }
+                            }
+                            .padding(.horizontal, 28)
+                            .padding(.vertical, 24)
+                            
+                            Picker("성별", selection: $sex, content: {
                                 ForEach(sexList, id: \.self) {
                                     Text($0)
                                 }
@@ -124,6 +244,17 @@ struct UserInfoSettingView: View {
             .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
         }
     }
+                                        
+    private func dateFormat(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd."
+
+        let currentDate = date
+        let formattedDate = dateFormatter.string(from: currentDate)
+        
+        return formattedDate
+    }
+        
 }
 
 extension UserInfoSettingView {

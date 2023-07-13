@@ -11,12 +11,13 @@ struct UserStrokeSettingView: View {
     @Environment(\.dismiss) var dismiss
     
     @State var isBackhandSetting: Bool
-    
+    @State private var strokeCount = 10
     var body: some View {
         VStack(spacing: 0) {
             titleContainer("\(isBackhandSetting ? "백핸드" : "포핸드")")
             Spacer()
-            
+            countViewContainer()
+                .border(.blue)
             Spacer()
             saveButton("저장")
         }
@@ -43,6 +44,45 @@ extension UserStrokeSettingView {
                 .frame(maxWidth: UIScreen.main.bounds.width, alignment: .leading)
                 .foregroundColor(Color.theme.teWhite)
         }
+    }
+    
+    private func countViewContainer() -> some View {
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                Button(action: {
+                    if strokeCount > 10 {
+                        strokeCount -= 10
+                    }
+                }) {
+                    Image(systemName: "minus.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color.theme.teGreen)
+                        .frame(maxWidth: 52)
+                }
+                Spacer()
+                Text("\(strokeCount)")
+                    .font(.custom("Inter-Bold", size: 52))
+                    .foregroundColor(Color.theme.teWhite)
+                Spacer()
+                Button(action: {
+                    if strokeCount < 300 {
+                        strokeCount += 10
+                    }
+                }) {
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color.theme.teGreen)
+                        .frame(maxWidth: 52)
+                }
+            }
+            .frame(maxWidth: 267)
+            Text("회/일")
+                .font(.custom("Inter-Medium", size: 24))
+                .foregroundColor(Color.theme.teWhite)
+        }
+        
     }
     
     private func saveButton(_ buttonTitle: String) -> some View {

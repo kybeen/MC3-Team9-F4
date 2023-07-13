@@ -20,6 +20,9 @@ struct SwingListView: View {
                 .frame(height: 120)
             }
             .cornerRadius(20)
+            
+            //추후에 색상 변경 가능
+            .navigationTitle("자세")
         }
     }
 }

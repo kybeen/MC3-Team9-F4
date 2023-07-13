@@ -23,7 +23,7 @@ struct CompleteView: View {
                     startProgressAnimation()
                 }
         }
-        .navigationBarBackButtonHidden()
+//        .navigationBarBackButtonHidden()
         .background(
             NavigationLink(destination: ResultView(), isActive: $isResultViewPresented) {
                 EmptyView()

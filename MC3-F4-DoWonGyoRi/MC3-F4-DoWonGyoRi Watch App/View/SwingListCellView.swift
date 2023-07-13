@@ -19,8 +19,8 @@ struct SwingListCellView: View {
                     .resizable()
                     .frame(width: 22, height: 22)
                     .foregroundColor(Color.watchColor.lightGreen)
-                    .padding(.top, 8)
-                    .padding(.trailing, 8)
+                    .padding(.top, 12)
+                    .padding(.trailing, 6)
                     .onTapGesture {
                         isGuideViewPresented = true
                     }
@@ -30,7 +30,7 @@ struct SwingListCellView: View {
             }
             Spacer()
             Text(swingList.name)
-                .font(.system(size: 16, weight: .bold))
+                .font(.system(size: 20, weight: .bold))
                 .foregroundColor(Color.watchColor.lightGreen)
                 .padding(.leading, 10)
                 .padding(.bottom, 12)

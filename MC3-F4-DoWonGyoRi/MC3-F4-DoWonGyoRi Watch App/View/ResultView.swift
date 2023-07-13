@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct ResultView: View {
+    @State private var selectedTab = 1
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             VStack {
                 Text("여기 폭죽 터지고 난리내기")
             }
@@ -43,6 +45,9 @@ struct ResultView: View {
                     .foregroundColor(Color.watchColor.lightGreen)
             }
             .tag(2)
+        }
+        .onAppear {
+            selectedTab = 1
         }
     }
 }

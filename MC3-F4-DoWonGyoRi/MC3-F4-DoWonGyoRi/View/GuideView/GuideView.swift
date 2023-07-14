@@ -67,14 +67,14 @@ extension GuideView {
         ZStack(alignment: .bottom) {
             Rectangle()
                 .foregroundColor(.clear)
-                .frame(width: 367, height: 431)
+                .frame(width: .infinity, height: 431)
                 .background(Color(red: 0.29, green: 0.29, blue: 0.29))
                 .cornerRadius(15)
                 .shadow(color: .black, radius: 15, x: 20, y: 20)
                 .shadow(color: Color(red: 0.34, green: 0.34, blue: 0.34).opacity(0.2), radius: 23, x: -10, y: -10)
             Rectangle()
                 .foregroundColor(.clear)
-                .frame(width: 367, height: 118)
+                .frame(width: .infinity, height: 118)
                 .background(
                     LinearGradient(
                         stops: [
@@ -94,6 +94,12 @@ extension GuideView {
                 .frame(maxWidth: UIScreen.main.bounds.width, alignment: .leading)
                 .padding(.leading, 35)
                 .padding(.bottom, 45)
+            
+            GifView(gifName: "dancing")
+                .scaledToFit()
+                .frame(width: 250)
+                .padding(.bottom, 100)
         }
+        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 430)
     }
 }

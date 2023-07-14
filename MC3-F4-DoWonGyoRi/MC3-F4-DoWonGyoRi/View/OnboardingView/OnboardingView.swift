@@ -11,15 +11,16 @@ struct OnboardingView: View {
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
     @State private var nickname = ""
+    @State private var handSelect = "손을 선택해주세요"
     
     var body: some View {
         VStack(spacing: 0) {
-            titleContainer("프로필", "을", "입력해주세요.")
+            titleContainer("주로 사용하는 손", "을", "선택해주세요.")
             Spacer()
 //            welcomeCommentContainer()
 //                .padding(.horizontal, 24)
-            profileContainer()
-            
+//            profileContainer()
+            handSelectContainer()
             Spacer()
             nextButton()
         }
@@ -201,5 +202,48 @@ extension OnboardingView {
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .padding(.top, 6)
         }
+    }
+    
+    private func handSelectContainer() -> some View {
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                Button(action: {
+                    handSelect = "왼손"
+                }) {
+                    VStack(spacing: 0) {
+                        Image("left_hand")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 87)
+                            .padding(.bottom, 13)
+                        Text("왼손")
+                            .font(.custom("Inter-Medium", size: 16))
+                            .foregroundColor(Color.theme.teWhite)
+                    }
+                    Spacer()
+                }
+                Button(action: {
+                    handSelect = "오른손"
+                }) {
+                    VStack(spacing: 0) {
+                        Image("right_hand")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: 87)
+                            .padding(.bottom, 13)
+                        Text("오른손")
+                            .font(.custom("Inter-Medium", size: 16))
+                            .foregroundColor(Color.theme.teWhite)
+                    }
+                }
+                
+            }
+            Spacer()
+            
+            Text(handSelect)
+                .font(.custom("Inter-Bold", size: 20))
+                .foregroundColor(Color.theme.teWhite)
+        }
+        .frame(maxWidth: 214, maxHeight: 160)
     }
 }

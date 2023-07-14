@@ -272,64 +272,7 @@ extension OnboardingView {
         List {
             Section {
                 
-                Button(action: {
-                    isSetBirthDay.toggle()
-                }) {
-                    HStack(spacing: 0) {
-                        Text("생년월일")
-                            .foregroundColor(Color.theme.teWhite)
-                        Spacer()
-                        Text(dateFormat(selectedDate))
-                            .foregroundColor(.gray)
-                    }
-                }
-                .sheet(isPresented: $isSetBirthDay, content: {
-                    HStack(spacing: 0) {
-                        VStack {
-                            
-                            HStack(spacing: 0) {
-                                Button(action: {
-                                    isSetBirthDay.toggle()
-                                }) {
-                                    Text("취소")
-                                        .font(.custom("Inter-Bold", size: 16))
-                                        .foregroundColor(Color.theme.teWhite)
-                                }
-                                Spacer()
-                                Button(action: {
-                                    isSetBirthDay.toggle()
-                                }) {
-                                    Text("완료")
-                                        .font(.custom("Inter-Bold", size: 16))
-                                        .foregroundColor(Color.theme.teGreen)
-                                }
-                            }
-                            .padding(.horizontal, 28)
-                            .padding(.vertical, 24)
-                            
-                            DatePicker(
-                                "",
-                                selection: $selectedDate,
-                                in: startDate...endDate,
-                                displayedComponents: [.date]
-                            )
-                            .datePickerStyle(.wheel)
-                            .labelsHidden()
-                            .frame(height: 200)
-                            .padding()
-                            .environment(\.locale, .init(identifier: "ko_KR"))
-                            .onChange(of: selectedDate, perform: { date in
-                                if selectedDate > endDate {
-                                    selectedDate = endDate
-                                }
-                            })
-                        }
-                        .presentationDetents([.fraction(0.4)])
-                        
-                        
-                    }
-                })
-                .frame(height: 45)
+                listComponent()
                 
                 Button(action: {
                     isSetHeight.toggle()
@@ -463,7 +406,73 @@ extension OnboardingView {
                     
                 })
                 .frame(height: 45)
+                
             }
+        }
+    }
+    
+    private func listComponent(_ title: String, isPresented: Binding<Bool>, _ targetData: inout String, _ pickerList: [String]) -> some View {
+        Button(action: {
+            isPresented.wrappedValue.toggle()
+        }) {
+            HStack(spacing: 0) {
+                Text(title)
+                    .foregroundColor(Color.theme.teWhite)
+                Spacer()
+                Text(targetData)
+                    .foregroundColor(.gray)
+            }
+        }
+        .sheet(isPresented: isPresented, content: {
+            pickerPopup()
+        })
+        .frame(height: 30)
+    }
+    
+    private func pickerPopup() -> some View {
+        HStack(spacing: 0) {
+            VStack {
+                
+                HStack(spacing: 0) {
+                    Button(action: {
+                        isSetBirthDay.toggle()
+                    }) {
+                        Text("취소")
+                            .font(.custom("Inter-Bold", size: 16))
+                            .foregroundColor(Color.theme.teWhite)
+                    }
+                    Spacer()
+                    Button(action: {
+                        isSetBirthDay.toggle()
+                    }) {
+                        Text("완료")
+                            .font(.custom("Inter-Bold", size: 16))
+                            .foregroundColor(Color.theme.teGreen)
+                    }
+                }
+                .padding(.horizontal, 28)
+                .padding(.vertical, 24)
+                
+                DatePicker(
+                    "",
+                    selection: $selectedDate,
+                    in: startDate...endDate,
+                    displayedComponents: [.date]
+                )
+                .datePickerStyle(.wheel)
+                .labelsHidden()
+                .frame(height: 200)
+                .padding()
+                .environment(\.locale, .init(identifier: "ko_KR"))
+                .onChange(of: selectedDate, perform: { date in
+                    if selectedDate > endDate {
+                        selectedDate = endDate
+                    }
+                })
+            }
+            .presentationDetents([.fraction(0.4)])
+            
+            
         }
     }
     

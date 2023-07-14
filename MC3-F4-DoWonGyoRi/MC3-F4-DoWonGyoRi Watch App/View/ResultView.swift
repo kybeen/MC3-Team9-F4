@@ -82,16 +82,16 @@ struct HealthKitView: View {
         VStack(alignment: .leading) {
             Spacer()
             Text(workingMin)
-                .font(.system(size: 36, weight: .medium))
+                .font(.system(size: 40, weight: .medium))
                 .foregroundColor(Color.watchColor.lightGreen)
-                .padding(.bottom, 8)
+                .padding(.bottom, 2)
+            
             Text("\(bpm) BPM")
                 .font(.system(size: 20, weight: .medium))
-                .padding(.bottom, 8)
 
             Text("\(kcal) kcal")
                 .font(.system(size: 20, weight: .medium))
-                .padding(.bottom, 16)
+                .padding(.bottom, 8)
             
             Spacer()
 //            NavigationLink(destination: CompleteView()) {

@@ -15,7 +15,7 @@ struct CompleteView: View {
 
     var body: some View {
         VStack {
-            CircleProgressBar(progress: self.$progressValue, count: self.$message, fontSize: self.$fontSize)
+            TimeCircleProgressBar(progress: self.$progressValue, count: self.$message, fontSize: self.$fontSize)
                 .frame(width: 150, height: 150, alignment: .center)
                 .onAppear {
                     //초기화

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CircleProgressBar: View {
+struct TimeCircleProgressBar: View {
     @Binding var progress: Float
     @Binding var count: String
     @Binding var fontSize: CGFloat
@@ -16,19 +16,19 @@ struct CircleProgressBar: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(lineWidth: 20.0)
+                .stroke(lineWidth: 14.0)
                 .opacity(0.20)
                 .foregroundColor(Color.gray)
             
             Circle()
                 .trim(from: 0.0, to: CGFloat(min(self.progress, 1.0)))
-                .stroke(style: StrokeStyle(lineWidth: 12.0, lineCap: .round, lineJoin: .round))
+                .stroke(style: StrokeStyle(lineWidth: 14.0, lineCap: .round, lineJoin: .round))
                 .fill(LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .leading, endPoint: .trailing))
                 .rotationEffect(Angle(degrees: 270))
                 .animation(.easeInOut(duration: 1.0))
 
             Text(self.count)
-                .font(.system(size: self.fontSize, weight: .bold))
+                .font(.system(size: self.fontSize, weight: .semibold))
         }
     }
 }
@@ -43,26 +43,26 @@ struct ResultCircleProgressBar: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(lineWidth: 20.0)
+                .stroke(lineWidth: 14.0)
                 .foregroundColor(Color.watchColor.pink)
             
             Circle()
                 .trim(from: 0.0, to: CGFloat(min(self.progress, 1.0)))
-                .stroke(style: StrokeStyle(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
+                .stroke(style: StrokeStyle(lineWidth: 14.0, lineCap: .round, lineJoin: .round))
                 .fill(perfectColor)
                 .rotationEffect(Angle(degrees: 270))
                 .animation(.easeInOut(duration: 1.0))
 
             VStack {
                 Text("PERFECT")
-                    .font(.system(size: self.fontSize, weight: .bold))
+                    .font(.system(size: self.fontSize, weight: .semibold))
                     .foregroundColor(Color.watchColor.lightGreen)
                 
                 Text("\(self.perfectCount)회")
                     .font(.system(size: self.fontSize, weight: .bold))
                 
                 Text("BAD")
-                    .font(.system(size: self.fontSize, weight: .bold))
+                    .font(.system(size: self.fontSize, weight: .semibold))
                     .foregroundColor(Color.watchColor.pink)
                 
                 Text("\(self.badCount)회")
@@ -85,8 +85,8 @@ struct ResultCircleProgressBar: View {
 //
 //    var body: some View {
 //        VStack {
-//            CircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
-//                .frame(width: 180, height: 180, alignment: .center)
+//            TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
+//                .frame(width: 150, height: 150, alignment: .center)
 //                .onAppear {
 //                    startProgressAnimation()
 //                }
@@ -128,7 +128,7 @@ struct ContentView: View {
             rate()
         }
     }
-    
+
     private func rate() {
         progressValue = Float(perfectCount) / Float((perfectCount + badCount))
     }

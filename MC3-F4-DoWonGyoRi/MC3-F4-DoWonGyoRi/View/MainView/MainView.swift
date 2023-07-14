@@ -167,41 +167,31 @@ extension MainView {
         .cornerRadius(20)
     }
     
-    private func scrollContainer() -> some View {
-        
-        ScrollView {
-            ForEach(0 ..< 100) {_ in
-                Text("안녕")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            }
-        }
-        
-    }
-    
-    
     private func ringChartsContainer() -> some View {
-        
-        VStack(spacing: 0) {
-            ZStack {
-                Circle()
-                    .frame(maxWidth: UIScreen.main.bounds.width - 46, maxHeight: UIScreen.main.bounds.width - 46)
-                    .foregroundColor(Color.theme.teRealBlack)
-                VStack {
-                    RingChartsView(values: [220, 20], colors: [[Color.theme.teDarkGray, Color.theme.teGreen], [Color.theme.teLightGray, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
-                        .frame(width: UIScreen.main.bounds.width - 80, height: UIScreen.main.bounds.width - 80, alignment: .center)
+        NavigationLink(destination: TodayDetailView()) {
+            VStack(spacing: 0) {
+                ZStack {
+                    Circle()
+                        .frame(maxWidth: UIScreen.main.bounds.width - 46, maxHeight: UIScreen.main.bounds.width - 46)
+                        .foregroundColor(Color.theme.teRealBlack)
+                    VStack {
+                        RingChartsView(values: [220, 20], colors: [[Color.theme.teDarkGray, Color.theme.teGreen], [Color.theme.teLightGray, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
+                            .frame(width: UIScreen.main.bounds.width - 80, height: UIScreen.main.bounds.width - 80, alignment: .center)
                         
+                    }
+                    VStack(spacing: 0) {
+                        Text("Perfect")
+                            .font(.custom("Inter-Bold", size: 24))
+                            .padding(.bottom, 12)
+                            .foregroundColor(Color.theme.teSkyBlue)
+                        Text("\(todayPerfectCount)회")
+                            .font(.custom("Inter-Bold", size: 30))
+                            .foregroundColor(Color.theme.teWhite)
+                    }
                 }
-                VStack(spacing: 0) {
-                    Text("Perfect")
-                        .font(.custom("Inter-Bold", size: 24))
-                        .padding(.bottom, 12)
-                        .foregroundColor(Color.theme.teSkyBlue)
-                    Text("\(todayPerfectCount)회")
-                        .font(.custom("Inter-Bold", size: 30))
-                }
+                .padding(.top, 40)
+                .frame(maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.width)
             }
-            .padding(.top, 40)
-            .frame(maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.width)
         }
     }
     

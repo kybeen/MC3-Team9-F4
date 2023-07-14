@@ -22,6 +22,7 @@ struct TodayDetailView: View {
             dataTableContainer()
         }
         .navigationTitle(todayDateString)
+        .scrollIndicators(.hidden)
     }
 }
 

@@ -74,6 +74,8 @@ struct SwingRateView: View {
 }
 
 struct HealthKitView: View {
+    @EnvironmentObject var swingListWrapper: SwingListWrapper
+
     //우선 타입 임의로 지정
     @State var workingMin: String = "00:00.00"
     @State var bpm: Int = 150
@@ -94,19 +96,19 @@ struct HealthKitView: View {
                 .padding(.bottom, 8)
             
             Spacer()
-//            NavigationLink(destination: CompleteView()) {
-//                Text("완료")
-//                    .font(.system(size: 16, weight: .bold))
-//                    .foregroundColor(Color.black)
-//            }
-//            .tint(Color.watchColor.lightGreen)
-            
-            Button(action: {
-                print("clicked")
-            }) {
+            NavigationLink(destination: SwingListView(swingList: swingListWrapper.swingList)) {
                 Text("완료")
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(Color.black)
             }
+            
+//            Button(action: {
+//                print("clicked")
+//            }) {
+//                Text("완료")
+//                    .font(.system(size: 20, weight: .bold))
+//            }
+            
             .foregroundColor(Color.watchColor.black) // 2
             .background(Color.watchColor.lightGreen) // 3
             .cornerRadius(20)

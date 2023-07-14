@@ -13,7 +13,7 @@ struct GuideView: View {
     
     var body: some View {
         ZStack {
-            Color.primary.edgesIgnoringSafeArea(.all)
+            Color.theme.teBlack.edgesIgnoringSafeArea(.all)
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
                     Spacer()
@@ -23,7 +23,7 @@ struct GuideView: View {
                         Image(systemName: "xmark")
                             .resizable()
                             .scaledToFit()
-                            .foregroundColor(Color.theme.teBlack)
+                            .foregroundColor(Color.theme.teWhite)
                             .frame(maxWidth: 17)
                     }
                 }
@@ -90,7 +90,7 @@ extension GuideView {
                 .cornerRadius(15)
             Text(position.uppercased())
                 .font(.custom("Inter-Medium", size: 24))
-                .foregroundColor(Color.theme.teBlack)
+                .foregroundColor(Color.theme.teWhite)
                 .frame(maxWidth: UIScreen.main.bounds.width, alignment: .leading)
                 .padding(.leading, 35)
                 .padding(.bottom, 45)

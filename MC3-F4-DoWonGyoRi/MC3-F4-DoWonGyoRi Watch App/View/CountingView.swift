@@ -10,12 +10,12 @@ import SwiftUI
 //MARK: - tag0, tag1 위치 바꾸기
 
 struct CountingView: View {
+    
     @State private var selectedTab = 1
     
     var body: some View {
         TabView(selection: $selectedTab) {
             
-            //Tag0
             QuitView()
             .tabItem{
                 Image(systemName: "tennisball.fill")
@@ -23,7 +23,6 @@ struct CountingView: View {
             }
             .tag(0)
             
-            //Tag1
             ZStack {
                 Circle()
                     .frame(width: 150, height: 150, alignment: .center)
@@ -56,7 +55,6 @@ struct CountingView: View {
     }
 }
 
-
 struct QuitView: View {
     
     @State var swingLeft: Int = 10
@@ -66,7 +64,7 @@ struct QuitView: View {
             Text("\(swingLeft)번의 스윙이 남았어요.\n연습을 끝내시겠어요?")
                 .font(.system(size: 20, weight: .semibold))
             Spacer()
-
+            
             NavigationLink(destination: ResultView()) {
                 Text("종료")
                     .font(.system(size: 16, weight: .semibold))
@@ -75,7 +73,6 @@ struct QuitView: View {
             .background(Color.watchColor.lightBlack)
             .cornerRadius(40)
         }
-        
     }
 }
 

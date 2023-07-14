@@ -13,8 +13,10 @@ struct OnboardingView: View {
         VStack(spacing: 0) {
             titleContainer("프로필", "을", "입력해주세요.")
             Spacer()
-            welcomeCommentContainer()
-                .padding(.horizontal, 24)
+//            welcomeCommentContainer()
+//                .padding(.horizontal, 24)
+            
+            
             Spacer()
             nextButton()
         }
@@ -49,14 +51,22 @@ extension OnboardingView {
     }
     
     private func welcomeCommentContainer() -> some View {
-        ZStack(alignment: .center) {
+        ZStack {
+            Color.clear
+                .overlay(
+                    Image("icon_background")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .clipped()
+                )
             VStack(spacing: 0) {
                 Text("테니스 플레이어님\n환영합니다!")
                     .font(.custom("Inter-SemiBold", size: 20))
                     .foregroundColor(Color.theme.teWhite)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 10)
-                Spacer()
+                    .padding(.bottom, 34)
                 Rectangle()
                     .foregroundColor(Color.theme.teWhite)
                     .frame(height: 1)

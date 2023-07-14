@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
-
+import PhotosUI
 struct OnboardingView: View {
+    @State private var selectedItem: PhotosPickerItem? = nil
+    @State private var selectedImageData: Data? = nil
+    @State private var nickname = ""
     
     var body: some View {
         VStack(spacing: 0) {
@@ -15,12 +18,13 @@ struct OnboardingView: View {
             Spacer()
 //            welcomeCommentContainer()
 //                .padding(.horizontal, 24)
-            
+            profileContainer()
             
             Spacer()
             nextButton()
         }
         .frame(maxHeight: 600)
+        .padding(.horizontal, 18)
     }
 }
 
@@ -47,7 +51,7 @@ extension OnboardingView {
                 .foregroundColor(Color.theme.teWhite)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .padding(.leading, 30)
+        .padding(.leading, 12)
     }
     
     private func welcomeCommentContainer() -> some View {
@@ -95,6 +99,107 @@ extension OnboardingView {
                     .foregroundColor(Color.theme.teBlack)
                     .font(.custom("Inter-Bold", size: 16))
             }
+        }
+    }
+    
+    private func profileContainer() -> some View {
+        ScrollView {
+            VStack(spacing: 0) {
+                profilePhotoContainer()
+                    .padding(.top, 26)
+                Spacer()
+                nicknameTextField()
+                Spacer()
+                Spacer()
+            }
+            
+        }
+        .padding(.horizontal, 13.5)
+        .scrollDisabled(true)
+        .scrollIndicators(.hidden)
+    }
+    
+    
+    private func profilePhotoContainer() -> some View {
+        VStack(spacing: 0) {
+            Button(action: {
+                
+            }) {
+                ZStack(alignment: .center) {
+                    Circle()
+                        .foregroundColor(Color.theme.teGray)
+                    if let selectedImageData,
+                       let uiImage = UIImage(data: selectedImageData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: 176, maxHeight: 176)
+                            .cornerRadius(100)
+                        
+                        
+                    } else {
+                        if selectedImageData != nil {
+                            Image(uiImage: UIImage(data: selectedImageData!)!)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(maxWidth: 129, maxHeight: 129)
+                                .cornerRadius(100)
+                        } else {
+                            Image(systemName: "photo")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(Color.theme.teWhite)
+                                .frame(width: 45)
+                        }
+                    }
+                }
+                .frame(maxWidth: 176, maxHeight: 176)
+                .padding(.bottom, 22)
+            }
+            .disabled(true)
+            
+            PhotosPicker(
+                selection: $selectedItem,
+                matching: .images,
+                photoLibrary: .shared()) {
+                    Text("사진 변경하기")
+                        .font(.custom("Inter-Bold", size: 16))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color.theme.teGreen)
+                        .padding(.horizontal, 28)
+                        .padding(.vertical, 9)
+                        .cornerRadius(30)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 30)
+                                .inset(by: 0.5)
+                                .stroke(Color.theme.teGreen, lineWidth: 1)
+                        )
+                }
+                .onChange(of: selectedItem) { newItem in
+                    Task {
+                        // Retrieve selected asset in the form of Data
+                        if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                            selectedImageData = data
+                        }
+                    }
+                }
+        }
+    }
+    
+    private func nicknameTextField() -> some View {
+        VStack(spacing: 0) {
+            TextField("닉네임 입력", text: $nickname)
+                .frame(maxWidth: .infinity)
+                .padding(.bottom, 14)
+                .onTapGesture {
+                    UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
+                }
+            Rectangle()
+                .frame(height: 1)
+            Text("\(nickname.count)/20")
+                .font(.custom("Inter-Medium", size: 15))
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .padding(.top, 6)
         }
     }
 }

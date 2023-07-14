@@ -11,17 +11,12 @@ struct SwingResultView: View {
     @State private var isSwingCountViewPresented = false
     
     var body: some View {
-        VStack {
-            Spacer()
-            ZStack {
-                Circle()
-                    .frame(width: 150, height: 150, alignment: .center)
-                Text("PERFECT! or BAD!")
-                    .foregroundColor(Color.watchColor.black)
-            }
-            Spacer()
-            Text("잘 쳤는지 아닌 지")
-                .font(.system(size: 12, weight: .bold))
+        ZStack {
+            Circle()
+                .frame(width: 150, height: 150, alignment: .center)
+            Text("BAD!")
+                .font(.system(size: 32, weight: .semibold))
+                .foregroundColor(Color.watchColor.black)
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {

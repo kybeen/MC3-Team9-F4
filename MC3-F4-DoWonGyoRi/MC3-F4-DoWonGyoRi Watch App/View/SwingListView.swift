@@ -8,6 +8,7 @@
 import SwiftUI
 
 //MARK: - 화면 뷰
+//MARK: - 리스트 바꾸기 (그 운동 앱 처럼)
 
 struct SwingListView: View {
     let swingList: SwingList

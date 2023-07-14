@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//MARK: - tag0, tag1 위치 바꾸기
+
 struct CountingView: View {
     
     var body: some View {
@@ -14,9 +16,9 @@ struct CountingView: View {
             ZStack {
                 Circle()
                     .frame(width: 150, height: 150, alignment: .center)
-                VStack {
+                VStack(spacing: -8) {
                     Text("남은 횟수")
-                        .font(.system(size: 16, weight: .bold))
+                        .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(Color.black)
                     Text("50")
                         .font(.system(size: 56, weight: .bold))

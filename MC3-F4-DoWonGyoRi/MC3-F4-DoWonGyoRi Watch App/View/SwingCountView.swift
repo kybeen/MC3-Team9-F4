@@ -7,14 +7,16 @@
 
 import SwiftUI
 
+//MARK: - 시작 버튼 맨 밑으로 보내기
+
 struct SwingCountView: View {
     let swingList: SwingList
     @State private var isReadyViewActive = false
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("이번 목표 스윙 개수는 얼마인가요?")
-                .font(.system(size: 16, weight: .semibold))
+            Text("이번 목표 스윙 개수는\n얼마인가요?")
+                .font(.system(size: 20, weight: .semibold))
             Spacer()
             HStack {
                 Text("개수 넣는 공간")
@@ -25,8 +27,9 @@ struct SwingCountView: View {
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(Color.black)
             }
+//            .frame(height: 40)
             .background(Color.watchColor.lightGreen)
-            .cornerRadius(20)
+            .cornerRadius(40)
         }
         .navigationTitle("목록")
         .navigationBarTitleDisplayMode(.inline)

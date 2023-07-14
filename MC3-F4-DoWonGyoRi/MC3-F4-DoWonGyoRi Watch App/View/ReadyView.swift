@@ -18,7 +18,7 @@ struct ReadyView: View {
 
     var body: some View {
         VStack {
-            CircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: self.$fontSize)
+            TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: self.$fontSize)
                 .frame(width: 150, height: 150, alignment: .center)
                 .onAppear {
                     //초기화
@@ -46,7 +46,9 @@ struct ReadyView: View {
             if self.progressValue >= 1.0 {
                 self.countValue = readyStatus[counting]
                 if self.countValue == "시작!" {
-                    self.isCountingViewPresented = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        self.isCountingViewPresented = true
+                    }
                     return
                 }
                 

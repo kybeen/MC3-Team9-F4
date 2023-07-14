@@ -8,19 +8,40 @@
 import SwiftUI
 import PhotosUI
 struct OnboardingView: View {
+    @Environment(\.dismiss) var dismiss
+    
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
     @State private var nickname = ""
     @State private var handSelect = "손을 선택해주세요"
     
+    /**
+     UserInfoSettingView와 겹치는 변수
+     */
+    @State private var height = 170
+    @State private var weight = 60
+    @State private var isSetAge: Bool = false
+    @State private var isSetWeight: Bool = false
+    @State private var isSetHeight: Bool = false
+    @State private var isSetBirthDay: Bool = false
+    @State private var isLeftHand: Bool = true
+    @State private var selectedDate = Date()
+    private let sexList = ["남성", "여성", "기타"]
+    @State private var sex = "남성"
+//    @State private var viewBirthdady = (selectedDate.formatted(.iso8601).substring(to: )
+    
+    let startDate = Calendar.current.date(from: DateComponents(year: 1900, month: 1, day: 1))!
+    let endDate = Date()
+    
     var body: some View {
         VStack(spacing: 0) {
-            titleContainer("주로 사용하는 손", "을", "선택해주세요.")
+            titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.")
             Spacer()
 //            welcomeCommentContainer()
 //                .padding(.horizontal, 24)
 //            profileContainer()
-            handSelectContainer()
+//            handSelectContainer()
+            additionalDataInput()
             Spacer()
             nextButton()
         }
@@ -245,5 +266,214 @@ extension OnboardingView {
                 .foregroundColor(Color.theme.teWhite)
         }
         .frame(maxWidth: 214, maxHeight: 160)
+    }
+    
+    private func additionalDataInput() -> some View {
+        List {
+            Section {
+                
+                Button(action: {
+                    isSetBirthDay.toggle()
+                }) {
+                    HStack(spacing: 0) {
+                        Text("생년월일")
+                            .foregroundColor(Color.theme.teWhite)
+                        Spacer()
+                        Text(dateFormat(selectedDate))
+                            .foregroundColor(.gray)
+                    }
+                }
+                .sheet(isPresented: $isSetBirthDay, content: {
+                    HStack(spacing: 0) {
+                        VStack {
+                            
+                            HStack(spacing: 0) {
+                                Button(action: {
+                                    isSetBirthDay.toggle()
+                                }) {
+                                    Text("취소")
+                                        .font(.custom("Inter-Bold", size: 16))
+                                        .foregroundColor(Color.theme.teWhite)
+                                }
+                                Spacer()
+                                Button(action: {
+                                    isSetBirthDay.toggle()
+                                }) {
+                                    Text("완료")
+                                        .font(.custom("Inter-Bold", size: 16))
+                                        .foregroundColor(Color.theme.teGreen)
+                                }
+                            }
+                            .padding(.horizontal, 28)
+                            .padding(.vertical, 24)
+                            
+                            DatePicker(
+                                "",
+                                selection: $selectedDate,
+                                in: startDate...endDate,
+                                displayedComponents: [.date]
+                            )
+                            .datePickerStyle(.wheel)
+                            .labelsHidden()
+                            .frame(height: 200)
+                            .padding()
+                            .environment(\.locale, .init(identifier: "ko_KR"))
+                            .onChange(of: selectedDate, perform: { date in
+                                if selectedDate > endDate {
+                                    selectedDate = endDate
+                                }
+                            })
+                        }
+                        .presentationDetents([.fraction(0.4)])
+                        
+                        
+                    }
+                })
+                .frame(height: 45)
+                
+                Button(action: {
+                    isSetHeight.toggle()
+                }) {
+                    HStack {
+                        Text("키 (cm)")
+                            .foregroundColor(Color.theme.teWhite)
+                        Spacer()
+                        Text("\(Int(height))cm")
+                            .foregroundColor(.gray)
+                    }
+                }
+                .sheet(isPresented: $isSetHeight, content: {
+                    
+                    HStack(spacing: 0) {
+                        Button(action: {
+                            isSetHeight.toggle()
+                        }) {
+                            Text("취소")
+                                .font(.custom("Inter-Bold", size: 16))
+                                .foregroundColor(Color.theme.teWhite)
+                        }
+                        Spacer()
+                        Button(action: {
+                            isSetHeight.toggle()
+                        }) {
+                            Text("완료")
+                                .font(.custom("Inter-Bold", size: 16))
+                                .foregroundColor(Color.theme.teGreen)
+                        }
+                    }
+                    .padding(.horizontal, 28)
+                    .padding(.vertical, 24)
+                    
+                    Picker("키", selection: $height, content: {
+                        ForEach(130 ... 240, id: \.self) {
+                            Text("\($0)cm")
+                        }
+                    })
+                    .presentationDetents([.fraction(0.4)])
+                    .pickerStyle(.wheel)
+                    
+                })
+                .frame(height: 45)
+                
+                Button(action: {
+                    isSetWeight.toggle()
+                }) {
+                    HStack {
+                        Text("체중 (kg)")
+                            .foregroundColor(Color.theme.teWhite)
+                        Spacer()
+                        Text("\(Int(weight))kg")
+                            .foregroundColor(.gray)
+                    }
+                }
+                .sheet(isPresented: $isSetWeight, content: {
+                    HStack(spacing: 0) {
+                        Button(action: {
+                            isSetWeight.toggle()
+                        }) {
+                            Text("취소")
+                                .font(.custom("Inter-Bold", size: 16))
+                                .foregroundColor(Color.theme.teWhite)
+                        }
+                        Spacer()
+                        Button(action: {
+                            isSetWeight.toggle()
+                        }) {
+                            Text("완료")
+                                .font(.custom("Inter-Bold", size: 16))
+                                .foregroundColor(Color.theme.teGreen)
+                        }
+                    }
+                    .padding(.horizontal, 28)
+                    .padding(.vertical, 24)
+                    
+                    Picker("체중", selection: $weight, content: {
+                        ForEach(30 ... 300, id: \.self) {
+                            Text("\($0)kg")
+                        }
+                    })
+                    .presentationDetents([.fraction(0.4)])
+                    .pickerStyle(.wheel)
+                    
+                })
+                .frame(height: 45)
+                
+                Button(action: {
+                    isSetAge.toggle()
+                }) {
+                    HStack {
+                        Text("성별")
+                            .foregroundColor(Color.theme.teWhite)
+                        Spacer()
+                        Text(sex)
+                            .foregroundColor(.gray)
+                        
+                    }
+                    
+                }
+                .sheet(isPresented: $isSetAge, content: {
+                    
+                    HStack(spacing: 0) {
+                        Button(action: {
+                            isSetAge.toggle()
+                        }) {
+                            Text("취소")
+                                .font(.custom("Inter-Bold", size: 16))
+                                .foregroundColor(Color.theme.teWhite)
+                        }
+                        Spacer()
+                        Button(action: {
+                            isSetAge.toggle()
+                        }) {
+                            Text("완료")
+                                .font(.custom("Inter-Bold", size: 16))
+                                .foregroundColor(Color.theme.teGreen)
+                        }
+                    }
+                    .padding(.horizontal, 28)
+                    .padding(.vertical, 24)
+                    
+                    Picker("성별", selection: $sex, content: {
+                        ForEach(sexList, id: \.self) {
+                            Text($0)
+                        }
+                    })
+                    .presentationDetents([.fraction(0.4)])
+                    .pickerStyle(.wheel)
+                    
+                })
+                .frame(height: 45)
+            }
+        }
+    }
+    
+    private func dateFormat(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy.MM.dd."
+
+        let currentDate = date
+        let formattedDate = dateFormatter.string(from: currentDate)
+        
+        return formattedDate
     }
 }

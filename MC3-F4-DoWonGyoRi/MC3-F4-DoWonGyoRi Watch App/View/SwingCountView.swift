@@ -24,10 +24,9 @@ struct SwingCountView: View {
             Spacer()
             NavigationLink(destination: ReadyView()) {
                 Text("시작")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(Color.black)
             }
-//            .frame(height: 40)
             .background(Color.watchColor.lightGreen)
             .cornerRadius(40)
         }

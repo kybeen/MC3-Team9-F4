@@ -148,14 +148,9 @@ extension MainView {
                     .padding(.bottom, 40)
                 todaySummaryCountainer()
             } // end scroll view
-            
-            // 아래의 제스처 Modifier를 사용할 경우, 좌우 스와이프가 되지 않음.
-//            .gesture(DragGesture().onChanged { value in
-//                if value.translation.height < 0 {
-//                    isAnimationEnabled = true
-//                }
-//            })
             .tag(0)
+            .scrollIndicators(.hidden)
+            
             ScrollView {
             }
             .tag(1)
@@ -165,6 +160,15 @@ extension MainView {
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         .background(Color.theme.teBlack)
         .cornerRadius(20)
+        
+        
+        
+        // 아래의 제스처 Modifier를 사용할 경우, 좌우 스와이프가 되지 않음.
+//            .gesture(DragGesture().onChanged { value in
+//                if value.translation.height < 0 {
+//                    isAnimationEnabled = true
+//                }
+//            })
     }
     
     private func ringChartsContainer() -> some View {

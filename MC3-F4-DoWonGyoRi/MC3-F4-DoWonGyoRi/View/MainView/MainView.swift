@@ -28,6 +28,7 @@ let perfectDifference = 30
 struct MainView: View {
     @State private var selectedTab = 0
     @State var isAnimationEnabled = false
+    @State var isGuidePresent = false
     @State private var path: [Int] = []
     
     var body: some View {
@@ -56,7 +57,7 @@ extension MainView {
     private func containerView() -> some View {
         HStack {
             Button(action: {
-                
+                isGuidePresent.toggle()
             }) {
                 Image(systemName: "figure.tennis")
                     .resizable()
@@ -65,6 +66,7 @@ extension MainView {
                     .frame(width: 35, height: 35)
                     .padding(.leading, 27)
             }
+            .fullScreenCover(isPresented: $isGuidePresent, content: GuideView.init)
             Spacer()
             NavigationLink(destination: SettingView()) {
                 Image(systemName: "person.circle.fill")

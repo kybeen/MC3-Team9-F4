@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct TodayDetailViewView: View {
+struct TodayDetailView: View {
     var body: some View {
         Text("")
     }
 }
 
-struct TodayDetailViewView_Preview: PreviewProvider {
+struct TodayDetailView_Preview: PreviewProvider {
     static var previews: some View {
-        ShareView()
+        TodayDetailView()
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct GuideView: View {
     @Environment(\.dismiss) var dismiss
@@ -42,8 +43,12 @@ struct GuideView: View {
                 .padding(.horizontal, 30)
                 
                 ScrollView {
-                    
+                    guideContainer("forehand")
+                        .padding(.bottom, 17)
+                    guideContainer("backhand")
                 }
+                .frame(maxWidth: UIScreen.main.bounds.width)
+                .padding(.top, 38)
             }
         }
         
@@ -54,5 +59,41 @@ struct GuideView: View {
 struct GuideView_Preview: PreviewProvider {
     static var previews: some View {
         GuideView()
+    }
+}
+
+extension GuideView {
+    private func guideContainer(_ position: String) -> some View {
+        ZStack(alignment: .bottom) {
+            Rectangle()
+                .foregroundColor(.clear)
+                .frame(width: 367, height: 431)
+                .background(Color(red: 0.29, green: 0.29, blue: 0.29))
+                .cornerRadius(15)
+                .shadow(color: .black, radius: 15, x: 20, y: 20)
+                .shadow(color: Color(red: 0.34, green: 0.34, blue: 0.34).opacity(0.2), radius: 23, x: -10, y: -10)
+            Rectangle()
+                .foregroundColor(.clear)
+                .frame(width: 367, height: 118)
+                .background(
+                    LinearGradient(
+                        stops: [
+                            Gradient.Stop(color: Color.theme.teDarkGray, location: 0.00),
+                            Gradient.Stop(color: Color.theme.teDarkGray.opacity(0), location: 0.00),
+                            Gradient.Stop(color: Color(red: 0.08, green: 0.08, blue: 0.08).opacity(0.48), location: 0.57),
+                            Gradient.Stop(color: Color(red: 0.08, green: 0.08, blue: 0.08), location: 1.00),
+                        ],
+                        startPoint: UnitPoint(x: 0.5, y: 0),
+                        endPoint: UnitPoint(x: 0.5, y: 1)
+                    )
+                )
+                .cornerRadius(15)
+            Text(position.uppercased())
+                .font(.custom("Inter-Medium", size: 24))
+                .foregroundColor(Color.theme.teBlack)
+                .frame(maxWidth: UIScreen.main.bounds.width, alignment: .leading)
+                .padding(.leading, 35)
+                .padding(.bottom, 45)
+        }
     }
 }

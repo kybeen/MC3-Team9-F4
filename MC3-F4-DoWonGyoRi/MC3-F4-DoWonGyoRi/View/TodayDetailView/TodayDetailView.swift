@@ -14,12 +14,14 @@ struct TodayDetailView: View {
     @State private var todayWorkoutTime = 120
     @State private var todayCalories = 200
     
+    
+    
     var body: some View {
         ScrollView {
             chartContainer()
             dataTableContainer()
         }
-        
+        .navigationTitle(todayDateString)
     }
 }
 
@@ -31,6 +33,12 @@ struct TodayDetailView_Preview: PreviewProvider {
 }
 
 extension TodayDetailView {
+    private var todayDateString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy년 MM월 dd일"
+        return formatter.string(from: Date())
+    }
+    
     private func chartContainer() -> some View {
         VStack(spacing: 0) {
             ZStack {
@@ -90,10 +98,14 @@ extension TodayDetailView {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, 30)
+            .padding(.bottom, 15)
+            
             Rectangle()
                 .foregroundColor(Color.theme.teGray)
+                .frame(height: 2)
                 .padding(.leading, 30)
-                .frame(height: 1)
+                .padding(.bottom, 16)
+                
         }
     }
     
@@ -102,57 +114,68 @@ extension TodayDetailView {
         var timeMinutes = todayWorkoutTime % 60
         
         return VStack(spacing: 0) {
-            Text(title)
-                .font(.custom("Inter-Medium", size: 16))
-                .foregroundColor(Color.theme.teWhite)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            if isTime {
-                HStack(spacing: 0) {
+            VStack(spacing: 0) {
+                Text(title)
+                    .font(.custom("Inter-Medium", size: 16))
+                    .foregroundColor(Color.theme.teWhite)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 13)
+                if isTime {
                     HStack(spacing: 0) {
-                        Text("\(timeHour)")
-                            .font(.custom("Inter-SemiBold", size: 36))
-                            .foregroundColor(Color.theme.teWhite)
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                        Text("시간")
-                            .font(.custom("Inter-SemiBold", size: 24))
-                            .foregroundColor(Color.theme.teWhite)
-                            .frame(maxHeight: .infinity, alignment: .bottom)
-                            .padding(.bottom, 3)
+                        HStack(spacing: 0) {
+                            Text("\(timeHour)")
+                                .font(.custom("Inter-SemiBold", size: 36))
+                                .foregroundColor(Color.theme.teWhite)
+                                .frame(maxHeight: .infinity, alignment: .bottom)
+                            Text("시간")
+                                .font(.custom("Inter-SemiBold", size: 24))
+                                .foregroundColor(Color.theme.teWhite)
+                                .frame(maxHeight: .infinity, alignment: .bottom)
+                                .padding(.bottom, 3)
+                        }
+                        
+                        HStack(spacing: 0) {
+                            Text("\(timeMinutes)")
+                                .font(.custom("Inter-SemiBold", size: 36))
+                                .foregroundColor(Color.theme.teWhite)
+                                .frame(maxHeight: .infinity, alignment: .bottom)
+                            Text("분")
+                                .font(.custom("Inter-SemiBold", size: 24))
+                                .foregroundColor(Color.theme.teWhite)
+                                .frame(maxHeight: .infinity, alignment: .bottom)
+                                .padding(.bottom, 3)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading, 10)
                     }
-                    
+                    .padding(.bottom, 13)
+                } else {
                     HStack(spacing: 0) {
-                        Text("\(timeMinutes)")
+                        Text("\(data)")
                             .font(.custom("Inter-SemiBold", size: 36))
                             .foregroundColor(Color.theme.teWhite)
                             .frame(maxHeight: .infinity, alignment: .bottom)
-                        Text("분")
+                        Text("kcal")
                             .font(.custom("Inter-SemiBold", size: 24))
                             .foregroundColor(Color.theme.teWhite)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                             .padding(.bottom, 3)
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, 10)
+                    .padding(.bottom, 13)
                 }
-            } else {
-                HStack(spacing: 0) {
-                    Text("\(data)")
-                        .font(.custom("Inter-SemiBold", size: 36))
-                        .foregroundColor(Color.theme.teWhite)
-                        .frame(maxHeight: .infinity, alignment: .bottom)
-                    Text("kcal")
-                        .font(.custom("Inter-SemiBold", size: 24))
-                        .foregroundColor(Color.theme.teWhite)
-                        .frame(maxHeight: .infinity, alignment: .bottom)
-                        .padding(.bottom, 3)
-                }
-                .frame(maxWidth: .infinity, alignment: .leading)
+                
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal, 30)
             
-            
-            
+            Rectangle()
+                .foregroundColor(Color.theme.teGray)
+                .frame(height: 2)
+                .padding(.leading, 30)
+                .padding(.bottom, 16)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 30)
+        
+        
     }
 }

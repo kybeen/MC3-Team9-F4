@@ -11,8 +11,18 @@ import SwiftUI
 
 struct CountingView: View {
     
+    @State private var selectedTab = 1
+    
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
+            
+            QuitView()
+            .tabItem{
+                Image(systemName: "tennisball.fill")
+                    .foregroundColor(Color.watchColor.lightGreen)
+            }
+            .tag(0)
+            
             ZStack {
                 Circle()
                     .frame(width: 150, height: 150, alignment: .center)
@@ -36,37 +46,33 @@ struct CountingView: View {
                 Image(systemName: "tennisball.fill")
                     .foregroundColor(Color.watchColor.lightGreen)
             }
-            .tag(0)
-            
-            VStack {
-                Spacer()
-                
-                //MARK: - 이 버튼 없으면 정중앙에 정렬됨
-                NavigationLink(destination: ResultView()) {
-                    ZStack {
-                        Circle()
-                            .frame(width: 94, height: 94)
-                            .foregroundColor(Color.watchColor.lightRed)
-                        Rectangle()
-                            .frame(width: 38, height: 38, alignment: .center)
-                            .foregroundColor(Color.watchColor.black)
-                    }
-                }
-                .buttonStyle(.borderless)
-                .frame(alignment: .center)
-                .padding(.bottom, 8)
-                
-                Text("종료")
-                    .font(.system(size: 20, weight: .semibold))
-                
-            }
-            .tabItem{
-                Image(systemName: "tennisball.fill")
-                    .foregroundColor(Color.watchColor.lightGreen)
-            }
             .tag(1)
         }
+        .onAppear {
+            selectedTab = 1
+        }
         .navigationBarBackButtonHidden()
+    }
+}
+
+struct QuitView: View {
+    
+    @State var swingLeft: Int = 10
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("\(swingLeft)번의 스윙이 남았어요.\n연습을 끝내시겠어요?")
+                .font(.system(size: 20, weight: .semibold))
+            Spacer()
+            
+            NavigationLink(destination: ResultView()) {
+                Text("종료")
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(Color.white)
+            }
+            .background(Color.watchColor.lightBlack)
+            .cornerRadius(40)
+        }
     }
 }
 

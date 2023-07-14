@@ -24,6 +24,8 @@ struct SwingListView: View {
             
             //추후에 색상 변경 가능
             .navigationTitle("자세")
+            //우선 야매로,,
+            .navigationBarBackButtonHidden()
         }
     }
 }

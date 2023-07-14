@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		164F9DBA2A60F1EF006D5825 /* NavigationStack in Frameworks */ = {isa = PBXBuildFile; productRef = 164F9DB92A60F1EF006D5825 /* NavigationStack */; };
 		1673DC0C2A5CD4A9000F9EB1 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC0B2A5CD4A9000F9EB1 /* ColorExtension.swift */; };
 		1673DC102A5CDA9F000F9EB1 /* SwingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC0F2A5CDA9F000F9EB1 /* SwingListView.swift */; };
 		1673DC152A5CE7A0000F9EB1 /* SwingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC142A5CE7A0000F9EB1 /* SwingList.swift */; };
@@ -157,6 +158,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				164F9DBA2A60F1EF006D5825 /* NavigationStack in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +407,9 @@
 				168AD6A12A57EF050097985C /* PBXTargetDependency */,
 			);
 			name = "MC3-F4-DoWonGyoRi";
+			packageProductDependencies = (
+				164F9DB92A60F1EF006D5825 /* NavigationStack */,
+			);
 			productName = "MC3-F4-DoWonGyoRi";
 			productReference = 168AD68E2A57EF030097985C /* MC3-F4-DoWonGyoRi.app */;
 			productType = "com.apple.product-type.application";
@@ -453,6 +458,9 @@
 				Base,
 			);
 			mainGroup = 168AD6852A57EF030097985C;
+			packageReferences = (
+				164F9DB82A60F1EF006D5825 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */,
+			);
 			productRefGroup = 168AD68F2A57EF030097985C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -846,6 +854,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		164F9DB82A60F1EF006D5825 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/matteopuc/swiftui-navigation-stack.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		164F9DB92A60F1EF006D5825 /* NavigationStack */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 164F9DB82A60F1EF006D5825 /* XCRemoteSwiftPackageReference "swiftui-navigation-stack" */;
+			productName = NavigationStack;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 168AD6862A57EF030097985C /* Project object */;
 }

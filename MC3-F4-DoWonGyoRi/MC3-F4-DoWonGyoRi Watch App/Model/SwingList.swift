@@ -19,3 +19,12 @@ let swingLists = [
     SwingList(name: "백핸드", guideButton: "questionmark.circle", gifImage: "square.fill"),
     SwingList(name: "서브(예정)", guideButton: "questionmark.circle", gifImage: "circle")
 ]
+
+
+class SwingListWrapper: ObservableObject {
+    @Published var swingList: SwingList
+    
+    init(swingList: SwingList) {
+        self.swingList = swingList
+    }
+}

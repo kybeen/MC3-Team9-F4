@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MeasuringView: View {
     @State private var isSwingResultViewPresented = false
+    @State private var dot: String = ""
     
     var body: some View {
         VStack {

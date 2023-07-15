@@ -43,7 +43,10 @@
 		C96600B92A5CF873008287EF /* RingChartsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96600B82A5CF873008287EF /* RingChartsView.swift */; };
 		C96600BB2A5CFFBD008287EF /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96600BA2A5CFFBD008287EF /* File.swift */; };
 		C96DC7592A611EE000A922A3 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC7582A611EE000A922A3 /* OnboardingView.swift */; };
-		C9804AC22A5BDB8400CF97A8 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC12A5BDB8400CF97A8 /* DataModel.swift */; };
+		C96DC75F2A63150D00A922A3 /* CongreteModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC75E2A63150D00A922A3 /* CongreteModalView.swift */; };
+		C96DC7612A6323A500A922A3 /* EmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC7602A6323A500A922A3 /* EmitterView.swift */; };
+		C96DC7632A63361500A922A3 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC7622A63361500A922A3 /* HapticManager.swift */; };
+		C9804AC22A5BDB8400CF97A8 /* EmitterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */; };
 		C9804AC52A5BDBAB00CF97A8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC42A5BDBAB00CF97A8 /* Resource.swift */; };
 		C9804AC72A5BDBC000CF97A8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */; };
 		C9804ACA2A5BDD3C00CF97A8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC92A5BDD3C00CF97A8 /* MainView.swift */; };
@@ -129,7 +132,10 @@
 		C96600B82A5CF873008287EF /* RingChartsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingChartsView.swift; sourceTree = "<group>"; };
 		C96600BA2A5CFFBD008287EF /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		C96DC7582A611EE000A922A3 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		C9804AC12A5BDB8400CF97A8 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		C96DC75E2A63150D00A922A3 /* CongreteModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongreteModalView.swift; sourceTree = "<group>"; };
+		C96DC7602A6323A500A922A3 /* EmitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterView.swift; sourceTree = "<group>"; };
+		C96DC7622A63361500A922A3 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterManager.swift; sourceTree = "<group>"; };
 		C9804AC42A5BDBAB00CF97A8 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C9804AC92A5BDD3C00CF97A8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -325,9 +331,19 @@
 			path = OnboardingView;
 			sourceTree = "<group>";
 		};
+		C96DC75D2A6314C700A922A3 /* CongreteModalView */ = {
+			isa = PBXGroup;
+			children = (
+				C96DC75E2A63150D00A922A3 /* CongreteModalView.swift */,
+				C96DC7602A6323A500A922A3 /* EmitterView.swift */,
+			);
+			path = CongreteModalView;
+			sourceTree = "<group>";
+		};
 		C9804ABE2A5BDAE500CF97A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C96DC75D2A6314C700A922A3 /* CongreteModalView */,
 				C96DC7572A611EC600A922A3 /* OnboardingView */,
 				C9533A182A60EE0100FA7DC7 /* TodayDetailView */,
 				C9533A102A60D0CC00FA7DC7 /* GuideView */,
@@ -342,7 +358,8 @@
 		C9804ABF2A5BDAF000CF97A8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C9804AC12A5BDB8400CF97A8 /* DataModel.swift */,
+				C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */,
+				C96DC7622A63361500A922A3 /* HapticManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -536,15 +553,18 @@
 				168AD6942A57EF030097985C /* ContentView.swift in Sources */,
 				C9804ACA2A5BDD3C00CF97A8 /* MainView.swift in Sources */,
 				C9533A0D2A60393200FA7DC7 /* UserProfileSettingView.swift in Sources */,
+				C96DC7632A63361500A922A3 /* HapticManager.swift in Sources */,
 				C9533A0F2A60D0C500FA7DC7 /* GuideView.swift in Sources */,
+				C96DC7612A6323A500A922A3 /* EmitterView.swift in Sources */,
 				C9804AC52A5BDBAB00CF97A8 /* Resource.swift in Sources */,
 				C9533A052A5E578000FA7DC7 /* SettingView.swift in Sources */,
 				C96600B92A5CF873008287EF /* RingChartsView.swift in Sources */,
 				168AD6922A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */,
 				C96600BB2A5CFFBD008287EF /* File.swift in Sources */,
+				C96DC75F2A63150D00A922A3 /* CongreteModalView.swift in Sources */,
 				C9533A132A60E5FF00FA7DC7 /* GifView.swift in Sources */,
 				C96DC7592A611EE000A922A3 /* OnboardingView.swift in Sources */,
-				C9804AC22A5BDB8400CF97A8 /* DataModel.swift in Sources */,
+				C9804AC22A5BDB8400CF97A8 /* EmitterManager.swift in Sources */,
 				C9804AC72A5BDBC000CF97A8 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

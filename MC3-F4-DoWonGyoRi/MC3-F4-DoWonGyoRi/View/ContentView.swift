@@ -10,12 +10,18 @@ import SwiftUI
 struct ContentView: View {
     
     @AppStorage("_isFirstLaunch") var isFirst: Bool = true
+    @ObservedObject var emitterManager = EmitterManager.shared
     
     var body: some View {
         if isFirst {
             OnboardingView(isFirst: $isFirst)
         } else {
-            MainView()
+            ZStack {
+                MainView()
+                if emitterManager.isEmitterOn {
+                    EmitterView()
+                }
+            }
         }
     }
 }

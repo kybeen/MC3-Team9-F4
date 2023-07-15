@@ -31,6 +31,8 @@ struct MainView: View {
     @State var isGuidePresent = false
     @State private var path: [Int] = []
     
+    @State private var isCongretePresented = false
+    
     var body: some View {
         NavigationStack(path: $path) {
             VStack(spacing: 0) {
@@ -49,7 +51,12 @@ struct MainView: View {
                 }
             }
         }
+        .sheet(isPresented: $isCongretePresented, content: {
+            CongreteModalView()
+                .presentationDetents([.fraction(0.7), .fraction(0.7)])
+        })
     }
+        
 }
 
 
@@ -156,6 +163,22 @@ extension MainView {
                     .font(.custom("Inter-Bold", size: 24))
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.top, 50)
+                Button(action: {
+                    
+                    EmitterManager.shared.isEmitterOn = true
+                    for i in 0 ..< 10 {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                            HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                        }
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        EmitterManager.shared.isEmitterOn = false
+                        isCongretePresented.toggle()
+                    }
+                    
+                }) {
+                    Text("Congrete Modal POPUP")
+                }
             }
             .tag(1)
             

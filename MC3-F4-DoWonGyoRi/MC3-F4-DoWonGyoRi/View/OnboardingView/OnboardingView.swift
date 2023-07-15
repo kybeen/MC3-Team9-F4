@@ -10,6 +10,7 @@ import PhotosUI
 struct OnboardingView: View {
     @Environment(\.dismiss) var dismiss
     
+    @Binding var isFirst: Bool
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
     @State private var nickname = ""
@@ -33,17 +34,39 @@ struct OnboardingView: View {
     let startDate = Calendar.current.date(from: DateComponents(year: 1900, month: 1, day: 1))!
     let endDate = Date()
     
+    @State var onboardingPage = 0
     var body: some View {
         VStack(spacing: 0) {
-            titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.")
-            Spacer()
-//            welcomeCommentContainer()
-//                .padding(.horizontal, 24)
-//            profileContainer()
-//            handSelectContainer()
-            additionalDataInput()
-            Spacer()
-            nextButton()
+            switch onboardingPage {
+            case 0:
+                titleContainer("내 정보 입력하기")
+                Spacer()
+                welcomeCommentContainer()
+                    .padding(.horizontal, 24)
+                Spacer()
+                nextButton()
+            case 1:
+                titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.")
+                Spacer()
+                profileContainer()
+                Spacer()
+                nextButton()
+            case 2:
+                titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.")
+                Spacer()
+                handSelectContainer()
+                Spacer()
+                nextButton()
+            case 3:
+                titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.")
+                Spacer()
+                additionalDataInput()
+                Spacer()
+                nextButton()
+            default:
+                Spacer()
+            }
+            
         }
         .frame(maxHeight: 600)
         .padding(.horizontal, 18)
@@ -51,8 +74,10 @@ struct OnboardingView: View {
 }
 
 struct OnboardingView_Previewer: PreviewProvider {
+    @State static var isFirst: Bool = false
+    
     static var previews: some View {
-        OnboardingView()
+        OnboardingView(isFirst: $isFirst)
     }
 }
 
@@ -109,7 +134,11 @@ extension OnboardingView {
     
     private func nextButton(_ buttonTitle: String = "다음") -> some View {
         Button(action: {
-            
+            if onboardingPage == 3 {
+                isFirst = false
+            } else {
+                onboardingPage += 1
+            }
         }) {
             ZStack {
                 Rectangle()

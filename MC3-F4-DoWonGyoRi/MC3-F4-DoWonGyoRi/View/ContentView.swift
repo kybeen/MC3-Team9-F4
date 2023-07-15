@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @AppStorage("_isFirstLaunch") var isFirst: Bool = true
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        if isFirst {
+            OnboardingView(isFirst: $isFirst)
+        } else {
+            MainView()
         }
-        .padding()
     }
 }
 

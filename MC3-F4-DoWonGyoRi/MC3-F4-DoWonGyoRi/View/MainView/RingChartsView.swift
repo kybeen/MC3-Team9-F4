@@ -17,19 +17,35 @@ private struct RingChartView: View {
     var lineWidth: CGFloat
     var colors: [Color]
     var isAnimated: Bool
+//    var overloadColors: [[Color]] {
+//        var lastColor: Color = colors.last ?? .blue
+//        var branchArray: [Color] = []
+//        var colorArray: [[Color]] = []
+//
+//        for constant in 1...Int((self.value / ringMaxValue).rounded(.up)) {
+//            let firstAppendColor = lastColor.adjust(hue: 0.0 * CGFloat(constant), saturation: 0, brightness: 0, opacity: 0)
+//            let secondAppendColor = firstAppendColor.adjust(hue: 0.001 * CGFloat(constant), saturation: 0, brightness: 0.08, opacity: 0)
+//
+//            branchArray.append(firstAppendColor)
+//            branchArray.append(secondAppendColor)
+//            colorArray.append(branchArray)
+//            lastColor = branchArray.last ?? .blue
+//            branchArray.removeAll()
+//        }
+//        return colorArray
+//    }
+    
     var overloadColors: [[Color]] {
-        var lastColor: Color = colors.last ?? .blue
         var branchArray: [Color] = []
         var colorArray: [[Color]] = []
-        
-        for constant in 1...Int((self.value / ringMaxValue).rounded(.up)) {
-            let firstAppendColor = lastColor.adjust(hue: 0.0 * CGFloat(constant), saturation: 0, brightness: 0, opacity: 0)
-            let secondAppendColor = firstAppendColor.adjust(hue: 0.001 * CGFloat(constant), saturation: 0, brightness: 0.08, opacity: 0)
-            
+
+        for _ in 1...Int((self.value / ringMaxValue).rounded(.up)) {
+            let firstAppendColor = colors.first ?? .blue
+            let secondAppendColor = colors.last ?? .blue
+
             branchArray.append(firstAppendColor)
             branchArray.append(secondAppendColor)
             colorArray.append(branchArray)
-            lastColor = branchArray.last ?? .blue
             branchArray.removeAll()
         }
         return colorArray
@@ -43,6 +59,7 @@ private struct RingChartView: View {
                 .stroke(lineWidth: lineWidth)
                 .foregroundStyle(LinearGradient(colors: colors, startPoint: .trailing, endPoint: .leading))
                 .opacity(0.5)
+                .shadow(color: .black, radius: 8, x: 0, y: 4) // 그림자 추가
             
             ZStack(alignment: .top) {
                 
@@ -51,6 +68,7 @@ private struct RingChartView: View {
                     .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
                     .rotation(Angle.degrees(-90))
                     .foregroundStyle(LinearGradient(colors: colors, startPoint: .bottom, endPoint: .top))
+                    .shadow(color: .black, radius: 8, x: 0, y: 4) // 그림자 추가
                 
                 let count: Int = Int((self.value / ringMaxValue).rounded(.up))
                 
@@ -61,6 +79,7 @@ private struct RingChartView: View {
                             .stroke(style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
                             .rotation(Angle.degrees(-90))
                             .foregroundStyle(LinearGradient(colors: circleValue < overloadColors.count ? overloadColors[circleValue] : colors, startPoint: .bottom, endPoint: .top))
+                            .shadow(color: .black, radius: 8, x: 0, y: 4) // 그림자 추가
                     }
                     
                 }

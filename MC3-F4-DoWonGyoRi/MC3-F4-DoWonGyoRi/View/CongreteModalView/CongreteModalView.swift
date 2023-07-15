@@ -13,7 +13,7 @@ struct CongreteModalView: View {
     
     var body: some View {
         ZStack {
-            modalConatainer()
+            modalContainer()
             
             EmitterView()
                 .opacity(wish ? 1 : 0)

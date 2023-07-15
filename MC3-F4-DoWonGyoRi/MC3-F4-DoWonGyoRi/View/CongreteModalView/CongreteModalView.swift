@@ -10,17 +10,12 @@ import SwiftUI
 struct CongreteModalView: View {
     @State private var wish = false
     @State private var finishWish = false
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
     
     var body: some View {
         ZStack {
             modalContainer()
-            
             EmitterView()
-                .opacity(wish ? 1 : 0)
-                .ignoresSafeArea()
-        }
-        .onAppear {
-            doAnimation()
         }
     }
     
@@ -35,10 +30,9 @@ struct CongreteModalView_Previews: PreviewProvider {
 
 extension CongreteModalView {
     private func modalContainer() -> some View {
-        return Text("")
+        
+        return Text("HI")
     }
-    
-    
     
     private func doAnimation() {
         withAnimation(.spring()) {

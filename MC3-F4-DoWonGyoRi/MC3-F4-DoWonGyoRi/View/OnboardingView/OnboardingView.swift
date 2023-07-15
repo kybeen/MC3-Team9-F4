@@ -18,8 +18,8 @@ struct OnboardingView: View {
     /**
      UserInfoSettingView와 겹치는 변수
      */
-    @State private var height = 170
-    @State private var weight = 60
+    @State private var height = "170"
+    @State private var weight = "60"
     @State private var isSetAge: Bool = false
     @State private var isSetWeight: Bool = false
     @State private var isSetHeight: Bool = false
@@ -271,164 +271,49 @@ extension OnboardingView {
     private func additionalDataInput() -> some View {
         List {
             Section {
-                
                 listComponent()
-                
-                Button(action: {
-                    isSetHeight.toggle()
-                }) {
-                    HStack {
-                        Text("키 (cm)")
-                            .foregroundColor(Color.theme.teWhite)
-                        Spacer()
-                        Text("\(Int(height))cm")
-                            .foregroundColor(.gray)
-                    }
-                }
-                .sheet(isPresented: $isSetHeight, content: {
-                    
-                    HStack(spacing: 0) {
-                        Button(action: {
-                            isSetHeight.toggle()
-                        }) {
-                            Text("취소")
-                                .font(.custom("Inter-Bold", size: 16))
-                                .foregroundColor(Color.theme.teWhite)
-                        }
-                        Spacer()
-                        Button(action: {
-                            isSetHeight.toggle()
-                        }) {
-                            Text("완료")
-                                .font(.custom("Inter-Bold", size: 16))
-                                .foregroundColor(Color.theme.teGreen)
-                        }
-                    }
-                    .padding(.horizontal, 28)
-                    .padding(.vertical, 24)
-                    
-                    Picker("키", selection: $height, content: {
-                        ForEach(130 ... 240, id: \.self) {
-                            Text("\($0)cm")
-                        }
-                    })
-                    .presentationDetents([.fraction(0.4)])
-                    .pickerStyle(.wheel)
-                    
-                })
-                .frame(height: 45)
-                
-                Button(action: {
-                    isSetWeight.toggle()
-                }) {
-                    HStack {
-                        Text("체중 (kg)")
-                            .foregroundColor(Color.theme.teWhite)
-                        Spacer()
-                        Text("\(Int(weight))kg")
-                            .foregroundColor(.gray)
-                    }
-                }
-                .sheet(isPresented: $isSetWeight, content: {
-                    HStack(spacing: 0) {
-                        Button(action: {
-                            isSetWeight.toggle()
-                        }) {
-                            Text("취소")
-                                .font(.custom("Inter-Bold", size: 16))
-                                .foregroundColor(Color.theme.teWhite)
-                        }
-                        Spacer()
-                        Button(action: {
-                            isSetWeight.toggle()
-                        }) {
-                            Text("완료")
-                                .font(.custom("Inter-Bold", size: 16))
-                                .foregroundColor(Color.theme.teGreen)
-                        }
-                    }
-                    .padding(.horizontal, 28)
-                    .padding(.vertical, 24)
-                    
-                    Picker("체중", selection: $weight, content: {
-                        ForEach(30 ... 300, id: \.self) {
-                            Text("\($0)kg")
-                        }
-                    })
-                    .presentationDetents([.fraction(0.4)])
-                    .pickerStyle(.wheel)
-                    
-                })
-                .frame(height: 45)
-                
-                Button(action: {
-                    isSetAge.toggle()
-                }) {
-                    HStack {
-                        Text("성별")
-                            .foregroundColor(Color.theme.teWhite)
-                        Spacer()
-                        Text(sex)
-                            .foregroundColor(.gray)
-                        
-                    }
-                    
-                }
-                .sheet(isPresented: $isSetAge, content: {
-                    
-                    HStack(spacing: 0) {
-                        Button(action: {
-                            isSetAge.toggle()
-                        }) {
-                            Text("취소")
-                                .font(.custom("Inter-Bold", size: 16))
-                                .foregroundColor(Color.theme.teWhite)
-                        }
-                        Spacer()
-                        Button(action: {
-                            isSetAge.toggle()
-                        }) {
-                            Text("완료")
-                                .font(.custom("Inter-Bold", size: 16))
-                                .foregroundColor(Color.theme.teGreen)
-                        }
-                    }
-                    .padding(.horizontal, 28)
-                    .padding(.vertical, 24)
-                    
-                    Picker("성별", selection: $sex, content: {
-                        ForEach(sexList, id: \.self) {
-                            Text($0)
-                        }
-                    })
-                    .presentationDetents([.fraction(0.4)])
-                    .pickerStyle(.wheel)
-                    
-                })
-                .frame(height: 45)
-                
+                listComponent(title: "키 (cm)", isPresented: $isSetHeight, targetData: $height, pickerList: Array(130...260).map { String($0) }, suffix: "cm")
+                listComponent(title: "체중 (kg)", isPresented: $isSetWeight, targetData: $weight, pickerList: Array(30...200).map { String($0) }, suffix: "kg")
+                listComponent(title: "성별", isPresented: $isSetAge, targetData: $sex, pickerList: sexList)
             }
         }
     }
+    private func listComponent() -> some View {
+        Button(action: {
+            isSetBirthDay.toggle()
+        }) {
+            HStack(spacing: 0) {
+                Text("생년월일")
+                    .foregroundColor(Color.theme.teWhite)
+                Spacer()
+                Text(dateFormat(selectedDate))
+                    .foregroundColor(.gray)
+            }
+        }
+        .sheet(isPresented: $isSetBirthDay, content: {
+            pickerPopup()
+        })
+        .frame(height: 54)
+    }
     
-    private func listComponent(_ title: String, isPresented: Binding<Bool>, _ targetData: inout String, _ pickerList: [String]) -> some View {
+    private func listComponent(title: String, isPresented: Binding<Bool>, targetData: Binding<String>, pickerList: [String], suffix: String = "") -> some View {
         Button(action: {
             isPresented.wrappedValue.toggle()
         }) {
-            HStack(spacing: 0) {
+            HStack {
                 Text(title)
                     .foregroundColor(Color.theme.teWhite)
                 Spacer()
-                Text(targetData)
+                Text("\(targetData.wrappedValue)\(suffix)")
                     .foregroundColor(.gray)
             }
         }
         .sheet(isPresented: isPresented, content: {
-            pickerPopup()
+            pickerPopup(targetData: targetData, pickerList: pickerList, isPresented: isPresented, suffix: suffix)
         })
-        .frame(height: 30)
+        .frame(height: 54)
     }
-    
+
     private func pickerPopup() -> some View {
         HStack(spacing: 0) {
             VStack {
@@ -476,13 +361,43 @@ extension OnboardingView {
         }
     }
     
+    private func pickerPopup(targetData: Binding<String>, pickerList: [String], isPresented: Binding<Bool>, suffix: String) -> some View {
+        VStack(spacing: 0) {
+            HStack(spacing: 0) {
+                Button(action: {
+                    isPresented.wrappedValue.toggle()
+                }) {
+                    Text("취소")
+                        .font(.custom("Inter-Bold", size: 16))
+                        .foregroundColor(Color.theme.teWhite)
+                }
+                Spacer()
+                Button(action: {
+                    isPresented.wrappedValue.toggle()
+                }) {
+                    Text("완료")
+                        .font(.custom("Inter-Bold", size: 16))
+                        .foregroundColor(Color.theme.teGreen)
+                }
+            }
+            .padding(.horizontal, 28)
+            .padding(.vertical, 24)
+            
+            Picker("", selection: targetData, content: {
+                ForEach(pickerList, id: \.self) {
+                    Text("\($0)\(suffix)")
+                }
+            })
+            .presentationDetents([.fraction(0.4)])
+            .pickerStyle(.wheel)
+        }
+    }
+
     private func dateFormat(_ date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy.MM.dd."
-
         let currentDate = date
         let formattedDate = dateFormatter.string(from: currentDate)
-        
         return formattedDate
     }
 }

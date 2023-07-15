@@ -166,6 +166,11 @@ extension MainView {
                 Button(action: {
                     
                     EmitterManager.shared.isEmitterOn = true
+                    for i in 0 ..< 10 {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                            HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                        }
+                    }
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         EmitterManager.shared.isEmitterOn = false
                         isCongretePresented.toggle()

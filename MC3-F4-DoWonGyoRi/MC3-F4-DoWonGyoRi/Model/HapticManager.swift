@@ -9,16 +9,18 @@ import SwiftUI
 
 class HapticManager {
     
-    static let instance = HapticManager()
+    static let shared = HapticManager()
+    private init() {
+        
+    }
     
     func notification(type: UINotificationFeedbackGenerator.FeedbackType) {
-        
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(type)
     }
     
-    func impact(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+    func impact(style: UIImpactFeedbackGenerator.FeedbackStyle, intensity: CGFloat) {
         let generator = UIImpactFeedbackGenerator(style: style)
-        generator.impactOccurred()
+        generator.impactOccurred(intensity: intensity)
     }
 }

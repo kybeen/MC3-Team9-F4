@@ -152,6 +152,10 @@ extension MainView {
             .scrollIndicators(.hidden)
             
             ScrollView {
+                Text("아직 구현중~\n개발자가 열심히 일하고 있어요!")
+                    .font(.custom("Inter-Bold", size: 24))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.top, 50)
             }
             .tag(1)
             

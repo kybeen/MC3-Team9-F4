@@ -100,15 +100,15 @@ extension MainView {
                 .font(.custom("Inter-SemiBold", size: 28))
                 .padding(.bottom, 2)
             HStack(alignment: .firstTextBaseline, spacing: 0) {
-                Text(title1)
+                Text(userDataModel.userTitle1)
                     .font(.custom("Inter-Bold", size: 28))
                     .foregroundColor(Color.theme.teGreen)
                     .padding(.trailing, 10)
-                Text(title2)
+                Text(userDataModel.userTitle2)
                     .font(.custom("Inter-Bold", size: 28))
                     .foregroundColor(Color.theme.teSkyBlue)
                     .padding(.trailing, 10)
-                Text(nickname + suffix)
+                Text(userDataModel.username + suffix)
                     .font(.custom("Inter-SemiBold", size: 28))
                     .foregroundColor(Color.theme.teWhite)
             }

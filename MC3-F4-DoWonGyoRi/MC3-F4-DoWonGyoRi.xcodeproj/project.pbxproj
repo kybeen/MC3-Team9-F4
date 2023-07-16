@@ -47,7 +47,7 @@
 		C96DC7612A6323A500A922A3 /* EmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC7602A6323A500A922A3 /* EmitterView.swift */; };
 		C96DC7632A63361500A922A3 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC7622A63361500A922A3 /* HapticManager.swift */; };
 		C9804AC22A5BDB8400CF97A8 /* EmitterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */; };
-		C9804AC52A5BDBAB00CF97A8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC42A5BDBAB00CF97A8 /* Resource.swift */; };
+		C9804AC52A5BDBAB00CF97A8 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC42A5BDBAB00CF97A8 /* CustomBackButton.swift */; };
 		C9804AC72A5BDBC000CF97A8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */; };
 		C9804ACA2A5BDD3C00CF97A8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC92A5BDD3C00CF97A8 /* MainView.swift */; };
 		C9804B0C2A5C6A9000CF97A8 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804AF92A5C6A8F00CF97A8 /* Inter-Bold.otf */; };
@@ -136,7 +136,7 @@
 		C96DC7602A6323A500A922A3 /* EmitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterView.swift; sourceTree = "<group>"; };
 		C96DC7622A63361500A922A3 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterManager.swift; sourceTree = "<group>"; };
-		C9804AC42A5BDBAB00CF97A8 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		C9804AC42A5BDBAB00CF97A8 /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		C9804AC92A5BDD3C00CF97A8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		C9804ACD2A5C67A000CF97A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -369,7 +369,7 @@
 			children = (
 				C9533A152A60E72800FA7DC7 /* Gif */,
 				C9804AF82A5C6A6500CF97A8 /* Font */,
-				C9804AC42A5BDBAB00CF97A8 /* Resource.swift */,
+				C9804AC42A5BDBAB00CF97A8 /* CustomBackButton.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -556,7 +556,7 @@
 				C96DC7632A63361500A922A3 /* HapticManager.swift in Sources */,
 				C9533A0F2A60D0C500FA7DC7 /* GuideView.swift in Sources */,
 				C96DC7612A6323A500A922A3 /* EmitterView.swift in Sources */,
-				C9804AC52A5BDBAB00CF97A8 /* Resource.swift in Sources */,
+				C9804AC52A5BDBAB00CF97A8 /* CustomBackButton.swift in Sources */,
 				C9533A052A5E578000FA7DC7 /* SettingView.swift in Sources */,
 				C96600B92A5CF873008287EF /* RingChartsView.swift in Sources */,
 				168AD6922A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */,

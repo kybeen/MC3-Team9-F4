@@ -9,7 +9,7 @@ import SwiftUI
 import PhotosUI
 
 struct UserProfileSettingView: View {
-    
+    @Environment(\.dismiss) var dismiss
     @State var userNickname = "김배찌"
     @State var userTitle1 = "잘나가는"
     @State var userTitle2 = "세미프로"
@@ -31,6 +31,15 @@ struct UserProfileSettingView: View {
             Spacer()
         }
         .navigationTitle("프로필 수정").foregroundColor(Color.theme.teWhite)
+        .navigationBarItems(trailing: Button(action: {
+            dismiss()
+        }) {
+            Text("저장")
+                .font(.custom("Inter-Bold", size: 16))
+                .foregroundColor(Color.theme.teGreen)
+        })
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton())
         
     }
 }
@@ -109,9 +118,12 @@ extension UserProfileSettingView {
                 Button(action: {
                     
                 }) {
-                    Text(userNickname)
+                    TextField(userNickname, text: $userNickname)
                         .font(.custom("Inter-Medium", size: 16))
                         .foregroundColor(.gray)
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
+                        }
                 }
                 .frame(maxHeight: 60)
             }, header: {

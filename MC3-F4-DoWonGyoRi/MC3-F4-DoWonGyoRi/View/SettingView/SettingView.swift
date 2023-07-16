@@ -16,6 +16,8 @@ struct SettingView: View {
             modifyProfileButton()
             navigationLinkContainer()
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton())
     }
 }
 

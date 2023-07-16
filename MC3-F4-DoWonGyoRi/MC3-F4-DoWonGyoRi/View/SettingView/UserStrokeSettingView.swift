@@ -22,6 +22,8 @@ struct UserStrokeSettingView: View {
             saveButton("저장")
         }
         .padding(EdgeInsets(top: 80, leading: 25, bottom: 80, trailing: 25))
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton())
     }
 }
 
@@ -96,7 +98,7 @@ extension UserStrokeSettingView {
                     .background(Color.theme.teGreen)
                     .cornerRadius(30)
                 Text(buttonTitle)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.theme.teBlack)
                     .font(.custom("Inter-SemiBold", size: 16))
             }
         }

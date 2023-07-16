@@ -14,14 +14,15 @@ struct TodayDetailView: View {
     @State private var todayWorkoutTime = 120
     @State private var todayCalories = 200
     
-    
-    
     var body: some View {
         ScrollView {
             chartContainer()
             dataTableContainer()
         }
         .navigationTitle(todayDateString)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton())
+        .navigationBarItems(trailing: Image("instagram_icon"))
         .scrollIndicators(.hidden)
     }
 }
@@ -111,8 +112,8 @@ extension TodayDetailView {
     }
     
     private func timeCalorieDataContainer(_ title: String, _ data: Int, _ isTime: Bool) -> some View {
-        var timeHour = todayWorkoutTime / 60
-        var timeMinutes = todayWorkoutTime % 60
+        let timeHour = todayWorkoutTime / 60
+        let timeMinutes = todayWorkoutTime % 60
         
         return VStack(spacing: 0) {
             VStack(spacing: 0) {

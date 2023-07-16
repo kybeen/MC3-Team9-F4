@@ -29,7 +29,7 @@ struct GuideView: View {
                 }
                 .frame(maxWidth: UIScreen.main.bounds.width)
                 .padding(.horizontal, 36)
-                .padding(.bottom, 30)
+                .padding(.vertical, 30)
                 VStack(spacing: 0) {
                     Text("테니스 가이드")
                         .font(.custom("Inter-Medium", size: 20))

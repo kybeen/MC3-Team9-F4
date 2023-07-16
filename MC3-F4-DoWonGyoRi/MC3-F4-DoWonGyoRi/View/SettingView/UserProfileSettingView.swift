@@ -147,24 +147,40 @@ extension UserProfileSettingView {
                 .padding(.leading, 18)
             
             HStack(spacing: 0) {
-                Picker("타이틀1", selection: $userTitle1, content: {
-                    ForEach(userTitle1Array, id: \.self) {
-                        Text("\($0)")
-                            .font(.custom("Inter-Medium", size: 16))
-                            .foregroundColor(Color.theme.teWhite)
-                    }
-                })
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .frame(maxWidth: .infinity, maxHeight: 32)
+                        .padding(.horizontal, 10)
+                        .foregroundColor(Color.theme.teGreen)
+                    Picker("타이틀1", selection: $userTitle1, content: {
+                        ForEach(userTitle1Array, id: \.self) {
+                            Text("\($0)")
+                                .font(.custom("Inter-Bold", size: 16))
+                                .foregroundColor(userTitle1 == $0 ? Color.theme.teBlack : Color.theme.teWhite)
+                                .frame(maxWidth: .infinity, alignment: .trailing)
+                                .padding(.trailing, 10)
+                        }
+                    })
+                }
                 .presentationDetents([.fraction(0.4)])
                 .pickerStyle(.wheel)
                 
-                Picker("타이틀2", selection: $userTitle2, content: {
-                    ForEach(userTitle2Array, id: \.self) {
-                        Text("\($0)")
-                            .font(.custom("Inter-Medium", size: 16))
-                            .foregroundColor(Color.theme.teWhite)
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .frame(maxWidth: .infinity, maxHeight: 32)
+                        .padding(.horizontal, 10)
+                        .foregroundColor(Color.theme.teSkyBlue)
+                    Picker("타이틀2", selection: $userTitle2, content: {
+                        ForEach(userTitle2Array, id: \.self) {
+                            Text("\($0)")
+                                .font(.custom("Inter-Bold", size: 16))
+                                .foregroundColor(userTitle2 == $0 ? Color.theme.teBlack : Color.theme.teWhite)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.leading, 10)
                             
-                    }
-                })
+                        }
+                    })
+                }
                 .frame(alignment: .leading)
                 .presentationDetents([.fraction(0.4)])
                 .pickerStyle(.wheel)
@@ -178,6 +194,8 @@ extension UserProfileSettingView {
     }
     
 }
+
+
 
 
 struct UserProfileSettingView_Preview: PreviewProvider {

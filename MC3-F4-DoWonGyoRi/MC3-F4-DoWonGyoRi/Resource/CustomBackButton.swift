@@ -14,8 +14,8 @@ struct CustomBackButton: View {
         Button(action: {
             dismiss()
         }) {
-            Image(systemName: "arrow.backward")
-                .foregroundColor(.blue)
+            Image(systemName: "chevron.backward")
+                .foregroundColor(Color.theme.teGreen)
                 .imageScale(.large)
                 .frame(width: 44, height: 44)
         }

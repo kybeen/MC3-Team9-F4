@@ -8,9 +8,9 @@
 import SwiftUI
 import Charts
 
-let title1 = "고독한"
-let title2 = "승부사"
-let nickname = "장필우"
+let title1 = "Title1"
+let title2 = "Title2"
+let nickname = "배승현"
 let suffix = "님"
 let totalSwing = 500
 let totalYesterdaySwing = 300
@@ -26,6 +26,8 @@ let todayPerfectCount = 100
 let perfectDifference = 30
 
 struct MainView: View {
+    @ObservedObject var userDataModel = UserDataModel.shared
+    
     @State private var selectedTab = 0
     @State var isAnimationEnabled = false
     @State var isGuidePresent = false
@@ -49,6 +51,10 @@ struct MainView: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     isAnimationEnabled = true
                 }
+                userDataModel.fetchUserData()
+            }
+            .onDisappear {
+                userDataModel.saveUserData()
             }
         }
         .sheet(isPresented: $isCongretePresented, content: {

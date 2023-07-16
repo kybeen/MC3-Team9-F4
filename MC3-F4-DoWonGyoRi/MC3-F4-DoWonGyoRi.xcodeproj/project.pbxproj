@@ -75,6 +75,8 @@
 		C9804B1C2A5C6A9000CF97A8 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B092A5C6A8F00CF97A8 /* Inter-Regular.otf */; };
 		C9804B1D2A5C6A9000CF97A8 /* Inter-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B0A2A5C6A8F00CF97A8 /* Inter-ThinItalic.otf */; };
 		C9804B1E2A5C6A9000CF97A8 /* Inter-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9804B0B2A5C6A9000CF97A8 /* Inter-Italic.otf */; };
+		C9F9E0392A645B130086449F /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9E0382A645B130086449F /* UserDataModel.swift */; };
+		C9F9E03B2A645B1F0086449F /* WorkOutDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F9E03A2A645B1F0086449F /* WorkOutDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +173,8 @@
 		C9804B092A5C6A8F00CF97A8 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
 		C9804B0A2A5C6A8F00CF97A8 /* Inter-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ThinItalic.otf"; sourceTree = "<group>"; };
 		C9804B0B2A5C6A9000CF97A8 /* Inter-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Italic.otf"; sourceTree = "<group>"; };
+		C9F9E0382A645B130086449F /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		C9F9E03A2A645B1F0086449F /* WorkOutDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkOutDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,6 +414,8 @@
 			children = (
 				C94A8E842A6444B400F11C74 /* CongreteModel */,
 				C96DC7642A643A1A00A922A3 /* CoreData */,
+				C9F9E0382A645B130086449F /* UserDataModel.swift */,
+				C9F9E03A2A645B1F0086449F /* WorkOutDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -607,6 +613,7 @@
 				C9804ACA2A5BDD3C00CF97A8 /* MainView.swift in Sources */,
 				C9533A0D2A60393200FA7DC7 /* UserProfileSettingView.swift in Sources */,
 				C96DC7632A63361500A922A3 /* HapticManager.swift in Sources */,
+				C9F9E03B2A645B1F0086449F /* WorkOutDataModel.swift in Sources */,
 				C9533A0F2A60D0C500FA7DC7 /* GuideView.swift in Sources */,
 				C96DC7612A6323A500A922A3 /* EmitterView.swift in Sources */,
 				C94A8E8A2A64491800F11C74 /* WorkOutData+CoreDataProperties.swift in Sources */,
@@ -621,6 +628,7 @@
 				C96DC7672A643A3B00A922A3 /* UserInfo.xcdatamodeld in Sources */,
 				C96DC7592A611EE000A922A3 /* OnboardingView.swift in Sources */,
 				C9804AC22A5BDB8400CF97A8 /* EmitterManager.swift in Sources */,
+				C9F9E0392A645B130086449F /* UserDataModel.swift in Sources */,
 				C9804AC72A5BDBC000CF97A8 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

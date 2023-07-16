@@ -308,6 +308,15 @@
 			path = WorkOutData;
 			sourceTree = "<group>";
 		};
+		C94A8E842A6444B400F11C74 /* CongreteModel */ = {
+			isa = PBXGroup;
+			children = (
+				C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */,
+				C96DC7622A63361500A922A3 /* HapticManager.swift */,
+			);
+			path = CongreteModel;
+			sourceTree = "<group>";
+		};
 		C9533A032A5E576700FA7DC7 /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -396,9 +405,8 @@
 		C9804ABF2A5BDAF000CF97A8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C94A8E842A6444B400F11C74 /* CongreteModel */,
 				C96DC7642A643A1A00A922A3 /* CoreData */,
-				C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */,
-				C96DC7622A63361500A922A3 /* HapticManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

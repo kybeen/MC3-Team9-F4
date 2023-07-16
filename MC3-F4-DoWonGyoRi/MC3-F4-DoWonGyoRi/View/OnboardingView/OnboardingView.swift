@@ -9,30 +9,26 @@ import SwiftUI
 import PhotosUI
 struct OnboardingView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    let startDate = Calendar.current.date(from: DateComponents(year: 1900, month: 1, day: 1))!
+    let endDate = Date()
+    private let sexList = ["남성", "여성", "기타"]
     
     @Binding var isFirst: Bool
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
-    @State private var nickname = ""
     @State private var handSelect = "손을 선택해주세요"
-    
-    /**
-     UserInfoSettingView와 겹치는 변수
-     */
-    @State private var height = "170"
-    @State private var weight = "60"
     @State private var isSetAge: Bool = false
     @State private var isSetWeight: Bool = false
     @State private var isSetHeight: Bool = false
     @State private var isSetBirthDay: Bool = false
     @State private var isLeftHand: Bool = true
     @State private var selectedDate = Date()
-    private let sexList = ["남성", "여성", "기타"]
+    @State private var height = "170"
+    @State private var weight = "60"
+    @State private var nickname = ""
     @State private var sex = "남성"
-//    @State private var viewBirthdady = (selectedDate.formatted(.iso8601).substring(to: )
-    
-    let startDate = Calendar.current.date(from: DateComponents(year: 1900, month: 1, day: 1))!
-    let endDate = Date()
     
     @State var onboardingPage = 0
     var body: some View {
@@ -62,7 +58,7 @@ struct OnboardingView: View {
                 Spacer()
                 additionalDataInput()
                 Spacer()
-                nextButton()
+                nextButton("시작")
             default:
                 Spacer()
             }
@@ -132,9 +128,13 @@ extension OnboardingView {
         }
     }
     
+    
+    
     private func nextButton(_ buttonTitle: String = "다음") -> some View {
         Button(action: {
             if onboardingPage == 3 {
+                createUser()
+                createSampleWorkOutData()
                 isFirst = false
             } else {
                 onboardingPage += 1
@@ -428,5 +428,47 @@ extension OnboardingView {
         let currentDate = date
         let formattedDate = dateFormatter.string(from: currentDate)
         return formattedDate
+    }
+    
+    private func createUser() {
+        let coreDataManager = CoreDataManager.shared
+        
+        guard let newUserData = coreDataManager.create(entityName: "UserData", attributes: [:]) as? UserData else {
+            print("Failed to create UserData object")
+            return
+        }
+        
+        newUserData.birthday = selectedDate
+        newUserData.height = Int16(height) ?? 170
+        newUserData.isLeftHand = isLeftHand
+        newUserData.sex = Int16(sex) ?? 1
+        newUserData.userTargetBackStroke = 30
+        newUserData.userTargetForeStroke = 30
+        newUserData.userTitle1 = "열정적인"
+        newUserData.userTitle2 = "루키"
+        newUserData.userTitle1_List = ["열정적인"] as NSObject
+        newUserData.userTitle2_List = ["루키"] as NSObject
+        newUserData.username = nickname
+        newUserData.weight = Int16(weight) ?? 60
+        
+        coreDataManager.update(object: newUserData)
+    }
+    
+    private func createSampleWorkOutData() {
+        let coreDataManager = CoreDataManager.shared
+        
+        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
+            print("Failed to create WorkOutData object")
+            return
+        }
+        
+        newWorkOutData.burningCalories = 0
+        newWorkOutData.isBackhand = false
+        newWorkOutData.perfectSwingCount = 0
+        newWorkOutData.totalSwingCount = 0
+        newWorkOutData.workoutDate = Date()
+        newWorkOutData.workoutTime = 0
+        
+        coreDataManager.update(object: newWorkOutData)
     }
 }

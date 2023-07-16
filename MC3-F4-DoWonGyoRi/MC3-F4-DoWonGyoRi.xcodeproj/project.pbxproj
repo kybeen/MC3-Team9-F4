@@ -145,7 +145,7 @@
 		C96DC7602A6323A500A922A3 /* EmitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterView.swift; sourceTree = "<group>"; };
 		C96DC7622A63361500A922A3 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		C96DC7662A643A3B00A922A3 /* UserInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserInfo.xcdatamodel; sourceTree = "<group>"; };
-		C96DC7702A643D6300A922A3 /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C96DC7702A643D6300A922A3 /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; usesTabs = 0; };
 		C96DC7712A643D6300A922A3 /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterManager.swift; sourceTree = "<group>"; };
 		C9804AC42A5BDBAB00CF97A8 /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };

@@ -118,9 +118,12 @@ extension UserProfileSettingView {
                 Button(action: {
                     
                 }) {
-                    Text(userNickname)
+                    TextField(userNickname, text: $userNickname)
                         .font(.custom("Inter-Medium", size: 16))
                         .foregroundColor(.gray)
+                        .onTapGesture {
+                            UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
+                        }
                 }
                 .frame(maxHeight: 60)
             }, header: {

@@ -20,8 +20,10 @@ struct TodayDetailView: View {
             dataTableContainer()
         }
         .navigationTitle(todayDateString)
-        .scrollIndicators(.hidden)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton())
         .navigationBarItems(trailing: Image("instagram_icon"))
+        .scrollIndicators(.hidden)
     }
 }
 

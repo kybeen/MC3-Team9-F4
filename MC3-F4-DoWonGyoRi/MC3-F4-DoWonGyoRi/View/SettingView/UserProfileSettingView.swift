@@ -38,6 +38,8 @@ struct UserProfileSettingView: View {
                 .font(.custom("Inter-Bold", size: 16))
                 .foregroundColor(Color.theme.teGreen)
         })
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton())
         
     }
 }

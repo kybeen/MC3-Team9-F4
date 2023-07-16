@@ -243,6 +243,8 @@ struct UserInfoSettingView: View {
             }
             .padding(EdgeInsets(top: 50, leading: 0, bottom: 50, trailing: 0))
         }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: CustomBackButton())
     }
                                         
     private func dateFormat(_ date: Date) -> String {

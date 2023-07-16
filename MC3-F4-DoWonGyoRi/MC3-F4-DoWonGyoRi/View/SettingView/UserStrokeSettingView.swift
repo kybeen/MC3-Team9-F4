@@ -98,7 +98,7 @@ extension UserStrokeSettingView {
                     .background(Color.theme.teGreen)
                     .cornerRadius(30)
                 Text(buttonTitle)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color.theme.teBlack)
                     .font(.custom("Inter-SemiBold", size: 16))
             }
         }

@@ -32,6 +32,8 @@
 		168AD6A42A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */; };
 		168AD6A82A57EF060097985C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6A72A57EF060097985C /* Assets.xcassets */; };
 		168AD6AB2A57EF060097985C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6AA2A57EF060097985C /* Preview Assets.xcassets */; };
+		C94A8E802A6441B100F11C74 /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A8E7E2A6441B000F11C74 /* WorkOutData+CoreDataClass.swift */; };
+		C94A8E812A6441B100F11C74 /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A8E7F2A6441B000F11C74 /* WorkOutData+CoreDataProperties.swift */; };
 		C9533A052A5E578000FA7DC7 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9533A042A5E578000FA7DC7 /* SettingView.swift */; };
 		C9533A092A5E667000FA7DC7 /* UserInfoSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9533A082A5E667000FA7DC7 /* UserInfoSettingView.swift */; };
 		C9533A0B2A5F82E900FA7DC7 /* UserStrokeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9533A0A2A5F82E900FA7DC7 /* UserStrokeSettingView.swift */; };
@@ -46,6 +48,9 @@
 		C96DC75F2A63150D00A922A3 /* CongreteModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC75E2A63150D00A922A3 /* CongreteModalView.swift */; };
 		C96DC7612A6323A500A922A3 /* EmitterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC7602A6323A500A922A3 /* EmitterView.swift */; };
 		C96DC7632A63361500A922A3 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC7622A63361500A922A3 /* HapticManager.swift */; };
+		C96DC7672A643A3B00A922A3 /* UserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C96DC7652A643A3B00A922A3 /* UserInfo.xcdatamodeld */; };
+		C96DC7722A643D6300A922A3 /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC7702A643D6300A922A3 /* UserData+CoreDataClass.swift */; };
+		C96DC7732A643D6300A922A3 /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96DC7712A643D6300A922A3 /* UserData+CoreDataProperties.swift */; };
 		C9804AC22A5BDB8400CF97A8 /* EmitterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */; };
 		C9804AC52A5BDBAB00CF97A8 /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC42A5BDBAB00CF97A8 /* CustomBackButton.swift */; };
 		C9804AC72A5BDBC000CF97A8 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */; };
@@ -121,6 +126,8 @@
 		168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_F4_DoWonGyoRiApp.swift; sourceTree = "<group>"; };
 		168AD6A72A57EF060097985C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		168AD6AA2A57EF060097985C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C94A8E7E2A6441B000F11C74 /* WorkOutData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C94A8E7F2A6441B000F11C74 /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9533A042A5E578000FA7DC7 /* SettingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		C9533A082A5E667000FA7DC7 /* UserInfoSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoSettingView.swift; sourceTree = "<group>"; };
 		C9533A0A2A5F82E900FA7DC7 /* UserStrokeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStrokeSettingView.swift; sourceTree = "<group>"; };
@@ -135,6 +142,9 @@
 		C96DC75E2A63150D00A922A3 /* CongreteModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongreteModalView.swift; sourceTree = "<group>"; };
 		C96DC7602A6323A500A922A3 /* EmitterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterView.swift; sourceTree = "<group>"; };
 		C96DC7622A63361500A922A3 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
+		C96DC7662A643A3B00A922A3 /* UserInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserInfo.xcdatamodel; sourceTree = "<group>"; };
+		C96DC7702A643D6300A922A3 /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C96DC7712A643D6300A922A3 /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterManager.swift; sourceTree = "<group>"; };
 		C9804AC42A5BDBAB00CF97A8 /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		C9804AC62A5BDBC000CF97A8 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -280,6 +290,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		C94A8E822A6441BA00F11C74 /* UserData */ = {
+			isa = PBXGroup;
+			children = (
+				C96DC7702A643D6300A922A3 /* UserData+CoreDataClass.swift */,
+				C96DC7712A643D6300A922A3 /* UserData+CoreDataProperties.swift */,
+			);
+			path = UserData;
+			sourceTree = "<group>";
+		};
+		C94A8E832A6441C300F11C74 /* WorkOutData */ = {
+			isa = PBXGroup;
+			children = (
+				C94A8E7E2A6441B000F11C74 /* WorkOutData+CoreDataClass.swift */,
+				C94A8E7F2A6441B000F11C74 /* WorkOutData+CoreDataProperties.swift */,
+			);
+			path = WorkOutData;
+			sourceTree = "<group>";
+		};
 		C9533A032A5E576700FA7DC7 /* SettingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,6 +368,16 @@
 			path = CongreteModalView;
 			sourceTree = "<group>";
 		};
+		C96DC7642A643A1A00A922A3 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C94A8E832A6441C300F11C74 /* WorkOutData */,
+				C94A8E822A6441BA00F11C74 /* UserData */,
+				C96DC7652A643A3B00A922A3 /* UserInfo.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		C9804ABE2A5BDAE500CF97A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +396,7 @@
 		C9804ABF2A5BDAF000CF97A8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C96DC7642A643A1A00A922A3 /* CoreData */,
 				C9804AC12A5BDB8400CF97A8 /* EmitterManager.swift */,
 				C96DC7622A63361500A922A3 /* HapticManager.swift */,
 			);
@@ -547,9 +586,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C96DC7732A643D6300A922A3 /* UserData+CoreDataProperties.swift in Sources */,
 				C9533A1A2A60EE1200FA7DC7 /* TodayDetailView.swift in Sources */,
 				C9533A092A5E667000FA7DC7 /* UserInfoSettingView.swift in Sources */,
+				C94A8E802A6441B100F11C74 /* WorkOutData+CoreDataClass.swift in Sources */,
 				C9533A0B2A5F82E900FA7DC7 /* UserStrokeSettingView.swift in Sources */,
+				C96DC7722A643D6300A922A3 /* UserData+CoreDataClass.swift in Sources */,
 				168AD6942A57EF030097985C /* ContentView.swift in Sources */,
 				C9804ACA2A5BDD3C00CF97A8 /* MainView.swift in Sources */,
 				C9533A0D2A60393200FA7DC7 /* UserProfileSettingView.swift in Sources */,
@@ -563,9 +605,11 @@
 				C96600BB2A5CFFBD008287EF /* File.swift in Sources */,
 				C96DC75F2A63150D00A922A3 /* CongreteModalView.swift in Sources */,
 				C9533A132A60E5FF00FA7DC7 /* GifView.swift in Sources */,
+				C96DC7672A643A3B00A922A3 /* UserInfo.xcdatamodeld in Sources */,
 				C96DC7592A611EE000A922A3 /* OnboardingView.swift in Sources */,
 				C9804AC22A5BDB8400CF97A8 /* EmitterManager.swift in Sources */,
 				C9804AC72A5BDBC000CF97A8 /* ColorExtension.swift in Sources */,
+				C94A8E812A6441B100F11C74 /* WorkOutData+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -903,6 +947,19 @@
 			productName = NavigationStack;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		C96DC7652A643A3B00A922A3 /* UserInfo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C96DC7662A643A3B00A922A3 /* UserInfo.xcdatamodel */,
+			);
+			currentVersion = C96DC7662A643A3B00A922A3 /* UserInfo.xcdatamodel */;
+			path = UserInfo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 168AD6862A57EF030097985C /* Project object */;
 }

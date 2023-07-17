@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreMotion
 
 struct ResultView: View {
     @State private var selectedTab = 1
@@ -14,7 +15,7 @@ struct ResultView: View {
         NavigationView {
             TabView(selection: $selectedTab) {
                 VStack {
-                    Text("여기 폭죽 터지고 난리내기")
+                    ResultEffectView()
                 }
                 .tabItem{
                     Image(systemName: "tennisball.fill")
@@ -49,6 +50,73 @@ struct ResultView: View {
     }
 }
 
+//MARK: - Tag(0) : 기울임에 따라 움직이기 성공
+
+struct ResultEffectView: View {
+    @State private var offsets: [CGSize] = []
+    @State private var perfectCount: Int = 3
+
+    private let motionManager = CMMotionManager()
+
+    var body: some View {
+        ZStack {
+            ForEach(offsets.indices, id: \.self) { index in
+                Image("tennisBall")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .padding()
+                    .offset(x: validOffset(at: index).width, y: validOffset(at: index).height)
+                    .animation(.easeOut(duration: 0.3))
+            }
+        }
+        .onAppear {
+            initializeOffsets()
+            startMotionUpdates()
+        }
+        .onDisappear {
+            stopMotionUpdates()
+        }
+    }
+
+    private func initializeOffsets() {
+        offsets = Array(repeating: .zero, count: perfectCount)
+    }
+
+    private func validOffset(at index: Int) -> CGSize {
+        guard index >= 0 && index < offsets.count else {
+            return .zero
+        }
+        return offsets[index]
+    }
+
+    private func startMotionUpdates() {
+        guard motionManager.isDeviceMotionAvailable else { return }
+
+        motionManager.deviceMotionUpdateInterval = 0.1
+        motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (motion, error) in
+            guard let motion = motion else { return }
+
+            let pitch = motion.attitude.pitch
+            let roll = motion.attitude.roll
+
+            DispatchQueue.main.async {
+                self.updateOffsets(pitch: pitch, roll: roll)
+            }
+        }
+    }
+
+
+    private func updateOffsets(pitch: Double, roll: Double) {
+        offsets.indices.forEach { index in
+            let randomOffset = CGSize(width: CGFloat.random(in: -50...50), height: CGFloat.random(in: -50...50))
+            offsets[index] = CGSize(width: CGFloat(roll) * 100 + randomOffset.width, height: CGFloat(pitch) * 100 + randomOffset.height)
+        }
+    }
+
+    private func stopMotionUpdates() {
+        motionManager.stopDeviceMotionUpdates()
+    }
+}
 
 //MARK: - Tag(1)
 struct SwingRateView: View {
@@ -73,6 +141,7 @@ struct SwingRateView: View {
     }
 }
 
+//MARK: - Tag(2)
 struct HealthKitView: View {
     @EnvironmentObject var swingListWrapper: SwingListWrapper
 
@@ -121,6 +190,6 @@ struct HealthKitView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView()
+        ResultEffectView()
     }
 }

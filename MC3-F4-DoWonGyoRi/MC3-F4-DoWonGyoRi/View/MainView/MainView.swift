@@ -12,18 +12,6 @@ let title1 = "Title1"
 let title2 = "Title2"
 let nickname = "배승현"
 let suffix = "님"
-let totalSwing = 500
-let totalYesterdaySwing = 300
-let totalBackhandPerfectCount = yesterdayBackhandPerfectCount + todayBackhandPerfectCount
-let totalForehandPerfectCount = yesterdayForehandPerfectCount + todayForehandPerfectCount
-let yesterdayForehandPerfectCount = 100
-let todayForehandPerfectCount = 200
-let yesterdayBackhandPerfectCount = 300
-let todayBackhandPerfectCount = 100
-let todayPlayTime = 120
-let lastPlayTime = 60
-let todayPerfectCount = 100
-let perfectDifference = 30
 
 struct MainView: View {
     @ObservedObject var userDataModel = UserDataModel.shared
@@ -49,10 +37,12 @@ struct MainView: View {
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .onAppear {
+                userDataModel.fetchUserData()
+                print(workoutDataModel)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     isAnimationEnabled = true
                 }
-                userDataModel.fetchUserData()
+                
             }
             .onDisappear {
                 userDataModel.saveUserData()
@@ -206,14 +196,14 @@ extension MainView {
     }
     
     private func ringChartsContainer() -> some View {
-        NavigationLink(destination: TodayDetailView()) {
+        NavigationLink(destination: TodayDetailView(workoutDatamodel: workoutDataModel)) {
             VStack(spacing: 0) {
                 ZStack {
                     Circle()
                         .frame(maxWidth: UIScreen.main.bounds.width - 46, maxHeight: UIScreen.main.bounds.width - 46)
                         .foregroundColor(Color.theme.teRealBlack)
                     VStack {
-                        RingChartsView(values: [ CGFloat(workoutDataModel.totalSwingCount / (userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke) * 100), 100], colors: [[ Color.theme.teBlue, Color.theme.teGreen], [ Color.theme.teSkyBlue, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
+                        RingChartsView(values: [workoutDataModel.todayChartDatum[6] / CGFloat((userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke)), workoutDataModel.todayChartDatum[7] * 100], colors: [[ Color.theme.teBlue, Color.theme.teGreen], [ Color.theme.teSkyBlue, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
                             .frame(width: UIScreen.main.bounds.width - 80, height: UIScreen.main.bounds.width - 80, alignment: .center)
                         
                     }
@@ -222,7 +212,7 @@ extension MainView {
                             .font(.custom("Inter-Bold", size: 24))
                             .padding(.bottom, 12)
                             .foregroundColor(Color.theme.teSkyBlue)
-                        Text("\(todayPerfectCount)회")
+                        Text("\(Int(workoutDataModel.todayChartDatum[1]))회")
                             .font(.custom("Inter-Bold", size: 30))
                             .foregroundColor(Color.theme.teWhite)
                     }
@@ -239,15 +229,15 @@ extension MainView {
                 .font(.custom("Inter-Bold", size: 24))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-            summaryCountBox("오늘의 포핸드 Perfect 횟수가", "지난번보다")
-            summaryCountBox("오늘의 백핸드 Perfect 횟수가", "지난번보다")
+            summaryCountBox("오늘의 포핸드 Perfect 횟수가", "지난번보다", false)
+            summaryCountBox("오늘의 백핸드 Perfect 횟수가", "지난번보다", true)
             summaryTimeBox()
         }
         .padding(.leading, 17)
         .padding(.trailing, 17)
     }
     
-    private func summaryCountBox(_ firstLineString: String, _ compareString: String) -> some View {
+    private func summaryCountBox(_ firstLineString: String, _ compareString: String, _ isBackhand: Bool) -> some View {
         ZStack {
             Rectangle()
                 .foregroundColor(.clear)
@@ -256,7 +246,7 @@ extension MainView {
                 .cornerRadius(13)
                 .padding(.top, 14)
             VStack(spacing: 0) {
-                Text("\(firstLineString) \(compareString)\n\(abs(perfectDifference))회 \(perfectDifference > 0 ? "늘었습니다" : "줄었습니다").")
+                Text("\(firstLineString) \(compareString)\n\(abs(Int(workoutDataModel.todayChartDatum[isBackhand ? 5 : 2])))회 \(Int(workoutDataModel.todayChartDatum[isBackhand ? 5 : 2]) > 0 ? "늘었습니다" : "줄었습니다").")
                     .font(.custom("Inter-SemiBold", size: 16))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(Color.theme.teWhite)
@@ -267,9 +257,9 @@ extension MainView {
                     .foregroundColor(Color.theme.teWhite)
                 
                 // TODO: .animation 활용 -> 스크롤이 내려가서 그 부분이 보일 때, 애니메이션이 되어서 막대그래프가 나타나도록 구현
-                horizontalBarGraphContainer(1500, 2000, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue)
+                horizontalBarGraphContainer(Int(workoutDataModel.todayChartDatum[isBackhand ? 3 : 0]), Int(workoutDataModel.todayChartDatum[isBackhand ? 4 : 1]), leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, false, true)
                 
-                horizontalBarGraphContainer(500, 2000)
+                horizontalBarGraphContainer(Int(workoutDataModel.todayChartDatum[isBackhand ? 4 : 1]), Int(workoutDataModel.todayChartDatum[isBackhand ? 3 : 0]), false, false)
                     
             }
             
@@ -279,7 +269,8 @@ extension MainView {
     }
     
     private func summaryTimeBox() -> some View {
-        let time = todayPlayTime - lastPlayTime
+        let time = Int(workoutDataModel.todayChartDatum[10])
+            
         
         return ZStack {
             Rectangle()
@@ -299,9 +290,9 @@ extension MainView {
                     .padding(.top, 10)
                 
                 // TODO: .animation 활용 -> 스크롤이 내려가서 그 부분이 보일 때, 애니메이션이 되어서 막대그래프가 나타나도록 구현
-                horizontalBarGraphContainer(0, 0, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, true, 1600, 12000)
+                horizontalBarGraphContainer(0, 0, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, true, true, Int(workoutDataModel.todayChartDatum[9]), Int(workoutDataModel.todayChartDatum[8]))
                 
-                horizontalBarGraphContainer(0, 0, true, 12000, 1600)
+                horizontalBarGraphContainer(0, 0, true, false, Int(workoutDataModel.todayChartDatum[8]), Int(workoutDataModel.todayChartDatum[9]))
                     
             }
             
@@ -311,7 +302,7 @@ extension MainView {
     }
     
     
-    private func horizontalBarGraphContainer(_ swingCount: Int, _ totalSwing: Int, leftColor: Color = Color.theme.teWhite, rightColor: Color = Color.theme.teWhite, _ isTime: Bool = false, _ standardTime: Int = 0, _ comparisonTime: Int = 0) -> some View {
+    private func horizontalBarGraphContainer(_ swingCount: Int, _ totalSwing: Int, leftColor: Color = Color.theme.teWhite, rightColor: Color = Color.theme.teWhite, _ isTime: Bool = false, _ isToday: Bool = true, _ standardTime: Int = 0, _ comparisonTime: Int = 0) -> some View {
         
         let standardTimeHour = standardTime / 60
         let standardTimeMinutes = standardTime % 60
@@ -356,19 +347,16 @@ extension MainView {
                         )
                         .cornerRadius(5)
                         .overlay(
-                            Text("오늘")
+                            Text(isToday ? "오늘" : "이전")
                                 .foregroundColor(.black)
                                 .font(.custom("Inter-SemiBold", size: 14))
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                                 .padding(.trailing, 16)
                                 
                         )
-                        
                         .scaleEffect(x: isAnimationEnabled ? 1 : 0, y: 1, anchor: .leading)
                         .animation(.easeOut(duration: 2), value: isAnimationEnabled)
-                        
                         .padding(.top, 10)
-                        
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -377,8 +365,8 @@ extension MainView {
         
         
         func sizeCalculate(_ A: CGFloat, _ B: CGFloat) -> CGFloat {
-            
-            return CGFloat(isTime ? B / A * 400 : B / A * 100)
+            let answer = CGFloat(isTime ? B / A * 400 : B / A * 100)
+            return answer < 50 ? CGFloat(50) : answer
         }
         
         func findGCD(_ num1: CGFloat, _ num2: CGFloat) -> CGFloat {

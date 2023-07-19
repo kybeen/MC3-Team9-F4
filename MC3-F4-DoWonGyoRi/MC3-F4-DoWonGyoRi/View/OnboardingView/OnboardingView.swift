@@ -484,5 +484,8 @@ extension OnboardingView {
         newWorkOutData.workoutTime = 0
         
         coreDataManager.update(object: newWorkOutData)
+        newWorkOutData.isBackhand = true
+        coreDataManager.update(object: newWorkOutData)
+        
     }
 }

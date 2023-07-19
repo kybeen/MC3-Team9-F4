@@ -13,6 +13,7 @@ struct TodayDetailView: View {
     @State private var todayPerfectSwingCount = 34
     @State private var todayWorkoutTime = 120
     @State private var todayCalories = 200
+    @ObservedObject var workoutDatamodel: WorkOutDataModel
     
     var body: some View {
         ScrollView {
@@ -27,12 +28,14 @@ struct TodayDetailView: View {
     }
 }
 
-struct TodayDetailView_Preview: PreviewProvider {
-    static var previews: some View {
-        TodayDetailView()
-
-    }
-}
+//struct TodayDetailView_Preview: PreviewProvider {
+//    static var workoutDataModel = WorkOutDataModel()
+//
+//    static var previews: some View {
+//        TodayDetailView(workoutDatamodel: workoutDataModel)
+//
+//    }
+//}
 
 extension TodayDetailView {
     private var todayDateString: String {
@@ -57,7 +60,7 @@ extension TodayDetailView {
                         .font(.custom("Inter-Bold", size: 24))
                         .padding(.bottom, 12)
                         .foregroundColor(Color.theme.teSkyBlue)
-                    Text("\(todayPerfectCount)회")
+                    Text("\(Int(workoutDatamodel.todayChartDatum[0] + workoutDatamodel.todayChartDatum[3]))회")
                         .font(.custom("Inter-Bold", size: 30))
                 }
             }

@@ -27,6 +27,7 @@ let perfectDifference = 30
 
 struct MainView: View {
     @ObservedObject var userDataModel = UserDataModel.shared
+    @ObservedObject var workoutDataModel = WorkOutDataModel.shared
     
     @State private var selectedTab = 0
     @State var isAnimationEnabled = false
@@ -212,7 +213,7 @@ extension MainView {
                         .frame(maxWidth: UIScreen.main.bounds.width - 46, maxHeight: UIScreen.main.bounds.width - 46)
                         .foregroundColor(Color.theme.teRealBlack)
                     VStack {
-                        RingChartsView(values: [230, 100], colors: [[ Color.theme.teBlue, Color.theme.teGreen], [ Color.theme.teDarkGray, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
+                        RingChartsView(values: [ CGFloat(workoutDataModel.totalSwingCount / (userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke) * 100), 100], colors: [[ Color.theme.teBlue, Color.theme.teGreen], [ Color.theme.teSkyBlue, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
                             .frame(width: UIScreen.main.bounds.width - 80, height: UIScreen.main.bounds.width - 80, alignment: .center)
                         
                     }

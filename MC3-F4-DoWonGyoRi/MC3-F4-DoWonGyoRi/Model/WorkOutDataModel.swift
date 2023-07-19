@@ -21,6 +21,7 @@ class WorkOutDataModel: ObservableObject {
     @Published var workoutDate = Date()
     @Published var workoutTime = 0
     @Published var todayWorkoutDatum: [WorkOutData] = []
+    @Published var yesterdayWorkoutDatum: [WorkOutData] = []
     
     private let coreDataManager = CoreDataManager.shared
     
@@ -82,7 +83,7 @@ class WorkOutDataModel: ObservableObject {
         coreDataManager.update(object: workout)
     }
     
-    func fetchTodayWorkout() {
+    func fetchTodayAndYesterDayWorkout() {
         let entityName = "WorkOutData"
         
         // Get today's date
@@ -100,6 +101,18 @@ class WorkOutDataModel: ObservableObject {
         }
         
         todayWorkoutDatum = workoutData
+    }
+    
+    func calTotalSwingCount(_ isToday: Bool = true) -> Int {
+        return 0
+    }
+    
+    func calTotalPerfectSwing(_ isToday: Bool = true) -> Int {
+        return 0
+    }
+    
+    func calTodayWorkoutTime(_ isToday: Bool = true) -> Int {
+        return 0
     }
     
 }

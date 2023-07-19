@@ -104,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		163B6E1B2A6763E3000E0383 /* MC3-F4-DoWonGyoRi Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MC3-F4-DoWonGyoRi Watch App.entitlements"; sourceTree = "<group>"; };
 		1650CBCE2A66359800A3492F /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
 		1650CBD02A66377900A3492F /* ParticleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleEffect.swift; sourceTree = "<group>"; };
 		1673DC0B2A5CD4A9000F9EB1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -278,6 +279,7 @@
 		168AD6A22A57EF050097985C /* MC3-F4-DoWonGyoRi Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				163B6E1B2A6763E3000E0383 /* MC3-F4-DoWonGyoRi Watch App.entitlements */,
 				168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */,
 				1673DC112A5CE61F000F9EB1 /* Model */,
 				1673DC0D2A5CDA5A000F9EB1 /* View */,
@@ -780,6 +782,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MC3-F4-DoWonGyoRi Watch App/MC3-F4-DoWonGyoRi Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3-F4-DoWonGyoRi Watch App/Preview Content\"";
@@ -787,6 +790,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "MC3-F4-DoWonGyoRi";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "To track and record heart rate data for health analysis.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "mc3.MC3-F4-DoWonGyoRi";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -810,6 +816,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MC3-F4-DoWonGyoRi Watch App/MC3-F4-DoWonGyoRi Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3-F4-DoWonGyoRi Watch App/Preview Content\"";
@@ -817,6 +824,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "MC3-F4-DoWonGyoRi";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "To track and record heart rate data for health analysis.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "mc3.MC3-F4-DoWonGyoRi";
 				LD_RUNPATH_SEARCH_PATHS = (

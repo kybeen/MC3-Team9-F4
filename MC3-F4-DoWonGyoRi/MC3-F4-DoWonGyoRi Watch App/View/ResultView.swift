@@ -9,6 +9,7 @@ import SwiftUI
 import CoreMotion
 import WatchKit
 import SpriteKit
+import HealthKit
 
 
 struct ResultView: View {
@@ -58,7 +59,7 @@ struct ResultView: View {
 struct ResultEffectView: View {
     
     @State private var offsets: [CGSize] = []
-    @State private var perfectCount: Int = 3
+    @State private var perfectCount: Int = 8
     @State private var isLiked: [Bool] = []
     
     private let motionManager = CMMotionManager()
@@ -86,7 +87,7 @@ struct ResultEffectView: View {
     func CustomButton(systemImage: String, status: Bool, activeTint: Color, inActiveTint: Color, onTap: @escaping () -> ()) -> some View {
         Image("tennisBall")
             .resizable()
-            .frame(width: 30, height: 30)
+            .frame(width: 40, height: 40)
             .foregroundColor(status ? activeTint : inActiveTint)
             .particleEffect(systemImage: systemImage, font: .title2, status: status, activeTint: activeTint, inActiveTint: inActiveTint)
             .padding(.horizontal, 18)
@@ -162,11 +163,16 @@ struct SwingRateView: View {
 //MARK: - Tag(2)
 struct HealthKitView: View {
     @EnvironmentObject var swingListWrapper: SwingListWrapper
-    
     //우선 타입 임의로 지정
     @State var workingMin: String = "00:00.00"
     @State var bpm: Int = 150
     @State var kcal: Int = 160
+    
+    private var healthStore = HKHealthStore()
+    let heartRateQuantity = HKUnit(from: "count/min")
+    @State private var value = 0
+    
+    
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
@@ -175,7 +181,7 @@ struct HealthKitView: View {
                 .foregroundColor(Color.watchColor.lightGreen)
                 .padding(.bottom, 2)
             
-            Text("\(bpm) BPM")
+            Text("\(value) BPM")
                 .font(.system(size: 20, weight: .medium))
             
             Text("\(kcal) kcal")
@@ -189,30 +195,86 @@ struct HealthKitView: View {
                     .foregroundColor(Color.black)
             }
             
-            //            Button(action: {
-            //                print("clicked")
-            //            }) {
-            //                Text("완료")
-            //                    .font(.system(size: 20, weight: .bold))
-            //            }
-            
             .foregroundColor(Color.watchColor.black) // 2
             .background(Color.watchColor.lightGreen) // 3
             .cornerRadius(20)
             
             
         }
+        .onAppear(perform: start)
     }
+    
 }
 
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultEffectView()
+        HealthKitView()
     }
 }
 
 
+
+//MARK: - Extension HealthKitView
+
+extension HealthKitView {
+    
+    func start() {
+        autorizeHealthKit()
+        startHeartRateQuery(quantityTypeIdentifier: .heartRate)
+    }
+    
+    func autorizeHealthKit() {
+       
+       // Used to define the identifiers that create quantity type objects.
+         let healthKitTypes: Set = [
+         HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!]
+      // Requests permission to save and read the specified data types.
+         healthStore.requestAuthorization(toShare: healthKitTypes, read: healthKitTypes) { _, _ in }
+     }
+    
+    private func startHeartRateQuery(quantityTypeIdentifier: HKQuantityTypeIdentifier) {
+            
+            // We want data points from our current device
+            let devicePredicate = HKQuery.predicateForObjects(from: [HKDevice.local()])
+            
+            // A query that returns changes to the HealthKit store, including a snapshot of new changes and continuous monitoring as a long-running query.
+            let updateHandler: (HKAnchoredObjectQuery, [HKSample]?, [HKDeletedObject]?, HKQueryAnchor?, Error?) -> Void = {
+                query, samples, deletedObjects, queryAnchor, error in
+                
+             // A sample that represents a quantity, including the value and the units.
+            guard let samples = samples as? [HKQuantitySample] else {
+                return
+            }
+                
+            self.process(samples, type: quantityTypeIdentifier)
+
+            }
+            
+            // It provides us with both the ability to receive a snapshot of data, and then on subsequent calls, a snapshot of what has changed.
+            let query = HKAnchoredObjectQuery(type: HKObjectType.quantityType(forIdentifier: quantityTypeIdentifier)!, predicate: devicePredicate, anchor: nil, limit: HKObjectQueryNoLimit, resultsHandler: updateHandler)
+            
+            query.updateHandler = updateHandler
+            
+            // query execution
+            
+            healthStore.execute(query)
+        }
+    
+    private func process(_ samples: [HKQuantitySample], type: HKQuantityTypeIdentifier) {
+            // variable initialization
+            var lastHeartRate = 0.0
+            
+            // cycle and value assignment
+            for sample in samples {
+                if type == .heartRate {
+                    lastHeartRate = sample.quantity.doubleValue(for: heartRateQuantity)
+                }
+                
+                self.value = Int(lastHeartRate)
+            }
+        }
+}
 
 //MARK: - Tag(0) 실험
 

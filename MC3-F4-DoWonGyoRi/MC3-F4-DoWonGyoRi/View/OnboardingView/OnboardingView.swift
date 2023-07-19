@@ -24,6 +24,7 @@ struct OnboardingView: View {
     @State private var isSetHeight: Bool = false
     @State private var isSetBirthDay: Bool = false
     @State private var isLeftHand: Bool = true
+    @State private var isLeftHandSelect: Bool = false
     @State private var selectedDate = Date()
     @State private var height = "170"
     @State private var weight = "60"
@@ -262,11 +263,20 @@ extension OnboardingView {
                     handSelect = "왼손"
                 }) {
                     VStack(spacing: 0) {
-                        Image("left_hand")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 87)
-                            .padding(.bottom, 13)
+                        ZStack {
+                            Text("\u{261E}")
+                                .frame(maxWidth: 87)
+                                
+//                            Image("left_hand")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(maxWidth: 87)
+//                                .padding(.bottom, 13)
+                            Circle()
+                                .frame(maxWidth: 87)
+                                .foregroundColor(isLeftHandSelect ? Color.theme.teGreen : Color.theme.teWhite)
+                        }
+                        .padding(.bottom, 13)
                         Text("왼손")
                             .font(.custom("Inter-Medium", size: 16))
                             .foregroundColor(Color.theme.teWhite)

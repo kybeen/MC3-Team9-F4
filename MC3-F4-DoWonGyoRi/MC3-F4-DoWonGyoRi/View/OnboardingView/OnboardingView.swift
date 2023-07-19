@@ -31,7 +31,7 @@ struct OnboardingView: View {
     @State private var nickname = ""
     @State private var sex = "남성"
     
-    @State var onboardingPage = 2
+    @State var onboardingPage = 0
     var body: some View {
         VStack(spacing: 0) {
             switch onboardingPage {

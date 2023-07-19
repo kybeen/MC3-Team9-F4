@@ -165,12 +165,11 @@ struct HealthKitView: View {
     @EnvironmentObject var swingListWrapper: SwingListWrapper
     //우선 타입 임의로 지정
     @State var workingMin: String = "00:00.00"
-    @State var bpm: Int = 150
+    @State private var bpm = 0
     @State var kcal: Int = 160
     
     private var healthStore = HKHealthStore()
     let heartRateQuantity = HKUnit(from: "count/min")
-    @State private var value = 0
     
     
     var body: some View {
@@ -181,7 +180,7 @@ struct HealthKitView: View {
                 .foregroundColor(Color.watchColor.lightGreen)
                 .padding(.bottom, 2)
             
-            Text("\(value) BPM")
+            Text("\(bpm) BPM")
                 .font(.system(size: 20, weight: .medium))
             
             Text("\(kcal) kcal")
@@ -271,7 +270,7 @@ extension HealthKitView {
                     lastHeartRate = sample.quantity.doubleValue(for: heartRateQuantity)
                 }
                 
-                self.value = Int(lastHeartRate)
+                self.bpm = Int(lastHeartRate)
             }
         }
 }

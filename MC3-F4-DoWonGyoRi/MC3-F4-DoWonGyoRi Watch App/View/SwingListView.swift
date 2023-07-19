@@ -20,8 +20,9 @@ struct SwingListView: View {
                 }
                 .frame(height: 120)
             }
+            .foregroundColor(Color.watchColor.lightBlack)
             .listStyle(CarouselListStyle())
-            .cornerRadius(20)
+            .cornerRadius(15)
             
             //추후에 색상 변경 가능
             .navigationTitle("자세")

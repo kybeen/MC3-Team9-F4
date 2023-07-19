@@ -16,8 +16,6 @@
 		1673DC172A5CE914000F9EB1 /* SwingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC162A5CE914000F9EB1 /* SwingListCellView.swift */; };
 		1673DC212A5D3605000F9EB1 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC202A5D3605000F9EB1 /* GuideView.swift */; };
 		1673DC232A5D361D000F9EB1 /* SwingCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC222A5D361D000F9EB1 /* SwingCountView.swift */; };
-		1673DC262A5D39D5000F9EB1 /* backhand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1673DC242A5D39D5000F9EB1 /* backhand.gif */; };
-		1673DC272A5D39D5000F9EB1 /* forehand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1673DC252A5D39D5000F9EB1 /* forehand.gif */; };
 		1673DC292A5D402A000F9EB1 /* GifImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC282A5D402A000F9EB1 /* GifImage.swift */; };
 		1673DC2B2A5D4617000F9EB1 /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC2A2A5D4617000F9EB1 /* ReadyView.swift */; };
 		1673DC302A5E2652000F9EB1 /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC2F2A5E2652000F9EB1 /* CircleProgressBar.swift */; };
@@ -113,8 +111,6 @@
 		1673DC162A5CE914000F9EB1 /* SwingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingListCellView.swift; sourceTree = "<group>"; };
 		1673DC202A5D3605000F9EB1 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		1673DC222A5D361D000F9EB1 /* SwingCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingCountView.swift; sourceTree = "<group>"; };
-		1673DC242A5D39D5000F9EB1 /* backhand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = backhand.gif; sourceTree = "<group>"; };
-		1673DC252A5D39D5000F9EB1 /* forehand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = forehand.gif; sourceTree = "<group>"; };
 		1673DC282A5D402A000F9EB1 /* GifImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImage.swift; sourceTree = "<group>"; };
 		1673DC2A2A5D4617000F9EB1 /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
 		1673DC2F2A5E2652000F9EB1 /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
@@ -285,8 +281,6 @@
 				1673DC0D2A5CDA5A000F9EB1 /* View */,
 				1673DC0A2A5CD497000F9EB1 /* Extension */,
 				168AD6A72A57EF060097985C /* Assets.xcassets */,
-				1673DC242A5D39D5000F9EB1 /* backhand.gif */,
-				1673DC252A5D39D5000F9EB1 /* forehand.gif */,
 				168AD6A92A57EF060097985C /* Preview Content */,
 			);
 			path = "MC3-F4-DoWonGyoRi Watch App";
@@ -592,9 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				168AD6AB2A57EF060097985C /* Preview Assets.xcassets in Resources */,
-				1673DC262A5D39D5000F9EB1 /* backhand.gif in Resources */,
 				168AD6A82A57EF060097985C /* Assets.xcassets in Resources */,
-				1673DC272A5D39D5000F9EB1 /* forehand.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

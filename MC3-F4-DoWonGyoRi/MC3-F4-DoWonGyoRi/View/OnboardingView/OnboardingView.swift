@@ -31,7 +31,7 @@ struct OnboardingView: View {
     @State private var nickname = ""
     @State private var sex = "남성"
     
-    @State var onboardingPage = 0
+    @State var onboardingPage = 2
     var body: some View {
         VStack(spacing: 0) {
             switch onboardingPage {
@@ -261,49 +261,52 @@ extension OnboardingView {
             HStack(spacing: 0) {
                 Button(action: {
                     handSelect = "왼손"
+                    isLeftHandSelect = true
                 }) {
                     VStack(spacing: 0) {
                         ZStack {
-                            Text("\u{261E}")
-                                .frame(maxWidth: 87)
-                                
-//                            Image("left_hand")
-//                                .resizable()
-//                                .scaledToFit()
-//                                .frame(maxWidth: 87)
-//                                .padding(.bottom, 13)
                             Circle()
                                 .frame(maxWidth: 87)
                                 .foregroundColor(isLeftHandSelect ? Color.theme.teGreen : Color.theme.teWhite)
+                                .shadow(color: isLeftHandSelect ? Color.theme.teGreen : Color.theme.teBlack, radius: 20, x: -5, y: 5)
+                            Image("leftHand")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: 73)
+                                .padding(.leading, 10)
                         }
                         .padding(.bottom, 13)
                         Text("왼손")
                             .font(.custom("Inter-Medium", size: 16))
-                            .foregroundColor(Color.theme.teWhite)
+                            .foregroundColor(isLeftHandSelect ? Color.theme.teGreen : Color.theme.teWhite)
                     }
                     Spacer()
                 }
                 Button(action: {
                     handSelect = "오른손"
+                    isLeftHandSelect = false
                 }) {
                     VStack(spacing: 0) {
-                        Image("right_hand")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 87)
-                            .padding(.bottom, 13)
+                        ZStack {
+                            Circle()
+                                .frame(maxWidth: 87)
+                                .foregroundColor(isLeftHandSelect ? Color.theme.teWhite : Color.theme.teGreen)
+                                .shadow(color: isLeftHandSelect ? Color.theme.teBlack : Color.theme.teGreen, radius: 20, x: -5, y: 5)
+                            Image("rightHand")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: 73)
+                                .padding(.trailing, 10)
+                        }
+                        .padding(.bottom, 13)
                         Text("오른손")
                             .font(.custom("Inter-Medium", size: 16))
-                            .foregroundColor(Color.theme.teWhite)
+                            .foregroundColor(isLeftHandSelect ? Color.theme.teWhite : Color.theme.teGreen)
                     }
                 }
                 
             }
             Spacer()
-            
-            Text(handSelect)
-                .font(.custom("Inter-Bold", size: 20))
-                .foregroundColor(Color.theme.teWhite)
         }
         .frame(maxWidth: 214, maxHeight: 160)
     }

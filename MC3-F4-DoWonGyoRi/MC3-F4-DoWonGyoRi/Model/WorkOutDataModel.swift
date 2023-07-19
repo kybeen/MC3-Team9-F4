@@ -113,16 +113,75 @@ class WorkOutDataModel: ObservableObject {
     }
 
     
-    func calTotalSwingCount(_ isToday: Bool = true) -> Int {
-        return 0
-    }
-    
-    func calTotalPerfectSwing(_ isToday: Bool = true) -> Int {
-        return 0
-    }
-    
-    func calTodayWorkoutTime(_ isToday: Bool = true) -> Int {
-        return 0
+    /**
+     isToday 파라미터 기본값은 true, false로 하면 직전일의 데이터를 불러온다.
+     return 되는 배열의 인덱스별 데이터는 아래와 같다.
+     
+         
+         0 : 오늘의 포핸드 총 스트로크 수
+         1 : 어제의 포핸드 총 스트로크 수
+         2 : 어제 대비 오늘의 포핸드 스트로크 수 차이
+         3 : 오늘의 백핸드 총 스트로크 수
+         4 : 어제의 백핸드 총 스트로크 수
+         5 : 어제 대비 오늘의 포핸드 스트로크 수 차이
+         6 : 어제의 총 스트로크 대비 오늘의 총 스트로크 비율
+         7 : 어제의 총 퍼펙트 스트로크 대비 오늘의 총 퍼펙트 스트로크 비율
+         8 : 어제 운동시간(분)
+         9 : 오늘 운동시간(분)
+         10 : 어제 대비 오늘의 운동시간 차이(분)
+     */
+    func calTodayChartData() -> [CGFloat] {
+        fetchTodayAndYesterdayWorkout()
+        let todayWorkoutData = todayWorkoutDatum
+        let yesterdayWorkoutData =  yesterdayWorkoutDatum
+        var todayBackhandStroke = 0
+        var todayBackhandPerfectStroke = 0
+        var todayForehandStroke = 0
+        var todayForehandPerfectStroke = 0
+        var yesterdayBackhandStroke = 0
+        var yesterdayBackhandPerfectStroke = 0
+        var yesterdayForehandStroke = 0
+        var yesterdayForehandPerfectStroke = 0
+        var todayPlayTime = 0
+        var yesterdayPlayTime = 0
+        var returnArray: [CGFloat] = []
+        
+        for i in todayWorkoutData {
+            if i.isBackhand {
+                todayBackhandStroke += Int(i.totalSwingCount)
+                todayBackhandPerfectStroke += Int(i.perfectSwingCount)
+            } else {
+                todayForehandStroke += Int(i.totalSwingCount)
+                todayForehandPerfectStroke += Int(i.perfectSwingCount)
+            }
+            todayPlayTime += Int(i.workoutTime)
+        }
+        
+        for i in yesterdayWorkoutData {
+            if i.isBackhand {
+                yesterdayBackhandStroke += Int(i.totalSwingCount)
+                yesterdayBackhandPerfectStroke += Int(i.perfectSwingCount)
+            } else {
+                yesterdayForehandStroke += Int(i.totalSwingCount)
+                yesterdayForehandPerfectStroke += Int(i.perfectSwingCount)
+            }
+            
+            yesterdayPlayTime += Int(i.workoutTime)
+        }
+
+        returnArray.append(CGFloat(todayForehandPerfectStroke))
+        returnArray.append(CGFloat(yesterdayForehandPerfectStroke))
+        returnArray.append(returnArray[0] - returnArray[1])
+        returnArray.append(CGFloat(todayBackhandPerfectStroke))
+        returnArray.append(CGFloat(yesterdayBackhandPerfectStroke))
+        returnArray.append(returnArray[3] - returnArray[4])
+        returnArray.append(CGFloat(todayForehandStroke + todayForehandStroke))
+        returnArray.append((returnArray[0] + returnArray[3]) / returnArray[6])
+        returnArray.append(CGFloat(todayPlayTime))
+        returnArray.append(CGFloat(yesterdayPlayTime))
+        returnArray.append(returnArray[8] - returnArray[9])
+        
+        return returnArray
     }
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		163B6E1D2A6779C8000E0383 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B6E1C2A6779C8000E0383 /* HealthKitManager.swift */; };
 		164F9DBA2A60F1EF006D5825 /* NavigationStack in Frameworks */ = {isa = PBXBuildFile; productRef = 164F9DB92A60F1EF006D5825 /* NavigationStack */; };
 		1650CBCF2A66359800A3492F /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1650CBCE2A66359800A3492F /* Particle.swift */; };
 		1650CBD12A66377900A3492F /* ParticleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1650CBD02A66377900A3492F /* ParticleEffect.swift */; };
@@ -103,6 +104,7 @@
 
 /* Begin PBXFileReference section */
 		163B6E1B2A6763E3000E0383 /* MC3-F4-DoWonGyoRi Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MC3-F4-DoWonGyoRi Watch App.entitlements"; sourceTree = "<group>"; };
+		163B6E1C2A6779C8000E0383 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		1650CBCE2A66359800A3492F /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
 		1650CBD02A66377900A3492F /* ParticleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleEffect.swift; sourceTree = "<group>"; };
 		1673DC0B2A5CD4A9000F9EB1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				1673DC142A5CE7A0000F9EB1 /* SwingList.swift */,
 				1650CBCE2A66359800A3492F /* Particle.swift */,
 				1650CBD02A66377900A3492F /* ParticleEffect.swift */,
+				163B6E1C2A6779C8000E0383 /* HealthKitManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -637,6 +640,7 @@
 				1673DC102A5CDA9F000F9EB1 /* SwingListView.swift in Sources */,
 				1673DC292A5D402A000F9EB1 /* GifImage.swift in Sources */,
 				1673DC152A5CE7A0000F9EB1 /* SwingList.swift in Sources */,
+				163B6E1D2A6779C8000E0383 /* HealthKitManager.swift in Sources */,
 				1673DC212A5D3605000F9EB1 /* GuideView.swift in Sources */,
 				1673DC302A5E2652000F9EB1 /* CircleProgressBar.swift in Sources */,
 				168AD6A42A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */,

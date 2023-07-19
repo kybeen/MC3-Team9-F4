@@ -83,7 +83,7 @@ class WorkOutDataModel: ObservableObject {
         coreDataManager.update(object: workout)
     }
     
-    func fetchTodayAndYesterDayWorkout() {
+    func fetchTodayAndYesterdayWorkout() {
         let entityName = "WorkOutData"
         
         // Get today's date
@@ -91,17 +91,27 @@ class WorkOutDataModel: ObservableObject {
         let today = calendar.startOfDay(for: Date())
         
         // Create a predicate to filter by workoutDate
-        let predicate = NSPredicate(format: "workoutDate == %@", today as NSDate)
+        let todayPredicate = NSPredicate(format: "workoutDate == %@", today as NSDate)
+        let yesterdayPredicate = NSPredicate(format: "workoutDate != %@", today as NSDate)
         
-        let fetchResult = coreDataManager.fetch(entityName: entityName, predicate: predicate)
+        let todayFetchResult = coreDataManager.fetch(entityName: entityName, predicate: todayPredicate)
+        let yesterdayFetchResult = coreDataManager.fetch(entityName: entityName, predicate: yesterdayPredicate)
         
-        guard let workoutData = fetchResult as? [WorkOutData] else {
+        guard let todayWorkoutData = todayFetchResult as? [WorkOutData] else {
             print("No workout data found for today")
             return
         }
         
-        todayWorkoutDatum = workoutData
+        todayWorkoutDatum = todayWorkoutData
+        
+        // Find the latest date from yesterday's workout data
+        if let yesterdayWorkoutData = yesterdayFetchResult as? [WorkOutData], let latestWorkout = yesterdayWorkoutData.max(by: { $0.workoutDate ?? Date() < $1.workoutDate ?? Date() }) {
+            yesterdayWorkoutDatum = [latestWorkout]
+        } else {
+            print("No workout data found for yesterday")
+        }
     }
+
     
     func calTotalSwingCount(_ isToday: Bool = true) -> Int {
         return 0

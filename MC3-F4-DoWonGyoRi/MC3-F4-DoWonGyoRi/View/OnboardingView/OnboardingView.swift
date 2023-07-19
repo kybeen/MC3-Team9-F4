@@ -42,13 +42,13 @@ struct OnboardingView: View {
                 Spacer()
                 nextButton()
             case 1:
-                titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.")
+                titleContainer("프로필", "을", "입력해주세요.")
                 Spacer()
                 profileContainer()
                 Spacer()
                 nextButton()
             case 2:
-                titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.")
+                titleContainer("주로 사용하는 손", "을", "선택해주세요.")
                 Spacer()
                 handSelectContainer()
                 Spacer()
@@ -138,6 +138,7 @@ extension OnboardingView {
                 isFirst = false
             } else {
                 onboardingPage += 1
+                print(onboardingPage)
             }
         }) {
             ZStack {

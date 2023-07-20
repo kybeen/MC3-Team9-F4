@@ -9,6 +9,7 @@ import SwiftUI
 import CoreMotion
 import WatchKit
 import SpriteKit
+import HealthKit
 
 
 struct ResultView: View {
@@ -58,7 +59,7 @@ struct ResultView: View {
 struct ResultEffectView: View {
     
     @State private var offsets: [CGSize] = []
-    @State private var perfectCount: Int = 3
+    @State private var perfectCount: Int = 8
     @State private var isLiked: [Bool] = []
     
     private let motionManager = CMMotionManager()
@@ -86,7 +87,7 @@ struct ResultEffectView: View {
     func CustomButton(systemImage: String, status: Bool, activeTint: Color, inActiveTint: Color, onTap: @escaping () -> ()) -> some View {
         Image("tennisBall")
             .resizable()
-            .frame(width: 30, height: 30)
+            .frame(width: 40, height: 40)
             .foregroundColor(status ? activeTint : inActiveTint)
             .particleEffect(systemImage: systemImage, font: .title2, status: status, activeTint: activeTint, inActiveTint: inActiveTint)
             .padding(.horizontal, 18)
@@ -160,58 +161,123 @@ struct SwingRateView: View {
 }
 
 //MARK: - Tag(2)
+//struct HealthKitView: View {
+//    @EnvironmentObject var swingListWrapper: SwingListWrapper
+//    //우선 타입 임의로 지정
+//    @State var workingMin: String = "00:00.00"
+//    @State private var bpm = 0
+//    @State var kcal: Int = 160
+//
+//    private var healthStore = HKHealthStore()
+//    let heartRateQuantity = HKUnit(from: "count/min")
+//
+//
+//    var body: some View {
+//        VStack(alignment: .leading) {
+//            Spacer()
+//            Text(workingMin)
+//                .font(.system(size: 40, weight: .medium))
+//                .foregroundColor(Color.watchColor.lightGreen)
+//                .padding(.bottom, 2)
+//
+//            Text("\(bpm) BPM")
+//                .font(.system(size: 20, weight: .medium))
+//
+//            Text("\(kcal) kcal")
+//                .font(.system(size: 20, weight: .medium))
+//                .padding(.bottom, 8)
+//
+//            Spacer()
+//            NavigationLink(destination: SwingListView(swingList: swingListWrapper.swingList)) {
+//                Text("완료")
+//                    .font(.system(size: 16, weight: .bold))
+//                    .foregroundColor(Color.black)
+//            }
+//
+//            .foregroundColor(Color.watchColor.black) // 2
+//            .background(Color.watchColor.lightGreen) // 3
+//            .cornerRadius(20)
+//
+//
+//        }
+//        .onAppear(perform: start)
+//    }
+//
+//}
+
+
+
+//MARK: - Tag(2) 도전
 struct HealthKitView: View {
     @EnvironmentObject var swingListWrapper: SwingListWrapper
-    
     //우선 타입 임의로 지정
-    @State var workingMin: String = "00:00.00"
-    @State var bpm: Int = 150
-    @State var kcal: Int = 160
+    
+    @ObservedObject var healthManager = HealthKitManager()
+    
+    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
+
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
-            Text(workingMin)
+            let formattedTime = formatTime()
+            Text(formattedTime)
                 .font(.system(size: 40, weight: .medium))
                 .foregroundColor(Color.watchColor.lightGreen)
-                .padding(.bottom, 2)
-            
-            Text("\(bpm) BPM")
-                .font(.system(size: 20, weight: .medium))
-            
-            Text("\(kcal) kcal")
-                .font(.system(size: 20, weight: .medium))
+                .padding(.bottom, 5)
+
+            Text("\(healthManager.currentCalories - (healthInfo.startCal ?? 0.0), specifier: "%2.f") kcal")
+                .font(.system(size: 28, weight: .medium))
                 .padding(.bottom, 8)
-            
             Spacer()
             NavigationLink(destination: SwingListView(swingList: swingListWrapper.swingList)) {
                 Text("완료")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
                     .foregroundColor(Color.black)
             }
-            
-            //            Button(action: {
-            //                print("clicked")
-            //            }) {
-            //                Text("완료")
-            //                    .font(.system(size: 20, weight: .bold))
-            //            }
-            
+
             .foregroundColor(Color.watchColor.black) // 2
             .background(Color.watchColor.lightGreen) // 3
             .cornerRadius(20)
-            
-            
+        }
+        .onAppear {
+            healthManager.readCurrentCalories()
         }
     }
+
 }
+
 
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultEffectView()
+        HealthKitView()
     }
 }
 
+extension HealthKitView {
+    private func formatTime(_ timeInterval: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+
+        return formatter.string(from: timeInterval) ?? "00:00:00"
+    }
+    
+    // The formatTime function remains the same as shown in the previous response
+    private func formatTime() -> String {
+        if let startTime = healthInfo.startTime {
+            let currentTime = Date()
+            let timeInterval = currentTime.timeIntervalSince(startTime)
+
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.zeroFormattingBehavior = .pad
+
+            return formatter.string(from: timeInterval) ?? "00:00:00"
+        }
+        return "00:00:00"
+    }
+}
 
 
 //MARK: - Tag(0) 실험

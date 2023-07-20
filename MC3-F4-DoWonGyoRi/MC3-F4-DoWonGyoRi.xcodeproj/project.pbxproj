@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		163B6E1D2A6779C8000E0383 /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B6E1C2A6779C8000E0383 /* HealthKitManager.swift */; };
+		163B6E1F2A68AC4A000E0383 /* HealthSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163B6E1E2A68AC4A000E0383 /* HealthSingleton.swift */; };
 		164F9DBA2A60F1EF006D5825 /* NavigationStack in Frameworks */ = {isa = PBXBuildFile; productRef = 164F9DB92A60F1EF006D5825 /* NavigationStack */; };
 		1650CBCF2A66359800A3492F /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1650CBCE2A66359800A3492F /* Particle.swift */; };
 		1650CBD12A66377900A3492F /* ParticleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1650CBD02A66377900A3492F /* ParticleEffect.swift */; };
@@ -16,8 +18,6 @@
 		1673DC172A5CE914000F9EB1 /* SwingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC162A5CE914000F9EB1 /* SwingListCellView.swift */; };
 		1673DC212A5D3605000F9EB1 /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC202A5D3605000F9EB1 /* GuideView.swift */; };
 		1673DC232A5D361D000F9EB1 /* SwingCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC222A5D361D000F9EB1 /* SwingCountView.swift */; };
-		1673DC262A5D39D5000F9EB1 /* backhand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1673DC242A5D39D5000F9EB1 /* backhand.gif */; };
-		1673DC272A5D39D5000F9EB1 /* forehand.gif in Resources */ = {isa = PBXBuildFile; fileRef = 1673DC252A5D39D5000F9EB1 /* forehand.gif */; };
 		1673DC292A5D402A000F9EB1 /* GifImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC282A5D402A000F9EB1 /* GifImage.swift */; };
 		1673DC2B2A5D4617000F9EB1 /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC2A2A5D4617000F9EB1 /* ReadyView.swift */; };
 		1673DC302A5E2652000F9EB1 /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1673DC2F2A5E2652000F9EB1 /* CircleProgressBar.swift */; };
@@ -104,6 +104,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		163B6E1B2A6763E3000E0383 /* MC3-F4-DoWonGyoRi Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MC3-F4-DoWonGyoRi Watch App.entitlements"; sourceTree = "<group>"; };
+		163B6E1C2A6779C8000E0383 /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		163B6E1E2A68AC4A000E0383 /* HealthSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthSingleton.swift; sourceTree = "<group>"; };
 		1650CBCE2A66359800A3492F /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
 		1650CBD02A66377900A3492F /* ParticleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleEffect.swift; sourceTree = "<group>"; };
 		1673DC0B2A5CD4A9000F9EB1 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
@@ -112,8 +115,6 @@
 		1673DC162A5CE914000F9EB1 /* SwingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingListCellView.swift; sourceTree = "<group>"; };
 		1673DC202A5D3605000F9EB1 /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
 		1673DC222A5D361D000F9EB1 /* SwingCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingCountView.swift; sourceTree = "<group>"; };
-		1673DC242A5D39D5000F9EB1 /* backhand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = backhand.gif; sourceTree = "<group>"; };
-		1673DC252A5D39D5000F9EB1 /* forehand.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = forehand.gif; sourceTree = "<group>"; };
 		1673DC282A5D402A000F9EB1 /* GifImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifImage.swift; sourceTree = "<group>"; };
 		1673DC2A2A5D4617000F9EB1 /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
 		1673DC2F2A5E2652000F9EB1 /* CircleProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleProgressBar.swift; sourceTree = "<group>"; };
@@ -229,6 +230,8 @@
 				1673DC142A5CE7A0000F9EB1 /* SwingList.swift */,
 				1650CBCE2A66359800A3492F /* Particle.swift */,
 				1650CBD02A66377900A3492F /* ParticleEffect.swift */,
+				163B6E1C2A6779C8000E0383 /* HealthKitManager.swift */,
+				163B6E1E2A68AC4A000E0383 /* HealthSingleton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,13 +281,12 @@
 		168AD6A22A57EF050097985C /* MC3-F4-DoWonGyoRi Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				163B6E1B2A6763E3000E0383 /* MC3-F4-DoWonGyoRi Watch App.entitlements */,
 				168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */,
 				1673DC112A5CE61F000F9EB1 /* Model */,
 				1673DC0D2A5CDA5A000F9EB1 /* View */,
 				1673DC0A2A5CD497000F9EB1 /* Extension */,
 				168AD6A72A57EF060097985C /* Assets.xcassets */,
-				1673DC242A5D39D5000F9EB1 /* backhand.gif */,
-				1673DC252A5D39D5000F9EB1 /* forehand.gif */,
 				168AD6A92A57EF060097985C /* Preview Content */,
 			);
 			path = "MC3-F4-DoWonGyoRi Watch App";
@@ -590,9 +592,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				168AD6AB2A57EF060097985C /* Preview Assets.xcassets in Resources */,
-				1673DC262A5D39D5000F9EB1 /* backhand.gif in Resources */,
 				168AD6A82A57EF060097985C /* Assets.xcassets in Resources */,
-				1673DC272A5D39D5000F9EB1 /* forehand.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,9 +640,11 @@
 				1673DC3C2A5F7CC6000F9EB1 /* ResultView.swift in Sources */,
 				1673DC2B2A5D4617000F9EB1 /* ReadyView.swift in Sources */,
 				1673DC0C2A5CD4A9000F9EB1 /* ColorExtension.swift in Sources */,
+				163B6E1F2A68AC4A000E0383 /* HealthSingleton.swift in Sources */,
 				1673DC102A5CDA9F000F9EB1 /* SwingListView.swift in Sources */,
 				1673DC292A5D402A000F9EB1 /* GifImage.swift in Sources */,
 				1673DC152A5CE7A0000F9EB1 /* SwingList.swift in Sources */,
+				163B6E1D2A6779C8000E0383 /* HealthKitManager.swift in Sources */,
 				1673DC212A5D3605000F9EB1 /* GuideView.swift in Sources */,
 				1673DC302A5E2652000F9EB1 /* CircleProgressBar.swift in Sources */,
 				168AD6A42A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */,
@@ -780,6 +782,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MC3-F4-DoWonGyoRi Watch App/MC3-F4-DoWonGyoRi Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3-F4-DoWonGyoRi Watch App/Preview Content\"";
@@ -787,6 +790,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "MC3-F4-DoWonGyoRi";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "To track and record heart rate data for health analysis.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "mc3.MC3-F4-DoWonGyoRi";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -810,6 +816,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "MC3-F4-DoWonGyoRi Watch App/MC3-F4-DoWonGyoRi Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3-F4-DoWonGyoRi Watch App/Preview Content\"";
@@ -817,6 +824,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "MC3-F4-DoWonGyoRi";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "To track and record heart rate data for health analysis.";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "mc3.MC3-F4-DoWonGyoRi";
 				LD_RUNPATH_SEARCH_PATHS = (

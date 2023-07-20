@@ -67,7 +67,7 @@ struct QuitView: View {
             
             NavigationLink(destination: ResultView()) {
                 Text("종료")
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(Color.white)
             }
             .background(Color.watchColor.lightBlack)

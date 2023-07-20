@@ -93,8 +93,8 @@ class WorkOutDataModel: ObservableObject {
         let today = calendar.startOfDay(for: Date())
         
         // Create a predicate to filter by workoutDate
-        let todayPredicate = NSPredicate(format: "workoutDate == %@", today as NSDate)
-        let yesterdayPredicate = NSPredicate(format: "workoutDate != %@", today as NSDate)
+        let todayPredicate = NSPredicate(format: "workoutDate >= %@", today as NSDate)
+        let yesterdayPredicate = NSPredicate(format: "workoutDate < %@", today as NSDate)
         
         let todayFetchResult = coreDataManager.fetch(entityName: entityName, predicate: todayPredicate)
         let yesterdayFetchResult = coreDataManager.fetch(entityName: entityName, predicate: yesterdayPredicate)
@@ -106,13 +106,24 @@ class WorkOutDataModel: ObservableObject {
         
         todayWorkoutDatum = todayWorkoutData
         
+        
+        // TODO: - 어제 데이터를 가져오는 쿼리 데이터문이 잘못된 것 같다.
         // Find the latest date from yesterday's workout data
         if let yesterdayWorkoutData = yesterdayFetchResult as? [WorkOutData], let latestWorkout = yesterdayWorkoutData.max(by: { $0.workoutDate ?? Date() < $1.workoutDate ?? Date() }) {
-            yesterdayWorkoutDatum = [latestWorkout]
+            let latestDate = calendar.startOfDay(for: latestWorkout.workoutDate ?? Date())
+            if latestDate == today {
+                yesterdayWorkoutDatum = yesterdayWorkoutData
+                print("latestDate if문 내부 어제 데이터 : ", yesterdayWorkoutDatum)
+            } else {
+                yesterdayWorkoutDatum = yesterdayWorkoutData
+                print("latestDate else문 내부 어제 데이터 : ", yesterdayWorkoutDatum)
+            }
         } else {
             print("No workout data found for yesterday")
         }
+        print("yesterdayWorkoutData if문 외부 어제 데이터 : ", yesterdayWorkoutDatum)
     }
+
 
     
     /**
@@ -170,7 +181,18 @@ class WorkOutDataModel: ObservableObject {
             
             yesterdayPlayTime += Int(i.workoutTime)
         }
-
+        print("""
+        var todayBackhandStroke : \(todayBackhandStroke)
+        var todayBackhandPerfectStroke : \(todayBackhandPerfectStroke)
+        var todayForehandStroke : \(todayForehandStroke)
+        var todayForehandPerfectStroke :  \(todayForehandPerfectStroke)
+        var yesterdayBackhandStroke : \(yesterdayBackhandStroke)
+        var yesterdayBackhandPerfectStroke : \(yesterdayBackhandPerfectStroke)
+        var yesterdayForehandStroke : \(yesterdayForehandStroke)
+        var yesterdayForehandPerfectStroke : \(yesterdayForehandPerfectStroke)
+        var todayPlayTime : \(todayPlayTime)
+        var yesterdayPlayTime : \(yesterdayPlayTime)
+        """)
         returnArray.append(Double(todayForehandPerfectStroke))
         returnArray.append(Double(yesterdayForehandPerfectStroke))
         returnArray.append(returnArray[0] - returnArray[1])
@@ -178,7 +200,7 @@ class WorkOutDataModel: ObservableObject {
         returnArray.append(Double(yesterdayBackhandPerfectStroke))
         returnArray.append(returnArray[3] - returnArray[4])
         returnArray.append(Double(todayForehandStroke + todayBackhandStroke))
-        returnArray.append((returnArray[0] + returnArray[3]) / returnArray[6] == 0 ? 1 : returnArray[6])
+        returnArray.append((returnArray[6] == 0 ? 0 : returnArray[0] + returnArray[3]) / returnArray[6] == 0 ? 1 : returnArray[6])
         returnArray.append(Double(todayPlayTime))
         returnArray.append(Double(yesterdayPlayTime))
         returnArray.append(returnArray[8] - returnArray[9])

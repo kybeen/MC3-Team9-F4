@@ -456,8 +456,8 @@ extension OnboardingView {
         newUserData.height = Int16(height) ?? 170
         newUserData.isLeftHand = isLeftHand
         newUserData.sex = Int16(sex) ?? 1
-        newUserData.userTargetBackStroke = 30
-        newUserData.userTargetForeStroke = 30
+        newUserData.userTargetBackStroke = 150
+        newUserData.userTargetForeStroke = 150
         newUserData.userTitle1 = "열정적인"
         newUserData.userTitle2 = "루키"
         newUserData.userTitle1_List = ["열정적인"] as NSObject

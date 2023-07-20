@@ -38,7 +38,7 @@ struct MainView: View {
             .ignoresSafeArea(.all, edges: .bottom)
             .onAppear {
                 userDataModel.fetchUserData()
-                print(workoutDataModel)
+                print(workoutDataModel.todayChartDatum)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     isAnimationEnabled = true
                 }
@@ -176,6 +176,20 @@ extension MainView {
                 }) {
                     Text("Congrete Modal POPUP")
                 }
+                .padding(.bottom, 30)
+                
+                Button(action: {
+                    createSampleWorkOutData()
+                }) {
+                    Text("어제 운동 데이터 모델 만들기")
+                }
+                .padding(.bottom, 30)
+                
+                Button(action: {
+                    createTodaySampleWorkOutData()
+                }) {
+                    Text("오늘 운동 데이터 모델 만들기")
+                }
             }
             .tag(1)
             
@@ -195,6 +209,48 @@ extension MainView {
 //            })
     }
     
+    private func createSampleWorkOutData() {
+        let coreDataManager = CoreDataManager.shared
+
+        // 새로운 WorkOutData 객체를 생성
+        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
+            print("Failed to create WorkOutData object")
+            return
+        }
+        
+        // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
+        newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
+        newWorkOutData.isBackhand = Bool.random()
+        newWorkOutData.perfectSwingCount = Int16(Int.random(in: 10...200))
+        newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
+        newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date()
+        newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
+        
+        // 저장
+        coreDataManager.update(object: newWorkOutData)
+    }
+    
+    private func createTodaySampleWorkOutData() {
+        let coreDataManager = CoreDataManager.shared
+
+        // 새로운 WorkOutData 객체를 생성
+        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
+            print("Failed to create WorkOutData object")
+            return
+        }
+        
+        // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
+        newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
+        newWorkOutData.isBackhand = Bool.random()
+        newWorkOutData.perfectSwingCount = Int16(Int.random(in: 10...200))
+        newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
+        newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: 0, to: Date()) ?? Date()
+        newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
+        
+        // 저장
+        coreDataManager.update(object: newWorkOutData)
+    }
+    
     private func ringChartsContainer() -> some View {
         NavigationLink(destination: TodayDetailView(workoutDatamodel: workoutDataModel)) {
             VStack(spacing: 0) {
@@ -203,7 +259,7 @@ extension MainView {
                         .frame(maxWidth: UIScreen.main.bounds.width - 46, maxHeight: UIScreen.main.bounds.width - 46)
                         .foregroundColor(Color.theme.teRealBlack)
                     VStack {
-                        RingChartsView(values: [workoutDataModel.todayChartDatum[6] / CGFloat((userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke)), workoutDataModel.todayChartDatum[7] * 100], colors: [[ Color.theme.teBlue, Color.theme.teGreen], [ Color.theme.teSkyBlue, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
+                        RingChartsView(values: [CGFloat(workoutDataModel.todayChartDatum[6] / Double((userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke))) * 100, workoutDataModel.todayChartDatum[7]], colors: [[ Color.theme.teBlue, Color.theme.teGreen], [ Color.theme.teSkyBlue, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
                             .frame(width: UIScreen.main.bounds.width - 80, height: UIScreen.main.bounds.width - 80, alignment: .center)
                         
                     }
@@ -212,13 +268,19 @@ extension MainView {
                             .font(.custom("Inter-Bold", size: 24))
                             .padding(.bottom, 12)
                             .foregroundColor(Color.theme.teSkyBlue)
-                        Text("\(Int(workoutDataModel.todayChartDatum[1]))회")
+                        Text("\(Int(workoutDataModel.todayChartDatum[0] + workoutDataModel.todayChartDatum[3]))회")
                             .font(.custom("Inter-Bold", size: 30))
                             .foregroundColor(Color.theme.teWhite)
                     }
                 }
                 .padding(.top, 40)
                 .frame(maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.width)
+            }
+            .onAppear {
+                print("userDataModal.userTargetForeStroke", userDataModel.userTargetForeStroke)
+                print("userDataModal.userTargetBackStroke", userDataModel.userTargetBackStroke)
+                print("workoutDataModel.todayChartDatum[6]", workoutDataModel.todayChartDatum[6])
+                print("링차트 외부값 : ", CGFloat(workoutDataModel.todayChartDatum[6] / Double((userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke))) * 100)
             }
         }
     }

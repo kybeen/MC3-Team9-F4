@@ -211,7 +211,6 @@ struct SwingRateView: View {
 struct HealthKitView: View {
     @EnvironmentObject var swingListWrapper: SwingListWrapper
     //우선 타입 임의로 지정
-    @State private var bpm = 100
     
     @ObservedObject var healthManager = HealthKitManager()
     
@@ -224,18 +223,15 @@ struct HealthKitView: View {
             Text(formattedTime)
                 .font(.system(size: 40, weight: .medium))
                 .foregroundColor(Color.watchColor.lightGreen)
-                .padding(.bottom, 2)
-
-            Text("\(bpm) BPM")
-                .font(.system(size: 20, weight: .medium))
+                .padding(.bottom, 5)
 
             Text("\(healthManager.currentCalories - (healthInfo.startCal ?? 0.0), specifier: "%2.f") kcal")
-                .font(.system(size: 20, weight: .medium))
+                .font(.system(size: 28, weight: .medium))
                 .padding(.bottom, 8)
             Spacer()
             NavigationLink(destination: SwingListView(swingList: swingListWrapper.swingList)) {
                 Text("완료")
-                    .font(.system(size: 16, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
                     .foregroundColor(Color.black)
             }
 

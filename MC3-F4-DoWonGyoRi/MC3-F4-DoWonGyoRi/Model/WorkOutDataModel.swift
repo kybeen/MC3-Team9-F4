@@ -157,6 +157,7 @@ class WorkOutDataModel: ObservableObject {
         var yesterdayForehandPerfectStroke = 0
         var todayPlayTime = 0
         var yesterdayPlayTime = 0
+        var todayCalories = 0
         var returnArray: [Double] = []
         
         for i in todayWorkoutData {
@@ -168,6 +169,7 @@ class WorkOutDataModel: ObservableObject {
                 todayForehandPerfectStroke += Int(i.perfectSwingCount)
             }
             todayPlayTime += Int(i.workoutTime)
+            todayCalories += Int(i.burningCalories)
         }
         
         for i in yesterdayWorkoutData {
@@ -205,6 +207,7 @@ class WorkOutDataModel: ObservableObject {
         returnArray.append(Double(todayPlayTime))
         returnArray.append(Double(yesterdayPlayTime))
         returnArray.append(returnArray[8] - returnArray[9])
+        returnArray.append(Double(todayCalories))
         print("index : 6번", returnArray[6])
         print("index : 7번", returnArray[7])
         todayChartDatum = returnArray

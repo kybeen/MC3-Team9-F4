@@ -252,12 +252,10 @@ extension MainView {
     }
     
     private func ringChartsContainer() -> some View {
-        let totalSwing = (workoutDataModel.todayChartDatum[0] + workoutDataModel.todayChartDatum[3]) / Double(userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke) * 100
+        let totalSwing = (workoutDataModel.todayChartDatum[6]) / Double(userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke) * 100
         let perfectStrokeRatio = workoutDataModel.todayChartDatum[7] * 100
-        print("totalSwing", totalSwing)
-        print("perfectStrokeRatio", perfectStrokeRatio)
         
-        return NavigationLink(destination: TodayDetailView(workoutDatamodel: workoutDataModel)) {
+        return NavigationLink(destination: TodayDetailView(workoutDataModel: workoutDataModel, userDataModel: userDataModel)) {
             VStack(spacing: 0) {
                 ZStack {
                     Circle()

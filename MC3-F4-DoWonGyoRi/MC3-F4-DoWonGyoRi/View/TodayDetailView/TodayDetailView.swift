@@ -8,13 +8,8 @@
 import SwiftUI
 
 struct TodayDetailView: View {
-    @State private var targetSwingCount = 120
-    @State private var todaySwingCount = 135
-    @State private var todayPerfectSwingCount = 34
-    @State private var todayWorkoutTime = 120
-    @State private var todayCalories = 200
-    @ObservedObject var workoutDatamodel: WorkOutDataModel
-    
+    @ObservedObject var workoutDataModel: WorkOutDataModel
+    @ObservedObject var userDataModel: UserDataModel
     var body: some View {
         ScrollView {
             chartContainer()
@@ -45,23 +40,37 @@ extension TodayDetailView {
     }
     
     private func chartContainer() -> some View {
-        VStack(spacing: 0) {
+        let totalSwing = (workoutDataModel.todayChartDatum[6]) / Double(userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke) * 100
+        let perfectStrokeRatio = workoutDataModel.todayChartDatum[7] * 100
+        
+        return VStack(spacing: 0) {
             ZStack {
                 Circle()
                     .frame(maxWidth: UIScreen.main.bounds.width - 46, maxHeight: UIScreen.main.bounds.width - 46)
                     .foregroundColor(Color.theme.teRealBlack)
                 VStack {
-                    RingChartsView(values: [220, 20], colors: [[Color.theme.teDarkGray, Color.theme.teGreen], [Color.theme.teLightGray, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
+                    RingChartsView(values: [totalSwing, perfectStrokeRatio], colors: [[Color.theme.teDarkGray, Color.theme.teGreen], [Color.theme.teLightGray, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
                         .frame(width: UIScreen.main.bounds.width - 80, height: UIScreen.main.bounds.width - 80, alignment: .center)
                         
                 }
+                
+                
                 VStack(spacing: 0) {
+                    Text("Swing 달성도")
+                        .font(.custom("Inter-Bold", size: 24))
+                        .padding(.bottom, 12)
+                        .foregroundColor(Color.theme.teGreen)
+                    Text("\(totalSwing, specifier: "%0.1f")%")
+                        .font(.custom("Inter-Bold", size: 28))
+                        .foregroundColor(Color.theme.teWhite)
+                        .padding(.bottom, 20)
                     Text("Perfect")
                         .font(.custom("Inter-Bold", size: 24))
                         .padding(.bottom, 12)
                         .foregroundColor(Color.theme.teSkyBlue)
-                    Text("\(Int(workoutDatamodel.todayChartDatum[0] + workoutDatamodel.todayChartDatum[3]))회")
-                        .font(.custom("Inter-Bold", size: 30))
+                    Text("\(Int(workoutDataModel.todayChartDatum[0] + workoutDataModel.todayChartDatum[3]))회(\(perfectStrokeRatio, specifier: "%0.1f")%)")
+                        .font(.custom("Inter-Bold", size: 28))
+                        .foregroundColor(Color.theme.teWhite)
                 }
             }
             .padding(.top, 40)
@@ -71,15 +80,18 @@ extension TodayDetailView {
     
     private func dataTableContainer() -> some View {
         VStack(spacing: 0) {
-            swingDataContainer("스윙 횟수", Color.theme.teGreen)
-            swingDataContainer("Perfect 스윙", Color.theme.teBlue)
-            timeCalorieDataContainer("운동 시간", todayWorkoutTime, true)
-            timeCalorieDataContainer("칼로리 소비", todayCalories, false)
+            swingDataContainer("스윙 횟수", Color.theme.teGreen, false)
+            swingDataContainer("Perfect 스윙", Color.theme.teBlue, true)
+            timeCalorieDataContainer("운동 시간", Int(workoutDataModel.todayChartDatum[9]), true)
+            timeCalorieDataContainer("칼로리 소비", Int(workoutDataModel.todayChartDatum[11]), false)
         }
     }
     
-    private func swingDataContainer(_ title: String, _ color: Color) -> some View {
-        VStack(spacing: 0) {
+    private func swingDataContainer(_ title: String, _ color: Color, _ isPerfect: Bool) -> some View {
+        let totalPlaySwing = isPerfect ? Int(workoutDataModel.todayChartDatum[0] + workoutDataModel.todayChartDatum[3]) : Int(workoutDataModel.todayChartDatum[6])
+        let targetSwing = isPerfect ? Int(workoutDataModel.todayChartDatum[6]) : userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke
+        
+        return VStack(spacing: 0) {
             VStack(spacing: 0) {
                 Text(title)
                     .font(.custom("Inter-Medium", size: 16))
@@ -87,7 +99,7 @@ extension TodayDetailView {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 13)
                 HStack(spacing: 0) {
-                    Text("\(todaySwingCount)/\(targetSwingCount)")
+                    Text("\(totalPlaySwing)/\(targetSwing)")
                         .font(.custom("Inter-SemiBold", size: 36))
                         .foregroundColor(color)
                         .frame(maxHeight: .infinity, alignment: .bottom)
@@ -115,8 +127,8 @@ extension TodayDetailView {
     }
     
     private func timeCalorieDataContainer(_ title: String, _ data: Int, _ isTime: Bool) -> some View {
-        let timeHour = todayWorkoutTime / 60
-        let timeMinutes = todayWorkoutTime % 60
+        let timeHour = Int(workoutDataModel.todayChartDatum[9]) / 60
+        let timeMinutes = Int(workoutDataModel.todayChartDatum[9]) % 60
         
         return VStack(spacing: 0) {
             VStack(spacing: 0) {

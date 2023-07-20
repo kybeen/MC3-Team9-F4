@@ -17,24 +17,6 @@ private struct RingChartView: View {
     var lineWidth: CGFloat
     var colors: [Color]
     var isAnimated: Bool
-//    var overloadColors: [[Color]] {
-//        var lastColor: Color = colors.last ?? .blue
-//        var branchArray: [Color] = []
-//        var colorArray: [[Color]] = []
-//
-//        for constant in 1...Int((self.value / ringMaxValue).rounded(.up)) {
-//            let firstAppendColor = lastColor.adjust(hue: 0.0 * CGFloat(constant), saturation: 0, brightness: 0, opacity: 0)
-//            let secondAppendColor = firstAppendColor.adjust(hue: 0.001 * CGFloat(constant), saturation: 0, brightness: 0.08, opacity: 0)
-//
-//            branchArray.append(firstAppendColor)
-//            branchArray.append(secondAppendColor)
-//            colorArray.append(branchArray)
-//            lastColor = branchArray.last ?? .blue
-//            branchArray.removeAll()
-//        }
-//        return colorArray
-//    }
-    
     var overloadColors: [[Color]] {
         var branchArray: [Color] = []
         var colorArray: [[Color]] = []

@@ -9,8 +9,8 @@ import SwiftUI
 import Charts
 
 struct MainView: View {
-    @ObservedObject var userDataModel = UserDataModel.shared
-    @ObservedObject var workoutDataModel = WorkOutDataModel.shared
+    @ObservedObject var userDataModel: UserDataModel
+    @ObservedObject var workoutDataModel: WorkOutDataModel
     @State private var selectedTab = 0
     @State var isAnimationEnabled = false
     @State var isGuidePresent = false
@@ -467,7 +467,10 @@ extension MainView {
 }
 
 struct MainView_Provider: PreviewProvider {
+    @ObservedObject static var userDataModel = UserDataModel.shared
+    @ObservedObject static var workoutDataModel = WorkOutDataModel.shared
+    
     static var previews: some View {
-        MainView().preferredColorScheme(.dark)
+        MainView(userDataModel: userDataModel, workoutDataModel: workoutDataModel).preferredColorScheme(.dark)
     }
 }

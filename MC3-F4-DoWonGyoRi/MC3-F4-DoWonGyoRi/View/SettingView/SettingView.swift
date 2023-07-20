@@ -72,7 +72,7 @@ extension SettingView {
     }
     
     private func modifyProfileButton() -> some View {
-        NavigationLink(destination: UserProfileSettingView()) {
+        NavigationLink(destination: UserProfileSettingView(userDataModel: userDataModel)) {
             Text("프로필 수정")
                 .font(.custom("Inter-Bold", size: 16))
                 .multilineTextAlignment(.center)

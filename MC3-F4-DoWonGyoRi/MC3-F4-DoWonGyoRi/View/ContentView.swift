@@ -11,13 +11,15 @@ struct ContentView: View {
     
     @AppStorage("_isFirstLaunch") var isFirst: Bool = true
     @ObservedObject var emitterManager = EmitterManager.shared
+    @ObservedObject var userDataModel = UserDataModel.shared
+    @ObservedObject var workoutDataModel = WorkOutDataModel.shared
     
     var body: some View {
         if isFirst {
             OnboardingView(isFirst: $isFirst)
         } else {
             ZStack {
-                MainView()
+                MainView(userDataModel: userDataModel, workoutDataModel: workoutDataModel)
                 if emitterManager.isEmitterOn {
                     EmitterView()
                 }

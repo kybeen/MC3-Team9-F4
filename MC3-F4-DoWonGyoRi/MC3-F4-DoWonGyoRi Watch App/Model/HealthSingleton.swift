@@ -10,4 +10,5 @@ import Foundation
 
 class HealthStartInfo: ObservableObject {
     @Published var startCal: Double?
+    @Published var startTime: Date?
 }

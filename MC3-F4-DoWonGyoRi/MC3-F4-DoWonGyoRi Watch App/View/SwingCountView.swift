@@ -27,7 +27,7 @@ struct SwingCountView: View {
             }
             Spacer()
             NavigationLink(destination: ReadyView()) {
-                Text("시작 (현재 칼로리: \(healthManager.currentCalories))")
+                Text("시작")
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(Color.black)
             }
@@ -37,9 +37,12 @@ struct SwingCountView: View {
         .onAppear {
             healthManager.requestAuthorization()
             healthManager.readCurrentCalories()
+            
+            //MARK: - 클린 코드
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                getCurCal()
+                getCurrentInfo()
             }
+            
         }
         .navigationTitle("목록")
         .navigationBarTitleDisplayMode(.inline)
@@ -55,10 +58,11 @@ struct SwingCountView_Previews: PreviewProvider {
 //MARK: - Extension
 
 extension SwingCountView {
-
-    private func getCurCal() {
-//        healthManager.readCurrentCalories()
+    private func getCurrentInfo() {
         healthInfo.startCal = healthManager.currentCalories
-        print("health \(healthInfo.startCal)")
+        
+        healthInfo.startTime = Date()
+        
+        print("time -> \(healthInfo.startTime)")
     }
 }

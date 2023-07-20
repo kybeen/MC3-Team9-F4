@@ -211,18 +211,17 @@ struct SwingRateView: View {
 struct HealthKitView: View {
     @EnvironmentObject var swingListWrapper: SwingListWrapper
     //우선 타입 임의로 지정
-    @State var workingMin: String = "00:00.00"
     @State private var bpm = 100
     
     @ObservedObject var healthManager = HealthKitManager()
     
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
 
-
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
-            Text(workingMin)
+            let formattedTime = formatTime()
+            Text(formattedTime)
                 .font(.system(size: 40, weight: .medium))
                 .foregroundColor(Color.watchColor.lightGreen)
                 .padding(.bottom, 2)
@@ -256,6 +255,31 @@ struct HealthKitView: View {
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         HealthKitView()
+    }
+}
+
+extension HealthKitView {
+    private func formatTime(_ timeInterval: TimeInterval) -> String {
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+
+        return formatter.string(from: timeInterval) ?? "00:00:00"
+    }
+    
+    // The formatTime function remains the same as shown in the previous response
+    private func formatTime() -> String {
+        if let startTime = healthInfo.startTime {
+            let currentTime = Date()
+            let timeInterval = currentTime.timeIntervalSince(startTime)
+
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.zeroFormattingBehavior = .pad
+
+            return formatter.string(from: timeInterval) ?? "00:00:00"
+        }
+        return "00:00:00"
     }
 }
 

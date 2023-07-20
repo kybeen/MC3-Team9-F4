@@ -24,6 +24,7 @@ struct OnboardingView: View {
     @State private var isSetHeight: Bool = false
     @State private var isSetBirthDay: Bool = false
     @State private var isLeftHand: Bool = true
+    @State private var isLeftHandSelect: Bool = false
     @State private var selectedDate = Date()
     @State private var height = "170"
     @State private var weight = "60"
@@ -42,13 +43,13 @@ struct OnboardingView: View {
                 Spacer()
                 nextButton()
             case 1:
-                titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.")
+                titleContainer("프로필", "을", "입력해주세요.")
                 Spacer()
                 profileContainer()
                 Spacer()
                 nextButton()
             case 2:
-                titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.")
+                titleContainer("주로 사용하는 손", "을", "선택해주세요.")
                 Spacer()
                 handSelectContainer()
                 Spacer()
@@ -138,6 +139,7 @@ extension OnboardingView {
                 isFirst = false
             } else {
                 onboardingPage += 1
+                print(onboardingPage)
             }
         }) {
             ZStack {
@@ -259,40 +261,52 @@ extension OnboardingView {
             HStack(spacing: 0) {
                 Button(action: {
                     handSelect = "왼손"
+                    isLeftHandSelect = true
                 }) {
                     VStack(spacing: 0) {
-                        Image("left_hand")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 87)
-                            .padding(.bottom, 13)
+                        ZStack {
+                            Circle()
+                                .frame(maxWidth: 87)
+                                .foregroundColor(isLeftHandSelect ? Color.theme.teGreen : Color.theme.teWhite)
+                                .shadow(color: isLeftHandSelect ? Color.theme.teGreen : Color.theme.teBlack, radius: 20, x: -5, y: 5)
+                            Image("leftHand")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: 73)
+                                .padding(.leading, 10)
+                        }
+                        .padding(.bottom, 13)
                         Text("왼손")
                             .font(.custom("Inter-Medium", size: 16))
-                            .foregroundColor(Color.theme.teWhite)
+                            .foregroundColor(isLeftHandSelect ? Color.theme.teGreen : Color.theme.teWhite)
                     }
                     Spacer()
                 }
                 Button(action: {
                     handSelect = "오른손"
+                    isLeftHandSelect = false
                 }) {
                     VStack(spacing: 0) {
-                        Image("right_hand")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxWidth: 87)
-                            .padding(.bottom, 13)
+                        ZStack {
+                            Circle()
+                                .frame(maxWidth: 87)
+                                .foregroundColor(isLeftHandSelect ? Color.theme.teWhite : Color.theme.teGreen)
+                                .shadow(color: isLeftHandSelect ? Color.theme.teBlack : Color.theme.teGreen, radius: 20, x: -5, y: 5)
+                            Image("rightHand")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxWidth: 73)
+                                .padding(.trailing, 10)
+                        }
+                        .padding(.bottom, 13)
                         Text("오른손")
                             .font(.custom("Inter-Medium", size: 16))
-                            .foregroundColor(Color.theme.teWhite)
+                            .foregroundColor(isLeftHandSelect ? Color.theme.teWhite : Color.theme.teGreen)
                     }
                 }
                 
             }
             Spacer()
-            
-            Text(handSelect)
-                .font(.custom("Inter-Bold", size: 20))
-                .foregroundColor(Color.theme.teWhite)
         }
         .frame(maxWidth: 214, maxHeight: 160)
     }
@@ -442,8 +456,8 @@ extension OnboardingView {
         newUserData.height = Int16(height) ?? 170
         newUserData.isLeftHand = isLeftHand
         newUserData.sex = Int16(sex) ?? 1
-        newUserData.userTargetBackStroke = 30
-        newUserData.userTargetForeStroke = 30
+        newUserData.userTargetBackStroke = 150
+        newUserData.userTargetForeStroke = 150
         newUserData.userTitle1 = "열정적인"
         newUserData.userTitle2 = "루키"
         newUserData.userTitle1_List = ["열정적인"] as NSObject
@@ -470,5 +484,8 @@ extension OnboardingView {
         newWorkOutData.workoutTime = 0
         
         coreDataManager.update(object: newWorkOutData)
+        newWorkOutData.isBackhand = true
+        coreDataManager.update(object: newWorkOutData)
+        
     }
 }

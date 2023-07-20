@@ -8,24 +8,15 @@
 import SwiftUI
 import Charts
 
-let title1 = "고독한"
-let title2 = "승부사"
-let nickname = "장필우"
+let title1 = "Title1"
+let title2 = "Title2"
+let nickname = "배승현"
 let suffix = "님"
-let totalSwing = 500
-let totalYesterdaySwing = 300
-let totalBackhandPerfectCount = yesterdayBackhandPerfectCount + todayBackhandPerfectCount
-let totalForehandPerfectCount = yesterdayForehandPerfectCount + todayForehandPerfectCount
-let yesterdayForehandPerfectCount = 100
-let todayForehandPerfectCount = 200
-let yesterdayBackhandPerfectCount = 300
-let todayBackhandPerfectCount = 100
-let todayPlayTime = 120
-let lastPlayTime = 60
-let todayPerfectCount = 100
-let perfectDifference = 30
 
 struct MainView: View {
+    @ObservedObject var userDataModel = UserDataModel.shared
+    @ObservedObject var workoutDataModel = WorkOutDataModel.shared
+    
     @State private var selectedTab = 0
     @State var isAnimationEnabled = false
     @State var isGuidePresent = false
@@ -46,9 +37,13 @@ struct MainView: View {
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    isAnimationEnabled = true
-                }
+                userDataModel.fetchUserData()
+                print(workoutDataModel.todayChartDatum)
+                
+                
+            }
+            .onDisappear {
+                userDataModel.saveUserData()
             }
         }
         .sheet(isPresented: $isCongretePresented, content: {
@@ -94,15 +89,15 @@ extension MainView {
                 .font(.custom("Inter-SemiBold", size: 28))
                 .padding(.bottom, 2)
             HStack(alignment: .firstTextBaseline, spacing: 0) {
-                Text(title1)
+                Text(userDataModel.userTitle1)
                     .font(.custom("Inter-Bold", size: 28))
                     .foregroundColor(Color.theme.teGreen)
                     .padding(.trailing, 10)
-                Text(title2)
+                Text(userDataModel.userTitle2)
                     .font(.custom("Inter-Bold", size: 28))
                     .foregroundColor(Color.theme.teSkyBlue)
                     .padding(.trailing, 10)
-                Text(nickname + suffix)
+                Text(userDataModel.username + suffix)
                     .font(.custom("Inter-SemiBold", size: 28))
                     .foregroundColor(Color.theme.teWhite)
             }
@@ -179,6 +174,20 @@ extension MainView {
                 }) {
                     Text("Congrete Modal POPUP")
                 }
+                .padding(.bottom, 30)
+                
+                Button(action: {
+                    createSampleWorkOutData()
+                }) {
+                    Text("어제 운동 데이터 모델 만들기")
+                }
+                .padding(.bottom, 30)
+                
+                Button(action: {
+                    createTodaySampleWorkOutData()
+                }) {
+                    Text("오늘 운동 데이터 모델 만들기")
+                }
             }
             .tag(1)
             
@@ -198,30 +207,89 @@ extension MainView {
 //            })
     }
     
+    private func createSampleWorkOutData() {
+        let coreDataManager = CoreDataManager.shared
+
+        // 새로운 WorkOutData 객체를 생성
+        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
+            print("Failed to create WorkOutData object")
+            return
+        }
+        
+        // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
+        newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
+        newWorkOutData.isBackhand = Bool.random()
+        newWorkOutData.perfectSwingCount = Int16(Int.random(in: 10...200))
+        newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
+        newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date()
+        newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
+        
+        // 저장
+        coreDataManager.update(object: newWorkOutData)
+    }
+    
+    private func createTodaySampleWorkOutData() {
+        let coreDataManager = CoreDataManager.shared
+
+        // 새로운 WorkOutData 객체를 생성
+        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
+            print("Failed to create WorkOutData object")
+            return
+        }
+        
+        // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
+        newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
+        newWorkOutData.isBackhand = Bool.random()
+        newWorkOutData.perfectSwingCount = Int16(Int.random(in: 10...100))
+        newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
+        newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: 0, to: Date()) ?? Date()
+        newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
+        
+        // 저장
+        coreDataManager.update(object: newWorkOutData)
+    }
+    
     private func ringChartsContainer() -> some View {
-        NavigationLink(destination: TodayDetailView()) {
+        let totalSwing = (workoutDataModel.todayChartDatum[6]) / Double(userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke) * 100
+        let perfectStrokeRatio = workoutDataModel.todayChartDatum[7] * 100
+        
+        return NavigationLink(destination: TodayDetailView(workoutDataModel: workoutDataModel, userDataModel: userDataModel)) {
             VStack(spacing: 0) {
                 ZStack {
                     Circle()
                         .frame(maxWidth: UIScreen.main.bounds.width - 46, maxHeight: UIScreen.main.bounds.width - 46)
                         .foregroundColor(Color.theme.teRealBlack)
                     VStack {
-                        RingChartsView(values: [230, 100], colors: [[ Color.theme.teBlue, Color.theme.teGreen], [ Color.theme.teDarkGray, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
+                        RingChartsView(values: [totalSwing, perfectStrokeRatio], colors: [[ Color.theme.teBlue, Color.theme.teGreen], [ Color.theme.teSkyBlue, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
                             .frame(width: UIScreen.main.bounds.width - 80, height: UIScreen.main.bounds.width - 80, alignment: .center)
                         
                     }
                     VStack(spacing: 0) {
+                        Text("Swing 달성도")
+                            .font(.custom("Inter-Bold", size: 24))
+                            .padding(.bottom, 12)
+                            .foregroundColor(Color.theme.teGreen)
+                        Text("\(totalSwing, specifier: "%0.1f")%")
+                            .font(.custom("Inter-Bold", size: 28))
+                            .foregroundColor(Color.theme.teWhite)
+                            .padding(.bottom, 20)
                         Text("Perfect")
                             .font(.custom("Inter-Bold", size: 24))
                             .padding(.bottom, 12)
                             .foregroundColor(Color.theme.teSkyBlue)
-                        Text("\(todayPerfectCount)회")
-                            .font(.custom("Inter-Bold", size: 30))
+                        Text("\(Int(workoutDataModel.todayChartDatum[0] + workoutDataModel.todayChartDatum[3]))회(\(perfectStrokeRatio, specifier: "%0.1f")%)")
+                            .font(.custom("Inter-Bold", size: 28))
                             .foregroundColor(Color.theme.teWhite)
                     }
                 }
                 .padding(.top, 40)
                 .frame(maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.width)
+            }
+            .onAppear {
+                print("userDataModal.userTargetForeStroke", userDataModel.userTargetForeStroke)
+                print("userDataModal.userTargetBackStroke", userDataModel.userTargetBackStroke)
+                print("workoutDataModel.todayChartDatum[6]", workoutDataModel.todayChartDatum[6])
+                print("링차트 외부값 : ", CGFloat(workoutDataModel.todayChartDatum[6] / Double((userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke))) * 100)
             }
         }
     }
@@ -232,16 +300,20 @@ extension MainView {
                 .font(.custom("Inter-Bold", size: 24))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-            summaryCountBox("오늘의 포핸드 Perfect 횟수가", "지난번보다")
-            summaryCountBox("오늘의 백핸드 Perfect 횟수가", "지난번보다")
+            summaryCountBox("오늘의 포핸드 Perfect 횟수가", "지난번보다", false)
+            summaryCountBox("오늘의 백핸드 Perfect 횟수가", "지난번보다", true)
             summaryTimeBox()
         }
         .padding(.leading, 17)
         .padding(.trailing, 17)
     }
     
-    private func summaryCountBox(_ firstLineString: String, _ compareString: String) -> some View {
-        ZStack {
+    private func summaryCountBox(_ firstLineString: String, _ compareString: String, _ isBackhand: Bool) -> some View {
+        let todayPerfect = Int(workoutDataModel.todayChartDatum[isBackhand ? 3 : 0])
+        let yesterdayPerfect = Int(workoutDataModel.todayChartDatum[isBackhand ? 4 : 1])
+        let difference = Int(workoutDataModel.todayChartDatum[isBackhand ? 5 : 2])
+        
+        return ZStack {
             Rectangle()
                 .foregroundColor(.clear)
                 .frame(maxWidth: .infinity, minHeight: 254)
@@ -249,7 +321,7 @@ extension MainView {
                 .cornerRadius(13)
                 .padding(.top, 14)
             VStack(spacing: 0) {
-                Text("\(firstLineString) \(compareString)\n\(abs(perfectDifference))회 \(perfectDifference > 0 ? "늘었습니다" : "줄었습니다").")
+                Text("\(firstLineString) \(compareString)\n\(abs(difference))회 \(difference > 0 ? "늘었습니다" : "줄었습니다").")
                     .font(.custom("Inter-SemiBold", size: 16))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(Color.theme.teWhite)
@@ -260,9 +332,9 @@ extension MainView {
                     .foregroundColor(Color.theme.teWhite)
                 
                 // TODO: .animation 활용 -> 스크롤이 내려가서 그 부분이 보일 때, 애니메이션이 되어서 막대그래프가 나타나도록 구현
-                horizontalBarGraphContainer(1500, 2000, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue)
+                horizontalBarGraphContainer(todayPerfect, yesterdayPerfect, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, false, true)
                 
-                horizontalBarGraphContainer(500, 2000)
+                horizontalBarGraphContainer(yesterdayPerfect, todayPerfect, false, false)
                     
             }
             
@@ -272,7 +344,8 @@ extension MainView {
     }
     
     private func summaryTimeBox() -> some View {
-        let time = todayPlayTime - lastPlayTime
+        let time = Int(workoutDataModel.todayChartDatum[10])
+            
         
         return ZStack {
             Rectangle()
@@ -292,9 +365,9 @@ extension MainView {
                     .padding(.top, 10)
                 
                 // TODO: .animation 활용 -> 스크롤이 내려가서 그 부분이 보일 때, 애니메이션이 되어서 막대그래프가 나타나도록 구현
-                horizontalBarGraphContainer(0, 0, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, true, 1600, 12000)
+                horizontalBarGraphContainer(0, 0, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, true, true, Int(workoutDataModel.todayChartDatum[8]), Int(workoutDataModel.todayChartDatum[9]))
                 
-                horizontalBarGraphContainer(0, 0, true, 12000, 1600)
+                horizontalBarGraphContainer(0, 0, true, false, Int(workoutDataModel.todayChartDatum[9]), Int(workoutDataModel.todayChartDatum[8]))
                     
             }
             
@@ -304,10 +377,11 @@ extension MainView {
     }
     
     
-    private func horizontalBarGraphContainer(_ swingCount: Int, _ totalSwing: Int, leftColor: Color = Color.theme.teWhite, rightColor: Color = Color.theme.teWhite, _ isTime: Bool = false, _ standardTime: Int = 0, _ comparisonTime: Int = 0) -> some View {
+    private func horizontalBarGraphContainer(_ swingCount: Int, _ comparisonSwing: Int, leftColor: Color = Color.theme.teWhite, rightColor: Color = Color.theme.teWhite, _ isTime: Bool = false, _ isToday: Bool = true, _ standardTime: Int = 0, _ comparisonTime: Int = 0) -> some View {
         
         let standardTimeHour = standardTime / 60
         let standardTimeMinutes = standardTime % 60
+        let screenSize = UIScreen.main.bounds.width
         
         return VStack(spacing: 0) {
             HStack(spacing: 2) {
@@ -336,7 +410,7 @@ extension MainView {
                 ZStack {
                     Rectangle()
                         .foregroundColor(.clear)
-                        .frame(maxWidth: sizeCalculate(isTime ? CGFloat(abs(standardTime + comparisonTime)) : CGFloat(abs(totalSwing - swingCount)), isTime ? CGFloat(standardTime) : CGFloat(totalSwing)), maxHeight: 23)
+                        .frame(maxWidth: sizeCalculate(CGFloat((isTime ? standardTime : swingCount)), CGFloat((isTime ? comparisonTime : comparisonSwing))), maxHeight: 23)
                         .background(
                             LinearGradient(
                                 stops: [
@@ -349,29 +423,40 @@ extension MainView {
                         )
                         .cornerRadius(5)
                         .overlay(
-                            Text("오늘")
+                            Text(isToday ? "오늘" : "이전")
                                 .foregroundColor(.black)
                                 .font(.custom("Inter-SemiBold", size: 14))
                                 .frame(maxWidth: .infinity, alignment: .trailing)
                                 .padding(.trailing, 16)
                                 
                         )
-                        
                         .scaleEffect(x: isAnimationEnabled ? 1 : 0, y: 1, anchor: .leading)
-                        .animation(.easeOut(duration: 2), value: isAnimationEnabled)
-                        
+                        .animation(.easeOut(duration: isAnimationEnabled ? 2 : 0), value: isAnimationEnabled)
                         .padding(.top, 10)
-                        
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .onAppear {
+                    // 애니메이션 활성화
+                    if isAnimationEnabled {
+                        isAnimationEnabled = false
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                            isAnimationEnabled = true
+                        }
+                    }
+                }
             }
         }
         .padding(.top, 10)
         
         
         func sizeCalculate(_ A: CGFloat, _ B: CGFloat) -> CGFloat {
+            if A == 0 || B == 0 {
+                return CGFloat(45)
+            }
+            print("막대그래프 길이 : ",CGFloat(A / B * screenSize) < 60 ? 60 : CGFloat(A / B * screenSize))
+            return CGFloat(A / B * screenSize) < 45 ? 45 : CGFloat(A / B * screenSize)
             
-            return CGFloat(isTime ? B / A * 400 : B / A * 100)
         }
         
         func findGCD(_ num1: CGFloat, _ num2: CGFloat) -> CGFloat {

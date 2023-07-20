@@ -64,17 +64,18 @@ struct GuideView_Preview: PreviewProvider {
 
 extension GuideView {
     private func guideContainer(_ position: String) -> some View {
-        ZStack(alignment: .bottom) {
+        let screenSize = UIScreen.main.bounds.width
+        return ZStack(alignment: .bottom) {
             Rectangle()
                 .foregroundColor(.clear)
-                .frame(width: .infinity, height: 431)
+                .frame(width: screenSize, height: 431)
                 .background(Color(red: 0.29, green: 0.29, blue: 0.29))
                 .cornerRadius(15)
                 .shadow(color: .black, radius: 15, x: 20, y: 20)
                 .shadow(color: Color(red: 0.34, green: 0.34, blue: 0.34).opacity(0.2), radius: 23, x: -10, y: -10)
             Rectangle()
                 .foregroundColor(.clear)
-                .frame(width: .infinity, height: 118)
+                .frame(width: screenSize, height: 118)
                 .background(
                     LinearGradient(
                         stops: [

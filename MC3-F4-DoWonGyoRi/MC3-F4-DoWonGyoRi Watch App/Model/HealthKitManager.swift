@@ -16,6 +16,7 @@ class HealthKitManager: ObservableObject {
     
     @Published var currentCalories: Double = 0.0
     @Published var caloriesHistory = [Double]()
+    @Published var resultCalories: Double = 0.0     //총 칼로리
     
     func requestAuthorization() {
         self.healthStore.requestAuthorization(toShare: share, read: read) { (success, error) in

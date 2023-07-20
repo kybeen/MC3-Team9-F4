@@ -39,9 +39,7 @@ struct MainView: View {
             .onAppear {
                 userDataModel.fetchUserData()
                 print(workoutDataModel.todayChartDatum)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    isAnimationEnabled = true
-                }
+                
                 
             }
             .onDisappear {
@@ -433,17 +431,31 @@ extension MainView {
                                 
                         )
                         .scaleEffect(x: isAnimationEnabled ? 1 : 0, y: 1, anchor: .leading)
-                        .animation(.easeOut(duration: 2), value: isAnimationEnabled)
+                        .animation(.easeOut(duration: isAnimationEnabled ? 2 : 0), value: isAnimationEnabled)
                         .padding(.top, 10)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
+                .onAppear {
+                    // 애니메이션 활성화
+                    if isAnimationEnabled {
+                        isAnimationEnabled = false
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                            isAnimationEnabled = true
+                        }
+                    }
+                }
             }
         }
         .padding(.top, 10)
         
         
         func sizeCalculate(_ A: CGFloat, _ B: CGFloat) -> CGFloat {
-            return CGFloat(A / B * screenSize)
+            if A == 0 || B == 0 {
+                return CGFloat(45)
+            }
+            print("막대그래프 길이 : ",CGFloat(A / B * screenSize) < 60 ? 60 : CGFloat(A / B * screenSize))
+            return CGFloat(A / B * screenSize) < 45 ? 45 : CGFloat(A / B * screenSize)
             
         }
         

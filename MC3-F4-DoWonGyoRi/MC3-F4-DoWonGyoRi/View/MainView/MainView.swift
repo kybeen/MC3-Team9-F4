@@ -8,21 +8,15 @@
 import SwiftUI
 import Charts
 
-let title1 = "Title1"
-let title2 = "Title2"
-let nickname = "배승현"
-let suffix = "님"
-
 struct MainView: View {
     @ObservedObject var userDataModel = UserDataModel.shared
     @ObservedObject var workoutDataModel = WorkOutDataModel.shared
-    
     @State private var selectedTab = 0
     @State var isAnimationEnabled = false
     @State var isGuidePresent = false
     @State private var path: [Int] = []
-    
     @State private var isCongretePresented = false
+    
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -38,9 +32,6 @@ struct MainView: View {
             .ignoresSafeArea(.all, edges: .bottom)
             .onAppear {
                 userDataModel.fetchUserData()
-                print(workoutDataModel.todayChartDatum)
-                
-                
             }
             .onDisappear {
                 userDataModel.saveUserData()
@@ -70,7 +61,7 @@ extension MainView {
             }
             .fullScreenCover(isPresented: $isGuidePresent, content: GuideView.init)
             Spacer()
-            NavigationLink(destination: SettingView()) {
+            NavigationLink(destination: SettingView(userDataModel: userDataModel)) {
                 Image(systemName: "person.circle.fill")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
@@ -97,7 +88,7 @@ extension MainView {
                     .font(.custom("Inter-Bold", size: 28))
                     .foregroundColor(Color.theme.teSkyBlue)
                     .padding(.trailing, 10)
-                Text(userDataModel.username + suffix)
+                Text(userDataModel.username + "님")
                     .font(.custom("Inter-SemiBold", size: 28))
                     .foregroundColor(Color.theme.teWhite)
             }

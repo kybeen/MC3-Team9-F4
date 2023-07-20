@@ -190,6 +190,7 @@ class WorkOutDataModel: ObservableObject {
         var yesterdayBackhandPerfectStroke : \(yesterdayBackhandPerfectStroke)
         var yesterdayForehandStroke : \(yesterdayForehandStroke)
         var yesterdayForehandPerfectStroke : \(yesterdayForehandPerfectStroke)
+        var totalSwing : \(todayForehandStroke + todayBackhandStroke)
         var todayPlayTime : \(todayPlayTime)
         var yesterdayPlayTime : \(yesterdayPlayTime)
         """)
@@ -200,11 +201,12 @@ class WorkOutDataModel: ObservableObject {
         returnArray.append(Double(yesterdayBackhandPerfectStroke))
         returnArray.append(returnArray[3] - returnArray[4])
         returnArray.append(Double(todayForehandStroke + todayBackhandStroke))
-        returnArray.append((returnArray[6] == 0 ? 0 : returnArray[0] + returnArray[3]) / returnArray[6] == 0 ? 1 : returnArray[6])
+        returnArray.append((returnArray[6] == 0 ? 0 : returnArray[0] + returnArray[3]) / (returnArray[6] == 0 ? 1 : returnArray[6]))
         returnArray.append(Double(todayPlayTime))
         returnArray.append(Double(yesterdayPlayTime))
         returnArray.append(returnArray[8] - returnArray[9])
-        
+        print("index : 6번", returnArray[6])
+        print("index : 7번", returnArray[7])
         todayChartDatum = returnArray
     }
     

@@ -126,3 +126,20 @@ struct CameraPreviewView: UIViewRepresentable {
         
     }
 }
+
+
+extension UIImage {
+    // 워터마크 오버레이 헬퍼 함수
+    func overlayWith(image: UIImage) -> UIImage {
+        let newSize = CGSize(width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        
+        draw(in: CGRect(origin: CGPoint.zero, size: size))
+        image.draw(in: CGRect(origin: CGPoint(x: size.width - 200, y: size.height - 100), size: image.size))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+}

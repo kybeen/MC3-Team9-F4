@@ -71,6 +71,7 @@ class CameraViewModel: ObservableObject {
     
     // 전후면 카메라 스위칭
     func changeCamera() {
+        model.changeCamera()
         print("[CameraViewModel]: Camera changed!")
     }
     

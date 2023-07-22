@@ -7,12 +7,14 @@
 
 import SwiftUI
 import AVFoundation
+import Combine
 
 class CameraViewModel: ObservableObject {
     private let model: Camera
     private let session: AVCaptureSession
     let cameraPreview: AnyView
-
+    private var subscriptions = Set<AnyCancellable>()
+    @Published var recentImage: UIImage?
     @Published var isFlashOn = false
     @Published var isSilentModeOn = false
     
@@ -29,6 +31,7 @@ class CameraViewModel: ObservableObject {
     }
     
     func capturePhoto() {
+        model.capturePhoto()
         print("[CameraViewModel]: Photo captured!")
     }
     
@@ -40,5 +43,11 @@ class CameraViewModel: ObservableObject {
         model = Camera()
         session = model.session
         cameraPreview = AnyView(CameraPreviewView(session: session))
+        
+        model.$recentImage.sink { [weak self] (photo) in
+            guard let pic = photo else { return }
+            self?.recentImage = pic
+        }
+        .store(in: &self.subscriptions)
     }
 }

@@ -42,12 +42,22 @@ struct CameraView: View {
                 Spacer()
                 
                 HStack{
-                    // 찍은 사진 미리보기, 일단 액션 X
+                    // 찍은 사진 미리보기
                     Button(action: {}) {
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(lineWidth: 5)
-                            .frame(width: 75, height: 75)
-                            .padding()
+                        if let previewImage = viewModel.recentImage {
+                            Image(uiImage: previewImage)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 75, height: 75)
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                                .aspectRatio(1, contentMode: .fit)
+                        } else {
+                            // ✅ linewidth 살짝 수정
+                            RoundedRectangle(cornerRadius: 15)
+                                .stroke(lineWidth: 3)
+                                .foregroundColor(.white)
+                                .frame(width: 75, height: 75)
+                        }
                     }
                     
                     Spacer()

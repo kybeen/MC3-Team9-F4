@@ -18,6 +18,8 @@ class CameraViewModel: ObservableObject {
     @Published var isFlashOn = false
     @Published var isSilentModeOn = false
     private var isCameraBusy = false
+    let hapticImpact = UIImpactFeedbackGenerator()
+    @Published var shutterEffect = false
     
     func configure() {
         model.requestAndCheckPermissions()
@@ -34,6 +36,15 @@ class CameraViewModel: ObservableObject {
     
     func capturePhoto() {
         if isCameraBusy == false {
+            hapticImpact.impactOccurred()
+            withAnimation(.easeInOut(duration: 0.1)) {
+                shutterEffect = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                withAnimation(.easeInOut(duration: 0.1)) {
+                    self.shutterEffect = false
+                }
+            }
             model.capturePhoto()
             print("[CameraViewModel]: Photo captured!")
         } else {

@@ -86,6 +86,7 @@ struct CameraView: View {
             }
             .foregroundColor(.white)
         }
+        .opacity(viewModel.shutterEffect ? 0 : 1)
     }
 }
 

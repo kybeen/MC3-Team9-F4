@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserInfoSettingView: View {
     @Environment(\.dismiss) var dismiss
-    
+    @ObservedObject var userDataModel: UserDataModel
     @State private var height = 170
     @State private var weight = 60
     @State private var isSetAge: Bool = false
@@ -20,7 +20,6 @@ struct UserInfoSettingView: View {
     @State private var selectedDate = Date()
     private let sexList = ["남성", "여성", "기타"]
     @State private var sex = "남성"
-//    @State private var viewBirthdady = (selectedDate.formatted(.iso8601).substring(to: )
     
     let startDate = Calendar.current.date(from: DateComponents(year: 1900, month: 1, day: 1))!
     let endDate = Date()
@@ -245,6 +244,13 @@ struct UserInfoSettingView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
+        .onAppear {
+            height = userDataModel.height
+            weight = userDataModel.weight
+            sex = userDataModel.sex == 0 ? "남성" : userDataModel.sex == 1 ? "여성" : "기타"
+            selectedDate = userDataModel.birthday
+            isLeftHand = userDataModel.isLeftHand
+        }
     }
                                         
     private func dateFormat(_ date: Date) -> String {
@@ -272,6 +278,12 @@ extension UserInfoSettingView {
     private func saveButton(_ buttonTitle: String) -> some View {
         
         return Button(action: {
+            userDataModel.birthday = selectedDate
+            userDataModel.height = height
+            userDataModel.weight = weight
+            userDataModel.sex = sex == "남성" ? 0 : sex == "여성" ? 1 : 2
+            userDataModel.isLeftHand = isLeftHand
+            userDataModel.saveUserData()
             dismiss()
         }) {
             ZStack {
@@ -289,8 +301,8 @@ extension UserInfoSettingView {
 }
 
 struct UserInfoSettingView_Preview: PreviewProvider {
-    @State static var array: [Int] = []
+    @ObservedObject static var userDataModel = UserDataModel.shared
     static var previews: some View {
-        UserInfoSettingView()
+        UserInfoSettingView(userDataModel: userDataModel)
     }
 }

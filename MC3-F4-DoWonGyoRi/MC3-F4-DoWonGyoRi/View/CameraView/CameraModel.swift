@@ -15,6 +15,8 @@ class Camera: NSObject, ObservableObject {
     let output = AVCapturePhotoOutput()
     var photoData = Data(count: 0)
     @Published var recentImage: UIImage?
+    @Published var isCameraBusy = false
+    var flashMode: AVCaptureDevice.FlashMode = .off
     
     // 카메라 셋업 과정을 담당하는 함수, positio
     func setUpCamera() {
@@ -65,7 +67,7 @@ class Camera: NSObject, ObservableObject {
     func capturePhoto() {
         // 사진 옵션 세팅
         let photoSettings = AVCapturePhotoSettings()
-        
+        photoSettings.flashMode = self.flashMode
         self.output.capturePhoto(with: photoSettings, delegate: self)
         print("[Camera]: Photo's taken")
     }
@@ -82,6 +84,7 @@ class Camera: NSObject, ObservableObject {
 
 extension Camera: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, willBeginCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
+        self.isCameraBusy = true
     }
     
     func photoOutput(_ output: AVCapturePhotoOutput, willCapturePhotoFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
@@ -94,6 +97,7 @@ extension Camera: AVCapturePhotoCaptureDelegate {
         guard let imageData = photo.fileDataRepresentation() else { return }
         self.recentImage = UIImage(data: imageData)
         self.savePhoto(imageData)
+        self.isCameraBusy = false
         
         print("[CameraModel]: Capture routine's done")
     }

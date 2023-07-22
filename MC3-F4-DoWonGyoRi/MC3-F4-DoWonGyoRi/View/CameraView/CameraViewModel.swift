@@ -17,6 +17,7 @@ class CameraViewModel: ObservableObject {
     @Published var recentImage: UIImage?
     @Published var isFlashOn = false
     @Published var isSilentModeOn = false
+    private var isCameraBusy = false
     
     func configure() {
         model.requestAndCheckPermissions()
@@ -24,6 +25,7 @@ class CameraViewModel: ObservableObject {
     
     func switchFlash() {
         isFlashOn.toggle()
+        model.flashMode = isFlashOn == true ? .on : .off
     }
     
     func switchSilent() {
@@ -31,8 +33,12 @@ class CameraViewModel: ObservableObject {
     }
     
     func capturePhoto() {
-        model.capturePhoto()
-        print("[CameraViewModel]: Photo captured!")
+        if isCameraBusy == false {
+            model.capturePhoto()
+            print("[CameraViewModel]: Photo captured!")
+        } else {
+            print("[CameraViewModel]: Camera's busy.")
+        }
     }
     
     func changeCamera() {
@@ -44,9 +50,8 @@ class CameraViewModel: ObservableObject {
         session = model.session
         cameraPreview = AnyView(CameraPreviewView(session: session))
         
-        model.$recentImage.sink { [weak self] (photo) in
-            guard let pic = photo else { return }
-            self?.recentImage = pic
+        model.$isCameraBusy.sink { [weak self] (result) in
+            self?.isCameraBusy = result
         }
         .store(in: &self.subscriptions)
     }

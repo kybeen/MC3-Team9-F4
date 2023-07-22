@@ -10,7 +10,7 @@ import AVFoundation
 import Combine
 
 class CameraViewModel: ObservableObject {
-    private let model: Camera
+    private let model: CameraModel
     private let session: AVCaptureSession
     let cameraPreview: AnyView
     private var subscriptions = Set<AnyCancellable>()
@@ -76,7 +76,7 @@ class CameraViewModel: ObservableObject {
     }
     
     init() {
-        model = Camera()
+        model = CameraModel()
         session = model.session
         cameraPreview = AnyView(CameraPreviewView(session: session))
         

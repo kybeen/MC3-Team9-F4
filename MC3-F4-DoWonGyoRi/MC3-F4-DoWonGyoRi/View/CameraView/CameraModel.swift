@@ -9,7 +9,7 @@ import Foundation
 import AVFoundation
 import UIKit
 
-class Camera: NSObject, ObservableObject {
+class CameraModel: NSObject, ObservableObject {
     var session = AVCaptureSession()
     var videoDeviceInput: AVCaptureDeviceInput!
     let output = AVCapturePhotoOutput()
@@ -74,7 +74,7 @@ class Camera: NSObject, ObservableObject {
     
     // 사진 저장하기
     func savePhoto(_ imageData: Data) {
-        let watermark = UIImage(named: "watermark")
+        guard let watermark = UIImage(named: "watermark") else { print("사진을 로드하지 못함"); return }
         guard let image = UIImage(data: imageData) else { return }
         let newImage = image.overlayWith(image: watermark ?? UIImage())
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
@@ -152,7 +152,7 @@ class Camera: NSObject, ObservableObject {
     }
 }
 
-extension Camera: AVCapturePhotoCaptureDelegate {
+extension CameraModel: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, willBeginCaptureFor resolvedSettings: AVCaptureResolvedPhotoSettings) {
         self.isCameraBusy = true
     }
@@ -166,9 +166,58 @@ extension Camera: AVCapturePhotoCaptureDelegate {
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         guard let imageData = photo.fileDataRepresentation() else { return }
         self.recentImage = UIImage(data: imageData)
-        self.savePhoto(imageData)
-        self.isCameraBusy = false
         
-        print("[CameraModel]: Capture routine's done")
+        // 워터마크 이미지 로드
+        guard let watermark = UIImage(named: "watermark") else {
+            print("Failed to load watermark image")
+            return
+        }
+        
+        // 이미지 오버레이
+        let overlaidImage = self.recentImage?.overlayWith(image: watermark) ?? UIImage()
+        
+        // 오버레이된 이미지를 저장
+        UIImageWriteToSavedPhotosAlbum(overlaidImage, nil, nil, nil)
+        print("[CameraModel]: Photo's saved with overlay")
+        
+        self.isCameraBusy = false
     }
 }
+extension UIImage {
+    func overlayWith(image: UIImage) -> UIImage {
+        // Calculate the new size for the overlay image based on the original image's size and scale
+        let newSize = CGSize(width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        
+        // Draw the original image at its original position
+        draw(in: CGRect(origin: CGPoint.zero, size: size))
+        
+        // Calculate the position to overlay the watermark image at the top right corner
+        let watermarkSize = CGSize(width: image.size.width / scale, height: image.size.height / scale)
+        let overlayPosition = CGPoint(x: size.width - watermarkSize.width - 50, y: 320)
+        
+        // Draw the watermark image at the calculated position
+        image.draw(in: CGRect(origin: overlayPosition, size: watermarkSize))
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+}
+
+//extension UIImage {
+//    // 워터마크 오버레이 헬퍼 함수
+//    func overlayWith(image: UIImage) -> UIImage {
+//        let newSize = CGSize(width: size.width, height: size.height)
+//        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+//
+//        draw(in: CGRect(origin: CGPoint.zero, size: size))
+//        image.draw(in: CGRect(origin: CGPoint(x: UIScreen.main.bounds.width - 200, y: UIScreen.main.bounds.height - 100), size: image.size))
+//
+//        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+//        UIGraphicsEndImageContext()
+//
+//        return newImage
+//    }
+//}

@@ -27,15 +27,7 @@ struct CameraView: View {
                 )
             
             VStack {
-                HStack {
-                    // 셔터사운드 온오프
-                    Button(action: {viewModel.switchFlash()}) {
-                        Image(systemName: viewModel.isFlashOn ?
-                              "speaker.fill" : "speaker")
-                            .foregroundColor(viewModel.isFlashOn ? .yellow : .white)
-                    }
-                    .padding(.horizontal, 30)
-                    
+                HStack {                   
                     // 플래시 온오프
                     Button(action: {viewModel.switchSilent()}) {
                         Image(systemName: viewModel.isSilentModeOn ?
@@ -128,18 +120,4 @@ struct CameraPreviewView: UIViewRepresentable {
 }
 
 
-extension UIImage {
-    // 워터마크 오버레이 헬퍼 함수
-    func overlayWith(image: UIImage) -> UIImage {
-        let newSize = CGSize(width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-        
-        draw(in: CGRect(origin: CGPoint.zero, size: size))
-        image.draw(in: CGRect(origin: CGPoint(x: size.width - 200, y: size.height - 100), size: image.size))
-        
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
-}
+

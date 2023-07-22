@@ -72,14 +72,30 @@ class Camera: NSObject, ObservableObject {
         print("[Camera]: Photo's taken")
     }
     
-    // ✅ 추가
+    // 사진 저장하기
     func savePhoto(_ imageData: Data) {
         guard let image = UIImage(data: imageData) else { return }
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         
-        // 사진 저장하기
+        
         print("[Camera]: Photo's saved")
     }
+    
+    // 줌 기능
+    func zoom(_ zoom: CGFloat){
+        let factor = zoom < 1 ? 1 : zoom
+        let device = self.videoDeviceInput.device
+        
+        do {
+            try device.lockForConfiguration()
+            device.videoZoomFactor = factor
+            device.unlockForConfiguration()
+        }
+        catch {
+            print(error.localizedDescription)
+        }
+    }
+    
 }
 
 extension Camera: AVCapturePhotoCaptureDelegate {

@@ -17,6 +17,14 @@ struct CameraView: View {
                 .onAppear {
                     viewModel.configure()
                 }
+                .gesture(MagnificationGesture()
+                    .onChanged { val in
+                        viewModel.zoom(factor: val)
+                    }
+                    .onEnded { _ in
+                        viewModel.zoomInitialize()
+                    }
+                )
             
             VStack {
                 HStack {

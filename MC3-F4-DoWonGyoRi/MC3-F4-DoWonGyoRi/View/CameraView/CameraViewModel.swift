@@ -20,6 +20,8 @@ class CameraViewModel: ObservableObject {
     private var isCameraBusy = false
     let hapticImpact = UIImpactFeedbackGenerator()
     @Published var shutterEffect = false
+    var currentZoomFactor: CGFloat = 1.0
+    var lastScale: CGFloat = 1.0
     
     func configure() {
         model.requestAndCheckPermissions()
@@ -52,6 +54,22 @@ class CameraViewModel: ObservableObject {
         }
     }
     
+    // onChange에 호출하는 줌 기능
+    func zoom(factor: CGFloat) {
+        let delta = factor / lastScale
+        lastScale = factor
+        
+        let newScale = min(max(currentZoomFactor * delta, 1), 5)
+        model.zoom(newScale)
+        currentZoomFactor = newScale
+    }
+    
+    // onEnded에 호출하는 줌 기능
+    func zoomInitialize() {
+        lastScale = 1.0
+    }
+    
+    // 전후면 카메라 스위칭
     func changeCamera() {
         print("[CameraViewModel]: Camera changed!")
     }

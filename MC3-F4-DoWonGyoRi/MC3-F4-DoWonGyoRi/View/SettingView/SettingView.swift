@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SettingView: View {
+    @ObservedObject var userDataModel: UserDataModel
     
     var body: some View {
         VStack(spacing: 0) {
@@ -22,8 +23,9 @@ struct SettingView: View {
 }
 
 struct SettingView_Proviewr: PreviewProvider {
+    @ObservedObject static var userDataModel = UserDataModel.shared
     static var previews: some View {
-        SettingView()
+        SettingView(userDataModel: userDataModel)
     }
 }
 
@@ -50,17 +52,17 @@ extension SettingView {
     private func namespaceContainer() -> some View {
         VStack(alignment: .center, spacing: 0) {
             HStack(alignment: .firstTextBaseline, spacing: 0) {
-                Text(title1)
+                Text(userDataModel.userTitle1)
                     .font(.custom("Inter-Bold", size: 20))
                     .foregroundColor(Color.theme.teGreen)
                     .padding(.trailing, 10)
-                Text(title2)
+                Text(userDataModel.userTitle2)
                     .font(.custom("Inter-Bold", size: 20))
                     .foregroundColor(Color.theme.teSkyBlue)
                     
             }
             .padding(.bottom, 20)
-            Text(nickname)
+            Text(userDataModel.username)
                 .font(.custom("Inter-Bold", size: 24))
                 .foregroundColor(Color.theme.teWhite)
             
@@ -70,7 +72,7 @@ extension SettingView {
     }
     
     private func modifyProfileButton() -> some View {
-        NavigationLink(destination: UserProfileSettingView()) {
+        NavigationLink(destination: UserProfileSettingView(userDataModel: userDataModel)) {
             Text("프로필 수정")
                 .font(.custom("Inter-Bold", size: 16))
                 .multilineTextAlignment(.center)
@@ -90,9 +92,9 @@ extension SettingView {
     
     private func navigationLinkContainer() -> some View {
         VStack(spacing: 0) {
-            navigationLinkButtonSet("내 신체 정보", UserInfoSettingView())
-            navigationLinkButtonSet("포핸드 목표 설정", UserStrokeSettingView(isBackhandSetting: false))
-            navigationLinkButtonSet("백핸드 목표 설정", UserStrokeSettingView(isBackhandSetting: true))
+            navigationLinkButtonSet("내 신체 정보", UserInfoSettingView(userDataModel: userDataModel))
+            navigationLinkButtonSet("포핸드 목표 설정", UserStrokeSettingView(userDataModel: userDataModel, isBackhandSetting: false))
+            navigationLinkButtonSet("백핸드 목표 설정", UserStrokeSettingView(userDataModel: userDataModel, isBackhandSetting: true))
         }
     }
     

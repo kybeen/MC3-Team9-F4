@@ -10,14 +10,15 @@ import PhotosUI
 
 struct UserProfileSettingView: View {
     @Environment(\.dismiss) var dismiss
-    @State var userNickname = "김배찌"
-    @State var userTitle1 = "잘나가는"
-    @State var userTitle2 = "세미프로"
+    @ObservedObject var userDataModel: UserDataModel
+    @State private var userNickname = ""
+    @State private var userTitle1 = ""
+    @State private var userTitle2 = ""
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
     
-    let userTitle1Array = ["지는 법을 모르는", "막을 수 없는", "잘나가는", "절대존엄", "기풍있는"]
-    let userTitle2Array = ["아마추어", "슈퍼루키", "세미프로", "월드클래스", "레전드"]
+    @State private var userTitle1Array: [String] = []
+    @State private var userTitle2Array: [String] = []
     
     var body: some View {
         VStack(spacing: 0) {
@@ -32,6 +33,13 @@ struct UserProfileSettingView: View {
         }
         .navigationTitle("프로필 수정").foregroundColor(Color.theme.teWhite)
         .navigationBarItems(trailing: Button(action: {
+            
+            if userNickname != "" {
+                userDataModel.username = userNickname
+            }
+            userDataModel.userTitle1 = userTitle1
+            userDataModel.userTitle2 = userTitle2
+            userDataModel.saveUserData() 
             dismiss()
         }) {
             Text("저장")
@@ -40,8 +48,15 @@ struct UserProfileSettingView: View {
         })
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
-        
+        .onAppear {
+            userTitle1 = userDataModel.userTitle1
+            userTitle2 = userDataModel.userTitle2
+            userTitle1Array = userDataModel.userTitle1List
+            userTitle2Array = userDataModel.userTitle2List
+        }
     }
+    
+
 }
 
 extension UserProfileSettingView {
@@ -59,8 +74,6 @@ extension UserProfileSettingView {
                         .scaledToFill()
                         .frame(maxWidth: 129, maxHeight: 129)
                         .cornerRadius(100)
-                    
-                    
                 } else {
                     if selectedImageData != nil {
                         Image(uiImage: UIImage(data: selectedImageData!)!)
@@ -118,7 +131,7 @@ extension UserProfileSettingView {
                 Button(action: {
                     
                 }) {
-                    TextField(userNickname, text: $userNickname)
+                    TextField(userDataModel.username, text: $userNickname)
                         .font(.custom("Inter-Medium", size: 16))
                         .foregroundColor(.gray)
                         .onTapGesture {
@@ -153,7 +166,7 @@ extension UserProfileSettingView {
                         .padding(.horizontal, 10)
                         .foregroundColor(Color.theme.teGreen)
                     Picker("타이틀1", selection: $userTitle1, content: {
-                        ForEach(userTitle1Array, id: \.self) {
+                        ForEach(userDataModel.userTitle1List, id: \.self) {
                             Text("\($0)")
                                 .font(.custom("Inter-Bold", size: 16))
                                 .foregroundColor(userTitle1 == $0 ? Color.theme.teBlack : Color.theme.teWhite)
@@ -199,7 +212,8 @@ extension UserProfileSettingView {
 
 
 struct UserProfileSettingView_Preview: PreviewProvider {
+    @ObservedObject static var userDataModel = UserDataModel.shared
     static var previews: some View {
-        UserProfileSettingView()
+        UserProfileSettingView(userDataModel: userDataModel)
     }
 }

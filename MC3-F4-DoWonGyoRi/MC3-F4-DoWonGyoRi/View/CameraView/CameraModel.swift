@@ -73,14 +73,14 @@ class CameraModel: NSObject, ObservableObject {
         print("[Camera]: Photo's taken")
     }
     
-    // 사진 저장하기
-//    func savePhoto(_ imageData: Data) {
-//        guard let watermark = UIImage(named: "watermark") else { print("사진을 로드하지 못함"); return }
-//        guard let image = UIImage(data: imageData) else { return }
-//        let newImage = image.overlayWith(image: watermark ?? UIImage())
-//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-//        print("[Camera]: Photo's saved")
-//    }
+//     사진 저장하기
+    func savePhoto() {
+        guard let recentImage = self.recentImage,
+              let watermarkImage = UIImage(named: "watermark") else { return }
+        let overlayImage = recentImage.overlayWith(image: watermarkImage, texts: ["Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor(Color.theme.teWhite)])
+        UIImageWriteToSavedPhotosAlbum(overlayImage, nil, nil, nil)
+        print("[CameraViewModel]: Photo's saved with overlay")
+    }
     
     // 줌 기능
     func zoom(_ zoom: CGFloat){
@@ -200,7 +200,6 @@ extension UIImage {
         
         for (index, text) in texts.enumerated() {
             let textColor = textColors[index]
-            print(text)
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .left
             
@@ -215,7 +214,7 @@ extension UIImage {
             let textRect = CGRect(origin: textOrigin, size: textSize)
             text.draw(in: textRect, withAttributes: textAttributes)
             
-            offsetY += (textSize.height + 10) // 다음 텍스트를 그리기 위해 Y 좌표 값 조정
+            offsetY += (textSize.height + 5) // 다음 텍스트를 그리기 위해 Y 좌표 값 조정
         }
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!

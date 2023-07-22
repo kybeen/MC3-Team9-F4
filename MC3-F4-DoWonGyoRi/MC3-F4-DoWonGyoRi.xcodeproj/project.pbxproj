@@ -34,6 +34,9 @@
 		168AD6A42A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */; };
 		168AD6A82A57EF060097985C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6A72A57EF060097985C /* Assets.xcassets */; };
 		168AD6AB2A57EF060097985C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6AA2A57EF060097985C /* Preview Assets.xcassets */; };
+		C9134A082A6C4A26006259F5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9134A072A6C4A26006259F5 /* CameraView.swift */; };
+		C9134A0A2A6C4AA4006259F5 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9134A092A6C4AA4006259F5 /* CameraViewModel.swift */; };
+		C9134A0C2A6C4B39006259F5 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9134A0B2A6C4B39006259F5 /* CameraModel.swift */; };
 		C94A8E862A64451600F11C74 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A8E852A64451600F11C74 /* CoreDataManager.swift */; };
 		C94A8E892A64491800F11C74 /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A8E872A64491800F11C74 /* WorkOutData+CoreDataClass.swift */; };
 		C94A8E8A2A64491800F11C74 /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C94A8E882A64491800F11C74 /* WorkOutData+CoreDataProperties.swift */; };
@@ -134,6 +137,9 @@
 		168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_F4_DoWonGyoRiApp.swift; sourceTree = "<group>"; };
 		168AD6A72A57EF060097985C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		168AD6AA2A57EF060097985C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C9134A072A6C4A26006259F5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		C9134A092A6C4AA4006259F5 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
+		C9134A0B2A6C4B39006259F5 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
 		C94A8E852A64451600F11C74 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		C94A8E872A64491800F11C74 /* WorkOutData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C94A8E882A64491800F11C74 /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -304,6 +310,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		C9134A062A6C4A13006259F5 /* CameraView */ = {
+			isa = PBXGroup;
+			children = (
+				C9134A072A6C4A26006259F5 /* CameraView.swift */,
+				C9134A092A6C4AA4006259F5 /* CameraViewModel.swift */,
+				C9134A0B2A6C4B39006259F5 /* CameraModel.swift */,
+			);
+			path = CameraView;
+			sourceTree = "<group>";
+		};
 		C94A8E822A6441BA00F11C74 /* UserData */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +421,7 @@
 		C9804ABE2A5BDAE500CF97A8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C9134A062A6C4A13006259F5 /* CameraView */,
 				C96DC75D2A6314C700A922A3 /* CongreteModalView */,
 				C96DC7572A611EC600A922A3 /* OnboardingView */,
 				C9533A182A60EE0100FA7DC7 /* TodayDetailView */,
@@ -611,6 +628,7 @@
 			files = (
 				C96DC7732A643D6300A922A3 /* UserData+CoreDataProperties.swift in Sources */,
 				C9533A1A2A60EE1200FA7DC7 /* TodayDetailView.swift in Sources */,
+				C9134A0C2A6C4B39006259F5 /* CameraModel.swift in Sources */,
 				C9533A092A5E667000FA7DC7 /* UserInfoSettingView.swift in Sources */,
 				C94A8E892A64491800F11C74 /* WorkOutData+CoreDataClass.swift in Sources */,
 				C9533A0B2A5F82E900FA7DC7 /* UserStrokeSettingView.swift in Sources */,
@@ -624,6 +642,7 @@
 				C96DC7612A6323A500A922A3 /* EmitterView.swift in Sources */,
 				C94A8E8A2A64491800F11C74 /* WorkOutData+CoreDataProperties.swift in Sources */,
 				C9804AC52A5BDBAB00CF97A8 /* CustomBackButton.swift in Sources */,
+				C9134A082A6C4A26006259F5 /* CameraView.swift in Sources */,
 				C9533A052A5E578000FA7DC7 /* SettingView.swift in Sources */,
 				C96600B92A5CF873008287EF /* RingChartsView.swift in Sources */,
 				168AD6922A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */,
@@ -632,6 +651,7 @@
 				C94A8E862A64451600F11C74 /* CoreDataManager.swift in Sources */,
 				C9533A132A60E5FF00FA7DC7 /* GifView.swift in Sources */,
 				C96DC7672A643A3B00A922A3 /* UserInfo.xcdatamodeld in Sources */,
+				C9134A0A2A6C4AA4006259F5 /* CameraViewModel.swift in Sources */,
 				C96DC7592A611EE000A922A3 /* OnboardingView.swift in Sources */,
 				C9804AC22A5BDB8400CF97A8 /* EmitterManager.swift in Sources */,
 				C9F9E0392A645B130086449F /* UserDataModel.swift in Sources */,
@@ -869,6 +889,8 @@
 				INFOPLIST_FILE = "MC3-F4-DoWonGyoRi/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Tering;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "공유할 사진 촬영과 커스텀을 위해 카메라 사용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 촬영한 후 저장하기 위해 앨범 쓰기 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 등록하기 위해 사진 저장 공간 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -909,6 +931,8 @@
 				INFOPLIST_FILE = "MC3-F4-DoWonGyoRi/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Tering;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "공유할 사진 촬영과 커스텀을 위해 카메라 사용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 촬영한 후 저장하기 위해 앨범 쓰기 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 등록하기 위해 사진 저장 공간 권한 허용이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

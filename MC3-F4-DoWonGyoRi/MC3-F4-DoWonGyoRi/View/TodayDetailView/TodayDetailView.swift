@@ -51,10 +51,7 @@ extension TodayDetailView {
                 VStack {
                     RingChartsView(values: [totalSwing, perfectStrokeRatio], colors: [[ Color.theme.teBlue, Color.theme.teGreen], [ Color.theme.teSkyBlue, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
                         .frame(width: UIScreen.main.bounds.width - 80, height: UIScreen.main.bounds.width - 80, alignment: .center)
-                        
                 }
-                
-                
                 VStack(spacing: 0) {
                     Text("Swing 달성도")
                         .font(.custom("Inter-Bold", size: 24))

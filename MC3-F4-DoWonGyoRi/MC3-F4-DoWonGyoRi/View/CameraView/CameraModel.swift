@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import UIKit
+import SwiftUI
 
 class CameraModel: NSObject, ObservableObject {
     var session = AVCaptureSession()
@@ -73,13 +74,13 @@ class CameraModel: NSObject, ObservableObject {
     }
     
     // 사진 저장하기
-    func savePhoto(_ imageData: Data) {
-        guard let watermark = UIImage(named: "watermark") else { print("사진을 로드하지 못함"); return }
-        guard let image = UIImage(data: imageData) else { return }
-        let newImage = image.overlayWith(image: watermark ?? UIImage())
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-        print("[Camera]: Photo's saved")
-    }
+//    func savePhoto(_ imageData: Data) {
+//        guard let watermark = UIImage(named: "watermark") else { print("사진을 로드하지 못함"); return }
+//        guard let image = UIImage(data: imageData) else { return }
+//        let newImage = image.overlayWith(image: watermark ?? UIImage())
+//        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//        print("[Camera]: Photo's saved")
+//    }
     
     // 줌 기능
     func zoom(_ zoom: CGFloat){
@@ -174,7 +175,7 @@ extension CameraModel: AVCapturePhotoCaptureDelegate {
         }
         
         // 이미지 오버레이
-        let overlaidImage = self.recentImage?.overlayWith(image: watermark) ?? UIImage()
+        let overlaidImage = self.recentImage?.overlayWith(image: watermark, texts: ["Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white]) ?? UIImage()
         
         // 오버레이된 이미지를 저장
         UIImageWriteToSavedPhotosAlbum(overlaidImage, nil, nil, nil)
@@ -184,27 +185,47 @@ extension CameraModel: AVCapturePhotoCaptureDelegate {
     }
 }
 extension UIImage {
-    func overlayWith(image: UIImage) -> UIImage {
-        // Calculate the new size for the overlay image based on the original image's size and scale
+    func overlayWith(image overlayImage: UIImage, texts: [String], textColors: [UIColor]) -> UIImage {
         let newSize = CGSize(width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
         
-        // Draw the original image at its original position
         draw(in: CGRect(origin: CGPoint.zero, size: size))
         
-        // Calculate the position to overlay the watermark image at the top right corner
-        let watermarkSize = CGSize(width: image.size.width / scale, height: image.size.height / scale)
-        let overlayPosition = CGPoint(x: size.width - watermarkSize.width - 50, y: 320)
+        let overlayImageSize = CGSize(width: 100, height: 100)
+        let overlayImageOrigin = CGPoint(x: size.width - overlayImageSize.width - 100, y: 100)
+        overlayImage.draw(in: CGRect(origin: overlayImageOrigin, size: overlayImageSize))
         
-        // Draw the watermark image at the calculated position
-        image.draw(in: CGRect(origin: overlayPosition, size: watermarkSize))
+        let totalTextHeight = texts.reduce(0) { $0 + ($1.size(withAttributes: [.font: UIFont(name: "Inter-Bold", size: 100)!]).height) + 10 }
+        var offsetY: CGFloat = size.height - totalTextHeight - 100 // 초기 Y 좌표 값 설정 (텍스트가 맨 하단에 오버레이될 위치)
+        
+        for (index, text) in texts.enumerated() {
+            let textColor = textColors[index]
+            print(text)
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .left
+            
+            let textAttributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont(name: "Inter-Black", size: 100)!,
+                .foregroundColor: textColor,
+                .paragraphStyle: paragraphStyle
+            ]
+            
+            let textSize = text.size(withAttributes: textAttributes)
+            let textOrigin = CGPoint(x: 100, y: offsetY) // 왼쪽 아래로 이동 (오버레이될 위치)
+            let textRect = CGRect(origin: textOrigin, size: textSize)
+            text.draw(in: textRect, withAttributes: textAttributes)
+            
+            offsetY += (textSize.height + 10) // 다음 텍스트를 그리기 위해 Y 좌표 값 조정
+        }
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         return newImage
     }
+
 }
+
 
 //extension UIImage {
 //    // 워터마크 오버레이 헬퍼 함수

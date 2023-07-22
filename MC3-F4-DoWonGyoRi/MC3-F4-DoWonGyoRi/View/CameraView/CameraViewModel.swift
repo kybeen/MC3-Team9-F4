@@ -23,6 +23,11 @@ class CameraViewModel: ObservableObject {
     var currentZoomFactor: CGFloat = 1.0
     var lastScale: CGFloat = 1.0
     
+    @Published var overlayText1: String = "Hello"
+    @Published var overlayText2: String = "World"
+    @Published var overlayFont: UIFont = UIFont.systemFont(ofSize: 24)
+    @Published var overlayTextColor: UIColor = .white
+    
     func configure() {
         model.requestAndCheckPermissions()
     }
@@ -49,6 +54,14 @@ class CameraViewModel: ObservableObject {
             }
             model.capturePhoto()
             print("[CameraViewModel]: Photo captured!")
+
+            // 사용자가 입력한 텍스트를 오버레이할 이미지 생성
+            guard let recentImage = self.recentImage,
+                  let watermarkImage = UIImage(named: "watermark") else { return }
+            let overlayImage = recentImage.overlayWith(image: watermarkImage, texts: ["Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor(Color.theme.teWhite)])
+            UIImageWriteToSavedPhotosAlbum(overlayImage, nil, nil, nil)
+            print("[CameraViewModel]: Photo's saved with overlay")
+
         } else {
             print("[CameraViewModel]: Camera's busy.")
         }

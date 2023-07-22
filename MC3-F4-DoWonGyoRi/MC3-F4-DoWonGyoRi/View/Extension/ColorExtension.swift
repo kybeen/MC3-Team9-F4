@@ -27,3 +27,9 @@ struct ColorTheme {
     let teGray = Color("TennisGray")
     let teWhite = Color("TennisWhite")
 }
+
+extension UIColor {
+    static let theme = ColorTheme()
+}
+
+

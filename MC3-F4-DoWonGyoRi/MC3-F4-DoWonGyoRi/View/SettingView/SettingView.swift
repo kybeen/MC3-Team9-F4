@@ -93,8 +93,8 @@ extension SettingView {
     private func navigationLinkContainer() -> some View {
         VStack(spacing: 0) {
             navigationLinkButtonSet("내 신체 정보", UserInfoSettingView())
-            navigationLinkButtonSet("포핸드 목표 설정", UserStrokeSettingView(isBackhandSetting: false))
-            navigationLinkButtonSet("백핸드 목표 설정", UserStrokeSettingView(isBackhandSetting: true))
+            navigationLinkButtonSet("포핸드 목표 설정", UserStrokeSettingView(userDataModel: userDataModel, isBackhandSetting: false))
+            navigationLinkButtonSet("백핸드 목표 설정", UserStrokeSettingView(userDataModel: userDataModel, isBackhandSetting: true))
         }
     }
     

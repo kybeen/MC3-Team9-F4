@@ -10,7 +10,7 @@ import _PhotosUI_SwiftUI
 
 struct UserStrokeSettingView: View {
     @Environment(\.dismiss) var dismiss
-    
+    @ObservedObject var userDataModel: UserDataModel
     @State var isBackhandSetting: Bool
     @State private var strokeCount = 10
     var body: some View {
@@ -24,6 +24,9 @@ struct UserStrokeSettingView: View {
         .padding(EdgeInsets(top: 80, leading: 25, bottom: 80, trailing: 25))
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
+        .onAppear {
+            strokeCount = isBackhandSetting ?  userDataModel.userTargetBackStroke : userDataModel.userTargetForeStroke
+        }
     }
 }
 
@@ -89,6 +92,12 @@ extension UserStrokeSettingView {
     private func saveButton(_ buttonTitle: String) -> some View {
         
         return Button(action: {
+            if isBackhandSetting {
+                userDataModel.userTargetBackStroke = strokeCount
+            } else {
+                userDataModel.userTargetForeStroke = strokeCount
+            }
+            userDataModel.saveUserData()
             dismiss()
         }) {
             ZStack {
@@ -108,8 +117,8 @@ extension UserStrokeSettingView {
 }
 
 struct UserStrokeSettingView_Preview: PreviewProvider {
-    @State static var array: [Int] = []
+    @ObservedObject static var userDataModel = UserDataModel.shared
     static var previews: some View {
-        UserStrokeSettingView(isBackhandSetting: true)
+        UserStrokeSettingView(userDataModel: userDataModel, isBackhandSetting: true)
     }
 }

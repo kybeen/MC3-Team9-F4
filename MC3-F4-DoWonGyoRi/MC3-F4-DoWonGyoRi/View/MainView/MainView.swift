@@ -32,9 +32,12 @@ struct MainView: View {
             .ignoresSafeArea(.all, edges: .bottom)
             .onAppear {
                 userDataModel.fetchUserData()
+                workoutDataModel.fetchWorkOutData()
+                workoutDataModel.fetchTodayAndYesterdayWorkout()
             }
             .onDisappear {
                 userDataModel.saveUserData()
+                workoutDataModel.saveWorkOutData()
             }
         }
         .sheet(isPresented: $isCongretePresented, content: {

@@ -77,7 +77,7 @@ class CameraModel: NSObject, ObservableObject {
     func savePhoto() {
         guard let recentImage = self.recentImage,
               let watermarkImage = UIImage(named: "watermark") else { return }
-        let overlayImage = recentImage.overlayWith(image: watermarkImage, texts: ["Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor(Color.theme.teWhite)])
+        let overlayImage = recentImage.overlayWith(image: watermarkImage, texts: ["\(WorkOutDataModel.shared.totalSwingCount) Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white])
         UIImageWriteToSavedPhotosAlbum(overlayImage, nil, nil, nil)
         print("[CameraViewModel]: Photo's saved with overlay")
     }
@@ -175,7 +175,7 @@ extension CameraModel: AVCapturePhotoCaptureDelegate {
         }
         
         // 이미지 오버레이
-        let overlaidImage = self.recentImage?.overlayWith(image: watermark, texts: ["Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white]) ?? UIImage()
+        let overlaidImage = self.recentImage?.overlayWith(image: watermark, texts: ["\(WorkOutDataModel.shared.totalSwingCount) Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white]) ?? UIImage()
         
         // 오버레이된 이미지를 저장
         UIImageWriteToSavedPhotosAlbum(overlaidImage, nil, nil, nil)

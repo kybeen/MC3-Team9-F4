@@ -54,6 +54,7 @@ class CameraViewModel: ObservableObject {
             }
             model.capturePhoto()
             print("[CameraViewModel]: Photo captured!")
+            model.savePhoto()
         } else {
             print("[CameraViewModel]: Camera's busy.")
         }

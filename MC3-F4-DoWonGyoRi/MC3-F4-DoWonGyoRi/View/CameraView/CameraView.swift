@@ -32,10 +32,10 @@ struct CameraView: View {
                     Spacer()
                     // 플래시 온오프
                     Button(action: {viewModel.switchFlash()}) {
-                        Image(systemName: viewModel.isSilentModeOn ? "bolt.fill" : "bolt")
+                        Image(systemName: viewModel.isFlashOn ? "bolt.fill" : "bolt")
                             .resizable()
                             .scaledToFit()
-                            .foregroundColor(viewModel.isSilentModeOn ? .yellow : .white)
+                            .foregroundColor(viewModel.isFlashOn ? .yellow : .white)
                     }
                     .frame(width: 30, height: 30)
                     // 사진찍기 버튼

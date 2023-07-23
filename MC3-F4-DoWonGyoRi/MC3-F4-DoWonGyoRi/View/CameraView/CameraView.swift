@@ -10,7 +10,8 @@ import AVFoundation
 
 struct CameraView: View {
     @ObservedObject var viewModel: CameraViewModel
-
+    @ObservedObject var workoutDataModel: WorkOutDataModel
+    
     var body: some View {
         ZStack {
             viewModel.cameraPreview.ignoresSafeArea()
@@ -27,8 +28,19 @@ struct CameraView: View {
                 )
             
             VStack {
+                HStack(spacing: 0) {
+                    Spacer()
+                    Image("watermark")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 45, height: 45)
+                        .padding(.trailing, 50)
+                }
+                VStack(spacing: 0) {
+                    Text("SWING")
+                }
                 Spacer()
-                HStack{
+                HStack(spacing: 0) {
                     Spacer()
                     // 플래시 온오프
                     Button(action: {viewModel.switchFlash()}) {
@@ -36,6 +48,7 @@ struct CameraView: View {
                             .resizable()
                             .scaledToFit()
                             .foregroundColor(viewModel.isFlashOn ? .yellow : .white)
+                            
                     }
                     .frame(width: 30, height: 30)
                     // 사진찍기 버튼

@@ -10,6 +10,7 @@ import SwiftUI
 struct TodayDetailView: View {
     @ObservedObject var workoutDataModel: WorkOutDataModel
     @ObservedObject var userDataModel: UserDataModel
+    @StateObject private var cameraViewModel = CameraViewModel()
     
     var body: some View {
         ScrollView {
@@ -19,7 +20,9 @@ struct TodayDetailView: View {
         .navigationTitle(todayDateString)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
-        .navigationBarItems(trailing: shareButton())
+        .navigationBarItems(trailing: NavigationLink(destination: CameraView(viewModel: cameraViewModel, workoutDataModel: workoutDataModel)) {
+            Image("instagram_icon")
+        })
         .scrollIndicators(.hidden)
     }
 }

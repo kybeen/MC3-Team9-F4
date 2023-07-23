@@ -126,8 +126,8 @@ extension TodayDetailView {
     }
     
     private func timeCalorieDataContainer(_ title: String, _ data: Int, _ isTime: Bool) -> some View {
-        let timeHour = Int(workoutDataModel.todayChartDatum[9]) / 60
-        let timeMinutes = Int(workoutDataModel.todayChartDatum[9]) % 60
+        let timeHour = Int(workoutDataModel.todayChartDatum[8]) / 60
+        let timeMinutes = Int(workoutDataModel.todayChartDatum[8]) % 60
         
         return VStack(spacing: 0) {
             VStack(spacing: 0) {

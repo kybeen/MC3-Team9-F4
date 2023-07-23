@@ -22,11 +22,7 @@ class CameraViewModel: ObservableObject {
     @Published var shutterEffect = false
     var currentZoomFactor: CGFloat = 1.0
     var lastScale: CGFloat = 1.0
-    
-    @Published var overlayText1: String = "Hello"
-    @Published var overlayText2: String = "World"
-    @Published var overlayFont: UIFont = UIFont.systemFont(ofSize: 24)
-    @Published var overlayTextColor: UIColor = .white
+
     @Published private var isCameraInitialized = false
     @Published var showPreview = false
     

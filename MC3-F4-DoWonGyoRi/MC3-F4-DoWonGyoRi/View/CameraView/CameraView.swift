@@ -110,7 +110,6 @@ struct CameraView: View {
                 EmptyView()
             }
         }
-//        .opacity(viewModel.shutterEffect ? 0 : 1)
     }
 }
 

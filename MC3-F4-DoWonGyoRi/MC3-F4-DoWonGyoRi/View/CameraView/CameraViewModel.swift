@@ -28,6 +28,7 @@ class CameraViewModel: ObservableObject {
     @Published var overlayFont: UIFont = UIFont.systemFont(ofSize: 24)
     @Published var overlayTextColor: UIColor = .white
     @Published private var isCameraInitialized = false
+    @Published var showPreview = false
     
     func configure() {
         model.requestAndCheckPermissions()
@@ -36,10 +37,6 @@ class CameraViewModel: ObservableObject {
     func switchFlash() {
         isFlashOn.toggle()
         model.flashMode = isFlashOn == true ? .on : .off
-    }
-    
-    func switchSilent() {
-        isSilentModeOn.toggle()
     }
     
     func capturePhoto() {
@@ -62,11 +59,17 @@ class CameraViewModel: ObservableObject {
                 model.capturePhoto()
                 print("[CameraViewModel]: Photo captured!")
                 model.savePhoto()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                   
+                        self.showPreview = true // 메인 스레드에서 showPreview를 true로 변경
+                   
+                }
             }
         } else {
             print("[CameraViewModel]: Camera's busy.")
         }
     }
+    
     
     // onChange에 호출하는 줌 기능
     func zoom(factor: CGFloat) {
@@ -112,7 +115,12 @@ class CameraViewModel: ObservableObject {
             self?.isCameraBusy = result
         }
         .store(in: &self.subscriptions)
-
+        
+        model.$recentImage.sink { [weak self] (photo) in
+            guard let pic = photo else { return }
+            self?.recentImage = pic
+        }
+        .store(in: &self.subscriptions)
         // 아래 코드 추가
         initializeCamera()
     }

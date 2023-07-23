@@ -59,6 +59,23 @@ struct CameraView: View {
         .opacity(viewModel.shutterEffect ? 0 : 1)
         .navigationBarBackButtonHidden()
         .navigationBarItems(leading: CustomBackButton())
+        .fullScreenCover(isPresented: $viewModel.showPreview) {
+            if let recentImage = viewModel.recentImage {
+                Image(uiImage: recentImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: UIScreen.main.bounds.width,
+                           height: UIScreen.main.bounds.height)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        viewModel.showPreview = false
+                    }
+            } else {
+                // recentImage가 없을 경우 미리보기를 표시하지 않음
+                EmptyView()
+            }
+        }
+//        .opacity(viewModel.shutterEffect ? 0 : 1)
     }
 }
 

@@ -42,7 +42,6 @@ class CameraModel: NSObject, ObservableObject {
                     }
                 }
             } catch {
-                print("setup에서 에러남")
                 print(error) // 에러 프린트
                 
                 DispatchQueue.main.async {
@@ -113,6 +112,8 @@ class CameraModel: NSObject, ObservableObject {
         guard let recentImage = self.recentImage,
               let watermarkImage = UIImage(named: "watermark") else { return }
         let overlayImage = recentImage.overlayWith(image: watermarkImage, texts: ["\(WorkOutDataModel.shared.todayChartDatum[6]) Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white])
+
+        self.recentImage = recentImage
         UIImageWriteToSavedPhotosAlbum(overlayImage, nil, nil, nil)
         print("[CameraViewModel]: Photo's saved with overlay")
     }
@@ -211,27 +212,26 @@ extension CameraModel: AVCapturePhotoCaptureDelegate {
         
         // 이미지 오버레이
         let overlaidImage = self.recentImage?.overlayWith(image: watermark, texts: ["\(WorkOutDataModel.shared.totalSwingCount) Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white]) ?? UIImage()
-        
+        self.recentImage = overlaidImage
         // 오버레이된 이미지를 저장
         UIImageWriteToSavedPhotosAlbum(overlaidImage, nil, nil, nil)
         print("[CameraModel]: Photo's saved with overlay")
-        
+        // 최근 이미지가 설정되었음을 알립니다.
         self.isCameraBusy = false
     }
 }
+
 extension UIImage {
     func overlayWith(image overlayImage: UIImage, texts: [String], textColors: [UIColor]) -> UIImage {
         let newSize = CGSize(width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-        
-        draw(in: CGRect(origin: CGPoint.zero, size: size))
-        
         let overlayImageSize = CGSize(width: 100, height: 100)
         let overlayImageOrigin = CGPoint(x: size.width - overlayImageSize.width - 100, y: 100)
-        overlayImage.draw(in: CGRect(origin: overlayImageOrigin, size: overlayImageSize))
-        
         let totalTextHeight = texts.reduce(0) { $0 + ($1.size(withAttributes: [.font: UIFont(name: "Inter-Bold", size: 100)!]).height) + 10 }
         var offsetY: CGFloat = size.height - totalTextHeight - 100 // 초기 Y 좌표 값 설정 (텍스트가 맨 하단에 오버레이될 위치)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        draw(in: CGRect(origin: CGPoint.zero, size: size))
+        overlayImage.draw(in: CGRect(origin: overlayImageOrigin, size: overlayImageSize))
         
         for (index, text) in texts.enumerated() {
             let textColor = textColors[index]
@@ -259,20 +259,3 @@ extension UIImage {
     }
 
 }
-
-
-//extension UIImage {
-//    // 워터마크 오버레이 헬퍼 함수
-//    func overlayWith(image: UIImage) -> UIImage {
-//        let newSize = CGSize(width: size.width, height: size.height)
-//        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
-//
-//        draw(in: CGRect(origin: CGPoint.zero, size: size))
-//        image.draw(in: CGRect(origin: CGPoint(x: UIScreen.main.bounds.width - 200, y: UIScreen.main.bounds.height - 100), size: image.size))
-//
-//        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-//        UIGraphicsEndImageContext()
-//
-//        return newImage
-//    }
-//}

@@ -33,13 +33,35 @@ struct CameraView: View {
                     Image("watermark")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 45, height: 45)
+                        .frame(width: 40, height: 40)
                         .padding(.trailing, 50)
                 }
-                VStack(spacing: 0) {
-                    Text("SWING")
-                }
                 Spacer()
+                VStack(spacing: 0) {
+                    Text("\(Int(workoutDataModel.todayChartDatum[6])) SWING")
+                        .font(.custom("Inter-Black", size: 40))
+                        .foregroundColor(Color.theme.teGreen)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("\(Int(workoutDataModel.todayChartDatum[7] * workoutDataModel.todayChartDatum[6])) PERFECT")
+                        .font(.custom("Inter-Black", size: 40))
+                        .foregroundColor(Color.theme.teSkyBlue)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    HStack(spacing: 0) {
+                        Image(systemName: "timer")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 35, height: 35)
+                            .padding(.trailing, 10)
+                        Text("\(Int(workoutDataModel.todayChartDatum[8] / 60))'\(Int(workoutDataModel.todayChartDatum[8]) % 60)'")
+                            .font(.custom("Inter-Black", size: 40))
+                            .foregroundColor(Color.theme.teWhite)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.leading, 30)
+                
+                
                 HStack(spacing: 0) {
                     Spacer()
                     // 플래시 온오프

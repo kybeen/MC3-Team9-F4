@@ -83,7 +83,7 @@ extension TodayDetailView {
         VStack(spacing: 0) {
             swingDataContainer("스윙 횟수", Color.theme.teGreen, false)
             swingDataContainer("Perfect 스윙", Color.theme.teBlue, true)
-            timeCalorieDataContainer("운동 시간", Int(workoutDataModel.todayChartDatum[9]), true)
+            timeCalorieDataContainer("운동 시간", Int(workoutDataModel.todayChartDatum[8]), true)
             timeCalorieDataContainer("칼로리 소비", Int(workoutDataModel.todayChartDatum[11]), false)
         }
     }

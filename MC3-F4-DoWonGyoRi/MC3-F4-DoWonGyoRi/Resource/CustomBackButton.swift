@@ -24,9 +24,9 @@ struct CustomBackButton: View {
 
 struct shareButton: View {
     @Environment(\.dismiss) var dismiss
-    
+    @StateObject private var cameraViewModel = CameraViewModel()
     var body: some View {
-        NavigationLink(destination: CameraView()) {
+        NavigationLink(destination: CameraView(viewModel: cameraViewModel)) {
             Image("instagram_icon")
         }
     }

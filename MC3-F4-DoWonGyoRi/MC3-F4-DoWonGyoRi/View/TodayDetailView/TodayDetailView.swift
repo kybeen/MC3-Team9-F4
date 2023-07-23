@@ -10,6 +10,7 @@ import SwiftUI
 struct TodayDetailView: View {
     @ObservedObject var workoutDataModel: WorkOutDataModel
     @ObservedObject var userDataModel: UserDataModel
+    
     var body: some View {
         ScrollView {
             chartContainer()

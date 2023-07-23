@@ -18,7 +18,7 @@ struct TodayDetailView: View {
         .navigationTitle(todayDateString)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
-        .navigationBarItems(trailing: Image("instagram_icon"))
+        .navigationBarItems(trailing: shareButton())
         .scrollIndicators(.hidden)
     }
 }

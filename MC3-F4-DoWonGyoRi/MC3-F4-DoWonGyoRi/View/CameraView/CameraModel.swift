@@ -20,49 +20,84 @@ class CameraModel: NSObject, ObservableObject {
     var flashMode: AVCaptureDevice.FlashMode = .off
     
     // 카메라 셋업 과정을 담당하는 함수, positio
-    func setUpCamera() {
-        if let device = AVCaptureDevice.default(.builtInWideAngleCamera,
-                                                for: .video, position: .back) {
-            do { // 카메라가 사용 가능하면 세션에 input과 output을 연결
-                videoDeviceInput = try AVCaptureDeviceInput(device: device)
-                if session.canAddInput(videoDeviceInput) {
-                    session.addInput(videoDeviceInput)
+    func setUpCamera(completion: @escaping (Bool) -> Void) {
+        if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
+            do {
+                // 카메라가 사용 가능하면 세션에 input과 output을 연결
+                self.videoDeviceInput = try AVCaptureDeviceInput(device: device)
+                if self.session.canAddInput(self.videoDeviceInput) {
+                    self.session.addInput(self.videoDeviceInput)
                 }
                 
-                if session.canAddOutput(output) {
-                    session.addOutput(output)
-                    output.isHighResolutionCaptureEnabled = true
-                    output.maxPhotoQualityPrioritization = .quality
+                if self.session.canAddOutput(self.output) {
+                    self.session.addOutput(self.output)
+                    self.output.isHighResolutionCaptureEnabled = true
+                    self.output.maxPhotoQualityPrioritization = .quality
                 }
-                session.startRunning() // 세션 시작
+                
+                DispatchQueue.global(qos: .userInitiated).async { // 백그라운드 스레드에서 세션 시작
+                    self.session.startRunning() // 세션 시작
+                    DispatchQueue.main.async {
+                        completion(true)
+                    }
+                }
             } catch {
+                print("setup에서 에러남")
                 print(error) // 에러 프린트
+                
+                DispatchQueue.main.async {
+                    completion(false)
+                }
+            }
+        } else {
+            DispatchQueue.main.async {
+                completion(false)
             }
         }
     }
     
     func requestAndCheckPermissions() {
-        // 카메라 권한 상태 확인
-        switch AVCaptureDevice.authorizationStatus(for: .video) {
-        case .notDetermined:
-            // 권한 요청
-            AVCaptureDevice.requestAccess(for: .video) { [weak self] authStatus in
-                if authStatus {
-                    DispatchQueue.main.async {
-                        self?.setUpCamera()
+            // 카메라 권한 상태 확인
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .notDetermined:
+                // 권한 요청
+                AVCaptureDevice.requestAccess(for: .video) { [weak self] authStatus in
+                    if authStatus {
+                        DispatchQueue.main.async {
+                            self?.setUpCamera { success in
+                                if success {
+                                    // Camera setup was successful
+                                    // Add any additional actions that need to be performed after setup here
+                                    print("Camera setup was successful.")
+                                } else {
+                                    // Camera setup failed
+                                    // Add any actions that need to be performed in case of failure here
+                                    print("Camera setup failed.")
+                                }
+                            }
+                        }
                     }
                 }
+            case .restricted:
+                break
+            case .authorized:
+                // 이미 권한 받은 경우 셋업
+                setUpCamera { success in
+                    if success {
+                        // Camera setup was successful
+                        // Add any additional actions that need to be performed after setup here
+                        print("Camera setup was successful.")
+                    } else {
+                        // Camera setup failed
+                        // Add any actions that need to be performed in case of failure here
+                        print("Camera setup failed.")
+                    }
+                }
+            default:
+                // 거절했을 경우
+                print("Permission declined")
             }
-        case .restricted:
-            break
-        case .authorized:
-            // 이미 권한 받은 경우 셋업
-            setUpCamera()
-        default:
-            // 거절했을 경우
-            print("Permession declined")
         }
-    }
     
     // ✅ 추가
     func capturePhoto() {
@@ -77,7 +112,7 @@ class CameraModel: NSObject, ObservableObject {
     func savePhoto() {
         guard let recentImage = self.recentImage,
               let watermarkImage = UIImage(named: "watermark") else { return }
-        let overlayImage = recentImage.overlayWith(image: watermarkImage, texts: ["\(WorkOutDataModel.shared.totalSwingCount) Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white])
+        let overlayImage = recentImage.overlayWith(image: watermarkImage, texts: ["\(WorkOutDataModel.shared.todayChartDatum[6]) Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white])
         UIImageWriteToSavedPhotosAlbum(overlayImage, nil, nil, nil)
         print("[CameraViewModel]: Photo's saved with overlay")
     }

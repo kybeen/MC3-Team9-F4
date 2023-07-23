@@ -31,11 +31,13 @@ struct CameraView: View {
                 HStack{
                     Spacer()
                     // 플래시 온오프
-                    Button(action: {viewModel.switchSilent()}) {
-                        Image(systemName: viewModel.isSilentModeOn ?
-                              "bolt.fill" : "bolt")
-                        .foregroundColor(viewModel.isSilentModeOn ? .yellow : .white)
+                    Button(action: {viewModel.switchFlash()}) {
+                        Image(systemName: viewModel.isSilentModeOn ? "bolt.fill" : "bolt")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(viewModel.isSilentModeOn ? .yellow : .white)
                     }
+                    .frame(width: 30, height: 30)
                     // 사진찍기 버튼
                     Button(action: {viewModel.capturePhoto()}) {
                         Circle()
@@ -47,8 +49,6 @@ struct CameraView: View {
                         Image(systemName: "arrow.triangle.2.circlepath.camera")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 30, height: 30)
-                        
                     }
                     .frame(width: 30, height: 30)
                     Spacer()
@@ -57,6 +57,8 @@ struct CameraView: View {
             .foregroundColor(.white)
         }
         .opacity(viewModel.shutterEffect ? 0 : 1)
+        .navigationBarBackButtonHidden()
+        .navigationBarItems(leading: CustomBackButton())
     }
 }
 

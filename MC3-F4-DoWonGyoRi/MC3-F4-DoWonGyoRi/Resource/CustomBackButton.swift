@@ -21,3 +21,13 @@ struct CustomBackButton: View {
         }
     }
 }
+
+struct shareButton: View {
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        NavigationLink(destination: CameraView()) {
+            Image("instagram_icon")
+        }
+    }
+}

@@ -141,6 +141,7 @@ struct CameraView: View {
                         
                         Button(action: {
                             // TODO: - 인스타그램 스토리 딥링크 연결
+                            viewModel.shareToInstagramStories()
                         }) {
                             Text("공유하기")
                                 .font(.custom("Inter-SemiBold", size: 20))

@@ -108,15 +108,51 @@ struct CameraView: View {
         .navigationBarItems(leading: CustomBackButton())
         .fullScreenCover(isPresented: $viewModel.showPreview) {
             if let recentImage = viewModel.recentImage {
-                Image(uiImage: recentImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: UIScreen.main.bounds.width,
-                           height: UIScreen.main.bounds.height)
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        viewModel.showPreview = false
+                VStack {
+                    HStack(spacing: 0) {
+                        Spacer()
+                        Button(action: {
+                            viewModel.showPreview = false
+                            // TODO: - 최근 사진 1개 삭제 기능 추가
+                        }) {
+                            Image(systemName: "xmark")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 20)
+                                .foregroundColor(Color.theme.teGreen)
+                        }
                     }
+                    .frame(width: UIScreen.main.bounds.width, height: 20)
+                    .padding(.trailing, 20)
+                    .padding(.vertical, 20)
+                    Image(uiImage: recentImage)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 200)
+                    HStack(spacing: 0) {
+                        Button(action: {
+                            viewModel.showPreview = false
+                        }) {
+                            Text("저장")
+                                .font(.custom("Inter-SemiBold", size: 20))
+                                .foregroundColor(Color.theme.teBlue)
+                        }
+                        .frame(width: UIScreen.main.bounds.width / 2, height: 50)
+                        
+                        Button(action: {
+                            // TODO: - 인스타그램 스토리 딥링크 연결
+                        }) {
+                            Text("공유하기")
+                                .font(.custom("Inter-SemiBold", size: 20))
+                                .foregroundColor(Color.theme.teGreen)
+                            
+                        }
+                        .frame(width: UIScreen.main.bounds.width / 2, height: 50)
+                        
+                    }
+                    .padding(.bottom, 16)
+                    
+                }
             } else {
                 // recentImage가 없을 경우 미리보기를 표시하지 않음
                 EmptyView()

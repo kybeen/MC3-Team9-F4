@@ -67,7 +67,6 @@ class CameraViewModel: ObservableObject {
         }
     }
     
-    
     // onChange에 호출하는 줌 기능
     func zoom(factor: CGFloat) {
         let delta = factor / lastScale

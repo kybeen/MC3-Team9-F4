@@ -10,8 +10,15 @@ import SwiftUI
 struct TodayDetailView: View {
     @ObservedObject var workoutDataModel: WorkOutDataModel
     @ObservedObject var userDataModel: UserDataModel
-    @StateObject private var cameraViewModel = CameraViewModel()
-    
+    @StateObject private var cameraViewModel: CameraViewModel
+
+    init(workoutDataModel: WorkOutDataModel, userDataModel: UserDataModel) {
+        self.workoutDataModel = workoutDataModel
+        self.userDataModel = userDataModel
+        // ✅ 추가: 기존의 workoutDataModel을 전달하여 CameraViewModel 초기화
+        _cameraViewModel = StateObject(wrappedValue: CameraViewModel(workoutDataModel: workoutDataModel))
+    }
+
     var body: some View {
         ScrollView {
             chartContainer()
@@ -26,15 +33,6 @@ struct TodayDetailView: View {
         .scrollIndicators(.hidden)
     }
 }
-
-//struct TodayDetailView_Preview: PreviewProvider {
-//    static var workoutDataModel = WorkOutDataModel()
-//
-//    static var previews: some View {
-//        TodayDetailView(workoutDatamodel: workoutDataModel)
-//
-//    }
-//}
 
 extension TodayDetailView {
     private var todayDateString: String {

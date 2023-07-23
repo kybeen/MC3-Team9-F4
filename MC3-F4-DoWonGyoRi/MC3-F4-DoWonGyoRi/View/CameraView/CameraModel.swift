@@ -18,7 +18,11 @@ class CameraModel: NSObject, ObservableObject {
     @Published var recentImage: UIImage?
     @Published var isCameraBusy = false
     var flashMode: AVCaptureDevice.FlashMode = .off
-    
+    private let workoutDataModel: WorkOutDataModel
+    init(workoutDataModel: WorkOutDataModel) {
+            self.workoutDataModel = workoutDataModel
+            super.init()
+        }
     // 카메라 셋업 과정을 담당하는 함수, positio
     func setUpCamera(completion: @escaping (Bool) -> Void) {
         if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
@@ -111,7 +115,7 @@ class CameraModel: NSObject, ObservableObject {
     func savePhoto() {
         guard let recentImage = self.recentImage,
               let watermarkImage = UIImage(named: "watermark") else { return }
-        let overlayImage = recentImage.overlayWith(image: watermarkImage, texts: ["\(WorkOutDataModel.shared.todayChartDatum[6]) Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white])
+        let overlayImage = recentImage.overlayWith(image: watermarkImage, texts: ["\(Int(workoutDataModel.todayChartDatum[6])) SWING", "\(Int(workoutDataModel.todayChartDatum[7] * workoutDataModel.todayChartDatum[6]))Perfect", "\(Int(workoutDataModel.todayChartDatum[8] / 60))h \(Int(workoutDataModel.todayChartDatum[8]) % 60)m"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white])
 
         self.recentImage = recentImage
         UIImageWriteToSavedPhotosAlbum(overlayImage, nil, nil, nil)
@@ -211,7 +215,7 @@ extension CameraModel: AVCapturePhotoCaptureDelegate {
         }
         
         // 이미지 오버레이
-        let overlaidImage = self.recentImage?.overlayWith(image: watermark, texts: ["\(WorkOutDataModel.shared.totalSwingCount) Swing", "Perfect", "Time"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white]) ?? UIImage()
+        let overlaidImage = self.recentImage?.overlayWith(image: watermark, texts: ["\(Int(workoutDataModel.todayChartDatum[6])) SWING", "\(Int(workoutDataModel.todayChartDatum[7] * workoutDataModel.todayChartDatum[6]))Perfect", "\(Int(workoutDataModel.todayChartDatum[8] / 60))h \(Int(workoutDataModel.todayChartDatum[8]) % 60)m"], textColors: [UIColor(Color.theme.teGreen), UIColor(Color.theme.teSkyBlue), UIColor.white]) ?? UIImage()
         self.recentImage = overlaidImage
         // 오버레이된 이미지를 저장
         UIImageWriteToSavedPhotosAlbum(overlaidImage, nil, nil, nil)
@@ -234,6 +238,7 @@ extension UIImage {
         overlayImage.draw(in: CGRect(origin: overlayImageOrigin, size: overlayImageSize))
         
         for (index, text) in texts.enumerated() {
+            
             let textColor = textColors[index]
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .left

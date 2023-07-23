@@ -46,17 +46,10 @@ struct CameraView: View {
                         .font(.custom("Inter-Black", size: 40))
                         .foregroundColor(Color.theme.teSkyBlue)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                    HStack(spacing: 0) {
-                        Image(systemName: "timer")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 35, height: 35)
-                            .padding(.trailing, 10)
-                        Text("\(Int(workoutDataModel.todayChartDatum[8] / 60))'\(Int(workoutDataModel.todayChartDatum[8]) % 60)'")
-                            .font(.custom("Inter-Black", size: 40))
-                            .foregroundColor(Color.theme.teWhite)
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    Text("\(Int(workoutDataModel.todayChartDatum[8] / 60))h \(Int(workoutDataModel.todayChartDatum[8]) % 60)m")
+                        .font(.custom("Inter-Black", size: 40))
+                        .foregroundColor(Color.theme.teWhite)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 30)

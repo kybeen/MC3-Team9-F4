@@ -11,6 +11,7 @@ import Combine
 
 class CameraViewModel: ObservableObject {
     private let model: CameraModel
+    private let workoutDataModel: WorkOutDataModel
     private let session: AVCaptureSession
     let cameraPreview: AnyView
     private var subscriptions = Set<AnyCancellable>()
@@ -102,8 +103,9 @@ class CameraViewModel: ObservableObject {
         }
     }
 
-    init() {
-        model = CameraModel()
+    init(workoutDataModel: WorkOutDataModel) {
+        self.workoutDataModel = workoutDataModel
+        self.model = CameraModel(workoutDataModel: workoutDataModel)
         session = model.session
         cameraPreview = AnyView(CameraPreviewView(session: session))
 

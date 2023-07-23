@@ -59,7 +59,7 @@ class CameraViewModel: ObservableObject {
                 model.capturePhoto()
                 print("[CameraViewModel]: Photo captured!")
                 model.savePhoto()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                    
                         self.showPreview = true // 메인 스레드에서 showPreview를 true로 변경
                    
@@ -116,11 +116,13 @@ class CameraViewModel: ObservableObject {
         }
         .store(in: &self.subscriptions)
         
-        model.$recentImage.sink { [weak self] (photo) in
-            guard let pic = photo else { return }
-            self?.recentImage = pic
-        }
-        .store(in: &self.subscriptions)
+        model.$recentImage
+            .receive(on: DispatchQueue.main) // 메인 스레드에서 처리하도록 추가
+            .sink { [weak self] (photo) in
+                guard let pic = photo else { return }
+                self?.recentImage = pic
+            }
+            .store(in: &self.subscriptions)
         // 아래 코드 추가
         initializeCamera()
     }

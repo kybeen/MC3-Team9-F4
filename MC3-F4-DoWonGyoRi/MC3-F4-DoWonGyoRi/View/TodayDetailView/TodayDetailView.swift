@@ -10,6 +10,15 @@ import SwiftUI
 struct TodayDetailView: View {
     @ObservedObject var workoutDataModel: WorkOutDataModel
     @ObservedObject var userDataModel: UserDataModel
+    @StateObject private var cameraViewModel: CameraViewModel
+
+    init(workoutDataModel: WorkOutDataModel, userDataModel: UserDataModel) {
+        self.workoutDataModel = workoutDataModel
+        self.userDataModel = userDataModel
+        // ✅ 추가: 기존의 workoutDataModel을 전달하여 CameraViewModel 초기화
+        _cameraViewModel = StateObject(wrappedValue: CameraViewModel(workoutDataModel: workoutDataModel))
+    }
+
     var body: some View {
         ScrollView {
             chartContainer()
@@ -18,19 +27,12 @@ struct TodayDetailView: View {
         .navigationTitle(todayDateString)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: CustomBackButton())
-        .navigationBarItems(trailing: Image("instagram_icon"))
+        .navigationBarItems(trailing: NavigationLink(destination: CameraView(viewModel: cameraViewModel, workoutDataModel: workoutDataModel)) {
+            Image("instagram_icon")
+        })
         .scrollIndicators(.hidden)
     }
 }
-
-//struct TodayDetailView_Preview: PreviewProvider {
-//    static var workoutDataModel = WorkOutDataModel()
-//
-//    static var previews: some View {
-//        TodayDetailView(workoutDatamodel: workoutDataModel)
-//
-//    }
-//}
 
 extension TodayDetailView {
     private var todayDateString: String {
@@ -49,12 +51,9 @@ extension TodayDetailView {
                     .frame(maxWidth: UIScreen.main.bounds.width - 46, maxHeight: UIScreen.main.bounds.width - 46)
                     .foregroundColor(Color.theme.teRealBlack)
                 VStack {
-                    RingChartsView(values: [totalSwing, perfectStrokeRatio], colors: [[Color.theme.teDarkGray, Color.theme.teGreen], [Color.theme.teLightGray, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
+                    RingChartsView(values: [totalSwing, perfectStrokeRatio], colors: [[ Color.theme.teBlue, Color.theme.teGreen], [ Color.theme.teSkyBlue, Color.theme.teBlue]], ringsMaxValue: 100, lineWidth: 24, isAnimated: true)
                         .frame(width: UIScreen.main.bounds.width - 80, height: UIScreen.main.bounds.width - 80, alignment: .center)
-                        
                 }
-                
-                
                 VStack(spacing: 0) {
                     Text("Swing 달성도")
                         .font(.custom("Inter-Bold", size: 24))
@@ -82,7 +81,7 @@ extension TodayDetailView {
         VStack(spacing: 0) {
             swingDataContainer("스윙 횟수", Color.theme.teGreen, false)
             swingDataContainer("Perfect 스윙", Color.theme.teBlue, true)
-            timeCalorieDataContainer("운동 시간", Int(workoutDataModel.todayChartDatum[9]), true)
+            timeCalorieDataContainer("운동 시간", Int(workoutDataModel.todayChartDatum[8]), true)
             timeCalorieDataContainer("칼로리 소비", Int(workoutDataModel.todayChartDatum[11]), false)
         }
     }
@@ -127,8 +126,8 @@ extension TodayDetailView {
     }
     
     private func timeCalorieDataContainer(_ title: String, _ data: Int, _ isTime: Bool) -> some View {
-        let timeHour = Int(workoutDataModel.todayChartDatum[9]) / 60
-        let timeMinutes = Int(workoutDataModel.todayChartDatum[9]) % 60
+        let timeHour = Int(workoutDataModel.todayChartDatum[8]) / 60
+        let timeMinutes = Int(workoutDataModel.todayChartDatum[8]) % 60
         
         return VStack(spacing: 0) {
             VStack(spacing: 0) {

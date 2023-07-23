@@ -59,26 +59,45 @@ struct CameraView: View {
                     Spacer()
                     // 플래시 온오프
                     Button(action: {viewModel.switchFlash()}) {
-                        Image(systemName: viewModel.isFlashOn ? "bolt.fill" : "bolt")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(viewModel.isFlashOn ? .yellow : .white)
-                            
+                        ZStack {
+                            Circle()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color.theme.teRealBlack.opacity(0.3))
+                                .cornerRadius(100)
+                            Image(systemName: viewModel.isFlashOn ? "bolt.fill" : "bolt")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(viewModel.isFlashOn ? .yellow : .white)
+                        }
                     }
-                    .frame(width: 30, height: 30)
+                    .frame(width: 50, height: 50)
+                    .padding(.trailing, 30)
                     // 사진찍기 버튼
                     Button(action: {viewModel.capturePhoto()}) {
                         Circle()
-                            .stroke(lineWidth: 5)
-                            .frame(width: 75, height: 75)
+                            .stroke(lineWidth: 10)
+                            .frame(maxWidth: 75, maxHeight: 75)
+                            .foregroundColor(Color.theme.teGreen)
+                            .background(Color.theme.teBlack)
+                            .cornerRadius(100)
                     }
+                    .frame(maxWidth: 75, maxHeight: 75)
                     // 전후면 카메라 교체
                     Button(action: {viewModel.changeCamera()}) {
-                        Image(systemName: "arrow.triangle.2.circlepath.camera")
-                            .resizable()
-                            .scaledToFit()
+                        ZStack {
+                            Circle()
+                                .frame(width: 50, height: 50)
+                                .foregroundColor(Color.theme.teRealBlack.opacity(0.3))
+                                .cornerRadius(100)
+                            Image(systemName: "arrow.triangle.2.circlepath.camera")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                        }
                     }
-                    .frame(width: 30, height: 30)
+                    .frame(width: 50, height: 50)
+                    .padding(.leading, 30)
                     Spacer()
                 }
             }

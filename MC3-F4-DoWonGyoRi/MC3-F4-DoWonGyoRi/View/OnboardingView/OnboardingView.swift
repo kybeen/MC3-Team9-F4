@@ -243,6 +243,35 @@ extension OnboardingView {
                 .onTapGesture {
                     UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
                 }
+                .onChange(of: nickname, perform: { newText in
+                    // 특수문자를 사용하지 못하도록 정규표현식을 사용하여 필터링합니다.
+                    let regex = try! NSRegularExpression(pattern: "^[\\p{P}]*$", options: [])
+                    let range = NSRange(location: 0, length: newText.utf16.count)
+                    let filteredText = regex.stringByReplacingMatches(in: newText, options: [], range: range, withTemplate: "")
+                    
+                    // 입력 가능한 최대 길이를 적용합니다.
+                    if let rangeOfLastKoreanCharacter = newText.range(of: "\\p{Hangul}", options: .regularExpression, range: newText.startIndex..<newText.endIndex, locale: nil)?.upperBound {
+                        if newText.distance(from: rangeOfLastKoreanCharacter, to: newText.endIndex) > 7 {
+                            let trimmedText = String(filteredText.prefix(newText.distance(from: newText.startIndex, to: rangeOfLastKoreanCharacter) + 7))
+                            if trimmedText != newText {
+                                nickname = trimmedText
+                                return
+                            }
+                        }
+                    }
+
+                    if filteredText.count > 12 {
+                        let trimmedText = String(filteredText.prefix(12))
+                        if trimmedText != newText {
+                            nickname = trimmedText
+                        }
+                    } else {
+                        if filteredText != newText {
+                            nickname = filteredText
+                        }
+                    }
+                })
+
             Rectangle()
                 .frame(height: 1)
             Text("\(nickname.count)/20")
@@ -317,6 +346,7 @@ extension OnboardingView {
             }
         }
     }
+    
     private func listComponent() -> some View {
         Button(action: {
             isSetBirthDay.toggle()

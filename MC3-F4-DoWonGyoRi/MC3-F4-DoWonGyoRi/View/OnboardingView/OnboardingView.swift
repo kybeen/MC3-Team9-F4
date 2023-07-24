@@ -23,7 +23,6 @@ struct OnboardingView: View {
     @State private var isSetWeight: Bool = false
     @State private var isSetHeight: Bool = false
     @State private var isSetBirthDay: Bool = false
-    @State private var isLeftHand: Bool = true
     @State private var isLeftHandSelect: Bool = false
     @State private var selectedDate = Date()
     @State private var height = "170"
@@ -129,8 +128,6 @@ extension OnboardingView {
         }
     }
     
-    
-    
     private func nextButton(_ buttonTitle: String = "다음") -> some View {
         Button(action: {
             if onboardingPage == 3 {
@@ -171,7 +168,6 @@ extension OnboardingView {
         .scrollDisabled(true)
         .scrollIndicators(.hidden)
     }
-    
     
     private func profilePhotoContainer() -> some View {
         VStack(spacing: 0) {
@@ -454,7 +450,7 @@ extension OnboardingView {
         
         newUserData.birthday = selectedDate
         newUserData.height = Int16(height) ?? 170
-        newUserData.isLeftHand = isLeftHand
+        newUserData.isLeftHand = isLeftHandSelect
         newUserData.sex = Int16(sex) ?? 1
         newUserData.userTargetBackStroke = 150
         newUserData.userTargetForeStroke = 150

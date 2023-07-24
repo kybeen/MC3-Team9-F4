@@ -106,9 +106,6 @@ class WorkOutDataModel: ObservableObject {
         
         todayWorkoutDatum = todayWorkoutData
         
-        
-        // TODO: - 어제 데이터를 가져오는 쿼리 데이터문이 잘못된 것 같다.
-        // Find the latest date from yesterday's workout data
         if let yesterdayWorkoutData = yesterdayFetchResult as? [WorkOutData], let latestWorkout = yesterdayWorkoutData.max(by: { $0.workoutDate ?? Date() < $1.workoutDate ?? Date() }) {
             let latestDate = calendar.startOfDay(for: latestWorkout.workoutDate ?? Date())
             if latestDate == today {
@@ -183,19 +180,7 @@ class WorkOutDataModel: ObservableObject {
             
             yesterdayPlayTime += Int(i.workoutTime)
         }
-        print("""
-        var todayBackhandStroke : \(todayBackhandStroke)
-        var todayBackhandPerfectStroke : \(todayBackhandPerfectStroke)
-        var todayForehandStroke : \(todayForehandStroke)
-        var todayForehandPerfectStroke :  \(todayForehandPerfectStroke)
-        var yesterdayBackhandStroke : \(yesterdayBackhandStroke)
-        var yesterdayBackhandPerfectStroke : \(yesterdayBackhandPerfectStroke)
-        var yesterdayForehandStroke : \(yesterdayForehandStroke)
-        var yesterdayForehandPerfectStroke : \(yesterdayForehandPerfectStroke)
-        var totalSwing : \(todayForehandStroke + todayBackhandStroke)
-        var todayPlayTime : \(todayPlayTime)
-        var yesterdayPlayTime : \(yesterdayPlayTime)
-        """)
+        
         returnArray.append(Double(todayForehandPerfectStroke))
         returnArray.append(Double(yesterdayForehandPerfectStroke))
         returnArray.append(returnArray[0] - returnArray[1])

@@ -88,17 +88,17 @@ extension MainView {
                 .padding(.bottom, 2)
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text(userDataModel.userTitle1)
-                    .font(.custom("Inter-Bold", size: 28))
+                    .font(.custom("Inter-SemiBold", size: 28))
                     .foregroundColor(Color.theme.teGreen)
                     .padding(.trailing, 10)
                 Text(userDataModel.userTitle2)
-                    .font(.custom("Inter-Bold", size: 28))
-                    .foregroundColor(Color.theme.teSkyBlue)
-                    .padding(.trailing, 10)
-                Text(userDataModel.username + "님")
                     .font(.custom("Inter-SemiBold", size: 28))
-                    .foregroundColor(Color.theme.teWhite)
+                    .foregroundColor(Color.theme.teSkyBlue)
             }
+            .padding(.bottom, 5)
+            Text(userDataModel.username + "님")
+                .font(.custom("Inter-Bold", size: 28))
+                .foregroundColor(Color.theme.teWhite)
         }
         .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 150, alignment: .leading)
         .padding(.leading, 27)
@@ -152,29 +152,6 @@ extension MainView {
             .scrollIndicators(.hidden)
             
             ScrollView {
-//                Text("아직 구현중~\n개발자가 열심히 일하고 있어요!")
-//                    .font(.custom("Inter-Bold", size: 24))
-//                    .frame(maxWidth: .infinity, alignment: .center)
-//                    .padding(.top, 50)
-//                Button(action: {
-//
-//                    // 조건문 속에 들어가야 할 내용들
-//                    EmitterManager.shared.isEmitterOn = true
-//                    for i in 0 ..< 10 {
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
-//                            HapticManager.shared.impact(style: .heavy, intensity: 0.97)
-//                        }
-//                    }
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//                        EmitterManager.shared.isEmitterOn = false
-//                        isCongretePresented.toggle()
-//                    }
-//
-//                }) {
-//                    Text("Congrete Modal POPUP")
-//                }
-//                .padding(.bottom, 30)
-                
                 Button(action: {
                     addUserCountData()
                     checkTitle1Gain()
@@ -235,12 +212,6 @@ extension MainView {
                 .padding(.top, 40)
                 .frame(maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.width)
             }
-            .onAppear {
-                print("userDataModal.userTargetForeStroke", userDataModel.userTargetForeStroke)
-                print("userDataModal.userTargetBackStroke", userDataModel.userTargetBackStroke)
-                print("workoutDataModel.todayChartDatum[6]", workoutDataModel.todayChartDatum[6])
-                print("링차트 외부값 : ", CGFloat(workoutDataModel.todayChartDatum[6] / Double((userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke))) * 100)
-            }
         }
     }
     
@@ -281,13 +252,9 @@ extension MainView {
                     .padding(.top, 10)
                     .foregroundColor(Color.theme.teWhite)
                 
-                // TODO: .animation 활용 -> 스크롤이 내려가서 그 부분이 보일 때, 애니메이션이 되어서 막대그래프가 나타나도록 구현
                 horizontalBarGraphContainer(todayPerfect, yesterdayPerfect, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, false, true)
-                
                 horizontalBarGraphContainer(yesterdayPerfect, todayPerfect, false, false)
-                    
             }
-            
             .frame(alignment: .leading)
             .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
         }
@@ -296,7 +263,6 @@ extension MainView {
     private func summaryTimeBox() -> some View {
         let time = Int(workoutDataModel.todayChartDatum[10])
             
-        
         return ZStack {
             Rectangle()
                 .foregroundColor(.clear)
@@ -314,21 +280,15 @@ extension MainView {
                     .frame(height: 0.5)
                     .padding(.top, 10)
                 
-                // TODO: .animation 활용 -> 스크롤이 내려가서 그 부분이 보일 때, 애니메이션이 되어서 막대그래프가 나타나도록 구현
                 horizontalBarGraphContainer(0, 0, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, true, true, Int(workoutDataModel.todayChartDatum[8]), Int(workoutDataModel.todayChartDatum[9]))
-                
                 horizontalBarGraphContainer(0, 0, true, false, Int(workoutDataModel.todayChartDatum[9]), Int(workoutDataModel.todayChartDatum[8]))
-                    
             }
-            
             .frame(alignment: .leading)
             .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
         }
     }
     
-    
     private func horizontalBarGraphContainer(_ swingCount: Int, _ comparisonSwing: Int, leftColor: Color = Color.theme.teWhite, rightColor: Color = Color.theme.teWhite, _ isTime: Bool = false, _ isToday: Bool = true, _ standardTime: Int = 0, _ comparisonTime: Int = 0) -> some View {
-        
         let standardTimeHour = standardTime / 60
         let standardTimeMinutes = standardTime % 60
         let screenSize = UIScreen.main.bounds.width
@@ -338,7 +298,6 @@ extension MainView {
                 Text("\(isTime ? standardTimeHour : swingCount)")
                     .font(.custom("Inter-SemiBold", size: 30))
                     .foregroundColor(Color.theme.teWhite)
-                
                 Text("\(isTime ? "시간" : "회")")
                     .font(.custom("Inter-SemiBold", size: 24))
                     .foregroundColor(Color.theme.teWhite)
@@ -348,7 +307,6 @@ extension MainView {
                         .font(.custom("Inter-SemiBold", size: 30))
                         .foregroundColor(Color.theme.teWhite)
                         .padding(.leading, 10)
-                    
                     Text("분")
                         .font(.custom("Inter-SemiBold", size: 24))
                         .foregroundColor(Color.theme.teWhite)
@@ -586,7 +544,6 @@ extension MainView {
         print("userDataModel.totalPerfectCount : ", userDataModel.totalPerfectCount)
         print("userDataModel.userPerfectRatio : ", userDataModel.userPerfectRatio)
     }
-    
 }
 
 struct MainView_Provider: PreviewProvider {

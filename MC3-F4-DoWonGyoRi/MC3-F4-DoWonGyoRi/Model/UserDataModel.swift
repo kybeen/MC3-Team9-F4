@@ -25,7 +25,10 @@ class UserDataModel: ObservableObject {
     @Published var userTitle2 = "Title2"
     @Published var userTitle2List = ["초보"]
     @Published var weight = 60
-
+    @Published public var totalSwingCount = 0
+    @Published public var totalPerfectCount = 0
+    @Published public var userPerfectRatio = 0.0
+    
     private let coreDataManager = CoreDataManager.shared
     
     func fetchUserData() {
@@ -49,6 +52,9 @@ class UserDataModel: ObservableObject {
         userTitle2 = userData.userTitle2 ?? ""
         userTitle2List = userData.userTitle2_List as? [String] ?? []
         weight = Int(userData.weight)
+        totalSwingCount = Int(userData.totalSwingCount)
+        totalPerfectCount = Int(userData.totalPerfectCount)
+        userPerfectRatio = userData.userPerfectRatio
     }
     
     func saveUserData() {
@@ -79,6 +85,9 @@ class UserDataModel: ObservableObject {
         user.userTitle2 = userTitle2
         user.userTitle2_List = userTitle2List as NSObject
         user.weight = Int16(weight)
+        user.totalSwingCount = Int16(totalSwingCount)
+        user.totalPerfectCount = Int16(totalPerfectCount)
+        user.userPerfectRatio = userPerfectRatio
         
         coreDataManager.update(object: user)
     }

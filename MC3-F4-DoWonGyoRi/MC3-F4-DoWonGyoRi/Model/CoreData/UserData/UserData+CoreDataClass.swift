@@ -2,7 +2,7 @@
 //  UserData+CoreDataClass.swift
 //  MC3-F4-DoWonGyoRi
 //
-//  Created by 김동현 on 2023/07/16.
+//  Created by 김동현 on 2023/07/24.
 //
 //
 

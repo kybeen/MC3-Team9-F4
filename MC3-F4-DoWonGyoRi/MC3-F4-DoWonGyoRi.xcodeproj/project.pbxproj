@@ -34,6 +34,10 @@
 		168AD6A42A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */; };
 		168AD6A82A57EF060097985C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6A72A57EF060097985C /* Assets.xcassets */; };
 		168AD6AB2A57EF060097985C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 168AD6AA2A57EF060097985C /* Preview Assets.xcassets */; };
+		B87CEBE22A6EA3E30038BFDB /* PhoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBE12A6EA3E30038BFDB /* PhoneViewModel.swift */; };
+		B87CEBE42A6EA4110038BFDB /* WatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBE32A6EA4110038BFDB /* WatchViewModel.swift */; };
+		B87CEBE92A6EA4440038BFDB /* WatchTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBE82A6EA4440038BFDB /* WatchTestView.swift */; };
+		B87CEBEB2A6EA4630038BFDB /* PhoneTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBEA2A6EA4630038BFDB /* PhoneTestView.swift */; };
 		C9134A082A6C4A26006259F5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9134A072A6C4A26006259F5 /* CameraView.swift */; };
 		C9134A0A2A6C4AA4006259F5 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9134A092A6C4AA4006259F5 /* CameraViewModel.swift */; };
 		C9134A0C2A6C4B39006259F5 /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9134A0B2A6C4B39006259F5 /* CameraModel.swift */; };
@@ -137,6 +141,10 @@
 		168AD6A32A57EF050097985C /* MC3_F4_DoWonGyoRiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_F4_DoWonGyoRiApp.swift; sourceTree = "<group>"; };
 		168AD6A72A57EF060097985C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		168AD6AA2A57EF060097985C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B87CEBE12A6EA3E30038BFDB /* PhoneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewModel.swift; sourceTree = "<group>"; };
+		B87CEBE32A6EA4110038BFDB /* WatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchViewModel.swift; sourceTree = "<group>"; };
+		B87CEBE82A6EA4440038BFDB /* WatchTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchTestView.swift; sourceTree = "<group>"; };
+		B87CEBEA2A6EA4630038BFDB /* PhoneTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneTestView.swift; sourceTree = "<group>"; };
 		C9134A072A6C4A26006259F5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		C9134A092A6C4AA4006259F5 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		C9134A0B2A6C4B39006259F5 /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 				1673DC312A5E3F3F000F9EB1 /* CountingView.swift */,
 				1673DC392A5F796D000F9EB1 /* CompleteView.swift */,
 				1673DC3B2A5F7CC6000F9EB1 /* ResultView.swift */,
+				B87CEBE82A6EA4440038BFDB /* WatchTestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -242,6 +251,7 @@
 				1650CBD02A66377900A3492F /* ParticleEffect.swift */,
 				163B6E1C2A6779C8000E0383 /* HealthKitManager.swift */,
 				163B6E1E2A68AC4A000E0383 /* HealthSingleton.swift */,
+				B87CEBE32A6EA4110038BFDB /* WatchViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -430,6 +440,7 @@
 				C9804AC82A5BDD2F00CF97A8 /* MainView */,
 				C9804AC32A5BDB9600CF97A8 /* Extension */,
 				168AD6932A57EF030097985C /* ContentView.swift */,
+				B87CEBEA2A6EA4630038BFDB /* PhoneTestView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -441,6 +452,7 @@
 				C96DC7642A643A1A00A922A3 /* CoreData */,
 				C9F9E0382A645B130086449F /* UserDataModel.swift */,
 				C9F9E03A2A645B1F0086449F /* WorkOutDataModel.swift */,
+				B87CEBE12A6EA3E30038BFDB /* PhoneViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -629,6 +641,7 @@
 				C9533A1A2A60EE1200FA7DC7 /* TodayDetailView.swift in Sources */,
 				C9134A0C2A6C4B39006259F5 /* CameraModel.swift in Sources */,
 				C9533A092A5E667000FA7DC7 /* UserInfoSettingView.swift in Sources */,
+				B87CEBEB2A6EA4630038BFDB /* PhoneTestView.swift in Sources */,
 				C94A8E892A64491800F11C74 /* WorkOutData+CoreDataClass.swift in Sources */,
 				C9533A0B2A5F82E900FA7DC7 /* UserStrokeSettingView.swift in Sources */,
 				168AD6942A57EF030097985C /* ContentView.swift in Sources */,
@@ -643,6 +656,7 @@
 				C94A8E8A2A64491800F11C74 /* WorkOutData+CoreDataProperties.swift in Sources */,
 				C9804AC52A5BDBAB00CF97A8 /* CustomBackButton.swift in Sources */,
 				C9134A082A6C4A26006259F5 /* CameraView.swift in Sources */,
+				B87CEBE22A6EA3E30038BFDB /* PhoneViewModel.swift in Sources */,
 				C9533A052A5E578000FA7DC7 /* SettingView.swift in Sources */,
 				C96600B92A5CF873008287EF /* RingChartsView.swift in Sources */,
 				168AD6922A57EF030097985C /* MC3_F4_DoWonGyoRiApp.swift in Sources */,
@@ -663,8 +677,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B87CEBE92A6EA4440038BFDB /* WatchTestView.swift in Sources */,
 				1673DC342A5E4F3E000F9EB1 /* MeasuringView.swift in Sources */,
 				1673DC3A2A5F796D000F9EB1 /* CompleteView.swift in Sources */,
+				B87CEBE42A6EA4110038BFDB /* WatchViewModel.swift in Sources */,
 				1673DC3C2A5F7CC6000F9EB1 /* ResultView.swift in Sources */,
 				1673DC2B2A5D4617000F9EB1 /* ReadyView.swift in Sources */,
 				1673DC0C2A5CD4A9000F9EB1 /* ColorExtension.swift in Sources */,
@@ -814,7 +830,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3-F4-DoWonGyoRi Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "MC3-F4-DoWonGyoRi";
@@ -822,13 +838,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "mc3.MC3-F4-DoWonGyoRi";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = kybeen.TennisClassifierTest;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mc3.MC3-F4-DoWonGyoRi1.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = kybeen.TennisClassifierTest.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -848,7 +864,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3-F4-DoWonGyoRi Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "MC3-F4-DoWonGyoRi";
@@ -856,13 +872,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "mc3.MC3-F4-DoWonGyoRi";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = kybeen.TennisClassifierTest;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mc3.MC3-F4-DoWonGyoRi1.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = kybeen.TennisClassifierTest.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -883,7 +899,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3-F4-DoWonGyoRi/Preview Content\"";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-F4-DoWonGyoRi/Info.plist";
@@ -904,7 +920,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mc3.MC3-F4-DoWonGyoRi";
+				PRODUCT_BUNDLE_IDENTIFIER = kybeen.TennisClassifierTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -925,7 +941,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3-F4-DoWonGyoRi/Preview Content\"";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = RCM87YWJ79;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-F4-DoWonGyoRi/Info.plist";
@@ -946,7 +962,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mc3.MC3-F4-DoWonGyoRi";
+				PRODUCT_BUNDLE_IDENTIFIER = kybeen.TennisClassifierTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

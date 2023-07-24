@@ -17,6 +17,10 @@ struct MainView: View {
     @State private var path: [Int] = []
     @State private var isCongretePresented = false
     
+    @State var modalTitle1 = ""
+    @State var modalTitle2 = ""
+    @State var modalAttainment = ""
+    @State var modalGainTitle = ""
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -41,7 +45,7 @@ struct MainView: View {
             }
         }
         .sheet(isPresented: $isCongretePresented, content: {
-            CongreteModalView()
+            CongreteModalView(title1: modalTitle1, title2: modalTitle2, attainment: modalAttainment, gainTitle: modalGainTitle)
                 .presentationDetents([.fraction(0.7), .fraction(0.7)])
         })
     }
@@ -84,17 +88,17 @@ extension MainView {
                 .padding(.bottom, 2)
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text(userDataModel.userTitle1)
-                    .font(.custom("Inter-Bold", size: 28))
+                    .font(.custom("Inter-SemiBold", size: 28))
                     .foregroundColor(Color.theme.teGreen)
                     .padding(.trailing, 10)
                 Text(userDataModel.userTitle2)
-                    .font(.custom("Inter-Bold", size: 28))
-                    .foregroundColor(Color.theme.teSkyBlue)
-                    .padding(.trailing, 10)
-                Text(userDataModel.username + "님")
                     .font(.custom("Inter-SemiBold", size: 28))
-                    .foregroundColor(Color.theme.teWhite)
+                    .foregroundColor(Color.theme.teSkyBlue)
             }
+            .padding(.bottom, 5)
+            Text(userDataModel.username + "님")
+                .font(.custom("Inter-Bold", size: 28))
+                .foregroundColor(Color.theme.teWhite)
         }
         .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 150, alignment: .leading)
         .padding(.leading, 27)
@@ -148,37 +152,17 @@ extension MainView {
             .scrollIndicators(.hidden)
             
             ScrollView {
-                Text("아직 구현중~\n개발자가 열심히 일하고 있어요!")
-                    .font(.custom("Inter-Bold", size: 24))
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.top, 50)
                 Button(action: {
-                    
-                    EmitterManager.shared.isEmitterOn = true
-                    for i in 0 ..< 10 {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
-                            HapticManager.shared.impact(style: .heavy, intensity: 0.97)
-                        }
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        EmitterManager.shared.isEmitterOn = false
-                        isCongretePresented.toggle()
-                    }
-                    
-                }) {
-                    Text("Congrete Modal POPUP")
-                }
-                .padding(.bottom, 30)
-                
-                Button(action: {
-                    createSampleWorkOutData()
+                    addUserCountData()
+                    checkTitle1Gain()
+                    checkTitle2Gain()
                 }) {
                     Text("어제 운동 데이터 모델 만들기")
                 }
                 .padding(.bottom, 30)
                 
                 Button(action: {
-                    createTodaySampleWorkOutData()
+                    workoutDataModel.createTodaySampleWorkOutData()
                 }) {
                     Text("오늘 운동 데이터 모델 만들기")
                 }
@@ -190,57 +174,6 @@ extension MainView {
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
         .background(Color.theme.teBlack)
         .cornerRadius(20)
-        
-        
-        
-        // 아래의 제스처 Modifier를 사용할 경우, 좌우 스와이프가 되지 않음.
-//            .gesture(DragGesture().onChanged { value in
-//                if value.translation.height < 0 {
-//                    isAnimationEnabled = true
-//                }
-//            })
-    }
-    
-    private func createSampleWorkOutData() {
-        let coreDataManager = CoreDataManager.shared
-
-        // 새로운 WorkOutData 객체를 생성
-        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
-            print("Failed to create WorkOutData object")
-            return
-        }
-        
-        // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
-        newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
-        newWorkOutData.isBackhand = Bool.random()
-        newWorkOutData.perfectSwingCount = Int16(Int.random(in: 10...200))
-        newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
-        newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date()
-        newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
-        
-        // 저장
-        coreDataManager.update(object: newWorkOutData)
-    }
-    
-    private func createTodaySampleWorkOutData() {
-        let coreDataManager = CoreDataManager.shared
-
-        // 새로운 WorkOutData 객체를 생성
-        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
-            print("Failed to create WorkOutData object")
-            return
-        }
-        
-        // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
-        newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
-        newWorkOutData.isBackhand = Bool.random()
-        newWorkOutData.perfectSwingCount = Int16(Int.random(in: 10...100))
-        newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
-        newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: 0, to: Date()) ?? Date()
-        newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
-        
-        // 저장
-        coreDataManager.update(object: newWorkOutData)
     }
     
     private func ringChartsContainer() -> some View {
@@ -278,12 +211,6 @@ extension MainView {
                 }
                 .padding(.top, 40)
                 .frame(maxWidth: UIScreen.main.bounds.width, minHeight: UIScreen.main.bounds.width)
-            }
-            .onAppear {
-                print("userDataModal.userTargetForeStroke", userDataModel.userTargetForeStroke)
-                print("userDataModal.userTargetBackStroke", userDataModel.userTargetBackStroke)
-                print("workoutDataModel.todayChartDatum[6]", workoutDataModel.todayChartDatum[6])
-                print("링차트 외부값 : ", CGFloat(workoutDataModel.todayChartDatum[6] / Double((userDataModel.userTargetBackStroke + userDataModel.userTargetForeStroke))) * 100)
             }
         }
     }
@@ -325,13 +252,9 @@ extension MainView {
                     .padding(.top, 10)
                     .foregroundColor(Color.theme.teWhite)
                 
-                // TODO: .animation 활용 -> 스크롤이 내려가서 그 부분이 보일 때, 애니메이션이 되어서 막대그래프가 나타나도록 구현
                 horizontalBarGraphContainer(todayPerfect, yesterdayPerfect, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, false, true)
-                
                 horizontalBarGraphContainer(yesterdayPerfect, todayPerfect, false, false)
-                    
             }
-            
             .frame(alignment: .leading)
             .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
         }
@@ -340,7 +263,6 @@ extension MainView {
     private func summaryTimeBox() -> some View {
         let time = Int(workoutDataModel.todayChartDatum[10])
             
-        
         return ZStack {
             Rectangle()
                 .foregroundColor(.clear)
@@ -358,21 +280,15 @@ extension MainView {
                     .frame(height: 0.5)
                     .padding(.top, 10)
                 
-                // TODO: .animation 활용 -> 스크롤이 내려가서 그 부분이 보일 때, 애니메이션이 되어서 막대그래프가 나타나도록 구현
                 horizontalBarGraphContainer(0, 0, leftColor: Color.theme.teGreen, rightColor: Color.theme.teSkyBlue, true, true, Int(workoutDataModel.todayChartDatum[8]), Int(workoutDataModel.todayChartDatum[9]))
-                
                 horizontalBarGraphContainer(0, 0, true, false, Int(workoutDataModel.todayChartDatum[9]), Int(workoutDataModel.todayChartDatum[8]))
-                    
             }
-            
             .frame(alignment: .leading)
             .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
         }
     }
     
-    
     private func horizontalBarGraphContainer(_ swingCount: Int, _ comparisonSwing: Int, leftColor: Color = Color.theme.teWhite, rightColor: Color = Color.theme.teWhite, _ isTime: Bool = false, _ isToday: Bool = true, _ standardTime: Int = 0, _ comparisonTime: Int = 0) -> some View {
-        
         let standardTimeHour = standardTime / 60
         let standardTimeMinutes = standardTime % 60
         let screenSize = UIScreen.main.bounds.width
@@ -382,7 +298,6 @@ extension MainView {
                 Text("\(isTime ? standardTimeHour : swingCount)")
                     .font(.custom("Inter-SemiBold", size: 30))
                     .foregroundColor(Color.theme.teWhite)
-                
                 Text("\(isTime ? "시간" : "회")")
                     .font(.custom("Inter-SemiBold", size: 24))
                     .foregroundColor(Color.theme.teWhite)
@@ -392,7 +307,6 @@ extension MainView {
                         .font(.custom("Inter-SemiBold", size: 30))
                         .foregroundColor(Color.theme.teWhite)
                         .padding(.leading, 10)
-                    
                     Text("분")
                         .font(.custom("Inter-SemiBold", size: 24))
                         .foregroundColor(Color.theme.teWhite)
@@ -467,6 +381,169 @@ extension MainView {
         }
     }
     
+    private func addUserCountData() {
+        let a = Int16(Int.random(in: 200...500))
+        let b = Bool.random()
+        let c = Int16(Int.random(in: 10...200))
+        let d = Int16(Int.random(in: 10...50))
+        let e = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date()
+        let f = Int16(Int.random(in: 10...200))
+        
+        workoutDataModel.createSampleWorkOutData(a, b, c, d, e, f)
+        userDataModel.totalSwingCount += Int(c)
+        userDataModel.totalPerfectCount += Int(d)
+        userDataModel.userPerfectRatio = Double(userDataModel.totalPerfectCount) / Double(userDataModel.totalSwingCount)
+        userDataModel.saveUserData()
+    }
+    
+    private func modifyModalContent(_ modalTitle1: String, _ modalTitle2: String, _ modalAttainMent: String, _ modalGainTitle: String, _ isTitle1: Bool) {
+        if isTitle1 {
+            userDataModel.userTitle1List.append(modalGainTitle)
+        } else {
+            userDataModel.userTitle2List.append(modalGainTitle)
+        }
+        
+        self.modalTitle1 = "\(modalTitle1) "
+        self.modalTitle2 = modalTitle2
+        self.modalAttainment = "\(modalAttainMent) "
+        self.modalGainTitle = modalGainTitle
+    }
+    
+    private func emmiterOn() {
+        EmitterManager.shared.isEmitterOn = true
+        for i in 0 ..< 10 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            EmitterManager.shared.isEmitterOn = false
+            isCongretePresented.toggle()
+        }
+    }
+    
+    private func checkTitle1Gain() {
+        switch userDataModel.totalSwingCount {
+        case 200 ..< 500:
+            if !userDataModel.userTitle1List.contains("가능성이 보이는") {
+                modifyModalContent("Swing ", "전체 횟수", "200회 ", "가능성이 보이는", true)
+                emmiterOn()
+                userDataModel.userTitle1 = "가능성이 보이는"
+            }
+        case 500 ..< 1000:
+            if !userDataModel.userTitle1List.contains("쉬지 않는") {
+                modifyModalContent("Swing ", "전체 횟수", "500회 ", "쉬지 않는", true)
+                emmiterOn()
+                userDataModel.userTitle1 = "쉬지 않는"
+            }
+        case 1000 ..< 2000:
+            if !userDataModel.userTitle1List.contains("뚝심있는") {
+                modifyModalContent("Swing ", "전체 횟수", "1000회 ", "뚝심있는", true)
+                emmiterOn()
+                userDataModel.userTitle1 = "뚝심있는"
+            }
+        case 2000 ..< 3000:
+            if !userDataModel.userTitle1List.contains("기풍있는") {
+                modifyModalContent("Swing ", "전체 횟수", "2000회 ", "기풍있는", true)
+                emmiterOn()
+                userDataModel.userTitle1 = "기풍있는"
+            }
+        case 3000 ..< 4000:
+            if !userDataModel.userTitle1List.contains("지는 법을 모르는") {
+                modifyModalContent("Swing ", "전체 횟수", "3000회 ", "지는 법을 모르는", true)
+                emmiterOn()
+                userDataModel.userTitle1 = "지는 법을 모르는"
+            }
+        case 4000 ..< 5000:
+            if !userDataModel.userTitle1List.contains("막을 수 없는") {
+                modifyModalContent("Swing ", "전체 횟수", "4000회 ", "막을 수 없는", true)
+                emmiterOn()
+                userDataModel.userTitle1 = "막을 수 없는"
+            }
+        case 5000 ..< 7500:
+            if !userDataModel.userTitle1List.contains("전설의 출현") {
+                modifyModalContent("Swing ", "전체 횟수", "5000회 ", "전설의 출현", true)
+                emmiterOn()
+                userDataModel.userTitle1 = "전설의 출현"
+            }
+        case 7500 ..< 10000:
+            if !userDataModel.userTitle1List.contains("우주 유일의") {
+                modifyModalContent("Swing ", "전체 횟수", "10000회 ", "우주 유일의", true)
+                emmiterOn()
+                userDataModel.userTitle1 = "우주 유일의"
+            }
+        default:
+            print("defalut")
+        }
+        userDataModel.saveUserData()
+    }
+    
+    private func checkTitle2Gain() {
+        // usertitle2 관련
+        switch userDataModel.totalPerfectCount {
+            case 200 ..< 400:
+                if !userDataModel.userTitle2List.contains("테린이") {
+                    modifyModalContent("Perfect ", "횟수", "200회 ", "테린이", false)
+                    emmiterOn()
+                    userDataModel.userTitle2 = "테린이"
+                }
+            case 400 ..< 600:
+                if !userDataModel.userTitle2List.contains("아마추어") {
+                    modifyModalContent("Perfect ", "횟수", "400회 ", "아마추어", false)
+                    emmiterOn()
+                    userDataModel.userTitle2 = "아마추어"
+                }
+            case 600 ..< 800:
+                if !userDataModel.userTitle2List.contains("생활체육인") {
+                    modifyModalContent("Perfect ", "횟수", "600회 ", "생활체육인", false)
+                    emmiterOn()
+                    userDataModel.userTitle2 = "생활체육인"
+                }
+            
+        case 800 ..< 1000:
+                if !userDataModel.userTitle2List.contains("슈퍼루키") {
+                    modifyModalContent("Perfect ", "횟수", "800회 ", "슈퍼루키", false)
+                    emmiterOn()
+                    userDataModel.userTitle2 = "슈퍼루키"
+                }
+            case 1000 ..< 2000:
+                if !userDataModel.userTitle2List.contains("테니스석사") {
+                    modifyModalContent("Perfect ", "횟수", "1000회 ", "테니스석사", false)
+                    emmiterOn()
+                    userDataModel.userTitle2 = "테니스석사"
+                }
+            case 2000 ..< 3500:
+                if !userDataModel.userTitle2List.contains("테니스박사") {
+                    modifyModalContent("Perfect ", "횟수", "2000회 ", "테니스박사", false)
+                    emmiterOn()
+                    userDataModel.userTitle2 = "테니스박사"
+                }
+            case 3500 ..< 5000:
+                if !userDataModel.userTitle2List.contains("테니스황제") {
+                    modifyModalContent("Perfect ", "횟수", "3500회 ", "테니스황제", false)
+                    emmiterOn()
+                    userDataModel.userTitle2 = "테니스황제"
+                }
+            case 5000 ..< 7500:
+                if !userDataModel.userTitle2List.contains("월드클래스") {
+                    modifyModalContent("Perfect ", "횟수", "5000회 ", "월드클래스", false)
+                    emmiterOn()
+                    userDataModel.userTitle2 = "월드클래스"
+                }
+        case 7500 ..< 10000 :
+                if !userDataModel.userTitle2List.contains("최고존엄") {
+                    modifyModalContent("Perfect ", "횟수", "5000회 ", "최고존엄", false)
+                    emmiterOn()
+                    userDataModel.userTitle2 = "최고존엄"
+                }
+        default:
+            print("defalut")
+        }
+        userDataModel.saveUserData()
+        print("userDataModel.totalSwingCount : ", userDataModel.totalSwingCount)
+        print("userDataModel.totalPerfectCount : ", userDataModel.totalPerfectCount)
+        print("userDataModel.userPerfectRatio : ", userDataModel.userPerfectRatio)
+    }
 }
 
 struct MainView_Provider: PreviewProvider {

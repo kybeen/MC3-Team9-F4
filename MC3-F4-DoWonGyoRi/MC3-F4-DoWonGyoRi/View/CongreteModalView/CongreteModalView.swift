@@ -12,11 +12,15 @@ struct CongreteModalView: View {
     @State private var finishWish = false
     @Environment(\.dismiss) var dismiss
     
+    @State var title1: String = ""
+    @State var title2: String = ""
+    @State var attainment: String = ""
+    @State var gainTitle: String = ""
+    
     var body: some View {
         ZStack {
             EmitterView()
             modalContainer()
-            
         }
     }
     
@@ -52,14 +56,14 @@ extension CongreteModalView {
             VStack(spacing: 0) {
                 VStack(spacing: 0) {
                     HStack(spacing: 0) {
-                        Text("Perfect ")
+                        Text(title1)
                             .font(.custom("Inter-Bold", size: 32))
                             .foregroundColor(Color.theme.teSkyBlue)
-                        Text("누적 횟수")
+                        Text(title2)
                             .font(.custom("Inter-Bold", size: 32))
                             .foregroundColor(Color.theme.teWhite)
                     }
-                    Text("100개 달성")
+                    Text("\(attainment) 달성")
                         .font(.custom("Inter-Bold", size: 32))
                         .foregroundColor(Color.theme.teWhite)
                 }
@@ -74,7 +78,7 @@ extension CongreteModalView {
                         .frame(width: 264, height: 62)
                         .background(.black)
                         .cornerRadius(50)
-                    Text("#레전드")
+                    Text("#\(gainTitle)")
                         .font(.custom("Inter-Regular", size: 32))
                         .overlay(
                             LinearGradient(
@@ -83,7 +87,7 @@ extension CongreteModalView {
                                 endPoint: .trailing
                             )
                             .mask(
-                                Text("#레전드")
+                                Text("#\(gainTitle)")
                                     .font(.custom("Inter-Regular", size: 32))
                             )
                         )

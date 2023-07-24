@@ -199,7 +199,7 @@ class WorkOutDataModel: ObservableObject {
     }
     
     
-    func createSampleWorkOutData() {
+    func createSampleWorkOutData(_ calories: Int16, _ isBackhand: Bool, _ perfectSwingCount: Int16, _ totalSwingCount: Int16, _ workoutDate: Date, _ workoutTime: Int16) {
         // 새로운 WorkOutData 객체를 생성
         guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
             print("Failed to create WorkOutData object")

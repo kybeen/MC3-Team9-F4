@@ -458,10 +458,10 @@ extension OnboardingView {
         newUserData.sex = Int16(sex) ?? 1
         newUserData.userTargetBackStroke = 150
         newUserData.userTargetForeStroke = 150
-        newUserData.userTitle1 = "열정적인"
-        newUserData.userTitle2 = "루키"
-        newUserData.userTitle1_List = ["열정적인"] as NSObject
-        newUserData.userTitle2_List = ["루키"] as NSObject
+        newUserData.userTitle1 = "기지개를 펴는"
+        newUserData.userTitle2 = "병아리"
+        newUserData.userTitle1_List = ["기지개를 펴는"] as NSObject
+        newUserData.userTitle2_List = ["병아리"] as NSObject
         newUserData.username = nickname
         newUserData.weight = Int16(weight) ?? 60
         

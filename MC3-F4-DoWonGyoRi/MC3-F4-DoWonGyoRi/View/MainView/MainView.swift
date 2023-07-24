@@ -172,7 +172,163 @@ extension MainView {
                 .padding(.bottom, 30)
                 
                 Button(action: {
-                    workoutDataModel.createSampleWorkOutData()
+                    let a = Int16(Int.random(in: 200...500))
+                    let b = Bool.random()
+                    let c = Int16(Int.random(in: 10...200))
+                    let d = Int16(Int.random(in: 10...200))
+                    let e = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date()
+                    let f = Int16(Int.random(in: 10...200))
+                    
+                    workoutDataModel.createSampleWorkOutData(a, b, c, d, e, f)
+                    userDataModel.totalSwingCount += Int(c)
+                    userDataModel.totalPerfectCount += Int(d)
+                    userDataModel.userPerfectRatio = Double(userDataModel.totalPerfectCount) / Double(userDataModel.totalSwingCount)
+                    
+                    
+                    // usertitle1 관련
+                    switch userDataModel.totalSwingCount {
+                    case 0 ..< 500:
+                        if !userDataModel.userTitle2List.contains("테린이") {
+                            userDataModel.userTitle2List.append("테린이")
+                            userDataModel.saveUserData()
+                            EmitterManager.shared.isEmitterOn = true
+                            for i in 0 ..< 10 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                                    HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                EmitterManager.shared.isEmitterOn = false
+                                isCongretePresented.toggle()
+                            }
+                        }
+                    case 500 ..< 1000:
+                        if !userDataModel.userTitle2List.contains("아마추어") {
+                            userDataModel.userTitle2List.append("아마추어")
+                            userDataModel.saveUserData()
+                            EmitterManager.shared.isEmitterOn = true
+                            for i in 0 ..< 10 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                                    HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                EmitterManager.shared.isEmitterOn = false
+                                isCongretePresented.toggle()
+                            }
+                        }
+                    case 1000 ..< 2000:
+                        if !userDataModel.userTitle2List.contains("생활체육인") {
+                            userDataModel.userTitle2List.append("생활체육인")
+                            userDataModel.saveUserData()
+                            EmitterManager.shared.isEmitterOn = true
+                            for i in 0 ..< 10 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                                    HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                EmitterManager.shared.isEmitterOn = false
+                                isCongretePresented.toggle()
+                            }
+                        }
+                    case 2000 ..< 3000:
+                        if !userDataModel.userTitle2List.contains("슈퍼루키") {
+                            userDataModel.userTitle2List.append("슈퍼루키")
+                            userDataModel.saveUserData()
+                            EmitterManager.shared.isEmitterOn = true
+                            for i in 0 ..< 10 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                                    HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                EmitterManager.shared.isEmitterOn = false
+                                isCongretePresented.toggle()
+                            }
+                        }
+                    case 3000 ..< 4000:
+                        if !userDataModel.userTitle2List.contains("테니스석사") {
+                            userDataModel.userTitle2List.append("테니스석사")
+                            userDataModel.saveUserData()
+                            EmitterManager.shared.isEmitterOn = true
+                            for i in 0 ..< 10 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                                    HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                EmitterManager.shared.isEmitterOn = false
+                                isCongretePresented.toggle()
+                            }
+                        }
+                    case 4000 ..< 5000:
+                        if !userDataModel.userTitle2List.contains("테니스박사") {
+                            userDataModel.userTitle2List.append("테니스박사")
+                            userDataModel.saveUserData()
+                            EmitterManager.shared.isEmitterOn = true
+                            for i in 0 ..< 10 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                                    HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                EmitterManager.shared.isEmitterOn = false
+                                isCongretePresented.toggle()
+                            }
+                        }
+                    case 5000 ..< 7500:
+                        if !userDataModel.userTitle2List.contains("테니스황제") {
+                            userDataModel.userTitle2List.append("테니스황제")
+                            userDataModel.saveUserData()
+                            EmitterManager.shared.isEmitterOn = true
+                            for i in 0 ..< 10 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                                    HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                EmitterManager.shared.isEmitterOn = false
+                                isCongretePresented.toggle()
+                            }
+                        }
+                    case 7500 ..< 10000:
+                        if !userDataModel.userTitle2List.contains("월드클래스") {
+                            userDataModel.userTitle2List.append("월드클래스")
+                            userDataModel.saveUserData()
+                            EmitterManager.shared.isEmitterOn = true
+                            for i in 0 ..< 10 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                                    HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                EmitterManager.shared.isEmitterOn = false
+                                isCongretePresented.toggle()
+                            }
+                        }
+                    default:
+                        if !userDataModel.userTitle2List.contains("최고존엄") {
+                            userDataModel.userTitle2List.append("최고존엄")
+                            userDataModel.saveUserData()
+                            EmitterManager.shared.isEmitterOn = true
+                            for i in 0 ..< 10 {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + Double(i) / 3.0) {
+                                    HapticManager.shared.impact(style: .heavy, intensity: 0.97)
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                EmitterManager.shared.isEmitterOn = false
+                                isCongretePresented.toggle()
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                
+                    
+                    userDataModel.saveUserData()
                 }) {
                     Text("어제 운동 데이터 모델 만들기")
                 }

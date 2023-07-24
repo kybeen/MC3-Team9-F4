@@ -185,7 +185,7 @@ extension MainView {
                     userDataModel.userPerfectRatio = Double(userDataModel.totalPerfectCount) / Double(userDataModel.totalSwingCount)
                     
                     
-                    // usertitle1 관련
+                    // usertitle2 관련
                     switch userDataModel.totalSwingCount {
                     case 0 ..< 500:
                         if !userDataModel.userTitle2List.contains("테린이") {

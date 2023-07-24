@@ -23,7 +23,6 @@ struct OnboardingView: View {
     @State private var isSetWeight: Bool = false
     @State private var isSetHeight: Bool = false
     @State private var isSetBirthDay: Bool = false
-    @State private var isLeftHand: Bool = true
     @State private var isLeftHandSelect: Bool = false
     @State private var selectedDate = Date()
     @State private var height = "170"
@@ -47,7 +46,7 @@ struct OnboardingView: View {
                 Spacer()
                 profileContainer()
                 Spacer()
-                nextButton()
+                nextButton("다음", nickname.count > 0)
             case 2:
                 titleContainer("주로 사용하는 손", "을", "선택해주세요.")
                 Spacer()
@@ -129,9 +128,7 @@ extension OnboardingView {
         }
     }
     
-    
-    
-    private func nextButton(_ buttonTitle: String = "다음") -> some View {
+    private func nextButton(_ buttonTitle: String = "다음", _ isNicknameInput: Bool = true) -> some View {
         Button(action: {
             if onboardingPage == 3 {
                 createUser()
@@ -146,13 +143,14 @@ extension OnboardingView {
                 Rectangle()
                     .foregroundColor(.clear)
                     .frame(maxWidth: .infinity, maxHeight: 46)
-                    .background(Color.theme.teGreen)
+                    .background(isNicknameInput ? Color.theme.teGreen : Color.theme.teWhite.opacity(0.3))
                     .cornerRadius(30)
                 Text(buttonTitle)
-                    .foregroundColor(Color.theme.teBlack)
+                    .foregroundColor(isNicknameInput ? Color.theme.teBlack : Color.theme.teWhite)
                     .font(.custom("Inter-Bold", size: 16))
             }
         }
+        .disabled(!isNicknameInput)
     }
     
     private func profileContainer() -> some View {
@@ -171,7 +169,6 @@ extension OnboardingView {
         .scrollDisabled(true)
         .scrollIndicators(.hidden)
     }
-    
     
     private func profilePhotoContainer() -> some View {
         VStack(spacing: 0) {
@@ -247,6 +244,35 @@ extension OnboardingView {
                 .onTapGesture {
                     UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
                 }
+                .onChange(of: nickname, perform: { newText in
+                    // 특수문자를 사용하지 못하도록 정규표현식을 사용하여 필터링합니다.
+                    let regex = try! NSRegularExpression(pattern: "^[\\p{P}]*$", options: [])
+                    let range = NSRange(location: 0, length: newText.utf16.count)
+                    let filteredText = regex.stringByReplacingMatches(in: newText, options: [], range: range, withTemplate: "")
+                    
+                    // 입력 가능한 최대 길이를 적용합니다.
+                    if let rangeOfLastKoreanCharacter = newText.range(of: "\\p{Hangul}", options: .regularExpression, range: newText.startIndex..<newText.endIndex, locale: nil)?.upperBound {
+                        if newText.distance(from: rangeOfLastKoreanCharacter, to: newText.endIndex) > 7 {
+                            let trimmedText = String(filteredText.prefix(newText.distance(from: newText.startIndex, to: rangeOfLastKoreanCharacter) + 7))
+                            if trimmedText != newText {
+                                nickname = trimmedText
+                                return
+                            }
+                        }
+                    }
+
+                    if filteredText.count > 12 {
+                        let trimmedText = String(filteredText.prefix(12))
+                        if trimmedText != newText {
+                            nickname = trimmedText
+                        }
+                    } else {
+                        if filteredText != newText {
+                            nickname = filteredText
+                        }
+                    }
+                })
+
             Rectangle()
                 .frame(height: 1)
             Text("\(nickname.count)/20")
@@ -321,6 +347,7 @@ extension OnboardingView {
             }
         }
     }
+    
     private func listComponent() -> some View {
         Button(action: {
             isSetBirthDay.toggle()
@@ -454,7 +481,7 @@ extension OnboardingView {
         
         newUserData.birthday = selectedDate
         newUserData.height = Int16(height) ?? 170
-        newUserData.isLeftHand = isLeftHand
+        newUserData.isLeftHand = isLeftHandSelect
         newUserData.sex = Int16(sex) ?? 1
         newUserData.userTargetBackStroke = 150
         newUserData.userTargetForeStroke = 150

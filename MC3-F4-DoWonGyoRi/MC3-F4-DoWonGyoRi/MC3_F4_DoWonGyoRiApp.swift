@@ -12,6 +12,7 @@ struct MC3_F4_DoWonGyoRiApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+//            PhoneTestView()
         }
     }
 }

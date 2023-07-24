@@ -92,4 +92,6 @@ class UserDataModel: ObservableObject {
         coreDataManager.update(object: user)
     }
     
+    
+    
 }

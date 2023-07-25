@@ -59,6 +59,10 @@ struct QuitView: View {
     
     @State var swingLeft: Int = 10
     
+    @ObservedObject var healthManager = HealthKitManager()
+    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
+    @EnvironmentObject var healthResultInfo: HealthResultInfo
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text("\(swingLeft)번의 스윙이 남았어요.\n연습을 끝내시겠어요?")
@@ -72,8 +76,26 @@ struct QuitView: View {
             }
             .background(Color.watchColor.lightBlack)
             .cornerRadius(40)
+            .onDisappear {
+                getCaloryData()
+            }
+        }
+        .onAppear {
+            healthManager.readCurrentCalories()
         }
     }
+}
+
+extension QuitView {
+
+    private func getCaloryData() {
+        print("처음 -> \(healthInfo.startCal)")
+        print("나중 -> \(healthManager.currentCalories)")
+        healthResultInfo.consumedCal = Int(healthManager.currentCalories - (healthInfo.startCal ?? 0.0))
+        print("결과 -> \(healthResultInfo.consumedCal)")
+    }
+    
+    
 }
 
 struct CountingView_Previews: PreviewProvider {

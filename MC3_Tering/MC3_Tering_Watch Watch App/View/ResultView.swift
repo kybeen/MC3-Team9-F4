@@ -213,9 +213,9 @@ struct HealthKitView: View {
     //우선 타입 임의로 지정
     
     @ObservedObject var healthManager = HealthKitManager()
-    
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
-
+    @EnvironmentObject var healthResultInfo: HealthResultInfo
+    
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
@@ -224,8 +224,7 @@ struct HealthKitView: View {
                 .font(.system(size: 40, weight: .medium))
                 .foregroundColor(Color.watchColor.lightGreen)
                 .padding(.bottom, 5)
-
-            Text("\(healthManager.currentCalories - (healthInfo.startCal ?? 0.0), specifier: "%2.f") kcal")
+            Text("\(healthResultInfo.consumedCal!) kcal")
                 .font(.system(size: 28, weight: .medium))
                 .padding(.bottom, 8)
             Spacer()
@@ -245,8 +244,6 @@ struct HealthKitView: View {
     }
 
 }
-
-
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {

@@ -18,6 +18,7 @@ struct SwingCountView: View {
     @StateObject var healthManager = HealthKitManager()
 
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
+    @EnvironmentObject var healthResultInfo: HealthResultInfo
     
     var body: some View {
         VStack(alignment: .leading) {

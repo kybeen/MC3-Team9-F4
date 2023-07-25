@@ -8,6 +8,7 @@
 import Foundation
 
 class HealthResultInfo: ObservableObject {
-    @Published var consumedCal: Int?
-    @Published var timeSpentMinute: Int?
+    @Published var burningCal: Int?
+    @Published var workOutTime: Int?
+    @Published var workOutDate: Date?
 }

@@ -79,6 +79,7 @@ struct QuitView: View {
             .onDisappear {
                 getCaloryData()
                 getTimeData()
+                getDayData()
             }
         }
         .onAppear {
@@ -92,8 +93,8 @@ extension QuitView {
     private func getCaloryData() {
         print("처음 -> \(healthInfo.startCal)")
         print("나중 -> \(healthManager.currentCalories)")
-        healthResultInfo.consumedCal = Int(healthManager.currentCalories - (healthInfo.startCal ?? 0.0))
-        print("결과 -> \(healthResultInfo.consumedCal)")
+        healthResultInfo.burningCal = Int(healthManager.currentCalories - (healthInfo.startCal ?? 0.0))
+        print("결과 -> \(healthResultInfo.burningCal)")
     }
     
     private func getTimeData() {
@@ -105,11 +106,23 @@ extension QuitView {
         let components = calendar.dateComponents([.minute], from: startTime, to: currentTime)
 
         if let timeDifferenceInMinutes = components.minute {
-            healthResultInfo.timeSpentMinute = timeDifferenceInMinutes
-            print("시작 시간부터 현재까지의 시간 차이: \(healthResultInfo.timeSpentMinute) 분")
+            healthResultInfo.workOutTime = timeDifferenceInMinutes
+            print("시작 시간부터 현재까지의 시간 차이: \(healthResultInfo.workOutTime) 분")
         } else {
             print("시작 시간과 현재 시간 사이에 오류가 발생했습니다.")
         }
+        
+    }
+    
+    private func getDayData() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd" // 날짜 형식을 지정 (예: "2023-07-25")
+        
+        healthResultInfo.workOutDate = Date()
+        print("날짜 -> \(healthResultInfo.workOutDate)")
+        
+        let formattedDate = dateFormatter.string(from: healthResultInfo.workOutDate!)
+        print("오늘의 날짜: \(formattedDate)")
         
     }
     

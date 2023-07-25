@@ -224,7 +224,7 @@ struct HealthKitView: View {
                 .font(.system(size: 40, weight: .medium))
                 .foregroundColor(Color.watchColor.lightGreen)
                 .padding(.bottom, 5)
-            Text("\(healthResultInfo.consumedCal!) kcal")
+            Text("\(healthResultInfo.burningCal!) kcal")
                 .font(.system(size: 28, weight: .medium))
                 .padding(.bottom, 8)
             Spacer()

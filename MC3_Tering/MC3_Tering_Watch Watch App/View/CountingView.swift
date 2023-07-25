@@ -62,6 +62,7 @@ struct QuitView: View {
     @ObservedObject var healthManager = HealthKitManager()
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
     @EnvironmentObject var healthResultInfo: HealthResultInfo
+    @ObservedObject var model = ViewModelWatch()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -80,6 +81,7 @@ struct QuitView: View {
                 getCaloryData()
                 getTimeData()
                 getDayData()
+//                sendDataToPhone()
             }
         }
         .onAppear {
@@ -120,11 +122,14 @@ extension QuitView {
         
         healthResultInfo.workOutDate = Date()
         print("날짜 -> \(healthResultInfo.workOutDate)")
-        
         let formattedDate = dateFormatter.string(from: healthResultInfo.workOutDate!)
         print("오늘의 날짜: \(formattedDate)")
-        
     }
+    
+//    private func sendDataToPhone() {
+//        self.model.session.transferUserInfo(["calories" : self.healthResultInfo.burningCal])
+//        print("message send")
+//    }
     
 }
 

@@ -215,6 +215,8 @@ struct HealthKitView: View {
     @ObservedObject var healthManager = HealthKitManager()
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
     @EnvironmentObject var healthResultInfo: HealthResultInfo
+    @ObservedObject var model = ViewModelWatch()
+
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -240,6 +242,7 @@ struct HealthKitView: View {
         }
         .onAppear {
             healthManager.readCurrentCalories()
+            sendDataToPhone()
         }
     }
 
@@ -273,6 +276,13 @@ extension HealthKitView {
             return formatter.string(from: timeInterval) ?? "00:00:00"
         }
         return "00:00:00"
+    }
+    
+    private func sendDataToPhone() {
+        self.model.session.transferUserInfo(["calories" : self.healthResultInfo.burningCal])
+        self.model.session.transferUserInfo(["time" : self.healthResultInfo.workOutTime])
+        self.model.session.transferUserInfo(["date" : self.healthResultInfo.workOutDate])
+        print("message send")
     }
 }
 

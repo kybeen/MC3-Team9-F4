@@ -65,6 +65,25 @@
 		C99DF3392A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3352A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift */; };
 		C99DF33A2A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3362A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift */; };
 		C99DF33B2A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3372A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift */; };
+		C9AEE53F2A6FAADE0071C863 /* Inter-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3432A6FA755002DCED7 /* Inter-Black.otf */; };
+		C9AEE5402A6FAAE20071C863 /* Inter-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3492A6FA755002DCED7 /* Inter-BlackItalic.otf */; };
+		C9AEE5412A6FAAE50071C863 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34A2A6FA755002DCED7 /* Inter-Bold.otf */; };
+		C9AEE5432A6FB0080071C863 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3452A6FA755002DCED7 /* Inter-BoldItalic.otf */; };
+		C9AEE5442A6FB00D0071C863 /* Inter-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3482A6FA755002DCED7 /* Inter-ExtraBold.otf */; };
+		C9AEE5452A6FB00F0071C863 /* Inter-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF33D2A6FA754002DCED7 /* Inter-ExtraBoldItalic.otf */; };
+		C9AEE5462A6FB7540071C863 /* Inter-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34E2A6FA756002DCED7 /* Inter-ExtraLight.otf */; };
+		C9AEE5472A6FB7570071C863 /* Inter-ExtraLightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3412A6FA755002DCED7 /* Inter-ExtraLightItalic.otf */; };
+		C9AEE5482A6FB75A0071C863 /* Inter-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3472A6FA755002DCED7 /* Inter-Italic.otf */; };
+		C9AEE5492A6FB75D0071C863 /* Inter-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF33E2A6FA754002DCED7 /* Inter-Light.otf */; };
+		C9AEE54A2A6FB7600071C863 /* Inter-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3462A6FA755002DCED7 /* Inter-LightItalic.otf */; };
+		C9AEE54B2A6FB7680071C863 /* Inter-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3422A6FA755002DCED7 /* Inter-Medium.otf */; };
+		C9AEE54C2A6FB76B0071C863 /* Inter-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF33F2A6FA755002DCED7 /* Inter-MediumItalic.otf */; };
+		C9AEE54D2A6FB76D0071C863 /* Inter-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34C2A6FA756002DCED7 /* Inter-Regular.otf */; };
+		C9AEE54E2A6FB7700071C863 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34D2A6FA756002DCED7 /* Inter-SemiBold.otf */; };
+		C9AEE54F2A6FB7720071C863 /* Inter-SemiBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3402A6FA755002DCED7 /* Inter-SemiBoldItalic.otf */; };
+		C9AEE5502A6FB7750071C863 /* Inter-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3442A6FA755002DCED7 /* Inter-Thin.otf */; };
+		C9AEE5512A6FB7770071C863 /* Inter-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34B2A6FA756002DCED7 /* Inter-ThinItalic.otf */; };
+		C9AEE5522A6FB77A0071C863 /* Inter-V.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF33C2A6FA754002DCED7 /* Inter-V.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -575,9 +594,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9AEE5482A6FB75A0071C863 /* Inter-Italic.otf in Resources */,
 				1687E2BB2A6F6FD30004D87A /* Assets.xcassets in Resources */,
 				160B1E972A6F95F100A708CC /* Media.xcassets in Resources */,
+				C9AEE5502A6FB7750071C863 /* Inter-Thin.otf in Resources */,
+				C9AEE54C2A6FB76B0071C863 /* Inter-MediumItalic.otf in Resources */,
+				C9AEE5492A6FB75D0071C863 /* Inter-Light.otf in Resources */,
+				C9AEE54E2A6FB7700071C863 /* Inter-SemiBold.otf in Resources */,
+				C9AEE53F2A6FAADE0071C863 /* Inter-Black.otf in Resources */,
+				C9AEE5522A6FB77A0071C863 /* Inter-V.ttf in Resources */,
+				C9AEE54D2A6FB76D0071C863 /* Inter-Regular.otf in Resources */,
+				C9AEE5402A6FAAE20071C863 /* Inter-BlackItalic.otf in Resources */,
 				160B1E902A6F954700A708CC /* dancing.gif in Resources */,
+				C9AEE5452A6FB00F0071C863 /* Inter-ExtraBoldItalic.otf in Resources */,
+				C9AEE5462A6FB7540071C863 /* Inter-ExtraLight.otf in Resources */,
+				C9AEE5472A6FB7570071C863 /* Inter-ExtraLightItalic.otf in Resources */,
+				C9AEE5512A6FB7770071C863 /* Inter-ThinItalic.otf in Resources */,
+				C9AEE5412A6FAAE50071C863 /* Inter-Bold.otf in Resources */,
+				C9AEE5442A6FB00D0071C863 /* Inter-ExtraBold.otf in Resources */,
+				C9AEE5432A6FB0080071C863 /* Inter-BoldItalic.otf in Resources */,
+				C9AEE54B2A6FB7680071C863 /* Inter-Medium.otf in Resources */,
+				C9AEE54F2A6FB7720071C863 /* Inter-SemiBoldItalic.otf in Resources */,
+				C9AEE54A2A6FB7600071C863 /* Inter-LightItalic.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -797,6 +835,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Tering;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "공유할 사진 촬영과 커스텀을 위해 카메라 사용 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 촬영한 후 저장하기 위해 얼범 쓰기 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 등록하기 위해 사진 저장 공간 사용 권한이 필요합니다.";
@@ -815,9 +855,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -834,6 +877,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Tering;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "공유할 사진 촬영과 커스텀을 위해 카메라 사용 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 촬영한 후 저장하기 위해 얼범 쓰기 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 등록하기 위해 사진 저장 공간 사용 권한이 필요합니다.";
@@ -852,9 +897,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

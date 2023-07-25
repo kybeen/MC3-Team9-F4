@@ -15,10 +15,10 @@ struct MC3_Tering_Watch_Watch_AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TestWatchView()
-//            SwingListView(swingList: swingLists[0])
-//                .environmentObject(swingListWrapper)
-//                .environmentObject(healthStartInfo)
+//            TestWatchView()
+            SwingListView(swingList: swingLists[0])
+                .environmentObject(swingListWrapper)
+                .environmentObject(healthStartInfo)
             //이거 왜 이러는거임?
         }
     }

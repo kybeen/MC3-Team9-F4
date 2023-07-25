@@ -57,13 +57,14 @@
 		1687E3092A6F74790004D87A /* CircleProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3082A6F74790004D87A /* CircleProgressBar.swift */; };
 		1687E3122A6F79900004D87A /* EmitterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3112A6F79900004D87A /* EmitterManager.swift */; };
 		1687E3142A6F79970004D87A /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3132A6F79970004D87A /* HapticManager.swift */; };
-		1687E3162A6F79B10004D87A /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3152A6F79B10004D87A /* WorkOutData+CoreDataClass.swift */; };
-		1687E3182A6F79CA0004D87A /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3172A6F79CA0004D87A /* WorkOutData+CoreDataProperties.swift */; };
-		1687E31A2A6F79E20004D87A /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3192A6F79E20004D87A /* UserData+CoreDataClass.swift */; };
-		1687E31C2A6F79F30004D87A /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E31B2A6F79F30004D87A /* UserData+CoreDataProperties.swift */; };
 		1687E31E2A6F7A0B0004D87A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E31D2A6F7A0B0004D87A /* CoreDataManager.swift */; };
 		1687E3202A6F7A270004D87A /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E31F2A6F7A260004D87A /* UserDataModel.swift */; };
 		1687E3222A6F7A300004D87A /* WorkOutDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3212A6F7A300004D87A /* WorkOutDataModel.swift */; };
+		C99DF32B2A6FA4CA002DCED7 /* UserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3292A6FA4CA002DCED7 /* UserInfo.xcdatamodeld */; };
+		C99DF3382A6FA6C1002DCED7 /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3342A6FA6C1002DCED7 /* UserData+CoreDataClass.swift */; };
+		C99DF3392A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3352A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift */; };
+		C99DF33A2A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3362A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift */; };
+		C99DF33B2A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3372A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -108,63 +109,6 @@
 		160B1E8D2A6F950C00A708CC /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		160B1E8F2A6F954700A708CC /* dancing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dancing.gif; sourceTree = "<group>"; };
 		160B1E962A6F95F100A708CC /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		160B1E9B2A6F963800A708CC /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
-		160B1E9C2A6F963800A708CC /* Inter-ExtraLightItalic.otf 14-17-38-232.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLightItalic.otf 14-17-38-232.otf"; sourceTree = "<group>"; };
-		160B1E9D2A6F963800A708CC /* Inter-Black.otf 14-17-38-220.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.otf 14-17-38-220.otf"; sourceTree = "<group>"; };
-		160B1E9E2A6F963800A708CC /* Inter-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BlackItalic.otf"; sourceTree = "<group>"; };
-		160B1E9F2A6F963800A708CC /* Inter-MediumItalic.otf 14-22-44-271.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-MediumItalic.otf 14-22-44-271.otf"; sourceTree = "<group>"; };
-		160B1EA02A6F963800A708CC /* Inter-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
-		160B1EA12A6F963800A708CC /* Inter-ExtraBold.otf 14-22-44-268.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.otf 14-22-44-268.otf"; sourceTree = "<group>"; };
-		160B1EA22A6F963800A708CC /* Inter-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBoldItalic.otf"; sourceTree = "<group>"; };
-		160B1EA32A6F963800A708CC /* Inter-V.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-V.ttf"; sourceTree = "<group>"; };
-		160B1EA42A6F963800A708CC /* Inter-Regular.otf 14-17-38-277.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf 14-17-38-277.otf"; sourceTree = "<group>"; };
-		160B1EA52A6F963900A708CC /* Inter-ExtraLight.otf 14-22-44-260.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.otf 14-22-44-260.otf"; sourceTree = "<group>"; };
-		160B1EA62A6F963900A708CC /* Inter-Medium.otf 14-17-38-224.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf 14-17-38-224.otf"; sourceTree = "<group>"; };
-		160B1EA72A6F963900A708CC /* Inter-SemiBold.otf 14-22-44-263.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.otf 14-22-44-263.otf"; sourceTree = "<group>"; };
-		160B1EA82A6F963900A708CC /* Inter-Bold.otf 14-22-44-262.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf 14-22-44-262.otf"; sourceTree = "<group>"; };
-		160B1EA92A6F963900A708CC /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
-		160B1EAA2A6F963900A708CC /* Inter-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Italic.otf"; sourceTree = "<group>"; };
-		160B1EAB2A6F963900A708CC /* Inter-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.otf"; sourceTree = "<group>"; };
-		160B1EAC2A6F963900A708CC /* Inter-SemiBold.otf 14-17-38-219.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.otf 14-17-38-219.otf"; sourceTree = "<group>"; };
-		160B1EAD2A6F963900A708CC /* Inter-BoldItalic.otf 14-22-44-266.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BoldItalic.otf 14-22-44-266.otf"; sourceTree = "<group>"; };
-		160B1EAE2A6F963900A708CC /* Inter-BlackItalic.otf 14-22-44-265.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BlackItalic.otf 14-22-44-265.otf"; sourceTree = "<group>"; };
-		160B1EAF2A6F963900A708CC /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
-		160B1EB02A6F963900A708CC /* Inter-V.ttf 14-22-44-268.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-V.ttf 14-22-44-268.ttf"; sourceTree = "<group>"; };
-		160B1EB12A6F963900A708CC /* Inter-V.ttf 14-17-38-287.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-V.ttf 14-17-38-287.ttf"; sourceTree = "<group>"; };
-		160B1EB22A6F963A00A708CC /* Inter-Light.otf 14-22-44-272.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.otf 14-22-44-272.otf"; sourceTree = "<group>"; };
-		160B1EB32A6F963A00A708CC /* Inter-Medium.otf 14-22-44-261.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf 14-22-44-261.otf"; sourceTree = "<group>"; };
-		160B1EB42A6F963A00A708CC /* Inter-SemiBoldItalic.otf 14-22-44-267.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBoldItalic.otf 14-22-44-267.otf"; sourceTree = "<group>"; };
-		160B1EB52A6F963A00A708CC /* Inter-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-MediumItalic.otf"; sourceTree = "<group>"; };
-		160B1EB62A6F963A00A708CC /* Inter-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.otf"; sourceTree = "<group>"; };
-		160B1EB72A6F963A00A708CC /* Inter-Italic.otf 14-22-44-265.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Italic.otf 14-22-44-265.otf"; sourceTree = "<group>"; };
-		160B1EB82A6F963A00A708CC /* Inter-BlackItalic.otf 14-17-38-233.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BlackItalic.otf 14-17-38-233.otf"; sourceTree = "<group>"; };
-		160B1EB92A6F963A00A708CC /* Inter-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLightItalic.otf"; sourceTree = "<group>"; };
-		160B1EBA2A6F963A00A708CC /* Inter-ExtraLight.otf 14-17-38-217.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.otf 14-17-38-217.otf"; sourceTree = "<group>"; };
-		160B1EBB2A6F963A00A708CC /* Inter-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.otf"; sourceTree = "<group>"; };
-		160B1EBC2A6F963A00A708CC /* Inter-Bold.otf 14-17-38-200.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf 14-17-38-200.otf"; sourceTree = "<group>"; };
-		160B1EBD2A6F963A00A708CC /* Inter-SemiBoldItalic.otf 14-17-38-213.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBoldItalic.otf 14-17-38-213.otf"; sourceTree = "<group>"; };
-		160B1EBE2A6F963A00A708CC /* Inter-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.otf"; sourceTree = "<group>"; };
-		160B1EBF2A6F963A00A708CC /* Inter-ThinItalic.otf 14-17-38-259.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ThinItalic.otf 14-17-38-259.otf"; sourceTree = "<group>"; };
-		160B1EC02A6F963B00A708CC /* Inter-MediumItalic.otf 14-17-38-244.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-MediumItalic.otf 14-17-38-244.otf"; sourceTree = "<group>"; };
-		160B1EC12A6F963B00A708CC /* Inter-ExtraBoldItalic.otf 14-17-38-222.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBoldItalic.otf 14-17-38-222.otf"; sourceTree = "<group>"; };
-		160B1EC22A6F963B00A708CC /* Inter-ExtraBoldItalic.otf 14-22-44-272.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBoldItalic.otf 14-22-44-272.otf"; sourceTree = "<group>"; };
-		160B1EC32A6F963B00A708CC /* Inter-Thin.otf 14-17-38-216.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.otf 14-17-38-216.otf"; sourceTree = "<group>"; };
-		160B1EC42A6F963B00A708CC /* Inter-ExtraLightItalic.otf 14-22-44-262.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLightItalic.otf 14-22-44-262.otf"; sourceTree = "<group>"; };
-		160B1EC52A6F963B00A708CC /* Inter-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ThinItalic.otf"; sourceTree = "<group>"; };
-		160B1EC62A6F963B00A708CC /* Inter-BoldItalic.otf 14-17-38-276.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BoldItalic.otf 14-17-38-276.otf"; sourceTree = "<group>"; };
-		160B1EC72A6F963B00A708CC /* Inter-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.otf"; sourceTree = "<group>"; };
-		160B1EC82A6F963B00A708CC /* Inter-Regular.otf 14-22-44-264.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf 14-22-44-264.otf"; sourceTree = "<group>"; };
-		160B1EC92A6F963B00A708CC /* Inter-ExtraBold.otf 14-17-38-273.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.otf 14-17-38-273.otf"; sourceTree = "<group>"; };
-		160B1ECA2A6F963B00A708CC /* Inter-LightItalic.otf 14-17-38-208.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf 14-17-38-208.otf"; sourceTree = "<group>"; };
-		160B1ECB2A6F963B00A708CC /* Inter-Thin.otf 14-22-44-264.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.otf 14-22-44-264.otf"; sourceTree = "<group>"; };
-		160B1ECC2A6F963B00A708CC /* Inter-LightItalic.otf 14-22-44-270.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf 14-22-44-270.otf"; sourceTree = "<group>"; };
-		160B1ECD2A6F963B00A708CC /* Inter-Black.otf 14-22-44-266.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.otf 14-22-44-266.otf"; sourceTree = "<group>"; };
-		160B1ECE2A6F963C00A708CC /* Inter-ThinItalic.otf 14-22-44-257.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ThinItalic.otf 14-22-44-257.otf"; sourceTree = "<group>"; };
-		160B1ECF2A6F963C00A708CC /* Inter-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf"; sourceTree = "<group>"; };
-		160B1ED02A6F963C00A708CC /* Inter-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BoldItalic.otf"; sourceTree = "<group>"; };
-		160B1ED12A6F963C00A708CC /* Inter-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.otf"; sourceTree = "<group>"; };
-		160B1ED22A6F963C00A708CC /* Inter-Italic.otf 14-17-38-194.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Italic.otf 14-17-38-194.otf"; sourceTree = "<group>"; };
-		160B1ED32A6F963C00A708CC /* Inter-Light.otf 14-17-38-236.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.otf 14-17-38-236.otf"; sourceTree = "<group>"; };
 		160B1ED42A6F969A00A708CC /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		160B1ED62A6F96BE00A708CC /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		1687E2B32A6F6FD20004D87A /* MC3_Tering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC3_Tering.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,13 +144,34 @@
 		1687E30A2A6F764D0004D87A /* MC3_Tering_Watch Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MC3_Tering_Watch Watch App.entitlements"; sourceTree = "<group>"; };
 		1687E3112A6F79900004D87A /* EmitterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterManager.swift; sourceTree = "<group>"; };
 		1687E3132A6F79970004D87A /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
-		1687E3152A6F79B10004D87A /* WorkOutData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1687E3172A6F79CA0004D87A /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		1687E3192A6F79E20004D87A /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		1687E31B2A6F79F30004D87A /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1687E31D2A6F7A0B0004D87A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1687E31F2A6F7A260004D87A /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		1687E3212A6F7A300004D87A /* WorkOutDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkOutDataModel.swift; sourceTree = "<group>"; };
+		C99DF3282A6FA246002DCED7 /* MC3-Tering-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC3-Tering-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C99DF32A2A6FA4CA002DCED7 /* UserInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserInfo.xcdatamodel; sourceTree = "<group>"; };
+		C99DF3342A6FA6C1002DCED7 /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C99DF3352A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C99DF3362A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C99DF3372A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C99DF33C2A6FA754002DCED7 /* Inter-V.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-V.ttf"; sourceTree = "<group>"; };
+		C99DF33D2A6FA754002DCED7 /* Inter-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
+		C99DF33E2A6FA754002DCED7 /* Inter-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.otf"; sourceTree = "<group>"; };
+		C99DF33F2A6FA755002DCED7 /* Inter-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-MediumItalic.otf"; sourceTree = "<group>"; };
+		C99DF3402A6FA755002DCED7 /* Inter-SemiBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBoldItalic.otf"; sourceTree = "<group>"; };
+		C99DF3412A6FA755002DCED7 /* Inter-ExtraLightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLightItalic.otf"; sourceTree = "<group>"; };
+		C99DF3422A6FA755002DCED7 /* Inter-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.otf"; sourceTree = "<group>"; };
+		C99DF3432A6FA755002DCED7 /* Inter-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Black.otf"; sourceTree = "<group>"; };
+		C99DF3442A6FA755002DCED7 /* Inter-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Thin.otf"; sourceTree = "<group>"; };
+		C99DF3452A6FA755002DCED7 /* Inter-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BoldItalic.otf"; sourceTree = "<group>"; };
+		C99DF3462A6FA755002DCED7 /* Inter-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-LightItalic.otf"; sourceTree = "<group>"; };
+		C99DF3472A6FA755002DCED7 /* Inter-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Italic.otf"; sourceTree = "<group>"; };
+		C99DF3482A6FA755002DCED7 /* Inter-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.otf"; sourceTree = "<group>"; };
+		C99DF3492A6FA755002DCED7 /* Inter-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-BlackItalic.otf"; sourceTree = "<group>"; };
+		C99DF34A2A6FA755002DCED7 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
+		C99DF34B2A6FA756002DCED7 /* Inter-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ThinItalic.otf"; sourceTree = "<group>"; };
+		C99DF34C2A6FA756002DCED7 /* Inter-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.otf"; sourceTree = "<group>"; };
+		C99DF34D2A6FA756002DCED7 /* Inter-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.otf"; sourceTree = "<group>"; };
+		C99DF34E2A6FA756002DCED7 /* Inter-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,63 +273,25 @@
 		160B1E9A2A6F960F00A708CC /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				160B1EB62A6F963A00A708CC /* Inter-Black.otf */,
-				160B1E9D2A6F963800A708CC /* Inter-Black.otf 14-17-38-220.otf */,
-				160B1ECD2A6F963B00A708CC /* Inter-Black.otf 14-22-44-266.otf */,
-				160B1E9E2A6F963800A708CC /* Inter-BlackItalic.otf */,
-				160B1EB82A6F963A00A708CC /* Inter-BlackItalic.otf 14-17-38-233.otf */,
-				160B1EAE2A6F963900A708CC /* Inter-BlackItalic.otf 14-22-44-265.otf */,
-				160B1EAF2A6F963900A708CC /* Inter-Bold.otf */,
-				160B1EBC2A6F963A00A708CC /* Inter-Bold.otf 14-17-38-200.otf */,
-				160B1EA82A6F963900A708CC /* Inter-Bold.otf 14-22-44-262.otf */,
-				160B1ED02A6F963C00A708CC /* Inter-BoldItalic.otf */,
-				160B1EC62A6F963B00A708CC /* Inter-BoldItalic.otf 14-17-38-276.otf */,
-				160B1EAD2A6F963900A708CC /* Inter-BoldItalic.otf 14-22-44-266.otf */,
-				160B1EBB2A6F963A00A708CC /* Inter-ExtraBold.otf */,
-				160B1EC92A6F963B00A708CC /* Inter-ExtraBold.otf 14-17-38-273.otf */,
-				160B1EA12A6F963800A708CC /* Inter-ExtraBold.otf 14-22-44-268.otf */,
-				160B1EA02A6F963800A708CC /* Inter-ExtraBoldItalic.otf */,
-				160B1EC12A6F963B00A708CC /* Inter-ExtraBoldItalic.otf 14-17-38-222.otf */,
-				160B1EC22A6F963B00A708CC /* Inter-ExtraBoldItalic.otf 14-22-44-272.otf */,
-				160B1EC72A6F963B00A708CC /* Inter-ExtraLight.otf */,
-				160B1EBA2A6F963A00A708CC /* Inter-ExtraLight.otf 14-17-38-217.otf */,
-				160B1EA52A6F963900A708CC /* Inter-ExtraLight.otf 14-22-44-260.otf */,
-				160B1EB92A6F963A00A708CC /* Inter-ExtraLightItalic.otf */,
-				160B1E9C2A6F963800A708CC /* Inter-ExtraLightItalic.otf 14-17-38-232.otf */,
-				160B1EC42A6F963B00A708CC /* Inter-ExtraLightItalic.otf 14-22-44-262.otf */,
-				160B1EAA2A6F963900A708CC /* Inter-Italic.otf */,
-				160B1ED22A6F963C00A708CC /* Inter-Italic.otf 14-17-38-194.otf */,
-				160B1EB72A6F963A00A708CC /* Inter-Italic.otf 14-22-44-265.otf */,
-				160B1EAB2A6F963900A708CC /* Inter-Light.otf */,
-				160B1ED32A6F963C00A708CC /* Inter-Light.otf 14-17-38-236.otf */,
-				160B1EB22A6F963A00A708CC /* Inter-Light.otf 14-22-44-272.otf */,
-				160B1E9B2A6F963800A708CC /* Inter-LightItalic.otf */,
-				160B1ECA2A6F963B00A708CC /* Inter-LightItalic.otf 14-17-38-208.otf */,
-				160B1ECC2A6F963B00A708CC /* Inter-LightItalic.otf 14-22-44-270.otf */,
-				160B1ECF2A6F963C00A708CC /* Inter-Medium.otf */,
-				160B1EA62A6F963900A708CC /* Inter-Medium.otf 14-17-38-224.otf */,
-				160B1EB32A6F963A00A708CC /* Inter-Medium.otf 14-22-44-261.otf */,
-				160B1EB52A6F963A00A708CC /* Inter-MediumItalic.otf */,
-				160B1EC02A6F963B00A708CC /* Inter-MediumItalic.otf 14-17-38-244.otf */,
-				160B1E9F2A6F963800A708CC /* Inter-MediumItalic.otf 14-22-44-271.otf */,
-				160B1EA92A6F963900A708CC /* Inter-Regular.otf */,
-				160B1EA42A6F963800A708CC /* Inter-Regular.otf 14-17-38-277.otf */,
-				160B1EC82A6F963B00A708CC /* Inter-Regular.otf 14-22-44-264.otf */,
-				160B1EBE2A6F963A00A708CC /* Inter-SemiBold.otf */,
-				160B1EAC2A6F963900A708CC /* Inter-SemiBold.otf 14-17-38-219.otf */,
-				160B1EA72A6F963900A708CC /* Inter-SemiBold.otf 14-22-44-263.otf */,
-				160B1EA22A6F963800A708CC /* Inter-SemiBoldItalic.otf */,
-				160B1EBD2A6F963A00A708CC /* Inter-SemiBoldItalic.otf 14-17-38-213.otf */,
-				160B1EB42A6F963A00A708CC /* Inter-SemiBoldItalic.otf 14-22-44-267.otf */,
-				160B1ED12A6F963C00A708CC /* Inter-Thin.otf */,
-				160B1EC32A6F963B00A708CC /* Inter-Thin.otf 14-17-38-216.otf */,
-				160B1ECB2A6F963B00A708CC /* Inter-Thin.otf 14-22-44-264.otf */,
-				160B1EC52A6F963B00A708CC /* Inter-ThinItalic.otf */,
-				160B1EBF2A6F963A00A708CC /* Inter-ThinItalic.otf 14-17-38-259.otf */,
-				160B1ECE2A6F963C00A708CC /* Inter-ThinItalic.otf 14-22-44-257.otf */,
-				160B1EA32A6F963800A708CC /* Inter-V.ttf */,
-				160B1EB12A6F963900A708CC /* Inter-V.ttf 14-17-38-287.ttf */,
-				160B1EB02A6F963900A708CC /* Inter-V.ttf 14-22-44-268.ttf */,
+				C99DF3432A6FA755002DCED7 /* Inter-Black.otf */,
+				C99DF3492A6FA755002DCED7 /* Inter-BlackItalic.otf */,
+				C99DF34A2A6FA755002DCED7 /* Inter-Bold.otf */,
+				C99DF3452A6FA755002DCED7 /* Inter-BoldItalic.otf */,
+				C99DF3482A6FA755002DCED7 /* Inter-ExtraBold.otf */,
+				C99DF33D2A6FA754002DCED7 /* Inter-ExtraBoldItalic.otf */,
+				C99DF34E2A6FA756002DCED7 /* Inter-ExtraLight.otf */,
+				C99DF3412A6FA755002DCED7 /* Inter-ExtraLightItalic.otf */,
+				C99DF3472A6FA755002DCED7 /* Inter-Italic.otf */,
+				C99DF33E2A6FA754002DCED7 /* Inter-Light.otf */,
+				C99DF3462A6FA755002DCED7 /* Inter-LightItalic.otf */,
+				C99DF3422A6FA755002DCED7 /* Inter-Medium.otf */,
+				C99DF33F2A6FA755002DCED7 /* Inter-MediumItalic.otf */,
+				C99DF34C2A6FA756002DCED7 /* Inter-Regular.otf */,
+				C99DF34D2A6FA756002DCED7 /* Inter-SemiBold.otf */,
+				C99DF3402A6FA755002DCED7 /* Inter-SemiBoldItalic.otf */,
+				C99DF3442A6FA755002DCED7 /* Inter-Thin.otf */,
+				C99DF34B2A6FA756002DCED7 /* Inter-ThinItalic.otf */,
+				C99DF33C2A6FA754002DCED7 /* Inter-V.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -390,6 +317,7 @@
 		1687E2B52A6F6FD20004D87A /* MC3_Tering */ = {
 			isa = PBXGroup;
 			children = (
+				C99DF3282A6FA246002DCED7 /* MC3-Tering-Info.plist */,
 				1687E2B62A6F6FD20004D87A /* MC3_TeringApp.swift */,
 				1687E2DA2A6F70B30004D87A /* Model */,
 				1687E2DB2A6F70BA0004D87A /* View */,
@@ -516,6 +444,7 @@
 				1687E3102A6F79750004D87A /* UserData */,
 				1687E30F2A6F796D0004D87A /* WorkOutData */,
 				1687E31D2A6F7A0B0004D87A /* CoreDataManager.swift */,
+				C99DF3292A6FA4CA002DCED7 /* UserInfo.xcdatamodeld */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -523,8 +452,8 @@
 		1687E30F2A6F796D0004D87A /* WorkOutData */ = {
 			isa = PBXGroup;
 			children = (
-				1687E3152A6F79B10004D87A /* WorkOutData+CoreDataClass.swift */,
-				1687E3172A6F79CA0004D87A /* WorkOutData+CoreDataProperties.swift */,
+				C99DF3362A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift */,
+				C99DF3372A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift */,
 			);
 			path = WorkOutData;
 			sourceTree = "<group>";
@@ -532,8 +461,8 @@
 		1687E3102A6F79750004D87A /* UserData */ = {
 			isa = PBXGroup;
 			children = (
-				1687E3192A6F79E20004D87A /* UserData+CoreDataClass.swift */,
-				1687E31B2A6F79F30004D87A /* UserData+CoreDataProperties.swift */,
+				C99DF3342A6FA6C1002DCED7 /* UserData+CoreDataClass.swift */,
+				C99DF3352A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift */,
 			);
 			path = UserData;
 			sourceTree = "<group>";
@@ -673,6 +602,7 @@
 				160B1E722A6F93BD00A708CC /* CameraView.swift in Sources */,
 				1687E2DD2A6F70DD0004D87A /* ViewModelPhone.swift in Sources */,
 				1687E2B92A6F6FD20004D87A /* ContentView.swift in Sources */,
+				C99DF3392A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift in Sources */,
 				1687E3122A6F79900004D87A /* EmitterManager.swift in Sources */,
 				160B1E842A6F948300A708CC /* UserInfoSettingView.swift in Sources */,
 				160B1E882A6F949900A708CC /* UserProfileSettingView.swift in Sources */,
@@ -681,22 +611,22 @@
 				160B1E822A6F947700A708CC /* SeettingView.swift in Sources */,
 				160B1E7E2A6F944A00A708CC /* TodayDetailView.swift in Sources */,
 				160B1E7A2A6F940800A708CC /* EmitterView.swift in Sources */,
-				1687E31A2A6F79E20004D87A /* UserData+CoreDataClass.swift in Sources */,
-				1687E3162A6F79B10004D87A /* WorkOutData+CoreDataClass.swift in Sources */,
 				160B1E742A6F93CC00A708CC /* CameraViewModel.swift in Sources */,
+				C99DF33A2A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift in Sources */,
 				160B1E862A6F948D00A708CC /* UserStrokeSettingView.swift in Sources */,
 				160B1E7C2A6F943600A708CC /* OnboardingView.swift in Sources */,
 				1687E2B72A6F6FD20004D87A /* MC3_TeringApp.swift in Sources */,
 				160B1E8E2A6F950C00A708CC /* ColorExtension.swift in Sources */,
-				1687E31C2A6F79F30004D87A /* UserData+CoreDataProperties.swift in Sources */,
 				160B1ED72A6F96BE00A708CC /* CustomBackButton.swift in Sources */,
 				160B1E782A6F93FF00A708CC /* CongreteModalView.swift in Sources */,
 				1687E3142A6F79970004D87A /* HapticManager.swift in Sources */,
+				C99DF32B2A6FA4CA002DCED7 /* UserInfo.xcdatamodeld in Sources */,
 				160B1ED52A6F969A00A708CC /* GifView.swift in Sources */,
 				160B1E8C2A6F94E100A708CC /* RingChartsView.swift in Sources */,
+				C99DF3382A6FA6C1002DCED7 /* UserData+CoreDataClass.swift in Sources */,
+				C99DF33B2A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift in Sources */,
 				1687E2DF2A6F71180004D87A /* TestPhoneView.swift in Sources */,
 				160B1E802A6F946100A708CC /* GuideView.swift in Sources */,
-				1687E3182A6F79CA0004D87A /* WorkOutData+CoreDataProperties.swift in Sources */,
 				1687E31E2A6F7A0B0004D87A /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -863,21 +793,26 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 49256BK4G3;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MC3-Tering-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "공유할 사진 촬영과 커스텀을 위해 카메라 사용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 촬영한 후 저장하기 위해 얼범 쓰기 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 등록하기 위해 사진 저장 공간 사용 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mc3.MC3-Tering";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -895,21 +830,26 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 49256BK4G3;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MC3-Tering-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "공유할 사진 촬영과 커스텀을 위해 카메라 사용 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 촬영한 후 저장하기 위해 얼범 쓰기 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 등록하기 위해 사진 저장 공간 사용 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mc3.MC3-Tering";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -927,7 +867,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3_Tering_Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 49256BK4G3;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = MC3_Tering_Watch;
@@ -935,13 +875,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "mc3.MC3-Tering";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mc3.MC3-Tering.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -961,7 +901,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3_Tering_Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 49256BK4G3;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = MC3_Tering_Watch;
@@ -969,13 +909,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "mc3.MC3-Tering";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "mc3.MC3-Tering.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1017,6 +957,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C99DF3292A6FA4CA002DCED7 /* UserInfo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C99DF32A2A6FA4CA002DCED7 /* UserInfo.xcdatamodel */,
+			);
+			currentVersion = C99DF32A2A6FA4CA002DCED7 /* UserInfo.xcdatamodel */;
+			path = UserInfo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1687E2AB2A6F6FD20004D87A /* Project object */;
 }

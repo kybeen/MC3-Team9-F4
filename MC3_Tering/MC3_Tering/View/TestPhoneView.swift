@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TestPhoneView: View {
-    @ObservedObject var model = ViewModelPhone()
+    
+    @ObservedObject var model = ViewModelPhone()    //데이터 불러오는 곳에 선언
     @State var reachable = "No"
     @State var messsageText = ""
     @State var numberValue = 0
@@ -33,6 +34,7 @@ struct TestPhoneView: View {
                 Text("Update")
             }
             
+            //밑에 처럼 그냥 불러오기만 하면 됨
             Text("receive from watch cal: \(model.burningCalories)")
             Text("receive from watch time: \(model.workOutTime)")
             Text("receive from watch date: \(model.workOutDate ?? Date())")

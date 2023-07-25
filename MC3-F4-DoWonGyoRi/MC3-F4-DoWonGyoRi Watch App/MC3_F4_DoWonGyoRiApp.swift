@@ -15,10 +15,10 @@ struct MC3_F4_DoWonGyoRi_Watch_AppApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            WatchTestView()
-            SwingListView(swingList: swingLists[0])
-                .environmentObject(swingListWrapper)
-                .environmentObject(healthStartInfo)
+            WatchTestView()
+//            SwingListView(swingList: swingLists[0])
+//                .environmentObject(swingListWrapper)
+//                .environmentObject(healthStartInfo)
             //이거 왜 이러는거임?
         }
     }

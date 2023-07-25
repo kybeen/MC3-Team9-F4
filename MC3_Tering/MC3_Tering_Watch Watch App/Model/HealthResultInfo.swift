@@ -9,5 +9,5 @@ import Foundation
 
 class HealthResultInfo: ObservableObject {
     @Published var consumedCal: Int?
-    @Published var timeSpent: Date?
+    @Published var timeSpentMinute: Int?
 }

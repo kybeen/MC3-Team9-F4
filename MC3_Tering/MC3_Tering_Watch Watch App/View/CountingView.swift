@@ -78,6 +78,7 @@ struct QuitView: View {
             .cornerRadius(40)
             .onDisappear {
                 getCaloryData()
+                getTimeData()
             }
         }
         .onAppear {
@@ -95,6 +96,22 @@ extension QuitView {
         print("결과 -> \(healthResultInfo.consumedCal)")
     }
     
+    private func getTimeData() {
+        guard let startTime = healthInfo.startTime else { return }
+        let currentTime = Date()
+        print("시작 \(startTime), 지금 시간 \(currentTime)")
+        
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.minute], from: startTime, to: currentTime)
+
+        if let timeDifferenceInMinutes = components.minute {
+            healthResultInfo.timeSpentMinute = timeDifferenceInMinutes
+            print("시작 시간부터 현재까지의 시간 차이: \(healthResultInfo.timeSpentMinute) 분")
+        } else {
+            print("시작 시간과 현재 시간 사이에 오류가 발생했습니다.")
+        }
+        
+    }
     
 }
 

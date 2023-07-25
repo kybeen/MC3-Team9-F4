@@ -11,7 +11,8 @@ import SwiftUI
 struct MC3_TeringApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            TestPhoneView()
         }
     }
 }

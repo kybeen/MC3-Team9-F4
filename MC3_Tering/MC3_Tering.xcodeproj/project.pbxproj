@@ -16,6 +16,10 @@
 		1687E2CF2A6F70280004D87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1687E2CE2A6F70280004D87A /* Assets.xcassets */; };
 		1687E2D22A6F70280004D87A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1687E2D12A6F70280004D87A /* Preview Assets.xcassets */; };
 		1687E2D52A6F70280004D87A /* MC3_Tering_Watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1687E2C82A6F70270004D87A /* MC3_Tering_Watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1687E2DD2A6F70DD0004D87A /* ViewModelPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2DC2A6F70DD0004D87A /* ViewModelPhone.swift */; };
+		1687E2DF2A6F71180004D87A /* TestPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2DE2A6F71180004D87A /* TestPhoneView.swift */; };
+		1687E2E32A6F714D0004D87A /* ViewModelWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2E22A6F714D0004D87A /* ViewModelWatch.swift */; };
+		1687E2E52A6F716A0004D87A /* TestWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2E42A6F716A0004D87A /* TestWatchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,10 @@
 		1687E2CC2A6F70270004D87A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1687E2CE2A6F70280004D87A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1687E2D12A6F70280004D87A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1687E2DC2A6F70DD0004D87A /* ViewModelPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelPhone.swift; sourceTree = "<group>"; };
+		1687E2DE2A6F71180004D87A /* TestPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPhoneView.swift; sourceTree = "<group>"; };
+		1687E2E22A6F714D0004D87A /* ViewModelWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelWatch.swift; sourceTree = "<group>"; };
+		1687E2E42A6F716A0004D87A /* TestWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestWatchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +102,9 @@
 		1687E2B52A6F6FD20004D87A /* MC3_Tering */ = {
 			isa = PBXGroup;
 			children = (
+				1687E2DA2A6F70B30004D87A /* Model */,
+				1687E2DB2A6F70BA0004D87A /* View */,
 				1687E2B62A6F6FD20004D87A /* MC3_TeringApp.swift */,
-				1687E2B82A6F6FD20004D87A /* ContentView.swift */,
 				1687E2BA2A6F6FD30004D87A /* Assets.xcassets */,
 				1687E2BC2A6F6FD30004D87A /* Preview Content */,
 			);
@@ -114,7 +123,8 @@
 			isa = PBXGroup;
 			children = (
 				1687E2CA2A6F70270004D87A /* MC3_Tering_WatchApp.swift */,
-				1687E2CC2A6F70270004D87A /* ContentView.swift */,
+				1687E2E02A6F71300004D87A /* Model */,
+				1687E2E12A6F71350004D87A /* View */,
 				1687E2CE2A6F70280004D87A /* Assets.xcassets */,
 				1687E2D02A6F70280004D87A /* Preview Content */,
 			);
@@ -127,6 +137,40 @@
 				1687E2D12A6F70280004D87A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1687E2DA2A6F70B30004D87A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1687E2DC2A6F70DD0004D87A /* ViewModelPhone.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1687E2DB2A6F70BA0004D87A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1687E2B82A6F6FD20004D87A /* ContentView.swift */,
+				1687E2DE2A6F71180004D87A /* TestPhoneView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1687E2E02A6F71300004D87A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1687E2E22A6F714D0004D87A /* ViewModelWatch.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1687E2E12A6F71350004D87A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1687E2CC2A6F70270004D87A /* ContentView.swift */,
+				1687E2E42A6F716A0004D87A /* TestWatchView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,8 +275,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1687E2DD2A6F70DD0004D87A /* ViewModelPhone.swift in Sources */,
 				1687E2B92A6F6FD20004D87A /* ContentView.swift in Sources */,
 				1687E2B72A6F6FD20004D87A /* MC3_TeringApp.swift in Sources */,
+				1687E2DF2A6F71180004D87A /* TestPhoneView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +286,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1687E2E52A6F716A0004D87A /* TestWatchView.swift in Sources */,
 				1687E2CD2A6F70270004D87A /* ContentView.swift in Sources */,
+				1687E2E32A6F714D0004D87A /* ViewModelWatch.swift in Sources */,
 				1687E2CB2A6F70270004D87A /* MC3_Tering_WatchApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -213,9 +213,11 @@ struct HealthKitView: View {
     //우선 타입 임의로 지정
     
     @ObservedObject var healthManager = HealthKitManager()
-    
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
+    @EnvironmentObject var healthResultInfo: HealthResultInfo
+    @ObservedObject var model = ViewModelWatch()
 
+    
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
@@ -224,8 +226,7 @@ struct HealthKitView: View {
                 .font(.system(size: 40, weight: .medium))
                 .foregroundColor(Color.watchColor.lightGreen)
                 .padding(.bottom, 5)
-
-            Text("\(healthManager.currentCalories - (healthInfo.startCal ?? 0.0), specifier: "%2.f") kcal")
+            Text("\(healthResultInfo.burningCal!) kcal")
                 .font(.system(size: 28, weight: .medium))
                 .padding(.bottom, 8)
             Spacer()
@@ -241,12 +242,11 @@ struct HealthKitView: View {
         }
         .onAppear {
             healthManager.readCurrentCalories()
+            sendDataToPhone()
         }
     }
 
 }
-
-
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
@@ -276,6 +276,13 @@ extension HealthKitView {
             return formatter.string(from: timeInterval) ?? "00:00:00"
         }
         return "00:00:00"
+    }
+    
+    private func sendDataToPhone() {
+        self.model.session.transferUserInfo(["calories" : self.healthResultInfo.burningCal])
+        self.model.session.transferUserInfo(["time" : self.healthResultInfo.workOutTime])
+        self.model.session.transferUserInfo(["date" : self.healthResultInfo.workOutDate])
+        print("message send")
     }
 }
 

@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct TestPhoneView: View {
-    var model = ViewModelPhone()
+    
+    @ObservedObject var model = ViewModelPhone()    //데이터 불러오는 곳에 선언
     @State var reachable = "No"
     @State var messsageText = ""
     @State var numberValue = 0
@@ -33,42 +34,10 @@ struct TestPhoneView: View {
                 Text("Update")
             }
             
-            /** 텍스트를 입력하고, 버튼을 누르면 애플워치로 데이터가 전송됨 */
-            HStack {
-                TextField("Input your message", text: $messsageText)
-                Button {
-                    self.model.session.sendMessage(["message" : self.messsageText], replyHandler: nil) { error in
-                        /**
-                         다음의 상황에서 오류가 발생할 수 있음
-                            -> property-list 데이터 타입이 아닐 때
-                            -> watchOS가 reachable 상태가 아닌데 전송할 때
-                         */
-                        print(error.localizedDescription)
-                    }
-                } label: {
-                    Text("Send Message")
-                }
-            }
-            .padding()
-            
-            /** 번호를 입력하고, 버튼을 누르면 데이터가 전송됨 */
-            HStack {
-                Button("-") {
-                    if numberValue > 0 {
-                        numberValue -= 1
-                    }
-                }
-                Text("\(numberValue)")
-                Button("+") {
-                    numberValue += 1
-                }
-            }
-            .padding()
-            Button {
-                self.model.session.transferUserInfo(["number" : String(self.numberValue)])
-            } label: {
-                Text("Send number")
-            }
+            //밑에 처럼 그냥 불러오기만 하면 됨
+            Text("receive from watch cal: \(model.burningCalories)")
+            Text("receive from watch time: \(model.workOutTime)")
+            Text("receive from watch date: \(model.workOutDate ?? Date())")
 
         }
     }

@@ -26,6 +26,11 @@
 		160B1E972A6F95F100A708CC /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 160B1E962A6F95F100A708CC /* Media.xcassets */; };
 		160B1ED52A6F969A00A708CC /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160B1ED42A6F969A00A708CC /* GifView.swift */; };
 		160B1ED72A6F96BE00A708CC /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160B1ED62A6F96BE00A708CC /* CustomBackButton.swift */; };
+		1656EEA72A709C4900651C04 /* Inter-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3432A6FA755002DCED7 /* Inter-Black.otf */; };
+		1656EEA82A709C4D00651C04 /* Inter-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3492A6FA755002DCED7 /* Inter-BlackItalic.otf */; };
+		1656EEA92A709C5000651C04 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34A2A6FA755002DCED7 /* Inter-Bold.otf */; };
+		1656EEAA2A709C5400651C04 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3452A6FA755002DCED7 /* Inter-BoldItalic.otf */; };
+		1656EEAB2A709CD900651C04 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34D2A6FA756002DCED7 /* Inter-SemiBold.otf */; };
 		1687E2B72A6F6FD20004D87A /* MC3_TeringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2B62A6F6FD20004D87A /* MC3_TeringApp.swift */; };
 		1687E2B92A6F6FD20004D87A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2B82A6F6FD20004D87A /* ContentView.swift */; };
 		1687E2BB2A6F6FD30004D87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1687E2BA2A6F6FD30004D87A /* Assets.xcassets */; };
@@ -627,6 +632,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1687E2D22A6F70280004D87A /* Preview Assets.xcassets in Resources */,
+				1656EEAB2A709CD900651C04 /* Inter-SemiBold.otf in Resources */,
+				1656EEAA2A709C5400651C04 /* Inter-BoldItalic.otf in Resources */,
+				1656EEA92A709C5000651C04 /* Inter-Bold.otf in Resources */,
+				1656EEA72A709C4900651C04 /* Inter-Black.otf in Resources */,
+				1656EEA82A709C4D00651C04 /* Inter-BlackItalic.otf in Resources */,
 				1687E2CF2A6F70280004D87A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

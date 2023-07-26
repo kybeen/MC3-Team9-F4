@@ -14,7 +14,8 @@ import SwiftUI
 struct SwingCountView: View {
     let swingList: SwingList
     @State private var isReadyViewActive = false
-    
+    @State private var strokeCount = 10
+
     @StateObject var healthManager = HealthKitManager()
 
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
@@ -26,7 +27,8 @@ struct SwingCountView: View {
                 .font(.system(size: 20, weight: .semibold))
             Spacer()
             HStack {
-                Text("개수 넣는 공간")
+//                countViewContainer()
+                testView()
             }
             Spacer()
             NavigationLink(destination: ReadyView()) {
@@ -67,5 +69,100 @@ extension SwingCountView {
         healthInfo.startTime = Date()
         
         print("time -> \(healthInfo.startTime)")
+    }
+    
+//    private func countViewContainer() -> some View {
+//        VStack(spacing: 0) {
+//            HStack(spacing: 0) {
+//                Button(action: {
+//                    if strokeCount > 10 {
+//                        strokeCount -= 10
+//                    }
+//                }) {
+//                    Image(systemName: "minus.circle.fill")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .foregroundColor(Color.watchColor.lightGreen)
+//                        .frame(maxWidth: 32)
+//                }
+//                Spacer()
+//                Text("\(strokeCount)")
+//                    .font(.system(size: 40, weight: .medium))
+//                    .foregroundColor(Color.white)
+//                Spacer()
+//                Button(action: {
+//                    if strokeCount < 300 {
+//                        strokeCount += 10
+//                    }
+//                }) {
+//                    Image(systemName: "plus.circle.fill")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .foregroundColor(Color.watchColor.lightGreen)
+//                        .frame(maxWidth: 32)
+//                }
+//            }
+////            .frame(maxWidth: 267)
+//        }
+//
+//    }
+}
+
+
+struct testView: View {
+    @State private var valueIndex: Int = 0
+    let stepSize = 10
+    let values: [Int]
+
+    init() {
+        // Create an array from 0 to 100 (inclusive) with a step of 10
+        var tempValues: [Int] = []
+        for i in stride(from: 0, through: 100, by: stepSize) {
+            tempValues.append(i)
+        }
+        self.values = tempValues
+    }
+
+    var body: some View {
+        VStack {
+            HStack {
+                Button(action: decrementValue) {
+                    Image(systemName: "minus.fill")
+                        .foregroundColor(Color.black)
+                }
+                .background(Color.watchColor.lightGreen)
+                .clipShape(Circle())
+                .padding()
+
+                Picker("Value", selection: $valueIndex) {
+                    ForEach(0..<values.count) { index in
+                        Text("\(values[index])")
+                    }
+                }
+                .pickerStyle(WheelPickerStyle()) // Set the picker style to WheelPickerStyle
+                .labelsHidden()
+                
+
+                Button(action: incrementValue) {
+                    Image(systemName: "plus.fill")
+                        .foregroundColor(Color.black)
+                }
+                .background(Color.watchColor.lightGreen)
+                .clipShape(Circle())
+                .padding()
+            }
+        }
+    }
+
+    private func incrementValue() {
+        if valueIndex < values.count - 1 {
+            valueIndex += 1
+        }
+    }
+
+    private func decrementValue() {
+        if valueIndex > 0 {
+            valueIndex -= 1
+        }
     }
 }

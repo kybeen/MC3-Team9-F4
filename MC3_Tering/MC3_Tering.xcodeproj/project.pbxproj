@@ -31,6 +31,7 @@
 		1656EEA92A709C5000651C04 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34A2A6FA755002DCED7 /* Inter-Bold.otf */; };
 		1656EEAA2A709C5400651C04 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3452A6FA755002DCED7 /* Inter-BoldItalic.otf */; };
 		1656EEAB2A709CD900651C04 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34D2A6FA756002DCED7 /* Inter-SemiBold.otf */; };
+		1656EEAF2A70DC3100651C04 /* TedCountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656EEAE2A70DC3100651C04 /* TedCountingView.swift */; };
 		1687E2B72A6F6FD20004D87A /* MC3_TeringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2B62A6F6FD20004D87A /* MC3_TeringApp.swift */; };
 		1687E2B92A6F6FD20004D87A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2B82A6F6FD20004D87A /* ContentView.swift */; };
 		1687E2BB2A6F6FD30004D87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1687E2BA2A6F6FD30004D87A /* Assets.xcassets */; };
@@ -136,6 +137,7 @@
 		160B1E962A6F95F100A708CC /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		160B1ED42A6F969A00A708CC /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		160B1ED62A6F96BE00A708CC /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
+		1656EEAE2A70DC3100651C04 /* TedCountingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TedCountingView.swift; sourceTree = "<group>"; };
 		1687E2B32A6F6FD20004D87A /* MC3_Tering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC3_Tering.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1687E2B62A6F6FD20004D87A /* MC3_TeringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_TeringApp.swift; sourceTree = "<group>"; };
 		1687E2B82A6F6FD20004D87A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -322,6 +324,14 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		1656EEAD2A70DC2000651C04 /* Ted_CountingView */ = {
+			isa = PBXGroup;
+			children = (
+				1656EEAE2A70DC3100651C04 /* TedCountingView.swift */,
+			);
+			path = Ted_CountingView;
+			sourceTree = "<group>";
+		};
 		1687E2AA2A6F6FD20004D87A = {
 			isa = PBXGroup;
 			children = (
@@ -435,6 +445,7 @@
 				1687E2FF2A6F73230004D87A /* CountingView.swift */,
 				1687E3032A6F73360004D87A /* ResultView.swift */,
 				1687E3012A6F732B0004D87A /* CompleteView.swift */,
+				1656EEAD2A70DC2000651C04 /* Ted_CountingView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -695,6 +706,7 @@
 				1687E2EF2A6F72540004D87A /* HealthStartInfo.swift in Sources */,
 				1687E2F42A6F72F50004D87A /* SwingResultView.swift in Sources */,
 				1687E2E92A6F721F0004D87A /* Particle.swift in Sources */,
+				1656EEAF2A70DC3100651C04 /* TedCountingView.swift in Sources */,
 				1687E3092A6F74790004D87A /* CircleProgressBar.swift in Sources */,
 				16A219212A6FDDAD00952653 /* HealthResultInfo.swift in Sources */,
 				1687E2F82A6F73040004D87A /* ReadyView.swift in Sources */,

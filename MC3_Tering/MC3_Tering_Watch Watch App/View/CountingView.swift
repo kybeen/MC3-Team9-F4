@@ -64,6 +64,7 @@ struct CountingView: View {
 }
 
 struct QuitView: View {
+    @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     @State var swingLeft: Int = 10
     
@@ -90,6 +91,7 @@ struct QuitView: View {
                 getTimeData()
                 getDayData()
 //                sendDataToPhone()
+                tennisClassifierViewModel.stopMotionTracking() // 모션 감지 종료
             }
         }
         .onAppear {

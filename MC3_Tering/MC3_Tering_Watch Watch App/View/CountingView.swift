@@ -10,6 +10,7 @@ import SwiftUI
 //MARK: - tag0, tag1 위치 바꾸기
 
 struct CountingView: View {
+    @ObservedObject var tennisClassifierViewModel = TennisClassifierViewModel() // 테니스 동작 분류 관련 뷰모델 불러오기
     
     @State private var selectedTab = 1
     
@@ -35,6 +36,7 @@ struct CountingView: View {
                         .foregroundColor(Color.black)
                     
                     //MARK: - 이 버튼 없으면 정중앙에 정렬됨
+                    //TODO: 스윙 결과 확인되면 MeasuringView로 넘어가기
                     NavigationLink(destination: MeasuringView()) {
                         Text("시작")
                             .font(.system(size: 16, weight: .bold))
@@ -50,6 +52,7 @@ struct CountingView: View {
         }
         .onAppear {
             selectedTab = 1
+            tennisClassifierViewModel.startMotionTracking() // 동작 분류 모델 불러오기 및 모션 감지 시작
         }
         .navigationBarBackButtonHidden()
     }

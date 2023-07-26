@@ -34,6 +34,7 @@ struct CountingView: View {
                     Text("50")
                         .font(.system(size: 56, weight: .bold))
                         .foregroundColor(Color.black)
+                    Text("\(tennisClassifierViewModel.timestamp)").foregroundColor(.blue) //MARK: 테스트용
                     
                     // 스윙 결과 확인되면 MeasuringView로 넘어감
                     NavigationLink(destination: MeasuringView(), isActive: tennisClassifierViewModel.isSwingBinding, label: { EmptyView() })
@@ -53,6 +54,7 @@ struct CountingView: View {
         }
         .onAppear {
             selectedTab = 1
+            //TODO: 맨 처음에 한 번만 실행되도록 수정 필요함
             tennisClassifierViewModel.startMotionTracking() // 동작 분류 모델 불러오기 및 모션 감지 시작
         }
         .navigationBarBackButtonHidden()

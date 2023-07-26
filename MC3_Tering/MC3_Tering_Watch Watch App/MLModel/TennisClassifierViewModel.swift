@@ -15,7 +15,6 @@ import SwiftUI
 class TennisClassifierViewModel: ObservableObject {
     static let shared = TennisClassifierViewModel() // 싱글톤 인스턴스
     private init() {} // 외부에서 인스턴스를 생성하지 못하도록 private init로 선언
-    
     let motionManager = CMMotionManager()
     
     let MODEL_NAME = "TeringClassifier_totalData_window100"

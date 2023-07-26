@@ -13,7 +13,7 @@ struct TedCountingView: View {
     
     @State var progressValue: Float = 0.0
     @State var countValue: String = ""
-    @State var counting: Int = 0
+    @State var counting: Int = 100
     @State var fontSize: CGFloat = 48.0
 
     var body: some View {
@@ -22,6 +22,22 @@ struct TedCountingView: View {
                 .frame(width: 150, height: 150, alignment: .center)
 
         }
+        .onAppear {
+            rate()
+            countSwing()
+        }
+    }
+}
+
+extension TedCountingView {
+    
+    private func rate() {
+        progressValue = Float(counting) / Float(selectedValue)
+        print("progress \(progressValue)")
+    }
+    
+    private func countSwing() {
+        countValue = "\(counting)"
     }
 }
 

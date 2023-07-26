@@ -33,7 +33,7 @@ struct SwingCountView: View {
                 selectingGoalView(selectedValue: $selectedValue)
             }
             Spacer()
-            NavigationLink(destination: ReadyView()) {
+            NavigationLink(destination: ReadyView(selectedValue: $selectedValue)) {
                 Text("시작")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(Color.black)

@@ -15,6 +15,7 @@ struct ReadyView: View {
     let readyStatus = ["준비", "3", "2", "1", "시작!"]
     @State private var isCountingViewPresented: Bool = false
 
+    @Binding var selectedValue: Int
 
     var body: some View {
         VStack {
@@ -28,7 +29,7 @@ struct ReadyView: View {
                 }
         }
         .background(
-            NavigationLink(destination: CountingView(),
+            NavigationLink(destination: TedCountingView(selectedValue: $selectedValue),
                            isActive: $isCountingViewPresented) {
                 EmptyView()
             }
@@ -61,7 +62,9 @@ struct ReadyView: View {
 }
 
 struct ReadyView_Previews: PreviewProvider {
+    
+    
     static var previews: some View {
-        ReadyView()
+        ReadyView(selectedValue: .constant(50))
     }
 }

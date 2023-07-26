@@ -10,7 +10,7 @@ import SwiftUI
 //MARK: - tag0, tag1 위치 바꾸기
 
 struct CountingView: View {
-    @ObservedObject var tennisClassifierViewModel = TennisClassifierViewModel() // 테니스 동작 분류 관련 뷰모델 불러오기
+    @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     @State private var selectedTab = 1
     

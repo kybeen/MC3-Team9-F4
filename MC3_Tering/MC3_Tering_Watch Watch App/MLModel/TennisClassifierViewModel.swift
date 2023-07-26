@@ -12,7 +12,10 @@ import SwiftUI
 
 //TODO: 필요 없는 코드 제거하기
 //MARK: 테니스 동작 분류 모델 관련 클래스
-class TennisClassifierViewModel: NSObject, ObservableObject {
+class TennisClassifierViewModel: ObservableObject {
+    static let shared = TennisClassifierViewModel() // 싱글톤 인스턴스
+    private init() {} // 외부에서 인스턴스를 생성하지 못하도록 private init로 선언
+    
     let motionManager = CMMotionManager()
     
     let MODEL_NAME = "TeringClassifier_totalData_window100"

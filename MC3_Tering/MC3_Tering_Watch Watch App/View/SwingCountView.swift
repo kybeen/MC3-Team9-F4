@@ -127,7 +127,7 @@ struct testView: View {
         VStack {
             HStack {
                 Button(action: decrementValue) {
-                    Image(systemName: "minus.fill")
+                    Image(systemName: "minus")
                         .foregroundColor(Color.black)
                 }
                 .background(Color.watchColor.lightGreen)
@@ -144,7 +144,7 @@ struct testView: View {
                 
 
                 Button(action: incrementValue) {
-                    Image(systemName: "plus.fill")
+                    Image(systemName: "plus")
                         .foregroundColor(Color.black)
                 }
                 .background(Color.watchColor.lightGreen)

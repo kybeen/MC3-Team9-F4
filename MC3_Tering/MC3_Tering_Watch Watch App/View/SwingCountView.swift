@@ -20,6 +20,8 @@ struct SwingCountView: View {
 
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
     @EnvironmentObject var healthResultInfo: HealthResultInfo
+        
+    @State var selectedValue: Int = 0
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -28,7 +30,7 @@ struct SwingCountView: View {
             Spacer()
             HStack {
 //                countViewContainer()
-                testView()
+                selectingGoalView(selectedValue: $selectedValue)
             }
             Spacer()
             NavigationLink(destination: ReadyView()) {
@@ -71,56 +73,25 @@ extension SwingCountView {
         print("time -> \(healthInfo.startTime)")
     }
     
-//    private func countViewContainer() -> some View {
-//        VStack(spacing: 0) {
-//            HStack(spacing: 0) {
-//                Button(action: {
-//                    if strokeCount > 10 {
-//                        strokeCount -= 10
-//                    }
-//                }) {
-//                    Image(systemName: "minus.circle.fill")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .foregroundColor(Color.watchColor.lightGreen)
-//                        .frame(maxWidth: 32)
-//                }
-//                Spacer()
-//                Text("\(strokeCount)")
-//                    .font(.system(size: 40, weight: .medium))
-//                    .foregroundColor(Color.white)
-//                Spacer()
-//                Button(action: {
-//                    if strokeCount < 300 {
-//                        strokeCount += 10
-//                    }
-//                }) {
-//                    Image(systemName: "plus.circle.fill")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .foregroundColor(Color.watchColor.lightGreen)
-//                        .frame(maxWidth: 32)
-//                }
-//            }
-////            .frame(maxWidth: 267)
-//        }
-//
-//    }
+    
 }
 
 
-struct testView: View {
+struct selectingGoalView: View {
     @State private var valueIndex: Int = 0
     let stepSize = 10
     let values: [Int]
-
-    init() {
+    
+    @Binding var selectedValue: Int
+    
+    init(selectedValue: Binding<Int>) {
         // Create an array from 0 to 100 (inclusive) with a step of 10
         var tempValues: [Int] = []
         for i in stride(from: 0, through: 100, by: stepSize) {
             tempValues.append(i)
         }
         self.values = tempValues
+        self._selectedValue = selectedValue
     }
 
     var body: some View {
@@ -151,6 +122,9 @@ struct testView: View {
                 .clipShape(Circle())
                 .padding()
             }
+        }
+        .onChange(of: valueIndex) { newValue in
+            selectedValue = values[newValue]
         }
     }
 

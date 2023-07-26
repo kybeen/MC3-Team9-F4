@@ -35,13 +35,14 @@ struct CountingView: View {
                         .font(.system(size: 56, weight: .bold))
                         .foregroundColor(Color.black)
                     
+                    // 스윙 결과 확인되면 MeasuringView로 넘어감
+                    NavigationLink(destination: MeasuringView(), isActive: tennisClassifierViewModel.isSwingBinding, label: { EmptyView() })
                     //MARK: - 이 버튼 없으면 정중앙에 정렬됨
-                    //TODO: 스윙 결과 확인되면 MeasuringView로 넘어가기
-                    NavigationLink(destination: MeasuringView()) {
-                        Text("시작")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(Color.black)
-                    }
+//                    NavigationLink(destination: MeasuringView()) {
+//                        Text("시작")
+//                            .font(.system(size: 16, weight: .bold))
+//                            .foregroundColor(Color.black)
+//                    }
                 }
             }
             .tabItem{

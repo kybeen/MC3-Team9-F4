@@ -8,6 +8,7 @@
 import CoreML
 import CoreMotion
 import Foundation
+import SwiftUI
 
 //TODO: 필요 없는 코드 제거하기
 //MARK: 테니스 동작 분류 모델 관련 클래스
@@ -29,9 +30,17 @@ class TennisClassifierViewModel: NSObject, ObservableObject {
     @Published var backhandBadCount: Int = 0 // 백핸드 bad 스윙 횟수
     @Published var totalCount: Int = 0 // 전체 스윙 횟수
     @Published var timestamp: Double = 0.0
+    @Published var isSwing = false // 스윙 중인지 체크
     
-    // 스윙 중인지 체크
-    @Published var isSwing = false
+    //MARK: 바인딩용 프로퍼티
+    var isSwingBinding: Binding<Bool> {
+        Binding<Bool>(
+            get: { self.isSwing },
+            set: { newValue in
+                self.isSwing = newValue
+            }
+        )
+    }
     // 모델 인풋용 윈도우 버퍼
     var bufferAccX: [Double] = []
     var bufferAccY: [Double] = []

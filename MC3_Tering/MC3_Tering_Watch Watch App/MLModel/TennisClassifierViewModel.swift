@@ -15,6 +15,7 @@ import SwiftUI
 class TennisClassifierViewModel: ObservableObject {
     static let shared = TennisClassifierViewModel() // 싱글톤 인스턴스
     private init() {} // 외부에서 인스턴스를 생성하지 못하도록 private init로 선언
+    @Published var isDetecting = false // device motion 추적 중인지
     let motionManager = CMMotionManager()
     
     let MODEL_NAME = "TeringClassifier_totalData_window100"
@@ -53,6 +54,7 @@ class TennisClassifierViewModel: ObservableObject {
     
     //MARK: 감지 시작
     func startMotionTracking() {
+        self.isDetecting = true
         // 모델 불러오기
         guard let modelURL = Bundle.main.url(forResource: self.MODEL_NAME, withExtension: "mlmodelc") else {
             fatalError("Failed to locate the model file.")
@@ -215,6 +217,7 @@ class TennisClassifierViewModel: ObservableObject {
         self.bufferRotY = []
         self.bufferRotZ = []
         print("버퍼 초기화 \(self.bufferAccX), \(self.bufferAccY), \(self.bufferAccZ), \(self.bufferRotX), \(self.bufferRotY), \(self.bufferRotZ)")
+        self.isDetecting = true
     }
     
     //MARK: 스윙 감지 알고리즘

@@ -29,7 +29,7 @@ struct OnboardingView: View {
     @State private var weight = "60"
     @State private var nickname = ""
     @State private var sex = "남성"
-    @State var onboardingPage = 1
+    @State var onboardingPage = 0
     
     var body: some View {
         ZStack {

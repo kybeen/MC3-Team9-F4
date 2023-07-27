@@ -12,6 +12,8 @@ struct SwingResultView: View {
     
     @State private var isSwingCountViewPresented = false
     
+    @Binding var selectedValue: Int
+    
     var body: some View {
         ZStack {
             Circle()
@@ -30,7 +32,7 @@ struct SwingResultView: View {
             }
         }
         .background(
-            NavigationLink(destination: CountingView(), isActive: $isSwingCountViewPresented) {
+            NavigationLink(destination: CountingView(selectedValue: $selectedValue), isActive: $isSwingCountViewPresented) {
                 EmptyView()
             }
             .hidden()
@@ -40,7 +42,10 @@ struct SwingResultView: View {
 }
 
 struct SwingResultView_Previews: PreviewProvider {
+    @State static var selectedValue: Int = 5 // Create a State variable to use as a Binding for preview
+
+    
     static var previews: some View {
-        SwingResultView()
+        SwingResultView(selectedValue: $selectedValue)
     }
 }

@@ -13,6 +13,8 @@ struct CountingView: View {
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     @State private var selectedTab = 1
+    @Binding var selectedValue: Int
+
     
     var body: some View {
         TabView(selection: $selectedTab) {
@@ -24,28 +26,7 @@ struct CountingView: View {
             }
             .tag(0)
             
-            ZStack {
-                Circle()
-                    .frame(width: 150, height: 150, alignment: .center)
-                VStack(spacing: -8) {
-                    Text("남은 횟수")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(Color.black)
-                    Text("50")
-                        .font(.system(size: 56, weight: .bold))
-                        .foregroundColor(Color.black)
-                    Text("\(tennisClassifierViewModel.timestamp)").foregroundColor(.blue) //MARK: 테스트용
-                    
-                    // 스윙 결과 확인되면 MeasuringView로 넘어감
-                    NavigationLink(destination: MeasuringView(), isActive: tennisClassifierViewModel.isSwingBinding, label: { EmptyView() })
-                    //MARK: - 이 버튼 없으면 정중앙에 정렬됨
-//                    NavigationLink(destination: MeasuringView()) {
-//                        Text("시작")
-//                            .font(.system(size: 16, weight: .bold))
-//                            .foregroundColor(Color.black)
-//                    }
-                }
-            }
+            ChekingSwingView(selectedValue: $selectedValue)
             .tabItem{
                 Image(systemName: "tennisball.fill")
                     .foregroundColor(Color.watchColor.lightGreen)
@@ -62,6 +43,8 @@ struct CountingView: View {
         .navigationBarBackButtonHidden()
     }
 }
+
+//MARK: - 종료 뷰
 
 struct QuitView: View {
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
@@ -143,8 +126,55 @@ extension QuitView {
     
 }
 
+//MARK: - 스윙 횟수 확인 뷰
+
+struct ChekingSwingView: View {
+    
+    @Binding var selectedValue: Int
+    
+    @State var progressValue: Float = 0.0
+    @State var countValue: String = ""
+    @State var counting: Int = 0
+    @State var fontSize: CGFloat = 48.0
+    
+    @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
+    
+
+    var body: some View {
+        VStack {
+            TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
+                .frame(width: 150, height: 150, alignment: .center)
+            
+            Text("\(tennisClassifierViewModel.timestamp)").foregroundColor(.blue) //MARK: 테스트용
+            
+            // 스윙 결과 확인되면 MeasuringView로 넘어감
+            NavigationLink(destination: MeasuringView(selectedValue: $selectedValue), isActive: tennisClassifierViewModel.isSwingBinding, label: { EmptyView() })
+
+        }
+        .onAppear {
+            rate()
+            countSwing()
+        }
+    }
+}
+
+extension ChekingSwingView {
+    
+    private func rate() {
+        progressValue = Float(counting) / Float(selectedValue)
+        print("progress \(progressValue)")
+    }
+    
+    private func countSwing() {
+        countValue = "\(counting)"
+    }
+}
+
+
 struct CountingView_Previews: PreviewProvider {
+    @State static var selectedValue: Int = 5 // Create a State variable to use as a Binding for preview
+
     static var previews: some View {
-        CountingView()
+        CountingView(selectedValue: $selectedValue)
     }
 }

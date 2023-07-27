@@ -29,7 +29,7 @@ struct ReadyView: View {
                 }
         }
         .background(
-            NavigationLink(destination: TedCountingView(selectedValue: $selectedValue),
+            NavigationLink(destination: CountingView(selectedValue: $selectedValue),
                            isActive: $isCountingViewPresented) {
                 EmptyView()
             }

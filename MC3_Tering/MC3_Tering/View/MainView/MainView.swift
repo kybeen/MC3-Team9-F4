@@ -24,6 +24,7 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack(path: $path) {
+            // ZStack 으로 처리
             VStack(spacing: 0) {
                 containerView()
                 namespaceContainer()
@@ -35,6 +36,7 @@ struct MainView: View {
                 .padding(.top, 20)
             }
             .ignoresSafeArea(.all, edges: .bottom)
+            .opacity(0.3)
             .onAppear {
                 userDataModel.fetchUserData()
                 workoutDataModel.fetchWorkOutData()
@@ -44,6 +46,7 @@ struct MainView: View {
                 userDataModel.saveUserData()
                 workoutDataModel.saveWorkOutData()
             }
+            
         }
         .sheet(isPresented: $isCongretePresented, content: {
             CongreteModalView(title1: modalTitle1, title2: modalTitle2, attainment: modalAttainment, gainTitle: modalGainTitle)

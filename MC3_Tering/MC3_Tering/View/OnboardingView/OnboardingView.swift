@@ -29,7 +29,7 @@ struct OnboardingView: View {
     @State private var weight = "60"
     @State private var nickname = ""
     @State private var sex = "남성"
-    @State var onboardingPage = 0
+    @State var onboardingPage = 1
     
     var body: some View {
         ZStack {
@@ -110,6 +110,7 @@ extension OnboardingView {
                     }
                     Spacer()
                 }
+                .padding(.leading, 18)
             }
             .padding(.bottom, 78)
             VStack(spacing: 0) {
@@ -185,10 +186,8 @@ extension OnboardingView {
             VStack(spacing: 0) {
                 profilePhotoContainer()
                     .padding(.top, 26)
-                Spacer()
                 nicknameTextField()
-                Spacer()
-                Spacer()
+                    .padding(.top, 30)
             }
             
         }
@@ -265,7 +264,7 @@ extension OnboardingView {
     
     private func nicknameTextField() -> some View {
         VStack(spacing: 0) {
-            TextField("닉네임 입력", text: $nickname)
+            TextField("한글은 8자, 영문은 12자까지 입력 가능해요.", text: $nickname)
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 14)
                 .onTapGesture {
@@ -302,7 +301,7 @@ extension OnboardingView {
 
             Rectangle()
                 .frame(height: 1)
-            Text("\(nickname.count)/20")
+            Text("\(nickname.count)/12")
                 .font(.custom("Inter-Medium", size: 15))
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .padding(.top, 6)

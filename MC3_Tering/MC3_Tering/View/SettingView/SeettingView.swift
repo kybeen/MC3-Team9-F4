@@ -44,7 +44,7 @@ extension SettingView {
                     .frame(width: 45)
             }
             .frame(maxWidth: 129, maxHeight: 129)
-            .padding(.bottom, 32)
+            .padding(.bottom, 20)
         }
         .disabled(true)
     }
@@ -53,22 +53,22 @@ extension SettingView {
         VStack(alignment: .center, spacing: 0) {
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text(userDataModel.userTitle1)
-                    .font(.custom("Inter-Bold", size: 20))
+                    .font(.custom("Inter-SemiBold", size: 24))
                     .foregroundColor(Color.theme.teGreen)
-                    .padding(.trailing, 10)
+                    .padding(.trailing, 5)
                 Text(userDataModel.userTitle2)
-                    .font(.custom("Inter-Bold", size: 20))
+                    .font(.custom("Inter-SemiBold", size: 24))
                     .foregroundColor(Color.theme.teSkyBlue)
                     
             }
-            .padding(.bottom, 20)
+            .padding(.bottom, 5)
             Text(userDataModel.username)
-                .font(.custom("Inter-Bold", size: 24))
+                .font(.custom("Inter-Medium", size: 24))
                 .foregroundColor(Color.theme.teWhite)
             
         }
         .frame(maxWidth: UIScreen.main.bounds.width, alignment: .center)
-        .padding(.bottom, 24)
+        .padding(.bottom, 50)
     }
     
     private func modifyProfileButton() -> some View {
@@ -111,16 +111,19 @@ extension SettingView {
                         .scaledToFit()
                         .frame(height: 17)
                         .foregroundColor(Color.theme.teWhite)
+                    
                 }
             }
             .padding(.vertical, 35)
             .padding(.horizontal, 47.5)
+            
             Rectangle()
-                .foregroundColor(Color.theme.teWhite)
+                .foregroundColor(buttonName != "백핸드 목표 설정" ? Color.theme.teWhite : Color.theme.teBlack)
                 .frame(maxWidth: UIScreen.main.bounds.width - 36)
-                .frame(height: 1)
+                .frame(height: 0.5)
                 .padding(.leading, 36)
-
+            
+            
         }
     }
 }

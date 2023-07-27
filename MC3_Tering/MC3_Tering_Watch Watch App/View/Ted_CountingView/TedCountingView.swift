@@ -13,7 +13,7 @@ struct TedCountingView: View {
     
     @State var progressValue: Float = 0.0
     @State var countValue: String = ""
-    @State var counting: Int = 100
+    @State var counting: Int = 30
     @State var fontSize: CGFloat = 48.0
 
     var body: some View {

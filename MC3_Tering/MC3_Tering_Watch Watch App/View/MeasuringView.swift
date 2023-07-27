@@ -15,6 +15,8 @@ struct MeasuringView: View {
     
     @Binding var selectedValue: Int
     
+    @EnvironmentObject var swingInfo: SwingInfo
+    
     func bounceAnimation() {
         
         withAnimation(Animation.easeOut(duration: 0.3).delay(0.5)) {

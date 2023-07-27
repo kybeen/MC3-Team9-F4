@@ -14,6 +14,8 @@ struct SwingResultView: View {
     
     @Binding var selectedValue: Int
     
+    @EnvironmentObject var swingInfo: SwingInfo
+    
     var body: some View {
         ZStack {
             Circle()
@@ -27,6 +29,8 @@ struct SwingResultView: View {
             }
         }
         .onAppear {
+            calculateSwings()
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.isSwingCountViewPresented = true
             }
@@ -38,6 +42,15 @@ struct SwingResultView: View {
             .hidden()
         )
         .navigationBarBackButtonHidden()
+    }
+}
+
+extension SwingResultView {
+    
+    private func calculateSwings() {
+        swingInfo.totalSwingCount! += 1
+        
+        print("totalSwingCount -> \(swingInfo.totalSwingCount)")
     }
 }
 

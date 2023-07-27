@@ -893,7 +893,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 49256BK4G3;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Info.plist";
@@ -914,7 +914,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ted.MC3-Tering";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -935,7 +935,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = 49256BK4G3;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Info.plist";
@@ -956,7 +956,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ted.MC3-Tering";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -977,7 +977,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3_Tering_Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 49256BK4G3;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = MC3_Tering_Watch;
@@ -985,13 +985,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ted.MC3-Tering";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ted.MC3-Tering.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1011,7 +1011,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3_Tering_Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 49256BK4G3;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = MC3_Tering_Watch;
@@ -1019,13 +1019,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ted.MC3-Tering";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ted.MC3-Tering.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

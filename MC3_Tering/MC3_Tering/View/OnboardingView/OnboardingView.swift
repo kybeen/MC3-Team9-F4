@@ -29,43 +29,52 @@ struct OnboardingView: View {
     @State private var weight = "60"
     @State private var nickname = ""
     @State private var sex = "남성"
-    
     @State var onboardingPage = 0
+    
     var body: some View {
-        VStack(spacing: 0) {
-            switch onboardingPage {
-            case 0:
-                titleContainer("내 정보 입력하기")
-                Spacer()
-                welcomeCommentContainer()
-                    .padding(.horizontal, 24)
-                Spacer()
-                nextButton()
-            case 1:
-                titleContainer("프로필", "을", "입력해주세요.")
-                Spacer()
-                profileContainer()
-                Spacer()
-                nextButton("다음", nickname.count > 0)
-            case 2:
-                titleContainer("주로 사용하는 손", "을", "선택해주세요.")
-                Spacer()
-                handSelectContainer()
-                Spacer()
-                nextButton()
-            case 3:
-                titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.")
-                Spacer()
-                additionalDataInput()
-                Spacer()
-                nextButton("시작")
-            default:
-                Spacer()
+        ZStack {
+            if onboardingPage == 0 {
+                Color.clear
+                    .overlay(
+                        Image("icon_background")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    )
             }
-            
+            VStack(spacing: 0) {
+                switch onboardingPage {
+                case 0:
+                    titleContainer("내 정보 입력하기", "", "", 0)
+                    welcomeCommentContainer()
+                    Spacer()
+                    nextButton()
+                case 1:
+                    titleContainer("프로필", "을", "입력해주세요.", 1)
+                    Spacer()
+                    profileContainer()
+                    Spacer()
+                    nextButton("다음", nickname.count > 0)
+                case 2:
+                    titleContainer("주로 사용하는 손", "을", "선택해주세요.", 2)
+                    Spacer()
+                    handSelectContainer()
+                    Spacer()
+                    nextButton()
+                case 3:
+                    titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.", 3)
+                    Spacer()
+                    additionalDataInput()
+                    Spacer()
+                    nextButton("시작하기")
+                default:
+                    Spacer()
+                }
+                
+            }
+//            .frame(maxHeight: 600)
+            .padding(.horizontal, 18)
         }
-        .frame(maxHeight: 600)
-        .padding(.horizontal, 18)
     }
 }
 
@@ -78,35 +87,51 @@ struct OnboardingView_Previewer: PreviewProvider {
 }
 
 extension OnboardingView {
-    private func titleContainer(_ boldString: String, _ normalString1: String = "", _ normalString2: String = "") -> some View {
-        VStack(spacing: 0) {
-            HStack(spacing: 0) {
-                Text(boldString)
-                    .font(.custom("Inter-Bold", size: 28))
-                    .foregroundColor(Color.theme.teWhite)
-                Text(normalString1)
+    private func titleContainer(_ boldString: String, _ normalString1: String = "", _ normalString2: String = "", _ pageNumber: Int) -> some View {
+        VStack {
+            ZStack {
+                
+                HStack(spacing: 0) {
+                    Image("onboarding_pagetitle\(pageNumber + 1)")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 86.59)
+                }
+                HStack(spacing: 0) {
+                    if pageNumber != 0 {
+                        Button(action: {
+                            onboardingPage -= 1
+                        }) {
+                            Image(systemName: "chevron.left")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 17)
+                                .foregroundColor(Color.theme.teGreen)                        }
+                    }
+                    Spacer()
+                }
+            }
+            .padding(.bottom, 78)
+            VStack(spacing: 0) {
+                HStack(spacing: 0) {
+                    Text(boldString)
+                        .font(.custom("Inter-Bold", size: 28))
+                        .foregroundColor(Color.theme.teWhite)
+                    Text(normalString1)
+                        .font(.custom("Inter-Medium", size: 28))
+                        .foregroundColor(Color.theme.teWhite)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                Text(normalString2)
                     .font(.custom("Inter-Medium", size: 28))
                     .foregroundColor(Color.theme.teWhite)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            Text(normalString2)
-                .font(.custom("Inter-Medium", size: 28))
-                .foregroundColor(Color.theme.teWhite)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading, 12)
         }
-        .padding(.leading, 12)
     }
-    
     private func welcomeCommentContainer() -> some View {
         ZStack {
-            Color.clear
-                .overlay(
-                    Image("icon_background")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                        .clipped()
-                )
             VStack(spacing: 0) {
                 Text("테니스 플레이어님\n환영합니다!")
                     .font(.custom("Inter-SemiBold", size: 20))
@@ -116,16 +141,17 @@ extension OnboardingView {
                     .padding(.bottom, 34)
                 Rectangle()
                     .foregroundColor(Color.theme.teWhite)
-                    .frame(height: 1)
+                    .frame(height: 0.5)
                 Spacer()
                 Text("Tering은 당신에게 알맞은 테니스 자세와\n성장의 기록을 제공합니다.\nTering과 함께 즐거운 테니스 생활을\n시작해봅시다!")
-                    .font(.custom("Inter-SemiBold", size: 16))
+                    .font(.custom("Inter-Medium", size: 16))
                     .foregroundColor(Color.theme.teWhite)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.leading, 10)
             }
             .frame(maxWidth: .infinity, maxHeight: 200)
         }
+        .padding(.top, 104)
     }
     
     private func nextButton(_ buttonTitle: String = "다음", _ isNicknameInput: Bool = true) -> some View {
@@ -151,6 +177,7 @@ extension OnboardingView {
             }
         }
         .disabled(!isNicknameInput)
+        .padding(.bottom, 90)
     }
     
     private func profileContainer() -> some View {

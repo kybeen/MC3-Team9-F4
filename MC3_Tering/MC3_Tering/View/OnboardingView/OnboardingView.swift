@@ -106,7 +106,8 @@ extension OnboardingView {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: 17)
-                                .foregroundColor(Color.theme.teGreen)                        }
+                                .foregroundColor(Color.theme.teGreen)                            
+                        }
                     }
                     Spacer()
                 }

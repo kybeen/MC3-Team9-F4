@@ -32,6 +32,7 @@ struct MainView: View {
                     tabsContainer()
                     tabViewContainer()
                 }
+                .padding(.top, 20)
             }
             .ignoresSafeArea(.all, edges: .bottom)
             .onAppear {
@@ -76,7 +77,6 @@ extension MainView {
                     .frame(width: 35, height: 35)
                     .padding(.trailing, 27)
             }
-            
         }
         .padding(.top, 15)
     }
@@ -85,7 +85,6 @@ extension MainView {
         VStack(alignment: .leading, spacing: 0) {
             Text("어서오세요")
                 .font(.custom("Inter-SemiBold", size: 28))
-                .padding(.bottom, 2)
             HStack(alignment: .firstTextBaseline, spacing: 0) {
                 Text(userDataModel.userTitle1)
                     .font(.custom("Inter-SemiBold", size: 28))
@@ -95,7 +94,6 @@ extension MainView {
                     .font(.custom("Inter-SemiBold", size: 28))
                     .foregroundColor(Color.theme.teSkyBlue)
             }
-            .padding(.bottom, 5)
             Text(userDataModel.username + "님")
                 .font(.custom("Inter-Bold", size: 28))
                 .foregroundColor(Color.theme.teWhite)

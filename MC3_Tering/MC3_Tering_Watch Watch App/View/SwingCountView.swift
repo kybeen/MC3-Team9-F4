@@ -20,8 +20,9 @@ struct SwingCountView: View {
 
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
     @EnvironmentObject var healthResultInfo: HealthResultInfo
-        
     @State var selectedValue: Int = 0
+    @EnvironmentObject var swingInfo: SwingInfo
+
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -81,7 +82,6 @@ struct selectingGoalView: View {
     @State private var valueIndex: Int = 0
     let stepSize = 10
     let values: [Int]
-    
     @Binding var selectedValue: Int
     
     init(selectedValue: Binding<Int>) {

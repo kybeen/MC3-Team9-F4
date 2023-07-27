@@ -12,6 +12,10 @@ struct SwingResultView: View {
     
     @State private var isSwingCountViewPresented = false
     
+    @Binding var selectedValue: Int
+    
+    @EnvironmentObject var swingInfo: SwingInfo
+    
     var body: some View {
         ZStack {
             Circle()
@@ -25,12 +29,14 @@ struct SwingResultView: View {
             }
         }
         .onAppear {
+            calculateSwings()
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.isSwingCountViewPresented = true
             }
         }
         .background(
-            NavigationLink(destination: CountingView(), isActive: $isSwingCountViewPresented) {
+            NavigationLink(destination: CountingView(selectedValue: $selectedValue), isActive: $isSwingCountViewPresented) {
                 EmptyView()
             }
             .hidden()
@@ -39,8 +45,20 @@ struct SwingResultView: View {
     }
 }
 
+extension SwingResultView {
+    
+    private func calculateSwings() {
+        swingInfo.totalSwingCount! += 1
+        
+        print("totalSwingCount -> \(swingInfo.totalSwingCount)")
+    }
+}
+
 struct SwingResultView_Previews: PreviewProvider {
+    @State static var selectedValue: Int = 5 // Create a State variable to use as a Binding for preview
+
+    
     static var previews: some View {
-        SwingResultView()
+        SwingResultView(selectedValue: $selectedValue)
     }
 }

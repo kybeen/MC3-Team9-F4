@@ -13,7 +13,9 @@ struct MeasuringView: View {
     @State private var measuringString:String = ""
     @State private var bounceHeight: BounceHeight? = nil
     
+    @Binding var selectedValue: Int
     
+    @EnvironmentObject var swingInfo: SwingInfo
     
     func bounceAnimation() {
         
@@ -101,7 +103,7 @@ struct MeasuringView: View {
             }
         }
         .background(
-            NavigationLink(destination: SwingResultView(), isActive: $isSwingResultViewPresented) {
+            NavigationLink(destination: SwingResultView(selectedValue: $selectedValue), isActive: $isSwingResultViewPresented) {
                 EmptyView()
             }
                 .hidden()
@@ -132,8 +134,9 @@ enum BounceHeight {
 
 
 
-struct MeasuringView_Previews: PreviewProvider {
-    static var previews: some View {
-        MeasuringView()
-    }
-}
+//struct MeasuringView_Previews: PreviewProvider {
+//    
+//    static var previews: some View {
+//        MeasuringView()
+//    }
+//}

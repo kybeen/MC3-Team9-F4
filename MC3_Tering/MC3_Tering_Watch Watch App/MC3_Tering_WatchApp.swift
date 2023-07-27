@@ -12,6 +12,7 @@ struct MC3_Tering_Watch_Watch_AppApp: App {
     @StateObject var swingListWrapper = SwingListWrapper(swingList: SwingList(name: "", guideButton: "", gifImage: ""))
     @StateObject var healthStartInfo = HealthStartInfo() // Create an instance of HealthStartInfo
     @StateObject var healthResultInfo = HealthResultInfo()
+    @StateObject var swingInfo = SwingInfo()
     
     var body: some Scene {
         WindowGroup {
@@ -20,6 +21,7 @@ struct MC3_Tering_Watch_Watch_AppApp: App {
                 .environmentObject(swingListWrapper)
                 .environmentObject(healthStartInfo)
                 .environmentObject(healthResultInfo)
+                .environmentObject(swingInfo)
             //이거 왜 이러는거임?
         }
     }

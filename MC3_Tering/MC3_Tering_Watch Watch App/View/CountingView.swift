@@ -13,44 +13,26 @@ struct CountingView: View {
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     @State private var selectedTab = 1
+    @Binding var selectedValue: Int
+    
+    @EnvironmentObject var swingInfo: SwingInfo
     
     var body: some View {
         TabView(selection: $selectedTab) {
             
             QuitView()
-            .tabItem{
-                Image(systemName: "tennisball.fill")
-                    .foregroundColor(Color.watchColor.lightGreen)
-            }
-            .tag(0)
-            
-            ZStack {
-                Circle()
-                    .frame(width: 150, height: 150, alignment: .center)
-                VStack(spacing: -8) {
-                    Text("남은 횟수")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(Color.black)
-                    Text("50")
-                        .font(.system(size: 56, weight: .bold))
-                        .foregroundColor(Color.black)
-                    Text("\(tennisClassifierViewModel.timestamp)").foregroundColor(.blue) //MARK: 테스트용
-                    
-                    // 스윙 결과 확인되면 MeasuringView로 넘어감
-                    NavigationLink(destination: MeasuringView(), isActive: tennisClassifierViewModel.isSwingBinding, label: { EmptyView() })
-                    //MARK: - 이 버튼 없으면 정중앙에 정렬됨
-//                    NavigationLink(destination: MeasuringView()) {
-//                        Text("시작")
-//                            .font(.system(size: 16, weight: .bold))
-//                            .foregroundColor(Color.black)
-//                    }
+                .tabItem{
+                    Image(systemName: "tennisball.fill")
+                        .foregroundColor(Color.watchColor.lightGreen)
                 }
-            }
-            .tabItem{
-                Image(systemName: "tennisball.fill")
-                    .foregroundColor(Color.watchColor.lightGreen)
-            }
-            .tag(1)
+                .tag(0)
+            
+            ChekingSwingView(selectedValue: $selectedValue)
+                .tabItem{
+                    Image(systemName: "tennisball.fill")
+                        .foregroundColor(Color.watchColor.lightGreen)
+                }
+                .tag(1)
         }
         .onAppear {
             selectedTab = 1
@@ -62,6 +44,8 @@ struct CountingView: View {
         .navigationBarBackButtonHidden()
     }
 }
+
+//MARK: - 종료 뷰
 
 struct QuitView: View {
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
@@ -90,7 +74,7 @@ struct QuitView: View {
                 getCaloryData()
                 getTimeData()
                 getDayData()
-//                sendDataToPhone()
+                //                sendDataToPhone()
                 tennisClassifierViewModel.stopMotionTracking() // 모션 감지 종료
             }
         }
@@ -101,7 +85,7 @@ struct QuitView: View {
 }
 
 extension QuitView {
-
+    
     private func getCaloryData() {
         print("처음 -> \(healthInfo.startCal)")
         print("나중 -> \(healthManager.currentCalories)")
@@ -116,7 +100,7 @@ extension QuitView {
         
         let calendar = Calendar.current
         let components = calendar.dateComponents([.minute], from: startTime, to: currentTime)
-
+        
         if let timeDifferenceInMinutes = components.minute {
             healthResultInfo.workOutTime = timeDifferenceInMinutes
             print("시작 시간부터 현재까지의 시간 차이: \(healthResultInfo.workOutTime) 분")
@@ -136,15 +120,70 @@ extension QuitView {
         print("오늘의 날짜: \(formattedDate)")
     }
     
-//    private func sendDataToPhone() {
-//        self.model.session.transferUserInfo(["calories" : self.healthResultInfo.burningCal])
-//        print("message send")
-//    }
+    //    private func sendDataToPhone() {
+    //        self.model.session.transferUserInfo(["calories" : self.healthResultInfo.burningCal])
+    //        print("message send")
+    //    }
     
 }
 
+//MARK: - 스윙 횟수 확인 뷰
+
+struct ChekingSwingView: View {
+    
+    @Binding var selectedValue: Int
+    
+    @State var progressValue: Float = 0.0
+    @State var countValue: String = ""
+    @State var fontSize: CGFloat = 48.0
+    
+    @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
+    
+    @EnvironmentObject var swingInfo: SwingInfo
+    
+    
+    var body: some View {
+        ZStack {
+//            TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
+//                .frame(width: 150, height: 150, alignment: .center)
+            
+//            Text("\(tennisClassifierViewModel.timestamp)").foregroundColor(.blue) //MARK: 테스트용
+//
+            //MARK: - TimeCircleProgressBar를 NavigationLink에 넣지 않으면 한 번 스윙한 뒤 멈춤
+            // 스윙 결과 확인되면 MeasuringView로 넘어감
+            NavigationLink(destination: MeasuringView(selectedValue: $selectedValue), isActive: tennisClassifierViewModel.isSwingBinding, label: {
+                TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
+                    .frame(width: 150, height: 150, alignment: .center)
+//                EmptyView()
+            })
+            .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to remove button visuals
+            .background(Color.clear) // Make the background transparent
+        }
+        .onAppear {
+            rate()
+            countSwing()
+        }
+    }
+}
+
+extension ChekingSwingView {
+    
+    private func rate() {
+        progressValue = Float(swingInfo.totalSwingCount ?? 0) / Float(selectedValue)
+        print("progressValue \(progressValue)")
+    }
+    
+    private func countSwing() {
+        countValue = "\(swingInfo.totalSwingCount ?? 0)"
+        print("countValue -> \(countValue)")
+    }
+}
+
+
 struct CountingView_Previews: PreviewProvider {
+    @State static var selectedValue: Int = 5 // Create a State variable to use as a Binding for preview
+    
     static var previews: some View {
-        CountingView()
+        CountingView(selectedValue: $selectedValue)
     }
 }

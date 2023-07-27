@@ -16,6 +16,7 @@ struct ReadyView: View {
     @State private var isCountingViewPresented: Bool = false
 
     @Binding var selectedValue: Int
+    @EnvironmentObject var swingInfo: SwingInfo
 
     var body: some View {
         VStack {
@@ -23,13 +24,11 @@ struct ReadyView: View {
                 .frame(width: 150, height: 150, alignment: .center)
                 .onAppear {
                     //초기화
-                    progressValue = 0.0
-                    counting = 0
-                    startProgressAnimation()
+                    resetValues()
                 }
         }
         .background(
-            NavigationLink(destination: TedCountingView(selectedValue: $selectedValue),
+            NavigationLink(destination: CountingView(selectedValue: $selectedValue),
                            isActive: $isCountingViewPresented) {
                 EmptyView()
             }
@@ -37,7 +36,21 @@ struct ReadyView: View {
         )
         .navigationBarBackButtonHidden()
     }
+}
 
+extension ReadyView {
+    
+    private func resetValues() {
+        progressValue = 0.0
+        counting = 0
+        startProgressAnimation()
+        swingInfo.totalSwingCount = 0
+        swingInfo.totalForehandCount = 0
+        swingInfo.totalBackhandCount = 0
+        swingInfo.forehandPerfect = 0
+        swingInfo.backhandPerfect = 0
+    }
+    
     private func startProgressAnimation() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             withAnimation(.easeInOut(duration: 1.0)) {
@@ -59,10 +72,10 @@ struct ReadyView: View {
             }
         }
     }
+    
 }
 
 struct ReadyView_Previews: PreviewProvider {
-    
     
     static var previews: some View {
         ReadyView(selectedValue: .constant(50))

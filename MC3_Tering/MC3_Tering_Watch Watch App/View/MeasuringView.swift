@@ -103,7 +103,7 @@ struct MeasuringView: View {
             }
         }
         .background(
-            NavigationLink(destination: SwingResultView(selectedValue: $selectedValue), isActive: $isSwingResultViewPresented) {
+            NavigationLink(destination: SwingResultView(selectedValue: $selectedValue, resultColor: Color.clear), isActive: $isSwingResultViewPresented) {
                 EmptyView()
             }
                 .hidden()

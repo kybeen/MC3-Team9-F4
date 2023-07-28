@@ -36,7 +36,6 @@ struct CountingView: View {
         }
         .onAppear {
             selectedTab = 1
-            //TODO: 맨 처음에 한 번만 실행되도록 수정 필요함
             if tennisClassifierViewModel.isDetecting == false {
                 tennisClassifierViewModel.startMotionTracking() // 동작 분류 모델 불러오기 및 모션 감지 시작
             }

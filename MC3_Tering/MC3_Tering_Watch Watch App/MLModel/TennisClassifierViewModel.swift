@@ -217,7 +217,7 @@ class TennisClassifierViewModel: ObservableObject {
         self.bufferRotY = []
         self.bufferRotZ = []
         print("버퍼 초기화 \(self.bufferAccX), \(self.bufferAccY), \(self.bufferAccZ), \(self.bufferRotX), \(self.bufferRotY), \(self.bufferRotZ)")
-        self.isDetecting = true
+        self.isDetecting = false
     }
     
     //MARK: 스윙 감지 알고리즘

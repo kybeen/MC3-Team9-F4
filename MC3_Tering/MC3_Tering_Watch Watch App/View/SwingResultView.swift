@@ -23,6 +23,7 @@ struct SwingResultView: View {
     var body: some View {
         ZStack {
             Circle()
+                .foregroundColor(resultColor)
                 .frame(width: 150, height: 150, alignment: .center)
             
 //                Text("\(tennisClassifierViewModel.classLabel)") //MARK: 테스트용
@@ -45,6 +46,7 @@ struct SwingResultView: View {
         .onAppear {
             calculateSwings()
             getSwingResult()
+            getSwingColor()
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.isSwingCountViewPresented = true
             }
@@ -76,6 +78,13 @@ extension SwingResultView {
             swingClassifier = "포핸드"
         } else { swingClassifier = "백핸드" }
     }
+    
+    private func getSwingColor() {
+        if tennisClassifierViewModel.resultLabel == "PERFECT" {
+            resultColor = Color.watchColor.lightGreen
+        } else { resultColor = Color.watchColor.pink }
+    }
+    
 }
 
 struct SwingResultView_Previews: PreviewProvider {

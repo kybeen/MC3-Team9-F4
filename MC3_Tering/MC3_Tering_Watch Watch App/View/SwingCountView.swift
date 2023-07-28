@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 //MARK: - 시작 버튼 맨 밑으로 보내기
 
 struct SwingCountView: View {
@@ -25,35 +23,38 @@ struct SwingCountView: View {
 
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("이번 목표 스윙 개수는\n얼마인가요?")
-                .font(.system(size: 20, weight: .semibold))
-            Spacer()
-            HStack {
-//                countViewContainer()
-                selectingGoalView()
-            }
-            Spacer()
-            NavigationLink(destination: ReadyView()) {
-                Text("시작")
+        NavigationStack {
+            VStack(alignment: .leading) {
+                Text("이번 목표 스윙 개수는\n얼마인가요?")
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(Color.black)
+                Spacer()
+                HStack {
+                    //                countViewContainer()
+                    selectingGoalView()
+                }
+                Spacer()
+                NavigationLink(destination: ReadyView()) {
+                    Text("시작")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(Color.black)
+                }
+                .background(Color.watchColor.lightGreen)
+                .cornerRadius(40)
             }
-            .background(Color.watchColor.lightGreen)
-            .cornerRadius(40)
-        }
-        .onAppear {
-            healthManager.requestAuthorization()
-            healthManager.readCurrentCalories()
-            
-            //MARK: - 클린 코드
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                getCurrentInfo()
+            .onAppear {
+                healthManager.requestAuthorization()
+                healthManager.readCurrentCalories()
+                
+                //MARK: - 클린 코드
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    getCurrentInfo()
+                }
+                
             }
-            
+            .navigationBarBackButtonHidden()
+            .navigationTitle("목록")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("목록")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -88,7 +89,7 @@ struct selectingGoalView: View {
     init() {
         // Create an array from 0 to 100 (inclusive) with a step of 10
         var tempValues: [Int] = []
-        for i in stride(from: 0, through: 100, by: stepSize) {
+        for i in stride(from: 10, through: 100, by: stepSize) {
             tempValues.append(i)
         }
         self.values = tempValues
@@ -126,6 +127,7 @@ struct selectingGoalView: View {
         }
         .onChange(of: valueIndex) { newValue in
             swingInfo.selectedValue = values[newValue]
+            print("selected \(swingInfo.selectedValue)")
         }
     }
 

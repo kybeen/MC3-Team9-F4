@@ -104,11 +104,15 @@ extension SwingResultView {
     private func getSwingColor() {
         if tennisClassifierViewModel.resultLabel == "PERFECT" {
             resultColor = Color.watchColor.lightGreen
-        } else { resultColor = Color.watchColor.pink }
+            WKInterfaceDevice.current().play(.success)
+        } else {
+            resultColor = Color.watchColor.pink
+            WKInterfaceDevice.current().play(.failure)
+        }
     }
     
     private func swingCompleteView() {
-        if swingInfo.selectedValue! == swingInfo.totalSwingCount! {
+        if swingInfo.selectedValue ?? 10 == swingInfo.totalSwingCount! {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.isSwingCompleteViewPresented = true
             }

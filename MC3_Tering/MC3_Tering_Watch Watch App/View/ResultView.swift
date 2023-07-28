@@ -231,7 +231,7 @@ struct HealthKitView: View {
                 .font(.system(size: 28, weight: .medium))
                 .padding(.bottom, 8)
             Spacer()
-            NavigationLink(destination: SwingListView(swingList: swingListWrapper.swingList)) {
+            NavigationLink(destination: SwingCountView(swingList: swingListWrapper.swingList)) {
                 Text("완료")
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(Color.black)

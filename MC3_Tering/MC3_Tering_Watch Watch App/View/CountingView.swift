@@ -10,6 +10,7 @@ import SwiftUI
 //MARK: - tag0, tag1 위치 바꾸기
 
 struct CountingView: View {
+    @EnvironmentObject var workoutManager: WorkoutManager
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     @State private var selectedTab = 1
@@ -37,7 +38,9 @@ struct CountingView: View {
         .onAppear {
             selectedTab = 1
             if tennisClassifierViewModel.isDetecting == false {
-                tennisClassifierViewModel.startMotionTracking() // 동작 분류 모델 불러오기 및 모션 감지 시작
+                // 운동 세션 및 동작 감지 시작
+                workoutManager.startWorkout()
+//                tennisClassifierViewModel.startMotionTracking()
             }
         }
         .navigationBarBackButtonHidden()
@@ -47,6 +50,7 @@ struct CountingView: View {
 //MARK: - 종료 뷰
 
 struct QuitView: View {
+    @EnvironmentObject var workoutManager: WorkoutManager
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     @State var swingLeft: Int = 10
@@ -74,7 +78,8 @@ struct QuitView: View {
                 getTimeData()
                 getDayData()
                 //                sendDataToPhone()
-                tennisClassifierViewModel.stopMotionTracking() // 모션 감지 종료
+//                tennisClassifierViewModel.stopMotionTracking() // 모션 감지 종료
+                workoutManager.endWorkout() // 운동 세션 및 모션 감지 종료
             }
         }
         .onAppear {

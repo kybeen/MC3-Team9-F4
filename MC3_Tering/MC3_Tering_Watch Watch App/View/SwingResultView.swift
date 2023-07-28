@@ -11,8 +11,9 @@ struct SwingResultView: View {
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     @State private var isSwingCountViewPresented = false
+    @State private var isSwingCompleteViewPresented = false
     
-    @Binding var selectedValue: Int
+//    @Binding var selectedValue: Int
     
     @EnvironmentObject var swingInfo: SwingInfo
     
@@ -47,12 +48,16 @@ struct SwingResultView: View {
             calculateSwings()
             getSwingResult()
             getSwingColor()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-                self.isSwingCountViewPresented = true
-            }
+            swingCompleteView()
         }
         .background(
-            NavigationLink(destination: CountingView(selectedValue: $selectedValue), isActive: $isSwingCountViewPresented) {
+            NavigationLink(destination: CountingView(), isActive: $isSwingCountViewPresented) {
+                EmptyView()
+            }
+            .hidden()
+        )
+        .background(
+            NavigationLink(destination: SwingCompleteView(), isActive: $isSwingCompleteViewPresented) {
                 EmptyView()
             }
             .hidden()
@@ -102,6 +107,20 @@ extension SwingResultView {
         } else { resultColor = Color.watchColor.pink }
     }
     
+    private func swingCompleteView() {
+        if swingInfo.selectedValue! == swingInfo.totalSwingCount! {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                self.isSwingCompleteViewPresented = true
+            }
+            print("달성 완료 @@@")
+        }
+        else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+                self.isSwingCountViewPresented = true
+            }
+        }        
+    }
+    
 }
 
 struct SwingResultView_Previews: PreviewProvider {
@@ -110,6 +129,6 @@ struct SwingResultView_Previews: PreviewProvider {
     @State static var resultColor = Color.watchColor.lightGreen
     
     static var previews: some View {
-        SwingResultView(selectedValue: $selectedValue, resultColor: resultColor)
+        SwingResultView(resultColor: resultColor)
     }
 }

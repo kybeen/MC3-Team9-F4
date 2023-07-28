@@ -13,7 +13,7 @@ struct MeasuringView: View {
     @State private var measuringString:String = ""
     @State private var bounceHeight: BounceHeight? = nil
     
-    @Binding var selectedValue: Int
+//    @Binding var selectedValue: Int
     
     @EnvironmentObject var swingInfo: SwingInfo
     
@@ -103,7 +103,7 @@ struct MeasuringView: View {
             }
         }
         .background(
-            NavigationLink(destination: SwingResultView(selectedValue: $selectedValue, resultColor: Color.clear), isActive: $isSwingResultViewPresented) {
+            NavigationLink(destination: SwingResultView(resultColor: Color.clear), isActive: $isSwingResultViewPresented) {
                 EmptyView()
             }
                 .hidden()

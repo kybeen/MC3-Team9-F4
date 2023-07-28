@@ -20,10 +20,10 @@ struct MeasuringView: View {
     func bounceAnimation() {
         
         withAnimation(Animation.easeOut(duration: 0.3).delay(0.5)) {
-            bounceHeight = .up80
+            bounceHeight = .up60
         }
         withAnimation(Animation.easeInOut(duration: 0.04).delay(0.5)) {
-            bounceHeight = .up80
+            bounceHeight = .up60
         }
         withAnimation(Animation.easeIn(duration: 0.3).delay(0.84)) {
             bounceHeight = .base
@@ -45,11 +45,11 @@ struct MeasuringView: View {
         }
         
         withAnimation(Animation.easeOut(duration: 0.3).delay(2)) {
-            bounceHeight = .up80
+            bounceHeight = .up60
             measuringString = ""
         }
         withAnimation(Animation.easeInOut(duration: 0.04).delay(2)) {
-            bounceHeight = .up80
+            bounceHeight = .up60
         }
         withAnimation(Animation.easeIn(duration: 0.3).delay(2.34)) {
             bounceHeight = .base
@@ -113,11 +113,11 @@ struct MeasuringView: View {
 }
 
 enum BounceHeight {
-    case up80, up30, up10, base
+    case up60, up30, up10, base
     var associatedOffset: Double {
         switch self {
-        case .up80:
-            return -80
+        case .up60:
+            return -60
         case .up30:
             return -30
         case .up10:

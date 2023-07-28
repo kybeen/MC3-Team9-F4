@@ -16,7 +16,7 @@ struct MainView: View {
     @State var isGuidePresent = false
     @State private var path: [Int] = []
     @State private var isCongretePresented = false
-    
+    @AppStorage("_isFirstGuide") var isFirstGuide: Bool = true
     @State var modalTitle1 = ""
     @State var modalTitle2 = ""
     @State var modalAttainment = ""
@@ -24,6 +24,7 @@ struct MainView: View {
     
     var body: some View {
         NavigationStack(path: $path) {
+            // ZStack 으로 처리
             VStack(spacing: 0) {
                 containerView()
                 namespaceContainer()
@@ -44,14 +45,35 @@ struct MainView: View {
                 userDataModel.saveUserData()
                 workoutDataModel.saveWorkOutData()
             }
+            
         }
         .sheet(isPresented: $isCongretePresented, content: {
             CongreteModalView(title1: modalTitle1, title2: modalTitle2, attainment: modalAttainment, gainTitle: modalGainTitle)
                 .presentationDetents([.fraction(0.7), .fraction(0.7)])
         })
+        .fullScreenCover(isPresented: $isFirstGuide, content: {
+            ZStack {
+                Color.theme.teBlack.opacity(0.1).edgesIgnoringSafeArea(.all)
+                BackgroundBlurView().edgesIgnoringSafeArea(.all)
+                AppGuideView(isFirstGuide: $isFirstGuide)
+            }
+        })
     }
         
 }
+
+struct BackgroundBlurView: UIViewRepresentable {
+    func makeUIView(context: Context) -> UIView {
+        let view = UIVisualEffectView(effect: UIBlurEffect(style: .prominent))
+        DispatchQueue.main.async {
+            view.superview?.superview?.backgroundColor = .clear
+        }
+        return view
+    }
+
+    func updateUIView(_ uiView: UIView, context: Context) {}
+}
+
 
 
 extension MainView {

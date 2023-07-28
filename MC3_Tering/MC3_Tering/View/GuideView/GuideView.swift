@@ -44,7 +44,6 @@ struct GuideView: View {
                 
                 ScrollView {
                     guideContainer("forehand")
-                        .padding(.bottom, 17)
                     guideContainer("backhand")
                 }
                 .frame(maxWidth: UIScreen.main.bounds.width)
@@ -66,41 +65,28 @@ extension GuideView {
     private func guideContainer(_ position: String) -> some View {
         let screenSize = UIScreen.main.bounds.width
         return ZStack(alignment: .bottom) {
+            GifView(gifName: "\(position)Swing")
+                .scaledToFill()
+                .frame(width: screenSize)
+                .cornerRadius(20)
             Rectangle()
-                .foregroundColor(.clear)
-                .frame(width: screenSize, height: 431)
-                .background(Color(red: 0.29, green: 0.29, blue: 0.29))
-                .cornerRadius(15)
-                .shadow(color: .black, radius: 15, x: 20, y: 20)
-                .shadow(color: Color(red: 0.34, green: 0.34, blue: 0.34).opacity(0.2), radius: 23, x: -10, y: -10)
-            Rectangle()
-                .foregroundColor(.clear)
-                .frame(width: screenSize, height: 118)
-                .background(
-                    LinearGradient(
-                        stops: [
-                            Gradient.Stop(color: Color.theme.teDarkGray, location: 0.00),
-                            Gradient.Stop(color: Color.theme.teDarkGray.opacity(0), location: 0.00),
-                            Gradient.Stop(color: Color(red: 0.08, green: 0.08, blue: 0.08).opacity(0.48), location: 0.57),
-                            Gradient.Stop(color: Color(red: 0.08, green: 0.08, blue: 0.08), location: 1.00),
-                        ],
-                        startPoint: UnitPoint(x: 0.5, y: 0),
-                        endPoint: UnitPoint(x: 0.5, y: 1)
-                    )
-                )
-                .cornerRadius(15)
-            Text(position.uppercased())
-                .font(.custom("Inter-Medium", size: 24))
-                .foregroundColor(Color.theme.teWhite)
-                .frame(maxWidth: UIScreen.main.bounds.width, alignment: .leading)
-                .padding(.leading, 35)
-                .padding(.bottom, 45)
-            
-            GifView(gifName: "dancing")
-                .scaledToFit()
-                .frame(width: 250)
-                .padding(.bottom, 100)
+                .foregroundColor(Color.theme.teDarkGray.opacity(0.6))
+                .frame(height: 80)
+            HStack(spacing: 0) {
+                Image("\(position)icon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30)
+                    .padding(.trailing, 10)
+                Text(position.uppercased())
+                    .font(.custom("Inter-Medium", size: 24))
+                    .foregroundColor(Color.theme.teWhite)
+                    .frame(maxWidth: UIScreen.main.bounds.width, alignment: .leading)
+            }
+            .padding(.bottom, 20)
+            .padding(.leading, 20)
         }
-        .frame(maxWidth: UIScreen.main.bounds.width, maxHeight: 430)
+        .frame(maxWidth: screenSize, maxHeight: 430)
+        .padding(.bottom, 17)
     }
 }

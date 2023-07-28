@@ -54,6 +54,7 @@ struct QuitView: View {
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     @State var swingLeft: Int = 10
+    @State var showResultView = false
     
     @ObservedObject var healthManager = HealthKitManager()
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
@@ -65,22 +66,27 @@ struct QuitView: View {
             Text("\(swingLeft)번의 스윙이 남았어요.\n연습을 끝내시겠어요?")
                 .font(.system(size: 20, weight: .semibold))
             Spacer()
+  
             
-            NavigationLink(destination: ResultView()) {
-                Text("종료")
-                    .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(Color.white)
-            }
-            .background(Color.watchColor.lightBlack)
-            .cornerRadius(40)
-            .onDisappear {
-                getCaloryData()
-                getTimeData()
-                getDayData()
-                //                sendDataToPhone()
-//                tennisClassifierViewModel.stopMotionTracking() // 모션 감지 종료
-                workoutManager.endWorkout() // 운동 세션 및 모션 감지 종료
-            }
+            NavigationLink(destination: ResultView(), isActive: $showResultView, label: {
+                Button("종료") {
+                    getCaloryData()
+                    getTimeData()
+                    getDayData()
+                    //                sendDataToPhone()
+    //                tennisClassifierViewModel.stopMotionTracking() // 모션 감지 종료
+                    workoutManager.endWorkout() // 운동 세션 및 모션 감지 종료
+                    showResultView = true
+                    print("====================================================================")
+                    print("showResultView: \(showResultView)")
+                    print("====================================================================")
+                }
+                .font(.system(size: 20, weight: .semibold))
+                .foregroundColor(Color.white)
+                .background(Color.watchColor.lightBlack)
+                .cornerRadius(40)
+            })
+            .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to remove button visuals
         }
         .onAppear {
             healthManager.readCurrentCalories()

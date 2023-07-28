@@ -23,35 +23,38 @@ struct SwingCountView: View {
 
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("이번 목표 스윙 개수는\n얼마인가요?")
-                .font(.system(size: 20, weight: .semibold))
-            Spacer()
-            HStack {
-//                countViewContainer()
-                selectingGoalView()
-            }
-            Spacer()
-            NavigationLink(destination: ReadyView()) {
-                Text("시작")
+        NavigationStack {
+            VStack(alignment: .leading) {
+                Text("이번 목표 스윙 개수는\n얼마인가요?")
                     .font(.system(size: 20, weight: .semibold))
-                    .foregroundColor(Color.black)
+                Spacer()
+                HStack {
+                    //                countViewContainer()
+                    selectingGoalView()
+                }
+                Spacer()
+                NavigationLink(destination: ReadyView()) {
+                    Text("시작")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(Color.black)
+                }
+                .background(Color.watchColor.lightGreen)
+                .cornerRadius(40)
             }
-            .background(Color.watchColor.lightGreen)
-            .cornerRadius(40)
-        }
-        .onAppear {
-            healthManager.requestAuthorization()
-            healthManager.readCurrentCalories()
-            
-            //MARK: - 클린 코드
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                getCurrentInfo()
+            .onAppear {
+                healthManager.requestAuthorization()
+                healthManager.readCurrentCalories()
+                
+                //MARK: - 클린 코드
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    getCurrentInfo()
+                }
+                
             }
-            
+            .navigationBarBackButtonHidden()
+            .navigationTitle("목록")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("목록")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
@@ -124,6 +127,7 @@ struct selectingGoalView: View {
         }
         .onChange(of: valueIndex) { newValue in
             swingInfo.selectedValue = values[newValue]
+            print("selected \(swingInfo.selectedValue)")
         }
     }
 

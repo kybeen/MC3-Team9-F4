@@ -169,7 +169,7 @@ struct ChekingSwingView: View {
 extension ChekingSwingView {
     
     private func rate() {
-        progressValue = Float(swingInfo.totalSwingCount ?? 0) / Float(swingInfo.selectedValue!)
+        progressValue = Float(swingInfo.totalSwingCount ?? 0) / Float(swingInfo.selectedValue ?? 10)
         print("progressValue \(progressValue)")
     }
     

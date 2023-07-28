@@ -17,7 +17,8 @@ struct MC3_Tering_Watch_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
 //            TestWatchView()
-            SwingListView(swingList: swingLists[0])
+//            SwingListView(swingList: swingLists[0])
+            SwingCountView(swingList: swingLists[0])
                 .environmentObject(swingListWrapper)
                 .environmentObject(healthStartInfo)
                 .environmentObject(healthResultInfo)

@@ -112,7 +112,7 @@ extension SwingResultView {
     }
     
     private func swingCompleteView() {
-        if swingInfo.selectedValue! == swingInfo.totalSwingCount! {
+        if swingInfo.selectedValue ?? 10 == swingInfo.totalSwingCount! {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 self.isSwingCompleteViewPresented = true
             }

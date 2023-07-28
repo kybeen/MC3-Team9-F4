@@ -13,7 +13,7 @@ struct CountingView: View {
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     @State private var selectedTab = 1
-    @Binding var selectedValue: Int
+//    @Binding var selectedValue: Int
     
     @EnvironmentObject var swingInfo: SwingInfo
     
@@ -27,7 +27,7 @@ struct CountingView: View {
                 }
                 .tag(0)
             
-            ChekingSwingView(selectedValue: $selectedValue)
+            ChekingSwingView()
                 .tabItem{
                     Image(systemName: "tennisball.fill")
                         .foregroundColor(Color.watchColor.lightGreen)
@@ -131,7 +131,7 @@ extension QuitView {
 
 struct ChekingSwingView: View {
     
-    @Binding var selectedValue: Int
+//    @Binding var selectedValue: Int
     
     @State var progressValue: Float = 0.0
     @State var countValue: String = ""
@@ -151,7 +151,7 @@ struct ChekingSwingView: View {
 //
             //MARK: - TimeCircleProgressBar를 NavigationLink에 넣지 않으면 한 번 스윙한 뒤 멈춤
             // 스윙 결과 확인되면 MeasuringView로 넘어감
-            NavigationLink(destination: MeasuringView(selectedValue: $selectedValue), isActive: tennisClassifierViewModel.isSwingBinding, label: {
+            NavigationLink(destination: MeasuringView(), isActive: tennisClassifierViewModel.isSwingBinding, label: {
                 TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
                     .frame(width: 150, height: 150, alignment: .center)
 //                EmptyView()
@@ -169,7 +169,7 @@ struct ChekingSwingView: View {
 extension ChekingSwingView {
     
     private func rate() {
-        progressValue = Float(swingInfo.totalSwingCount ?? 0) / Float(selectedValue)
+        progressValue = Float(swingInfo.totalSwingCount ?? 0) / Float(swingInfo.selectedValue!)
         print("progressValue \(progressValue)")
     }
     
@@ -181,9 +181,8 @@ extension ChekingSwingView {
 
 
 struct CountingView_Previews: PreviewProvider {
-    @State static var selectedValue: Int = 5 // Create a State variable to use as a Binding for preview
     
     static var previews: some View {
-        CountingView(selectedValue: $selectedValue)
+        CountingView()
     }
 }

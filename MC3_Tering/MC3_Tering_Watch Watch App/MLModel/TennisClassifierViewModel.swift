@@ -155,18 +155,18 @@ class TennisClassifierViewModel: ObservableObject {
                         if label == "Forehand" {
                             if prob >= self.THRESHOLD {
                                 self.forehandPerfectCount += 1
-                                self.resultLabel = "Perfect"
+                                self.resultLabel = "PERFECT"
                             } else {
                                 self.forehandBadCount += 1
-                                self.resultLabel = "Bad"
+                                self.resultLabel = "BAD"
                             }
                         } else { // 백핸드라면
                             if prob >= self.THRESHOLD {
                                 self.backhandPerfectCount += 1
-                                self.resultLabel = "Perfect"
+                                self.resultLabel = "PERFECT"
                             } else {
                                 self.backhandBadCount += 1
-                                self.resultLabel = "Bad"
+                                self.resultLabel = "BAD"
                             }
                         }
                         self.totalCount += 1

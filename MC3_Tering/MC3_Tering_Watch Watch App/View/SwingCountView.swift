@@ -20,7 +20,7 @@ struct SwingCountView: View {
 
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
     @EnvironmentObject var healthResultInfo: HealthResultInfo
-    @State var selectedValue: Int = 0
+//    @State var selectedValue: Int = 0
     @EnvironmentObject var swingInfo: SwingInfo
 
     
@@ -31,10 +31,10 @@ struct SwingCountView: View {
             Spacer()
             HStack {
 //                countViewContainer()
-                selectingGoalView(selectedValue: $selectedValue)
+                selectingGoalView()
             }
             Spacer()
-            NavigationLink(destination: ReadyView(selectedValue: $selectedValue)) {
+            NavigationLink(destination: ReadyView()) {
                 Text("시작")
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(Color.black)
@@ -82,16 +82,17 @@ struct selectingGoalView: View {
     @State private var valueIndex: Int = 0
     let stepSize = 10
     let values: [Int]
-    @Binding var selectedValue: Int
+//    @Binding var selectedValue: Int
+    @EnvironmentObject var swingInfo: SwingInfo
     
-    init(selectedValue: Binding<Int>) {
+    init() {
         // Create an array from 0 to 100 (inclusive) with a step of 10
         var tempValues: [Int] = []
         for i in stride(from: 0, through: 100, by: stepSize) {
             tempValues.append(i)
         }
         self.values = tempValues
-        self._selectedValue = selectedValue
+//        self._selectedValue = selectedValue
     }
 
     var body: some View {
@@ -124,7 +125,7 @@ struct selectingGoalView: View {
             }
         }
         .onChange(of: valueIndex) { newValue in
-            selectedValue = values[newValue]
+            swingInfo.selectedValue = values[newValue]
         }
     }
 

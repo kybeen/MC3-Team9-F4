@@ -15,7 +15,7 @@ struct ReadyView: View {
     let readyStatus = ["준비", "3", "2", "1", "시작!"]
     @State private var isCountingViewPresented: Bool = false
 
-    @Binding var selectedValue: Int
+//    @Binding var selectedValue: Int
     @EnvironmentObject var swingInfo: SwingInfo
 
     var body: some View {
@@ -28,7 +28,7 @@ struct ReadyView: View {
                 }
         }
         .background(
-            NavigationLink(destination: CountingView(selectedValue: $selectedValue),
+            NavigationLink(destination: CountingView(),
                            isActive: $isCountingViewPresented) {
                 EmptyView()
             }
@@ -78,6 +78,6 @@ extension ReadyView {
 struct ReadyView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ReadyView(selectedValue: .constant(50))
+        ReadyView()
     }
 }

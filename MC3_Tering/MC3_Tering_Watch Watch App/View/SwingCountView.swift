@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 //MARK: - 시작 버튼 맨 밑으로 보내기
 
 struct SwingCountView: View {
@@ -88,7 +86,7 @@ struct selectingGoalView: View {
     init() {
         // Create an array from 0 to 100 (inclusive) with a step of 10
         var tempValues: [Int] = []
-        for i in stride(from: 0, through: 100, by: stepSize) {
+        for i in stride(from: 10, through: 100, by: stepSize) {
             tempValues.append(i)
         }
         self.values = tempValues

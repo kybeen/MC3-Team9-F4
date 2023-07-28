@@ -94,7 +94,7 @@ struct MeasuringView: View {
         }
         
         .onAppear {
-            
+            WKInterfaceDevice.current().play(.notification)
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 bounceAnimation()
             }

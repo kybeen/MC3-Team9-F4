@@ -15,8 +15,9 @@ struct SwingCompleteView: View {
     @State private var isSelectViewPresented = false
     
     var body: some View {
-        ZStack {
+        VStack(alignment: .center) {
             TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: self.$fontSize)
+                .frame(width: 150, height: 150)
         }
         .onAppear {
             progressComplete()

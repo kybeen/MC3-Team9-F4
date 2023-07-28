@@ -140,14 +140,15 @@ struct ResultEffectView: View {
 //MARK: - Tag(1)
 struct SwingRateView: View {
     @State var progressValue: Float = 0.0
-    @State var perfectCount: Int = 30
-    @State var badCount: Int = 30
+//    @State var perfectCount: Int = 30
+//    @State var badCount: Int = 30
     @State var fontSize: CGFloat = 20.0
+    @EnvironmentObject var swingInfo: SwingInfo
     
     var body: some View {
         VStack {
             Spacer()
-            ResultCircleProgressBar(progress: self.$progressValue, perfectCount: self.$perfectCount, badCount: self.$badCount, fontSize: self.$fontSize)
+            ResultCircleProgressBar(progress: self.$progressValue, fontSize: self.$fontSize)
                 .frame(width: 150, height: 150, alignment: .center)
         }
         .onAppear {
@@ -156,7 +157,7 @@ struct SwingRateView: View {
     }
     
     private func perfectRate() {
-        progressValue = Float(perfectCount) / Float((perfectCount + badCount))
+        progressValue = Float((swingInfo.forehandPerfect ?? 0) + (swingInfo.backhandPerfect ?? 0)) / Float(swingInfo.totalSwingCount ?? 0)
     }
 }
 
@@ -226,7 +227,7 @@ struct HealthKitView: View {
                 .font(.system(size: 40, weight: .medium))
                 .foregroundColor(Color.watchColor.lightGreen)
                 .padding(.bottom, 5)
-            Text("\(healthResultInfo.burningCal!) kcal")
+            Text("\(healthResultInfo.burningCal ?? 0) kcal")
                 .font(.system(size: 28, weight: .medium))
                 .padding(.bottom, 8)
             Spacer()

@@ -35,10 +35,9 @@ struct TimeCircleProgressBar: View {
 
 struct ResultCircleProgressBar: View {
     @Binding var progress: Float
-    @Binding var perfectCount: Int
-    @Binding var badCount: Int
     @Binding var fontSize: CGFloat
     var perfectColor: Color = Color.watchColor.lightGreen
+    @EnvironmentObject var swingInfo: SwingInfo
     
     var body: some View {
         ZStack {
@@ -58,14 +57,14 @@ struct ResultCircleProgressBar: View {
                     .font(.system(size: self.fontSize, weight: .semibold))
                     .foregroundColor(Color.watchColor.lightGreen)
                 
-                Text("\(self.perfectCount)회")
+                Text("\(swingInfo.forehandPerfect! + swingInfo.backhandPerfect!)회")
                     .font(.system(size: self.fontSize, weight: .bold))
                 
                 Text("BAD")
                     .font(.system(size: self.fontSize, weight: .semibold))
                     .foregroundColor(Color.watchColor.pink)
                 
-                Text("\(self.badCount)회")
+                Text("\((swingInfo.totalSwingCount ?? 0) - ((swingInfo.forehandPerfect ?? 0) + (swingInfo.backhandPerfect ?? 0)))회")
                     .font(.system(size: self.fontSize, weight: .bold))
             }
         }
@@ -114,14 +113,15 @@ struct ResultCircleProgressBar: View {
 
 struct ContentView: View {
     @State var progressValue: Float = 0.0
-    @State var perfectCount: Int = 30
-    @State var badCount: Int = 30
+//    @State var perfectCount: Int = 30
+//    @State var badCount: Int = 30
     @State var fontSize: CGFloat = 20.0
 
+    @EnvironmentObject var swingInfo: SwingInfo
 
     var body: some View {
         VStack {
-            ResultCircleProgressBar(progress: self.$progressValue, perfectCount: self.$perfectCount, badCount: self.$badCount, fontSize: self.$fontSize)
+            ResultCircleProgressBar(progress: self.$progressValue, fontSize: self.$fontSize)
                 .frame(width: 180, height: 180, alignment: .center)
         }
         .onAppear {
@@ -130,7 +130,7 @@ struct ContentView: View {
     }
 
     private func rate() {
-        progressValue = Float(perfectCount) / Float((perfectCount + badCount))
+        progressValue = Float((swingInfo.forehandPerfect ?? 0) + (swingInfo.backhandPerfect ?? 0)) / Float(swingInfo.totalSwingCount ?? 0)
     }
 }
 

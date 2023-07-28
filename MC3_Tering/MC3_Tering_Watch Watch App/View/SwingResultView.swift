@@ -66,7 +66,24 @@ extension SwingResultView {
     private func calculateSwings() {
         swingInfo.totalSwingCount! += 1
         
+        if tennisClassifierViewModel.classLabel == "Forehand" {
+            if tennisClassifierViewModel.resultLabel == "PERFECT" {
+                swingInfo.forehandPerfect! += 1
+            }
+            swingInfo.totalForehandCount! += 1
+        } else {    //Backhand
+            if tennisClassifierViewModel.resultLabel == "PERFECT" {
+                swingInfo.backhandPerfect! += 1
+            }
+            swingInfo.totalBackhandCount! += 1
+        }
+        
         print("totalSwingCount -> \(swingInfo.totalSwingCount)")
+        print("totalForehandCount -> \(swingInfo.totalForehandCount)")
+        print("totalBackhandCount -> \(swingInfo.totalBackhandCount)")
+        print("ForehandPerfect -> \(swingInfo.forehandPerfect)")
+        print("BackhandPerfect -> \(swingInfo.backhandPerfect)")
+
     }
     
     private func getSwingResult() {

@@ -260,6 +260,7 @@ struct HealthKitView: View {
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         HealthKitView()
+            .environmentObject(SwingListWrapper(swingList: SwingList(name: "포핸드", guideButton: "questionmark.circle", gifImage: "square")))
     }
 }
 

@@ -79,5 +79,6 @@ struct ReadyView_Previews: PreviewProvider {
     
     static var previews: some View {
         ReadyView()
+            .environmentObject(SwingInfo())
     }
 }

@@ -194,5 +194,7 @@ struct CountingView_Previews: PreviewProvider {
     
     static var previews: some View {
         CountingView()
+            .environmentObject(WorkoutManager())
+            .environmentObject(SwingInfo())
     }
 }

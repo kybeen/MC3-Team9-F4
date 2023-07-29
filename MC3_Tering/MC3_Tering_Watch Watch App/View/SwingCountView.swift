@@ -63,6 +63,8 @@ struct SwingCountView: View {
 struct SwingCountView_Previews: PreviewProvider {
     static var previews: some View {
         SwingCountView(swingList: swingLists[0])
+            .environmentObject(WorkoutManager())
+            .environmentObject(SwingInfo())
     }
 }
 

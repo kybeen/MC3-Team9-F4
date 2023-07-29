@@ -15,6 +15,11 @@ class ViewModelPhone: NSObject, ObservableObject, WCSessionDelegate {
     @Published var workOutTime = -1
     @Published var workOutDate: Date?
     
+    @Published var totalSwingCount = -1
+    @Published var forehandPerfect = -1
+    @Published var totalForehandCount = -1
+    @Published var backhandPerfect = -1
+    @Published var totalBackhandCount = -1
     
     var session: WCSession
     init(session: WCSession = .default) {
@@ -38,6 +43,12 @@ class ViewModelPhone: NSObject, ObservableObject, WCSessionDelegate {
             self.burningCalories = userInfo["calories"] as? Int ?? self.burningCalories
             self.workOutTime = userInfo["time"] as? Int ?? self.workOutTime
             self.workOutDate = userInfo["date"] as? Date ?? self.workOutDate
+            
+            self.totalSwingCount = userInfo["totalSwingCount"] as? Int ?? self.totalSwingCount
+            self.forehandPerfect = userInfo["forehandPerfect"] as? Int ?? self.forehandPerfect
+            self.totalForehandCount = userInfo["totalForehandCount"] as? Int ?? self.totalForehandCount
+            self.backhandPerfect = userInfo["backhandPerfect"] as? Int ?? self.backhandPerfect
+            self.totalBackhandCount = userInfo["totalBackhandCount"] as? Int ?? self.totalBackhandCount
         }
     }
     

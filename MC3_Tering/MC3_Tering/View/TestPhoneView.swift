@@ -11,8 +11,6 @@ struct TestPhoneView: View {
     
     @ObservedObject var model = ViewModelPhone()    //데이터 불러오는 곳에 선언
     @State var reachable = "No"
-    @State var messsageText = ""
-    @State var numberValue = 0
     
     var body: some View {
         VStack {

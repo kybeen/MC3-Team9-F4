@@ -70,6 +70,7 @@
 		16BB115A2A734C4500C096D9 /* SwingCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BB11592A734C4500C096D9 /* SwingCompleteView.swift */; };
 		16BB115C2A735ADB00C096D9 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BB115B2A735ADB00C096D9 /* SelectView.swift */; };
 		B82111502A7413960043CE6D /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821114F2A7413960043CE6D /* WorkoutManager.swift */; };
+		B82111762A75629A0043CE6D /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82111752A75629A0043CE6D /* ElapsedTimeView.swift */; };
 		B87CEBFA2A70B2B00038BFDB /* TeringClassifier_totalData_window200.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBF92A70B2B00038BFDB /* TeringClassifier_totalData_window200.mlmodel */; };
 		B87CEBFC2A70B37E0038BFDB /* TennisClassifierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBFB2A70B37E0038BFDB /* TennisClassifierViewModel.swift */; };
 		B87CEBFE2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBFD2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel */; };
@@ -188,6 +189,7 @@
 		16BB115B2A735ADB00C096D9 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
 		B821114E2A7409080043CE6D /* MC3-Tering-Watch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC3-Tering-Watch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B821114F2A7413960043CE6D /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
+		B82111752A75629A0043CE6D /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
 		B87CEBF92A70B2B00038BFDB /* TeringClassifier_totalData_window200.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_totalData_window200.mlmodel; sourceTree = "<group>"; };
 		B87CEBFB2A70B37E0038BFDB /* TennisClassifierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisClassifierViewModel.swift; sourceTree = "<group>"; };
 		B87CEBFD2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_totalData_window100.mlmodel; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 			children = (
 				1687E3062A6F74700004D87A /* ColorExtension.swift */,
 				1687E3082A6F74790004D87A /* CircleProgressBar.swift */,
+				B82111752A75629A0043CE6D /* ElapsedTimeView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 				16BB115C2A735ADB00C096D9 /* SelectView.swift in Sources */,
 				16BB115A2A734C4500C096D9 /* SwingCompleteView.swift in Sources */,
 				1687E3022A6F732B0004D87A /* CompleteView.swift in Sources */,
+				B82111762A75629A0043CE6D /* ElapsedTimeView.swift in Sources */,
 				1687E3002A6F73230004D87A /* CountingView.swift in Sources */,
 				1687E2E32A6F714D0004D87A /* ViewModelWatch.swift in Sources */,
 				1687E2F22A6F72ED0004D87A /* SwingListView.swift in Sources */,

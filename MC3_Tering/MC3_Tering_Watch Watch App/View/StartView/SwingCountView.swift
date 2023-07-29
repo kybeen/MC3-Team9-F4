@@ -10,7 +10,7 @@ import SwiftUI
 //MARK: - 시작 버튼 맨 밑으로 보내기
 
 struct SwingCountView: View {
-    let swingList: SwingList
+//    let swingList: SwingList
     @State private var isReadyViewActive = false
     @State private var strokeCount = 10
 
@@ -62,7 +62,8 @@ struct SwingCountView: View {
 
 struct SwingCountView_Previews: PreviewProvider {
     static var previews: some View {
-        SwingCountView(swingList: swingLists[0])
+//        SwingCountView(swingList: swingLists[0])
+        SwingCountView()
             .environmentObject(WorkoutManager())
             .environmentObject(SwingInfo())
     }

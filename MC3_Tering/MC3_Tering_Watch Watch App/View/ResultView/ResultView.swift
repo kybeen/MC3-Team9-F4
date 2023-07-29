@@ -210,7 +210,18 @@ struct SwingRateView: View {
 
 //MARK: - Tag(2) 도전
 struct HealthKitView: View {
-    @EnvironmentObject var swingListWrapper: SwingListWrapper
+    @EnvironmentObject var workoutManager: WorkoutManager
+    @State private var durationFormatter: DateComponentsFormatter = { // 운동 시간 formatter
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.hour, .minute, .second]
+        formatter.zeroFormattingBehavior = .pad
+        return formatter
+    }()
+    let formatter = MeasurementFormatter()
+    init() {
+        formatter.numberFormatter.maximumFractionDigits = 0 // 소수점 아래는 보지 않는 formatter
+    }
+//    @EnvironmentObject var swingListWrapper: SwingListWrapper
     //우선 타입 임의로 지정
     
 //    @ObservedObject var healthManager = HealthKitManager()
@@ -220,38 +231,47 @@ struct HealthKitView: View {
     @EnvironmentObject var swingInfo: SwingInfo
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Spacer()
-//            let formattedTime = formatTime()
-//            Text(formattedTime)
-//                .font(.system(size: 40, weight: .medium))
-//                .foregroundColor(Color.watchColor.lightGreen)
-//                .padding(.bottom, 5)
-//            Text("\(healthResultInfo.burningCal ?? 0) kcal")
-//                .font(.system(size: 28, weight: .medium))
-//                .padding(.bottom, 8)
-            Text("00:00:00")
-                .font(.system(size: 40, weight: .medium))
-                .foregroundColor(Color.watchColor.lightGreen)
-                .padding(.bottom, 5)
-            Text("--kacl")
-                .font(.system(size: 28, weight: .medium))
-                .padding(.bottom, 8)
-            Spacer()
-            NavigationLink(destination: SwingCountView(swingList: swingListWrapper.swingList)) {
-                Text("완료")
-                    .font(.system(size: 20, weight: .bold))
-                    .foregroundColor(Color.black)
+        if workoutManager.workout == nil {
+            ProgressView("운동 결과 저장 중...")
+                .navigationBarHidden(true)
+        } else {
+            VStack(alignment: .leading) {
+                Spacer()
+    //            let formattedTime = formatTime()
+    //            Text(formattedTime)
+    //                .font(.system(size: 40, weight: .medium))
+    //                .foregroundColor(Color.watchColor.lightGreen)
+    //                .padding(.bottom, 5)
+    //            Text("\(healthResultInfo.burningCal ?? 0) kcal")
+    //                .font(.system(size: 28, weight: .medium))
+    //                .padding(.bottom, 8)
+                Text("00:00:00")
+                    .font(.system(size: 40, weight: .medium))
+                    .foregroundColor(Color.watchColor.lightGreen)
+                    .padding(.bottom, 5)
+                Text("--kacl")
+                    .font(.system(size: 28, weight: .medium))
+                    .padding(.bottom, 8)
+                Spacer()
+    //            NavigationLink(destination: SwingCountView(swingList: swingListWrapper.swingList)) {
+    //                Text("완료")
+    //                    .font(.system(size: 20, weight: .bold))
+    //                    .foregroundColor(Color.black)
+    //            }
+                NavigationLink(destination: SwingCountView()) {
+                    Text("완료")
+                        .font(.system(size: 20, weight: .bold))
+                        .foregroundColor(Color.black)
+                }
+                .foregroundColor(Color.watchColor.black) // 2
+                .background(Color.watchColor.lightGreen) // 3
+                .cornerRadius(20)
             }
-
-            .foregroundColor(Color.watchColor.black) // 2
-            .background(Color.watchColor.lightGreen) // 3
-            .cornerRadius(20)
-        }
-        .onAppear {
-//            healthManager.readCurrentCalories()
-            sendDataToPhone()
-            sendSwingDataToPhone()
+            .onAppear {
+    //            healthManager.readCurrentCalories()
+                sendDataToPhone()
+                sendSwingDataToPhone()
+            }
         }
     }
 
@@ -260,18 +280,19 @@ struct HealthKitView: View {
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         HealthKitView()
-            .environmentObject(SwingListWrapper(swingList: SwingList(name: "포핸드", guideButton: "questionmark.circle", gifImage: "square")))
+            .environmentObject(WorkoutManager())
+//            .environmentObject(SwingListWrapper(swingList: SwingList(name: "포핸드", guideButton: "questionmark.circle", gifImage: "square")))
     }
 }
 
 extension HealthKitView {
-    private func formatTime(_ timeInterval: TimeInterval) -> String {
-        let formatter = DateComponentsFormatter()
-        formatter.allowedUnits = [.hour, .minute, .second]
-        formatter.zeroFormattingBehavior = .pad
-
-        return formatter.string(from: timeInterval) ?? "00:00:00"
-    }
+//    private func formatTime(_ timeInterval: TimeInterval) -> String {
+//        let formatter = DateComponentsFormatter()
+//        formatter.allowedUnits = [.hour, .minute, .second]
+//        formatter.zeroFormattingBehavior = .pad
+//
+//        return formatter.string(from: timeInterval) ?? "00:00:00"
+//    }
     
 //    // The formatTime function remains the same as shown in the previous response
 //    private func formatTime() -> String {

@@ -53,44 +53,40 @@ struct QuitView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
-    @State var swingLeft: Int = 10
+//    @State var swingLeft: Int = 10
     @State var showResultView = false
     
 //    @ObservedObject var healthManager = HealthKitManager()
 //    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
 //    @EnvironmentObject var healthResultInfo: HealthResultInfo
     @ObservedObject var model = ViewModelWatch()
+    @EnvironmentObject var swingInfo: SwingInfo
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("\(swingLeft)번의 스윙이 남았어요.\n연습을 끝내시겠어요?")
-                .font(.system(size: 20, weight: .semibold))
-            Spacer()
-  
-            
-            NavigationLink(destination: ResultView(), isActive: $showResultView, label: {
-                Button("종료") {
-//                    getCaloryData()
-//                    getTimeData()
-//                    getDayData()
-                    //                sendDataToPhone()
-    //                tennisClassifierViewModel.stopMotionTracking() // 모션 감지 종료
-                    workoutManager.endWorkout() // 운동 세션 및 모션 감지 종료
-                    showResultView = true
-                    print("====================================================================")
-                    print("showResultView: \(showResultView)")
-                    print("====================================================================")
-                }
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundColor(Color.white)
-                .background(Color.watchColor.lightBlack)
-                .cornerRadius(40)
-            })
-            .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to remove button visuals
+        TimelineView(MetricsTimelineSchedule(from: workoutManager.builder?.startDate ?? Date())) { context in
+            VStack(alignment: .leading) {
+                Spacer()
+                // context의 cadence 값에 따라 subseconds를 보여줄지 말지 결정
+                ElapsedTimeView(elapsedTime: workoutManager.builder?.elapsedTime(at: context.date) ?? 0, showSubseconds: context.cadence == .live)
+                    .font(.system(size: 40, weight: .medium))
+                    .foregroundColor(Color.watchColor.lightGreen)
+                Text(swingInfo.swingLeft! > 0 ? "\(swingInfo.swingLeft!)번의 스윙이 남았어요.\n연습을 끝내시겠어요?" : "연습을 끝내시겠어요?")
+                    .font(.system(size: 15))
+                Spacer()
+                
+                NavigationLink(destination: ResultView(), isActive: $showResultView, label: {
+                    Button("종료") {
+                        workoutManager.endWorkout() // 운동 세션 및 모션 감지 종료
+                        showResultView = true
+                    }
+                    .font(.system(size: 20, weight: .semibold))
+                    .foregroundColor(Color.white)
+                    .background(Color.watchColor.lightBlack)
+                    .cornerRadius(40)
+                })
+                .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to remove button visuals
+            }
         }
-//        .onAppear {
-//            healthManager.readCurrentCalories()
-//        }
     }
 }
 
@@ -197,4 +193,39 @@ struct CountingView_Previews: PreviewProvider {
             .environmentObject(WorkoutManager())
             .environmentObject(SwingInfo())
     }
+}
+
+// 활성화된 workout 세션이 있는 앱은 Always On 상태에서 최대 1초에 한 번씩 업데이트가 가능함
+// 따라서 Always On 상태에서는 시간 표시에 subseconds가 들어가지 않도록 해주어야 함
+private struct MetricsTimelineSchedule: TimelineSchedule {
+    var startDate: Date
+//    var isPaused: Bool
+
+//    init(from startDate: Date, isPaused: Bool) {
+//        self.startDate = startDate
+//        self.isPaused = isPaused
+//    }
+    init(from startDate: Date) {
+        self.startDate = startDate
+    }
+
+    func entries(from startDate: Date, mode: TimelineScheduleMode) -> PeriodicTimelineSchedule.Entries {
+        PeriodicTimelineSchedule(
+            from: self.startDate,
+            by: (mode == .lowFrequency ? 1.0 : 1.0 / 30.0)
+        ).entries(
+            from: startDate,
+            mode: mode
+        )
+    }
+//    func entries(from startDate: Date, mode: TimelineScheduleMode) -> AnyIterator<Date> {
+//        var baseSchedule = PeriodicTimelineSchedule(from: self.startDate,
+//                                                    by: (mode == .lowFrequency ? 1.0 : 1.0 / 30.0)) // lowFrequency-1초, normal-1초당30번,
+//            .entries(from: startDate, mode: mode)
+//
+//        return AnyIterator<Date> {
+//            guard !isPaused else { return nil }
+//            return baseSchedule.next()
+//        }
+//    }
 }

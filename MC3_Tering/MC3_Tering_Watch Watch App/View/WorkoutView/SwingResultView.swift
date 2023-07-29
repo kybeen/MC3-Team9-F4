@@ -70,6 +70,7 @@ extension SwingResultView {
     
     private func calculateSwings() {
         swingInfo.totalSwingCount! += 1
+        swingInfo.swingLeft! -= 1
         
         if tennisClassifierViewModel.classLabel == "Forehand" {
             if tennisClassifierViewModel.resultLabel == "PERFECT" {
@@ -88,6 +89,7 @@ extension SwingResultView {
         print("totalBackhandCount -> \(swingInfo.totalBackhandCount)")
         print("ForehandPerfect -> \(swingInfo.forehandPerfect)")
         print("BackhandPerfect -> \(swingInfo.backhandPerfect)")
+        print("남은 스윙 -> \(swingInfo.swingLeft)/\(swingInfo.selectedValue)")
 
     }
     

@@ -49,6 +49,7 @@ extension ReadyView {
         swingInfo.totalBackhandCount = 0
         swingInfo.forehandPerfect = 0
         swingInfo.backhandPerfect = 0
+        swingInfo.swingLeft = swingInfo.selectedValue // 남은 스윙 횟수 = 선택값 으로 초기화
     }
     
     private func startProgressAnimation() {

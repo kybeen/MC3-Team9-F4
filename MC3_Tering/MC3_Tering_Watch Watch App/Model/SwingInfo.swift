@@ -14,4 +14,5 @@ class SwingInfo: ObservableObject {
     @Published var backhandPerfect: Int?
     @Published var totalBackhandCount: Int?
     @Published var selectedValue: Int? // 목표 스윙 횟수
+    @Published var swingLeft: Int? // 남은 스윙 횟수
 }

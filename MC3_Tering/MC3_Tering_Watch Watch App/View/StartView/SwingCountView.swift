@@ -130,9 +130,13 @@ struct selectingGoalView: View {
                 .padding()
             }
         }
+        .onAppear {
+            // 목표 스윙 횟수 선택 안했을 경우 초기값이 있어야 하기 때문에 초기값 세팅
+            swingInfo.selectedValue = values[valueIndex]
+        }
         .onChange(of: valueIndex) { newValue in
             swingInfo.selectedValue = values[newValue]
-            print("selected \(swingInfo.selectedValue)")
+//            print("목표 스윙 횟수 선택 \(swingInfo.selectedValue)")
         }
     }
 

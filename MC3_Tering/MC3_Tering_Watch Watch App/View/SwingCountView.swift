@@ -17,8 +17,8 @@ struct SwingCountView: View {
 //    @StateObject var healthManager = HealthKitManager()
     @EnvironmentObject var workoutManager: WorkoutManager
 
-    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
-    @EnvironmentObject var healthResultInfo: HealthResultInfo
+//    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
+//    @EnvironmentObject var healthResultInfo: HealthResultInfo
 //    @State var selectedValue: Int = 0
     @EnvironmentObject var swingInfo: SwingInfo
 

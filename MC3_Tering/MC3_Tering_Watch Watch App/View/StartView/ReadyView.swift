@@ -18,7 +18,7 @@ struct ReadyView: View {
 //    @Binding var selectedValue: Int
     @EnvironmentObject var swingInfo: SwingInfo
     @EnvironmentObject var healthResultInfo: HealthResultInfo
-
+    
     var body: some View {
         VStack {
             TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: self.$fontSize)

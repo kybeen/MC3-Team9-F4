@@ -92,7 +92,7 @@ struct QuitView: View {
 //                        print("======================================================================")
                         
                         // Workout 데이터 HealthResultInfo 모델에 저장
-                        healthResultInfo.workOutTime = Int(workoutManager.builder?.elapsedTime(at: context.date) ?? 0) // 운동 시간
+                        healthResultInfo.workOutTime = Int(((workoutManager.builder?.elapsedTime(at: context.date) ?? 0) / 60).rounded()) // 운동 시간(초 -> 분 단위로 변환)
                         healthResultInfo.burningCal = Int(workoutManager.activeEnergy.rounded()) // 소모 칼로리
                         healthResultInfo.averageHeartRate = Int(workoutManager.averageHeartRate.rounded()) // 평균 심박수
                         

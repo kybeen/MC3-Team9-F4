@@ -18,10 +18,12 @@
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <entity name="WorkOutData" representedClassName="WorkOutData" syncable="YES">
+        <attribute name="backhandPerfect" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="backhandTotalCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="burningCalories" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="forehandPerfect" optional="YES" attributeType="Integer 16" usesScalarValueType="YES"/>
+        <attribute name="forehandTotalCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="isBackhand" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="perfectSwingCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="totalSwingCount" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="workoutDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="workoutTime" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>

@@ -75,11 +75,11 @@
 		B87CEBFE2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBFD2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel */; };
 		C93885D72A7352FD006FFB1A /* backhandSwing.gif in Resources */ = {isa = PBXBuildFile; fileRef = C93885D52A7352FD006FFB1A /* backhandSwing.gif */; };
 		C93885D82A7352FD006FFB1A /* forehandSwing.gif in Resources */ = {isa = PBXBuildFile; fileRef = C93885D62A7352FD006FFB1A /* forehandSwing.gif */; };
+		C93885DB2A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885D92A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift */; };
+		C93885DC2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */; };
 		C99DF32B2A6FA4CA002DCED7 /* UserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3292A6FA4CA002DCED7 /* UserInfo.xcdatamodeld */; };
 		C99DF3382A6FA6C1002DCED7 /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3342A6FA6C1002DCED7 /* UserData+CoreDataClass.swift */; };
 		C99DF3392A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3352A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift */; };
-		C99DF33A2A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3362A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift */; };
-		C99DF33B2A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3372A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift */; };
 		C9A645252A72930200B326C5 /* AppGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A645242A72930200B326C5 /* AppGuideView.swift */; };
 		C9AEE53F2A6FAADE0071C863 /* Inter-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3432A6FA755002DCED7 /* Inter-Black.otf */; };
 		C9AEE5402A6FAAE20071C863 /* Inter-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3492A6FA755002DCED7 /* Inter-BlackItalic.otf */; };
@@ -193,12 +193,12 @@
 		B87CEBFD2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_totalData_window100.mlmodel; sourceTree = "<group>"; };
 		C93885D52A7352FD006FFB1A /* backhandSwing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = backhandSwing.gif; sourceTree = "<group>"; };
 		C93885D62A7352FD006FFB1A /* forehandSwing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = forehandSwing.gif; sourceTree = "<group>"; };
+		C93885D92A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C99DF3282A6FA246002DCED7 /* MC3-Tering-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC3-Tering-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C99DF32A2A6FA4CA002DCED7 /* UserInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserInfo.xcdatamodel; sourceTree = "<group>"; };
 		C99DF3342A6FA6C1002DCED7 /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C99DF3352A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		C99DF3362A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C99DF3372A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C99DF33C2A6FA754002DCED7 /* Inter-V.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-V.ttf"; sourceTree = "<group>"; };
 		C99DF33D2A6FA754002DCED7 /* Inter-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
 		C99DF33E2A6FA754002DCED7 /* Inter-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.otf"; sourceTree = "<group>"; };
@@ -517,8 +517,8 @@
 		1687E30F2A6F796D0004D87A /* WorkOutData */ = {
 			isa = PBXGroup;
 			children = (
-				C99DF3362A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift */,
-				C99DF3372A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift */,
+				C93885D92A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift */,
+				C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */,
 			);
 			path = WorkOutData;
 			sourceTree = "<group>";
@@ -720,12 +720,12 @@
 				160B1E7E2A6F944A00A708CC /* TodayDetailView.swift in Sources */,
 				160B1E7A2A6F940800A708CC /* EmitterView.swift in Sources */,
 				160B1E742A6F93CC00A708CC /* CameraViewModel.swift in Sources */,
-				C99DF33A2A6FA6C1002DCED7 /* WorkOutData+CoreDataClass.swift in Sources */,
 				160B1E862A6F948D00A708CC /* UserStrokeSettingView.swift in Sources */,
 				160B1E7C2A6F943600A708CC /* OnboardingView.swift in Sources */,
 				1687E2B72A6F6FD20004D87A /* MC3_TeringApp.swift in Sources */,
 				160B1E8E2A6F950C00A708CC /* ColorExtension.swift in Sources */,
 				160B1ED72A6F96BE00A708CC /* CustomBackButton.swift in Sources */,
+				C93885DB2A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift in Sources */,
 				160B1E782A6F93FF00A708CC /* CongreteModalView.swift in Sources */,
 				1687E3142A6F79970004D87A /* HapticManager.swift in Sources */,
 				C9A645252A72930200B326C5 /* AppGuideView.swift in Sources */,
@@ -733,10 +733,10 @@
 				160B1ED52A6F969A00A708CC /* GifView.swift in Sources */,
 				160B1E8C2A6F94E100A708CC /* RingChartsView.swift in Sources */,
 				C99DF3382A6FA6C1002DCED7 /* UserData+CoreDataClass.swift in Sources */,
-				C99DF33B2A6FA6C1002DCED7 /* WorkOutData+CoreDataProperties.swift in Sources */,
 				1687E2DF2A6F71180004D87A /* TestPhoneView.swift in Sources */,
 				160B1E802A6F946100A708CC /* GuideView.swift in Sources */,
 				1687E31E2A6F7A0B0004D87A /* CoreDataManager.swift in Sources */,
+				C93885DC2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

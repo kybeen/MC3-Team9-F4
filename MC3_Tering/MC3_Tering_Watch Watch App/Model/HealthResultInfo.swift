@@ -8,8 +8,9 @@
 import Foundation
 
 class HealthResultInfo: ObservableObject {
-    @Published var burningCal: Int?
-    @Published var workOutTime: Int?
-    @Published var workOutDate: Date?
+    @Published var averageHeartRate: Int? // 평균 심박수
+    @Published var burningCal: Int? // 소모 칼로리
+    @Published var workOutTime: Int? // 운동 시간
+    @Published var workOutDate: Date? // 운동일
 }
 

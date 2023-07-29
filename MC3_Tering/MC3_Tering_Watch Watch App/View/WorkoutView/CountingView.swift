@@ -85,23 +85,20 @@ struct QuitView: View {
                 
                 NavigationLink(destination: ResultView(), isActive: $showResultView, label: {
                     Button("종료") {
+//                        print("===============================운동 종료===================================")
+//                        print("운동시간---> \(workoutManager.builder?.elapsedTime(at: context.date) ?? 0)")
+//                        print("평균 심박수---> \(workoutManager.averageHeartRate)")
+//                        print("칼로리---> \(workoutManager.activeEnergy)")
+//                        print("======================================================================")
+                        
                         // Workout 데이터 HealthResultInfo 모델에 저장
-                        healthResultInfo.workOutTime = Int(workoutManager.builder?.elapsedTime(at: context.date) ?? 0)
-                        // 운동 시간
+                        healthResultInfo.workOutTime = Int(workoutManager.builder?.elapsedTime(at: context.date) ?? 0) // 운동 시간
                         healthResultInfo.workOutDate = Date() //TODO: 운동 날짜 -> 운동 시작한 날 기준으로 값 받도록 수정하기
                         healthResultInfo.burningCal = Int(workoutManager.activeEnergy.rounded()) // 소모 칼로리
+                        healthResultInfo.averageHeartRate = Int(workoutManager.averageHeartRate.rounded()) // 평균 심박수
                         
                         workoutManager.endWorkout() // 운동 세션 및 모션 감지 종료
                         showResultView = true
-                        
-                        print("===============================운동 종료===================================")
-                        print("운동시간---> \(workoutManager.builder?.elapsedTime(at: context.date) ?? 0)")
-                        print("Formatter 적용한 운동시간---> \(workoutTimeFormatter.string(from: workoutManager.builder?.elapsedTime(at: context.date) ?? 0))")
-                        print("심박수---> \(workoutManager.averageHeartRate)")
-                        print("Formatter 적용한 심박수---> \(workoutManager.averageHeartRate.formatted(.number.precision(.fractionLength(0))))")
-                        print("칼로리---> \(workoutManager.activeEnergy)")
-                        print("Formatter 적용한 칼로리---> \(Measurement(value: workoutManager.activeEnergy, unit: UnitEnergy.kilocalories).formatted(.measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number.precision(.fractionLength(0)))))")
-                        print("======================================================================")
                     }
                     .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(Color.white)

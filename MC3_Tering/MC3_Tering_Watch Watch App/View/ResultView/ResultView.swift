@@ -271,6 +271,7 @@ struct HealthKitView: View {
             }
             .onAppear {
                 print("===============================결과 확인===================================")
+                print("저장된 평균 심박수 : \(healthResultInfo.averageHeartRate)")
                 print("저장된 소모 칼로리 : \(healthResultInfo.burningCal)")
                 print("저장된 운동 시간 : \(healthResultInfo.workOutTime)")
                 print("저장된 운동일 : \(healthResultInfo.workOutDate)")

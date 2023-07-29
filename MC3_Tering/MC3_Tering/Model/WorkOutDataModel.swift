@@ -16,14 +16,16 @@ class WorkOutDataModel: ObservableObject {
     
     @Published var id = 0
     @Published var burningCalories = 0
-    @Published var isBackhand = false
-    @Published var perfectSwingCount = 0
     @Published var totalSwingCount = 0
     @Published var workoutDate = Date()
     @Published var workoutTime = 0
     @Published var todayWorkoutDatum: [WorkOutData] = []
     @Published var yesterdayWorkoutDatum: [WorkOutData] = []
     @Published var todayChartDatum: [Double] = []
+    @Published var forehandPerfect = 0
+    @Published var forehandTotalCount = 0
+    @Published var backhandPerfect = 0
+    @Published var backhandTotalCount = 0
     
     private let coreDataManager = CoreDataManager.shared
     
@@ -47,8 +49,10 @@ class WorkOutDataModel: ObservableObject {
             if let currentWorkOutData = fetchResult.first as? WorkOutData {
                 currentWorkOutData.id = Int16(id)
                 currentWorkOutData.burningCalories = Int16(burningCalories)
-                currentWorkOutData.isBackhand = isBackhand
-                currentWorkOutData.perfectSwingCount = Int16(perfectSwingCount)
+                currentWorkOutData.backhandPerfect = Int16(backhandPerfect)
+                currentWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
+                currentWorkOutData.forehandPerfect = Int16(forehandPerfect)
+                currentWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
                 currentWorkOutData.totalSwingCount = Int16(totalSwingCount)
                 currentWorkOutData.workoutDate = workoutDate
                 currentWorkOutData.workoutTime = Int16(workoutTime)
@@ -76,8 +80,10 @@ class WorkOutDataModel: ObservableObject {
         
         workout.id = Int16(id)
         workout.burningCalories = Int16(burningCalories)
-        workout.isBackhand = isBackhand
-        workout.perfectSwingCount = Int16(perfectSwingCount)
+        workout.backhandPerfect = Int16(backhandPerfect)
+        workout.backhandTotalCount = Int16(backhandTotalCount)
+        workout.forehandPerfect = Int16(forehandPerfect)
+        workout.forehandTotalCount = Int16(forehandTotalCount)
         workout.totalSwingCount = Int16(totalSwingCount)
         workout.workoutDate = workoutDate
         workout.workoutTime = Int16(workoutTime)
@@ -158,26 +164,19 @@ class WorkOutDataModel: ObservableObject {
         var returnArray: [Double] = []
         
         for i in todayWorkoutData {
-            if i.isBackhand {
-                todayBackhandStroke += Int(i.totalSwingCount)
-                todayBackhandPerfectStroke += Int(i.perfectSwingCount)
-            } else {
-                todayForehandStroke += Int(i.totalSwingCount)
-                todayForehandPerfectStroke += Int(i.perfectSwingCount)
-            }
+            todayBackhandStroke += Int(i.backhandTotalCount)
+            todayBackhandPerfectStroke += Int(i.backhandPerfect)
+            todayForehandStroke += Int(i.forehandTotalCount)
+            todayForehandPerfectStroke += Int(i.forehandPerfect)
             todayPlayTime += Int(i.workoutTime)
             todayCalories += Int(i.burningCalories)
         }
         
         for i in yesterdayWorkoutData {
-            if i.isBackhand {
-                yesterdayBackhandStroke += Int(i.totalSwingCount)
-                yesterdayBackhandPerfectStroke += Int(i.perfectSwingCount)
-            } else {
-                yesterdayForehandStroke += Int(i.totalSwingCount)
-                yesterdayForehandPerfectStroke += Int(i.perfectSwingCount)
-            }
-            
+            yesterdayBackhandStroke += Int(i.backhandTotalCount)
+            yesterdayBackhandPerfectStroke += Int(i.backhandPerfect)
+            yesterdayForehandStroke += Int(i.forehandTotalCount)
+            yesterdayForehandPerfectStroke += Int(i.forehandPerfect)
             yesterdayPlayTime += Int(i.workoutTime)
         }
         
@@ -199,7 +198,7 @@ class WorkOutDataModel: ObservableObject {
     }
     
     
-    func createSampleWorkOutData(_ calories: Int16, _ isBackhand: Bool, _ perfectSwingCount: Int16, _ totalSwingCount: Int16, _ workoutDate: Date, _ workoutTime: Int16) {
+    func createSampleWorkOutData() {
         // 새로운 WorkOutData 객체를 생성
         guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
             print("Failed to create WorkOutData object")
@@ -208,8 +207,10 @@ class WorkOutDataModel: ObservableObject {
         
         // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
         newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
-        newWorkOutData.isBackhand = Bool.random()
-        newWorkOutData.perfectSwingCount = Int16(Int.random(in: 10...200))
+        newWorkOutData.forehandPerfect = Int16(Int.random(in: 10...100))
+        newWorkOutData.forehandTotalCount = Int16(Int.random(in: 10...100))
+        newWorkOutData.backhandPerfect = Int16(Int.random(in: 10...100))
+        newWorkOutData.backhandTotalCount = Int16(Int.random(in: 10...100))
         newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
         newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date()
         newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
@@ -219,8 +220,6 @@ class WorkOutDataModel: ObservableObject {
     }
     
     func createTodaySampleWorkOutData() {
-        let coreDataManager = CoreDataManager.shared
-
         // 새로운 WorkOutData 객체를 생성
         guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
             print("Failed to create WorkOutData object")
@@ -229,8 +228,10 @@ class WorkOutDataModel: ObservableObject {
         
         // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
         newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
-        newWorkOutData.isBackhand = Bool.random()
-        newWorkOutData.perfectSwingCount = Int16(Int.random(in: 10...100))
+        newWorkOutData.forehandPerfect = Int16(Int.random(in: 10...100))
+        newWorkOutData.forehandTotalCount = Int16(Int.random(in: 10...100))
+        newWorkOutData.backhandPerfect = Int16(Int.random(in: 10...100))
+        newWorkOutData.backhandTotalCount = Int16(Int.random(in: 10...100))
         newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
         newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: 0, to: Date()) ?? Date()
         newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))

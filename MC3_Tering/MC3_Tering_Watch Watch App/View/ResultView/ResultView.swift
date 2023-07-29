@@ -242,17 +242,17 @@ struct HealthKitView: View {
     //                .font(.system(size: 28, weight: .medium))
     //                .padding(.bottom, 8)
                 Text(durationFormatter.string(from: workoutManager.workout?.duration ?? 0.0) ?? "")
-                    .font(.system(size: 32, weight: .medium))
+                    .font(.system(size: 40, weight: .medium))
                     .foregroundColor(Color.watchColor.lightGreen)
+                    .padding(.top, 15)
                     .padding(.bottom, 3)
-                    .padding(.top, 11)
                 Text(workoutManager.averageHeartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
-                    .font(.system(size: 24, weight: .medium))
+                    .font(.system(size: 28, weight: .medium))
                     .padding(.bottom, 3)
                 Text(Measurement(
                     value: workoutManager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0,
                     unit: UnitEnergy.kilocalories).formatted(.measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number.precision(.fractionLength(0)))))
-                    .font(.system(size: 24, weight: .medium))
+                    .font(.system(size: 28, weight: .medium))
                     .padding(.bottom, 3)
                 Spacer()
     //            NavigationLink(destination: SwingCountView(swingList: swingListWrapper.swingList)) {

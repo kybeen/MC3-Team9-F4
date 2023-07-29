@@ -458,31 +458,12 @@
 		1687E2E12A6F71350004D87A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1687E2F02A6F72DB0004D87A /* TestView */,
-				1687E2CC2A6F70270004D87A /* ContentView.swift */,
-				1687E2F12A6F72ED0004D87A /* SwingListView.swift */,
-				1687E2F32A6F72F50004D87A /* SwingResultView.swift */,
-				1687E2F52A6F72FE0004D87A /* MeasuringView.swift */,
-				1687E2F72A6F73040004D87A /* ReadyView.swift */,
-				1687E2FB2A6F73140004D87A /* GuideView.swift */,
-				1687E2F92A6F730C0004D87A /* SwingCountView.swift */,
-				1687E2FD2A6F731C0004D87A /* SwingListCellView.swift */,
-				1687E2FF2A6F73230004D87A /* CountingView.swift */,
-				1687E3032A6F73360004D87A /* ResultView.swift */,
-				16BB11592A734C4500C096D9 /* SwingCompleteView.swift */,
-				16BB115B2A735ADB00C096D9 /* SelectView.swift */,
-				1687E3012A6F732B0004D87A /* CompleteView.swift */,
-				1656EEAD2A70DC2000651C04 /* Ted_CountingView */,
+				B82111722A74EC8C0043CE6D /* StartView */,
+				B82111732A74ECC90043CE6D /* WorkoutView */,
+				B82111742A74EDB80043CE6D /* ResultView */,
+				B82111712A74EC500043CE6D /* EtcView */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		1687E2F02A6F72DB0004D87A /* TestView */ = {
-			isa = PBXGroup;
-			children = (
-				1687E2E42A6F716A0004D87A /* TestWatchView.swift */,
-			);
-			path = TestView;
 			sourceTree = "<group>";
 		};
 		1687E3052A6F74600004D87A /* Extension */ = {
@@ -557,6 +538,49 @@
 				160B1E7B2A6F943600A708CC /* OnboardingView.swift */,
 			);
 			path = OnboardingView;
+			sourceTree = "<group>";
+		};
+		B82111712A74EC500043CE6D /* EtcView */ = {
+			isa = PBXGroup;
+			children = (
+				1687E2CC2A6F70270004D87A /* ContentView.swift */,
+				1687E2FB2A6F73140004D87A /* GuideView.swift */,
+				1687E2FD2A6F731C0004D87A /* SwingListCellView.swift */,
+				1687E2F12A6F72ED0004D87A /* SwingListView.swift */,
+				1687E3012A6F732B0004D87A /* CompleteView.swift */,
+				1687E2E42A6F716A0004D87A /* TestWatchView.swift */,
+				1656EEAD2A70DC2000651C04 /* Ted_CountingView */,
+			);
+			path = EtcView;
+			sourceTree = "<group>";
+		};
+		B82111722A74EC8C0043CE6D /* StartView */ = {
+			isa = PBXGroup;
+			children = (
+				1687E2F92A6F730C0004D87A /* SwingCountView.swift */,
+				1687E2F72A6F73040004D87A /* ReadyView.swift */,
+			);
+			path = StartView;
+			sourceTree = "<group>";
+		};
+		B82111732A74ECC90043CE6D /* WorkoutView */ = {
+			isa = PBXGroup;
+			children = (
+				1687E2FF2A6F73230004D87A /* CountingView.swift */,
+				1687E2F52A6F72FE0004D87A /* MeasuringView.swift */,
+				1687E2F32A6F72F50004D87A /* SwingResultView.swift */,
+				16BB11592A734C4500C096D9 /* SwingCompleteView.swift */,
+				16BB115B2A735ADB00C096D9 /* SelectView.swift */,
+			);
+			path = WorkoutView;
+			sourceTree = "<group>";
+		};
+		B82111742A74EDB80043CE6D /* ResultView */ = {
+			isa = PBXGroup;
+			children = (
+				1687E3032A6F73360004D87A /* ResultView.swift */,
+			);
+			path = ResultView;
 			sourceTree = "<group>";
 		};
 		B87CEBF82A70B29E0038BFDB /* MLModel */ = {

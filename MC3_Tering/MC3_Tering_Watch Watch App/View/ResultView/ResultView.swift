@@ -222,7 +222,7 @@ struct HealthKitView: View {
     
 //    @ObservedObject var healthManager = HealthKitManager()
 //    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
-//    @EnvironmentObject var healthResultInfo: HealthResultInfo
+    @EnvironmentObject var healthResultInfo: HealthResultInfo
     @ObservedObject var model = ViewModelWatch()
     @EnvironmentObject var swingInfo: SwingInfo
     
@@ -270,6 +270,12 @@ struct HealthKitView: View {
                 .cornerRadius(20)
             }
             .onAppear {
+                print("===============================결과 확인===================================")
+                print("저장된 평균 심박수 : \(healthResultInfo.averageHeartRate)")
+                print("저장된 소모 칼로리 : \(healthResultInfo.burningCal)")
+                print("저장된 운동 시간 : \(healthResultInfo.workOutTime)")
+                print("저장된 운동일 : \(healthResultInfo.workOutDate)")
+                print("======================================================================")
     //            healthManager.readCurrentCalories()
                 sendDataToPhone()
                 sendSwingDataToPhone()
@@ -283,6 +289,7 @@ struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         HealthKitView()
             .environmentObject(WorkoutManager())
+            .environmentObject(HealthResultInfo())
 //            .environmentObject(SwingListWrapper(swingList: SwingList(name: "포핸드", guideButton: "questionmark.circle", gifImage: "square")))
     }
 }
@@ -319,12 +326,18 @@ extension HealthKitView {
     }
     
     private func sendSwingDataToPhone() {
-        self.model.session.transferUserInfo(["totalSwingCount" : self.swingInfo.totalSwingCount])
-        self.model.session.transferUserInfo(["forehandPerfect" : self.swingInfo.forehandPerfect])
-        self.model.session.transferUserInfo(["totalForehandCount" : self.swingInfo.totalForehandCount])
-        self.model.session.transferUserInfo(["backhandPerfect" : self.swingInfo.backhandPerfect])
-        self.model.session.transferUserInfo(["totalBackhandCount" : self.swingInfo.totalBackhandCount])
-        self.model.session.transferUserInfo(["selectedValue" : self.swingInfo.selectedValue])
+        self.model.session.transferUserInfo([
+            "totalSwingCount" : self.swingInfo.totalSwingCount,
+            "forehandPerfect" : self.swingInfo.forehandPerfect,
+            "totalForehandCount" : self.swingInfo.totalForehandCount,
+            "backhandPerfect" : self.swingInfo.backhandPerfect,
+            "totalBackhandCount" : self.swingInfo.totalBackhandCount,
+            "selectedValue" : self.swingInfo.selectedValue,
+            "averageHeartRate" : healthResultInfo.averageHeartRate, // 평균 심박수
+            "burningCal" : healthResultInfo.burningCal, // 소모 칼로리
+            "workOutTime" : healthResultInfo.workOutTime, // 운동 시간
+            "workOutDate" : healthResultInfo.workOutDate // 운동일
+        ])
     }
 }
 

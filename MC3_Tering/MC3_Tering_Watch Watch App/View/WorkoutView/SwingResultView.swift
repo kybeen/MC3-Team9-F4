@@ -134,5 +134,6 @@ struct SwingResultView_Previews: PreviewProvider {
     
     static var previews: some View {
         SwingResultView(resultColor: resultColor)
+            .environmentObject(SwingInfo())
     }
 }

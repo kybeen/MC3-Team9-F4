@@ -134,9 +134,10 @@ enum BounceHeight {
 
 
 
-//struct MeasuringView_Previews: PreviewProvider {
-//    
-//    static var previews: some View {
-//        MeasuringView()
-//    }
-//}
+struct MeasuringView_Previews: PreviewProvider {
+    
+    static var previews: some View {
+        MeasuringView()
+            .environmentObject(SwingInfo())
+    }
+}

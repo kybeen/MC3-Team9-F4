@@ -10,14 +10,15 @@ import SwiftUI
 //MARK: - 시작 버튼 맨 밑으로 보내기
 
 struct SwingCountView: View {
-    let swingList: SwingList
+//    let swingList: SwingList
     @State private var isReadyViewActive = false
     @State private var strokeCount = 10
 
-    @StateObject var healthManager = HealthKitManager()
+//    @StateObject var healthManager = HealthKitManager()
+    @EnvironmentObject var workoutManager: WorkoutManager
 
-    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
-    @EnvironmentObject var healthResultInfo: HealthResultInfo
+//    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
+//    @EnvironmentObject var healthResultInfo: HealthResultInfo
 //    @State var selectedValue: Int = 0
     @EnvironmentObject var swingInfo: SwingInfo
 
@@ -42,13 +43,14 @@ struct SwingCountView: View {
                 .cornerRadius(40)
             }
             .onAppear {
-                healthManager.requestAuthorization()
-                healthManager.readCurrentCalories()
+//                healthManager.requestAuthorization()
+//                healthManager.readCurrentCalories()
+                workoutManager.requestAuthorization()
                 
                 //MARK: - 클린 코드
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    getCurrentInfo()
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                    getCurrentInfo()
+//                }
                 
             }
             .navigationBarBackButtonHidden()
@@ -60,23 +62,26 @@ struct SwingCountView: View {
 
 struct SwingCountView_Previews: PreviewProvider {
     static var previews: some View {
-        SwingCountView(swingList: swingLists[0])
+//        SwingCountView(swingList: swingLists[0])
+        SwingCountView()
+            .environmentObject(WorkoutManager())
+            .environmentObject(SwingInfo())
     }
 }
 
 //MARK: - Extension
 
-extension SwingCountView {
-    private func getCurrentInfo() {
-        healthInfo.startCal = healthManager.currentCalories
-        
-        healthInfo.startTime = Date()
-        
-        print("time -> \(healthInfo.startTime)")
-    }
-    
-    
-}
+//extension SwingCountView {
+//    private func getCurrentInfo() {
+//        healthInfo.startCal = healthManager.currentCalories
+//
+//        healthInfo.startTime = Date()
+//
+//        print("time -> \(healthInfo.startTime)")
+//    }
+//
+//
+//}
 
 
 struct selectingGoalView: View {

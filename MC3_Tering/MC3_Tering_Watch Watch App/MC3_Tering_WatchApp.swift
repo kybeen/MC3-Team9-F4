@@ -11,7 +11,7 @@ import SwiftUI
 struct MC3_Tering_Watch_Watch_AppApp: App {
     @StateObject var swingListWrapper = SwingListWrapper(swingList: SwingList(name: "", guideButton: "", gifImage: ""))
 //    @StateObject var healthStartInfo = HealthStartInfo() // Create an instance of HealthStartInfo
-//    @StateObject var healthResultInfo = HealthResultInfo()
+    @StateObject var healthResultInfo = HealthResultInfo()
     @StateObject var swingInfo = SwingInfo()
     @StateObject var workoutManager = WorkoutManager()
     
@@ -23,7 +23,7 @@ struct MC3_Tering_Watch_Watch_AppApp: App {
             SwingCountView()
                 .environmentObject(swingListWrapper)
 //                .environmentObject(healthStartInfo)
-//                .environmentObject(healthResultInfo)
+                .environmentObject(healthResultInfo)
                 .environmentObject(swingInfo)
                 .environmentObject(workoutManager)
             //이거 왜 이러는거임?

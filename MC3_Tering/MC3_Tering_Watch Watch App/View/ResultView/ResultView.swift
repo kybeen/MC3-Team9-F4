@@ -217,10 +217,6 @@ struct HealthKitView: View {
         formatter.zeroFormattingBehavior = .pad
         return formatter
     }()
-    let formatter = MeasurementFormatter()
-    init() {
-        formatter.numberFormatter.maximumFractionDigits = 0 // 소수점 아래는 보지 않는 formatter
-    }
 //    @EnvironmentObject var swingListWrapper: SwingListWrapper
     //우선 타입 임의로 지정
     
@@ -245,13 +241,19 @@ struct HealthKitView: View {
     //            Text("\(healthResultInfo.burningCal ?? 0) kcal")
     //                .font(.system(size: 28, weight: .medium))
     //                .padding(.bottom, 8)
-                Text("00:00:00")
-                    .font(.system(size: 40, weight: .medium))
+                Text(durationFormatter.string(from: workoutManager.workout?.duration ?? 0.0) ?? "")
+                    .font(.system(size: 32, weight: .medium))
                     .foregroundColor(Color.watchColor.lightGreen)
-                    .padding(.bottom, 5)
-                Text("--kacl")
-                    .font(.system(size: 28, weight: .medium))
-                    .padding(.bottom, 8)
+                    .padding(.bottom, 3)
+                    .padding(.top, 11)
+                Text(workoutManager.averageHeartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
+                    .font(.system(size: 24, weight: .medium))
+                    .padding(.bottom, 3)
+                Text(Measurement(
+                    value: workoutManager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0,
+                    unit: UnitEnergy.kilocalories).formatted(.measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number.precision(.fractionLength(0)))))
+                    .font(.system(size: 24, weight: .medium))
+                    .padding(.bottom, 3)
                 Spacer()
     //            NavigationLink(destination: SwingCountView(swingList: swingListWrapper.swingList)) {
     //                Text("완료")

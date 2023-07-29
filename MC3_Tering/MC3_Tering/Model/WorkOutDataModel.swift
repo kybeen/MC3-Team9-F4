@@ -198,7 +198,7 @@ class WorkOutDataModel: ObservableObject {
     }
     
     
-    func createSampleWorkOutData() {
+    func createSampleWorkOutData(_ burningCalories: Int, _ forehandPerfect: Int, _ forehandTotalCount: Int, _ backhandPerfect: Int, _ backhandTotalCount: Int, _ totalSwingCount: Int, _ workoutDate: Date) {
         // 새로운 WorkOutData 객체를 생성
         guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
             print("Failed to create WorkOutData object")
@@ -206,13 +206,13 @@ class WorkOutDataModel: ObservableObject {
         }
         
         // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
-        newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
-        newWorkOutData.forehandPerfect = Int16(Int.random(in: 10...100))
-        newWorkOutData.forehandTotalCount = Int16(Int.random(in: 10...100))
-        newWorkOutData.backhandPerfect = Int16(Int.random(in: 10...100))
-        newWorkOutData.backhandTotalCount = Int16(Int.random(in: 10...100))
-        newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
-        newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date()
+        newWorkOutData.burningCalories = Int16(burningCalories)
+        newWorkOutData.forehandPerfect = Int16(forehandPerfect)
+        newWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
+        newWorkOutData.backhandPerfect = Int16(backhandPerfect)
+        newWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
+        newWorkOutData.totalSwingCount = Int16(totalSwingCount)
+        newWorkOutData.workoutDate = workoutDate
         newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
         
         // 저장

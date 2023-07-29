@@ -1004,7 +1004,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ted.MC3-Tering";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1039,7 +1039,7 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ted.MC3-Tering";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

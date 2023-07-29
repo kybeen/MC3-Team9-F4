@@ -14,7 +14,8 @@ struct SwingCountView: View {
     @State private var isReadyViewActive = false
     @State private var strokeCount = 10
 
-    @StateObject var healthManager = HealthKitManager()
+//    @StateObject var healthManager = HealthKitManager()
+    @EnvironmentObject var workoutManager: WorkoutManager
 
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
     @EnvironmentObject var healthResultInfo: HealthResultInfo
@@ -42,13 +43,14 @@ struct SwingCountView: View {
                 .cornerRadius(40)
             }
             .onAppear {
-                healthManager.requestAuthorization()
-                healthManager.readCurrentCalories()
+//                healthManager.requestAuthorization()
+//                healthManager.readCurrentCalories()
+                workoutManager.requestAuthorization()
                 
                 //MARK: - 클린 코드
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    getCurrentInfo()
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+//                    getCurrentInfo()
+//                }
                 
             }
             .navigationBarBackButtonHidden()
@@ -66,17 +68,17 @@ struct SwingCountView_Previews: PreviewProvider {
 
 //MARK: - Extension
 
-extension SwingCountView {
-    private func getCurrentInfo() {
-        healthInfo.startCal = healthManager.currentCalories
-        
-        healthInfo.startTime = Date()
-        
-        print("time -> \(healthInfo.startTime)")
-    }
-    
-    
-}
+//extension SwingCountView {
+//    private func getCurrentInfo() {
+//        healthInfo.startCal = healthManager.currentCalories
+//
+//        healthInfo.startTime = Date()
+//
+//        print("time -> \(healthInfo.startTime)")
+//    }
+//
+//
+//}
 
 
 struct selectingGoalView: View {

@@ -332,7 +332,11 @@ extension HealthKitView {
             "totalForehandCount" : self.swingInfo.totalForehandCount,
             "backhandPerfect" : self.swingInfo.backhandPerfect,
             "totalBackhandCount" : self.swingInfo.totalBackhandCount,
-            "selectedValue" : self.swingInfo.selectedValue
+            "selectedValue" : self.swingInfo.selectedValue,
+            "averageHeartRate" : healthResultInfo.averageHeartRate, // 평균 심박수
+            "burningCal" : healthResultInfo.burningCal, // 소모 칼로리
+            "workOutTime" : healthResultInfo.workOutTime, // 운동 시간
+            "workOutDate" : healthResultInfo.workOutDate // 운동일
         ])
     }
 }

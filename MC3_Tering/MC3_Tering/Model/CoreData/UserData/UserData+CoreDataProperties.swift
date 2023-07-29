@@ -20,10 +20,10 @@ extension UserData {
     @NSManaged public var height: Int16
     @NSManaged public var isLeftHand: Bool
     @NSManaged public var sex: Int16
-    @NSManaged public var totalPerfectCount: Int16
-    @NSManaged public var totalSwingCount: Int16
+    @NSManaged public var totalPerfectCount: Int16 // 칭호획득 판단을 위해 필요
+    @NSManaged public var totalSwingCount: Int16 // 칭호획득 판단을 위해 필요
     @NSManaged public var username: String?
-    @NSManaged public var userPerfectRatio: Double
+    @NSManaged public var userPerfectRatio: Double // 칭호획득 판단을 위해 필요
     @NSManaged public var userTargetBackStroke: Int16
     @NSManaged public var userTargetForeStroke: Int16
     @NSManaged public var userTitle1: String?

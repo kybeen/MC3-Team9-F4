@@ -400,14 +400,13 @@ extension MainView {
     }
     
     private func addUserCountData() {
-        let a = Int16(Int.random(in: 200...500))
-        let b = Bool.random()
-        let c = Int16(Int.random(in: 10...200))
-        let d = Int16(Int.random(in: 10...50))
+        let a = Int.random(in: 200...500)
+        let c = Int.random(in: 10...200)
+        let d = Int.random(in: 10...50)
         let e = Calendar.current.date(byAdding: .day, value: -2, to: Date()) ?? Date()
-        let f = Int16(Int.random(in: 10...200))
+        let f = Int.random(in: 10...200)
         
-        workoutDataModel.createSampleWorkOutData(a, b, c, d, e, f)
+        workoutDataModel.createSampleWorkOutData(a, f, c, d, c, c + c, e)
         userDataModel.totalSwingCount += Int(c)
         userDataModel.totalPerfectCount += Int(d)
         userDataModel.userPerfectRatio = Double(userDataModel.totalPerfectCount) / Double(userDataModel.totalSwingCount)

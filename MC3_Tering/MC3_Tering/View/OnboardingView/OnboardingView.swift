@@ -531,14 +531,14 @@ extension OnboardingView {
         }
         
         newWorkOutData.burningCalories = 0
-        newWorkOutData.isBackhand = false
-        newWorkOutData.perfectSwingCount = 0
+        newWorkOutData.backhandPerfect = 0
+        newWorkOutData.backhandTotalCount = 0
+        newWorkOutData.forehandPerfect = 0
+        newWorkOutData.forehandTotalCount = 0
         newWorkOutData.totalSwingCount = 0
         newWorkOutData.workoutDate = Date()
         newWorkOutData.workoutTime = 0
         
-        coreDataManager.update(object: newWorkOutData)
-        newWorkOutData.isBackhand = true
         coreDataManager.update(object: newWorkOutData)
         
     }

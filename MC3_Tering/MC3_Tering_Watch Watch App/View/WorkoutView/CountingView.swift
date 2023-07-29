@@ -53,17 +53,18 @@ struct QuitView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
-    @State var swingLeft: Int = 10
+//    @State var swingLeft: Int = 10
     @State var showResultView = false
     
 //    @ObservedObject var healthManager = HealthKitManager()
 //    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
 //    @EnvironmentObject var healthResultInfo: HealthResultInfo
     @ObservedObject var model = ViewModelWatch()
+    @EnvironmentObject var swingInfo: SwingInfo
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("\(swingLeft)번의 스윙이 남았어요.\n연습을 끝내시겠어요?")
+            Text(swingInfo.swingLeft! > 0 ? "\(swingInfo.swingLeft!)번의 스윙이 남았어요.\n연습을 끝내시겠어요?" : "연습을 끝내시겠어요?")
                 .font(.system(size: 20, weight: .semibold))
             Spacer()
   

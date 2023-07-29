@@ -132,7 +132,7 @@ struct selectingGoalView: View {
         }
         .onChange(of: valueIndex) { newValue in
             swingInfo.selectedValue = values[newValue]
-            print("selected \(swingInfo.selectedValue)")
+//            print("목표 스윙 횟수 선택 \(swingInfo.selectedValue)")
         }
     }
 

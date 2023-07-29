@@ -217,7 +217,7 @@ struct HealthKitView: View {
     @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
     @EnvironmentObject var healthResultInfo: HealthResultInfo
     @ObservedObject var model = ViewModelWatch()
-
+    @EnvironmentObject var swingInfo: SwingInfo
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -244,6 +244,7 @@ struct HealthKitView: View {
         .onAppear {
             healthManager.readCurrentCalories()
             sendDataToPhone()
+            sendSwingDataToPhone()
         }
     }
 
@@ -284,6 +285,15 @@ extension HealthKitView {
         self.model.session.transferUserInfo(["time" : self.healthResultInfo.workOutTime])
         self.model.session.transferUserInfo(["date" : self.healthResultInfo.workOutDate])
         print("message send")
+    }
+    
+    private func sendSwingDataToPhone() {
+        self.model.session.transferUserInfo(["totalSwingCount" : self.swingInfo.totalSwingCount])
+        self.model.session.transferUserInfo(["forehandPerfect" : self.swingInfo.forehandPerfect])
+        self.model.session.transferUserInfo(["totalForehandCount" : self.swingInfo.totalForehandCount])
+        self.model.session.transferUserInfo(["backhandPerfect" : self.swingInfo.backhandPerfect])
+        self.model.session.transferUserInfo(["totalBackhandCount" : self.swingInfo.totalBackhandCount])
+        self.model.session.transferUserInfo(["selectedValue" : self.swingInfo.selectedValue])
     }
 }
 

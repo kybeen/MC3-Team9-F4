@@ -13,17 +13,18 @@ struct RecordChartView: View {
     
     var body: some View {
         VStack {
+            CustomSegmentedView($selectedPeriodIndex, selections: periodSelections)
             
-            switch selectedPeriod {
-            case .week:
-                WeekChartview()
-            case .month:
-                MonthChartView()
-            case .sixMonths:
-                SixMonthsChartView()
-            case .year:
-                YearChartView()
-            }
+//            switch selectedPeriod {
+//            case .week:
+//                WeekChartview()
+//            case .month:
+//                MonthChartView()
+//            case .sixMonths:
+//                SixMonthsChartView()
+//            case .year:
+//                YearChartView()
+//            }
         }
     }
 }

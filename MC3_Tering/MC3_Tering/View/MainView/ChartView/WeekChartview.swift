@@ -66,7 +66,38 @@ struct WeekChartview: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Chart {
+            ForEach(weekPerSwingDataType) { eachType in
+                ForEach(eachType.data) { element in
+                    BarMark(
+                        x: .value("Week Day", element.weekday),
+                        y: .value("Count", element.count),
+                        stacking: .unstacked // 바 차트 겹쳐서 보기 위한 파라미터
+                    )
+                    .cornerRadius(5)
+                    .foregroundStyle(by: .value("Swing Type", eachType.swingDataType))
+                }
+            }
+            RuleMark(
+                y:.value("Total Average", totalSwingAverage)
+            )
+            .foregroundStyle(Color("TennisGreen"))
+            .lineStyle(StrokeStyle(dash: [2]))
+            
+            RuleMark(
+                y: .value("Perfect Average", perfectSwingAverage)
+            )
+            .foregroundStyle(Color("TennisSkyBlue"))
+            .lineStyle(StrokeStyle(dash: [2]))
+        }
+        .chartForegroundStyleScale([
+            "전체 스윙 횟수": .linearGradient(colors: [Color("TennisGreen"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0.0), endPoint: .init(x: 0.5, y: 0.8)),
+            "퍼펙트 스윙 횟수": .linearGradient(colors: [Color("TennisSkyBlue"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 0.9))
+        ])
+//            .chartXAxis(.hidden)
+//            .chartYAxis(.hidden)
+        .padding()
+        .frame(height: UIScreen.main.bounds.height*0.5)
     }
 }
 

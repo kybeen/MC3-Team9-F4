@@ -20,7 +20,7 @@ struct WeekPerSwingDataType: Identifiable {
 
     var id: UUID = UUID()
 }
-let totalData: [WeekSwingData] = [
+let totalSwingData: [WeekSwingData] = [
     .init(weekday: Date().date(2023,7,24).getWeekday(), count: 250),
     .init(weekday: Date().date(2023,7,25).getWeekday(), count: 124),
     .init(weekday: Date().date(2023,7,26).getWeekday(), count: 135),
@@ -29,7 +29,7 @@ let totalData: [WeekSwingData] = [
     .init(weekday: Date().date(2023,7,29).getWeekday(), count: 90),
     .init(weekday: Date().date(2023,7,30).getWeekday(), count: 110),
 ]
-let perfectData: [WeekSwingData] = [
+let perfectSwingData: [WeekSwingData] = [
     .init(weekday: Date().date(2023,7,24).getWeekday(), count: 200),
     .init(weekday: Date().date(2023,7,25).getWeekday(), count: 100),
     .init(weekday: Date().date(2023,7,26).getWeekday(), count: 110),
@@ -39,11 +39,32 @@ let perfectData: [WeekSwingData] = [
     .init(weekday: Date().date(2023,7,30).getWeekday(), count: 100),
 ]
 let weekPerSwingDataType: [WeekPerSwingDataType] = [
-    .init(swingDataType: "전체 스윙 횟수", data: totalData),
-    .init(swingDataType: "퍼펙트 스윙 횟수", data: perfectData)
+    .init(swingDataType: "전체 스윙 횟수", data: totalSwingData),
+    .init(swingDataType: "퍼펙트 스윙 횟수", data: perfectSwingData)
 ]
 
 struct WeekChartview: View {
+    var totalSwingAverage = 0 // 전체 스윙 평균
+    var perfectSwingAverage = 0 // 퍼펙트 스윙 평균
+    
+    init() {
+        var totalSum = 0
+        var perfectSum = 0
+        for each in weekPerSwingDataType {
+            if each.swingDataType == "전체 스윙 횟수" {
+                for eachData in each.data {
+                    totalSum += eachData.count
+                }
+            } else {
+                for eachData in each.data {
+                    perfectSum += eachData.count
+                }
+            }
+        }
+        totalSwingAverage = totalSum / totalSwingData.count
+        perfectSwingAverage = perfectSum / perfectSwingData.count
+    }
+    
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }

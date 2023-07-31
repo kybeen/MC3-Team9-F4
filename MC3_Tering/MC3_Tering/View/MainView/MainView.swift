@@ -172,20 +172,22 @@ extension MainView {
             .scrollIndicators(.hidden)
             
             ScrollView {
-                Button(action: {
-                    addUserCountData()
-                    checkTitle1Gain()
-                    checkTitle2Gain()
-                }) {
-                    Text("어제 운동 데이터 모델 만들기")
-                }
-                .padding(.bottom, 30)
-                
-                Button(action: {
-                    workoutDataModel.createTodaySampleWorkOutData()
-                }) {
-                    Text("오늘 운동 데이터 모델 만들기")
-                }
+//                //MARK: - 빵빠레 테스트, 유저 정보 확인용 버튼
+//                Button(action: {
+//                    addUserCountData()
+//                    checkTitle1Gain()
+//                    checkTitle2Gain()
+//                }) {
+//                    Text("어제 운동 데이터 모델 만들기")
+//                }
+//                .padding(.bottom, 30)
+//
+//                Button(action: {
+//                    workoutDataModel.createTodaySampleWorkOutData()
+//                }) {
+//                    Text("오늘 운동 데이터 모델 만들기")
+//                }
+                RecordChartView()
             }
             .tag(1)
             

@@ -44,8 +44,8 @@ let weekPerSwingDataType: [WeekPerSwingDataType] = [
 ]
 
 struct WeekChartview: View {
-    var weekTotalSwingAverage = 0 // 전체 스윙 평균
-    var weekPerfectSwingAverage = 0 // 퍼펙트 스윙 평균
+    var weekTotalSwingAverage: Double = 0 // 전체 스윙 평균
+    var weekPerfectSwingAverage: Double = 0 // 퍼펙트 스윙 평균
     
     init() {
         var totalSum = 0
@@ -61,43 +61,49 @@ struct WeekChartview: View {
                 }
             }
         }
-        weekTotalSwingAverage = totalSum / weekTotalSwingData.count
-        weekPerfectSwingAverage = perfectSum / weekPerfectSwingData.count
+        weekTotalSwingAverage = Double(totalSum / weekTotalSwingData.count)
+        weekPerfectSwingAverage = Double(perfectSum / weekPerfectSwingData.count)
     }
     
     var body: some View {
-        Chart {
-            ForEach(weekPerSwingDataType) { eachType in
-                ForEach(eachType.data) { element in
-                    BarMark(
-                        x: .value("Week Day", element.weekday),
-                        y: .value("Count", element.count),
-                        stacking: .unstacked // 바 차트 겹쳐서 보기 위한 파라미터
-                    )
-                    .cornerRadius(5)
-                    .foregroundStyle(by: .value("Swing Type", eachType.swingDataType))
+        VStack {
+            Chart {
+                ForEach(weekPerSwingDataType) { eachType in
+                    ForEach(eachType.data) { element in
+                        BarMark(
+                            x: .value("Week Day", element.weekday),
+                            y: .value("Count", element.count),
+                            stacking: .unstacked // 바 차트 겹쳐서 보기 위한 파라미터
+                        )
+                        .cornerRadius(5)
+                        .foregroundStyle(by: .value("Swing Type", eachType.swingDataType))
+                    }
                 }
+                RuleMark(
+                    y:.value("Total Average", weekTotalSwingAverage)
+                )
+                .foregroundStyle(Color("TennisGreen"))
+                .lineStyle(StrokeStyle(dash: [2]))
+                
+                RuleMark(
+                    y: .value("Perfect Average", weekPerfectSwingAverage)
+                )
+                .foregroundStyle(Color("TennisSkyBlue"))
+                .lineStyle(StrokeStyle(dash: [2]))
             }
-            RuleMark(
-                y:.value("Total Average", weekTotalSwingAverage)
-            )
-            .foregroundStyle(Color("TennisGreen"))
-            .lineStyle(StrokeStyle(dash: [2]))
+            .chartForegroundStyleScale([
+                "전체 스윙 횟수": .linearGradient(colors: [Color("TennisGreen"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0.0), endPoint: .init(x: 0.5, y: 0.8)),
+                "퍼펙트 스윙 횟수": .linearGradient(colors: [Color("TennisSkyBlue"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 0.9))
+            ])
+    //            .chartXAxis(.hidden)
+    //            .chartYAxis(.hidden)
+            .padding()
+            .frame(height: UIScreen.main.bounds.height*0.5)
             
-            RuleMark(
-                y: .value("Perfect Average", weekPerfectSwingAverage)
-            )
-            .foregroundStyle(Color("TennisSkyBlue"))
-            .lineStyle(StrokeStyle(dash: [2]))
+            PerfectSummaryChartView(titleLabel: "주간 활동", descriptionLabel: "7일", perfectSwingAverage: Int(weekPerfectSwingAverage))
+            
+            WorkoutSummaryChartView(timeAverage: 4, caloryAverage: 200) //TODO: 인자값 바꾸기
         }
-        .chartForegroundStyleScale([
-            "전체 스윙 횟수": .linearGradient(colors: [Color("TennisGreen"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0.0), endPoint: .init(x: 0.5, y: 0.8)),
-            "퍼펙트 스윙 횟수": .linearGradient(colors: [Color("TennisSkyBlue"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 0.9))
-        ])
-//            .chartXAxis(.hidden)
-//            .chartYAxis(.hidden)
-        .padding()
-        .frame(height: UIScreen.main.bounds.height*0.5)
     }
 }
 

@@ -72,6 +72,9 @@
 		B82111502A7413960043CE6D /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821114F2A7413960043CE6D /* WorkoutManager.swift */; };
 		B82111762A75629A0043CE6D /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82111752A75629A0043CE6D /* ElapsedTimeView.swift */; };
 		B82111782A76947A0043CE6D /* RecordChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82111772A76947A0043CE6D /* RecordChartView.swift */; };
+		B82E484F2A7944B500E38151 /* PerfectSummaryChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E484E2A7944B500E38151 /* PerfectSummaryChartView.swift */; };
+		B82E48512A79634400E38151 /* CompareChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E48502A79634400E38151 /* CompareChartView.swift */; };
+		B82E48532A7967C600E38151 /* WorkoutSummaryChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82E48522A7967C600E38151 /* WorkoutSummaryChartView.swift */; };
 		B87504722A778F740098167A /* WeekChartview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87504712A778F740098167A /* WeekChartview.swift */; };
 		B87504742A778F850098167A /* MonthChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87504732A778F850098167A /* MonthChartView.swift */; };
 		B87504762A778F8D0098167A /* SixMonthsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87504752A778F8D0098167A /* SixMonthsChartView.swift */; };
@@ -198,6 +201,9 @@
 		B821114F2A7413960043CE6D /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		B82111752A75629A0043CE6D /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
 		B82111772A76947A0043CE6D /* RecordChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordChartView.swift; sourceTree = "<group>"; };
+		B82E484E2A7944B500E38151 /* PerfectSummaryChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfectSummaryChartView.swift; sourceTree = "<group>"; };
+		B82E48502A79634400E38151 /* CompareChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareChartView.swift; sourceTree = "<group>"; };
+		B82E48522A7967C600E38151 /* WorkoutSummaryChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutSummaryChartView.swift; sourceTree = "<group>"; };
 		B87504712A778F740098167A /* WeekChartview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekChartview.swift; sourceTree = "<group>"; };
 		B87504732A778F850098167A /* MonthChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthChartView.swift; sourceTree = "<group>"; };
 		B87504752A778F8D0098167A /* SixMonthsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixMonthsChartView.swift; sourceTree = "<group>"; };
@@ -611,6 +617,9 @@
 				B87504732A778F850098167A /* MonthChartView.swift */,
 				B87504752A778F8D0098167A /* SixMonthsChartView.swift */,
 				B87504772A778F960098167A /* YearChartView.swift */,
+				B82E484E2A7944B500E38151 /* PerfectSummaryChartView.swift */,
+				B82E48522A7967C600E38151 /* WorkoutSummaryChartView.swift */,
+				B82E48502A79634400E38151 /* CompareChartView.swift */,
 			);
 			path = ChartView;
 			sourceTree = "<group>";
@@ -765,6 +774,7 @@
 				160B1E8A2A6F94D600A708CC /* MainView.swift in Sources */,
 				160B1E722A6F93BD00A708CC /* CameraView.swift in Sources */,
 				1687E2DD2A6F70DD0004D87A /* ViewModelPhone.swift in Sources */,
+				B82E484F2A7944B500E38151 /* PerfectSummaryChartView.swift in Sources */,
 				1687E2B92A6F6FD20004D87A /* ContentView.swift in Sources */,
 				B87504722A778F740098167A /* WeekChartview.swift in Sources */,
 				C99DF3392A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift in Sources */,
@@ -788,10 +798,12 @@
 				C93885DB2A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift in Sources */,
 				160B1E782A6F93FF00A708CC /* CongreteModalView.swift in Sources */,
 				1687E3142A6F79970004D87A /* HapticManager.swift in Sources */,
+				B82E48532A7967C600E38151 /* WorkoutSummaryChartView.swift in Sources */,
 				C9A645252A72930200B326C5 /* AppGuideView.swift in Sources */,
 				C99DF32B2A6FA4CA002DCED7 /* UserInfo.xcdatamodeld in Sources */,
 				160B1ED52A6F969A00A708CC /* GifView.swift in Sources */,
 				160B1E8C2A6F94E100A708CC /* RingChartsView.swift in Sources */,
+				B82E48512A79634400E38151 /* CompareChartView.swift in Sources */,
 				B875047C2A7792B80098167A /* DateExtension.swift in Sources */,
 				B87504742A778F850098167A /* MonthChartView.swift in Sources */,
 				C99DF3382A6FA6C1002DCED7 /* UserData+CoreDataClass.swift in Sources */,

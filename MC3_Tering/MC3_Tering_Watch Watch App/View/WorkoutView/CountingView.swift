@@ -217,7 +217,7 @@ struct CountingView_Previews: PreviewProvider {
 
 // 활성화된 workout 세션이 있는 앱은 Always On 상태에서 최대 1초에 한 번씩 업데이트가 가능함
 // 따라서 Always On 상태에서는 시간 표시에 subseconds가 들어가지 않도록 해주어야 함
-private struct MetricsTimelineSchedule: TimelineSchedule {
+struct MetricsTimelineSchedule: TimelineSchedule {
     var startDate: Date
 //    var isPaused: Bool
 

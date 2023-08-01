@@ -20,7 +20,7 @@ struct WeekPerSwingDataType: Identifiable {
 
     var id: UUID = UUID()
 }
-let totalSwingData: [WeekSwingData] = [
+let weekTotalSwingData: [WeekSwingData] = [
     .init(weekday: Date().date(2023,7,24).getWeekday(), count: 250),
     .init(weekday: Date().date(2023,7,25).getWeekday(), count: 124),
     .init(weekday: Date().date(2023,7,26).getWeekday(), count: 135),
@@ -29,7 +29,7 @@ let totalSwingData: [WeekSwingData] = [
     .init(weekday: Date().date(2023,7,29).getWeekday(), count: 90),
     .init(weekday: Date().date(2023,7,30).getWeekday(), count: 110),
 ]
-let perfectSwingData: [WeekSwingData] = [
+let weekPerfectSwingData: [WeekSwingData] = [
     .init(weekday: Date().date(2023,7,24).getWeekday(), count: 200),
     .init(weekday: Date().date(2023,7,25).getWeekday(), count: 100),
     .init(weekday: Date().date(2023,7,26).getWeekday(), count: 110),
@@ -39,13 +39,13 @@ let perfectSwingData: [WeekSwingData] = [
     .init(weekday: Date().date(2023,7,30).getWeekday(), count: 100),
 ]
 let weekPerSwingDataType: [WeekPerSwingDataType] = [
-    .init(swingDataType: "전체 스윙 횟수", data: totalSwingData),
-    .init(swingDataType: "퍼펙트 스윙 횟수", data: perfectSwingData)
+    .init(swingDataType: "전체 스윙 횟수", data: weekTotalSwingData),
+    .init(swingDataType: "퍼펙트 스윙 횟수", data: weekPerfectSwingData)
 ]
 
 struct WeekChartview: View {
-    var totalSwingAverage = 0 // 전체 스윙 평균
-    var perfectSwingAverage = 0 // 퍼펙트 스윙 평균
+    var weekTotalSwingAverage = 0 // 전체 스윙 평균
+    var weekPerfectSwingAverage = 0 // 퍼펙트 스윙 평균
     
     init() {
         var totalSum = 0
@@ -61,8 +61,8 @@ struct WeekChartview: View {
                 }
             }
         }
-        totalSwingAverage = totalSum / totalSwingData.count
-        perfectSwingAverage = perfectSum / perfectSwingData.count
+        weekTotalSwingAverage = totalSum / weekTotalSwingData.count
+        weekPerfectSwingAverage = perfectSum / weekPerfectSwingData.count
     }
     
     var body: some View {
@@ -79,13 +79,13 @@ struct WeekChartview: View {
                 }
             }
             RuleMark(
-                y:.value("Total Average", totalSwingAverage)
+                y:.value("Total Average", weekTotalSwingAverage)
             )
             .foregroundStyle(Color("TennisGreen"))
             .lineStyle(StrokeStyle(dash: [2]))
             
             RuleMark(
-                y: .value("Perfect Average", perfectSwingAverage)
+                y: .value("Perfect Average", weekPerfectSwingAverage)
             )
             .foregroundStyle(Color("TennisSkyBlue"))
             .lineStyle(StrokeStyle(dash: [2]))

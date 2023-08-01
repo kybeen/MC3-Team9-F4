@@ -22,7 +22,7 @@ struct ManyMonthsPerSwingDataType: Identifiable {
 }
 let sixMonthsTotalSwingData: [ManyMonthsSwingData] = [
     .init(month: Date().date2(2023, 2).getMonth(), count: 1000),
-    .init(month: Date().date2(2023, 3).getMonth(), count: 1200),
+    .init(month: Date().date2(2023, 3).getMonth(), count: 1400),
     .init(month: Date().date2(2023, 4).getMonth(), count: 600),
     .init(month: Date().date2(2023, 5).getMonth(), count: 1100),
     .init(month: Date().date2(2023, 6).getMonth(), count: 700),
@@ -32,7 +32,7 @@ let sixMonthsPerfectSwingData: [ManyMonthsSwingData] = [
     .init(month: Date().date2(2023, 2).getMonth(), count: 900),
     .init(month: Date().date2(2023, 3).getMonth(), count: 1050),
     .init(month: Date().date2(2023, 4).getMonth(), count: 430),
-    .init(month: Date().date2(2023, 5).getMonth(), count: 1030),
+    .init(month: Date().date2(2023, 5).getMonth(), count: 800),
     .init(month: Date().date2(2023, 6).getMonth(), count: 500),
     .init(month: Date().date2(2023, 7).getMonth(), count: 700),
 ]
@@ -88,26 +88,6 @@ struct SixMonthsChartView: View {
             .foregroundStyle(Color("TennisSkyBlue"))
             .lineStyle(StrokeStyle(dash: [2]))
         }
-//        .chartXAxis {
-////            // 1, 10, 20, 30일에만 X축에 표시
-////            AxisMarks(values: .stride(by: .day)) { value in
-////                if Calendar.current.component(.day, from: value.as(Date.self)!) % 10 == 0 {
-////                    AxisValueLabel(
-////                        format: .dateTime.day()
-////                    )
-////                } else if Calendar.current.component(.day, from: value.as(Date.self)!) == 1 {
-////                    AxisValueLabel(
-////                        format: .dateTime.day()
-////                    )
-////                }
-////            }
-//            // 월요일에만 표시
-//            AxisMarks(values: .stride(by: .day)) { value in
-//                if value.as(Date.self)?.getWeekday() == "월" {
-//                    AxisValueLabel(format: .dateTime.day())
-//                }
-//            }
-//        }
         .chartYAxis {
             AxisMarks(preset: .extended)
         }

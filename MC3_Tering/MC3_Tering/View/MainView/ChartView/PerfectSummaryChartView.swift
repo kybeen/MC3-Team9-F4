@@ -8,7 +8,7 @@
 import Charts
 import SwiftUI
 
-//MARK: - 기록 탭뷰 하단 차트
+//MARK: - 기록 탭뷰 하단 퍼펙트 요약 차트
 struct PerfectSummaryChartView: View {
     var titleLabel: String
     var descriptionLabel: String
@@ -27,7 +27,7 @@ struct PerfectSummaryChartView: View {
                     .cornerRadius(13)
                     .padding(.top, 14)
                 VStack(spacing: 0) {
-                    Text("지난 \(descriptionLabel)간 총 Perfect Swing 수는 평균 \(perfectSwingAverage)회 입니다.")
+                    Text("지난 \(descriptionLabel)간 총 Perfect Swing 수는\n평균 \(perfectSwingAverage)회 입니다.")
                         .font(.custom("Inter-SemiBold", size: 16))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .foregroundColor(Color.theme.teWhite)

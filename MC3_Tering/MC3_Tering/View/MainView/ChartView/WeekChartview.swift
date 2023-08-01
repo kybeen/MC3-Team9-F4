@@ -44,8 +44,8 @@ let weekPerSwingDataType: [WeekPerSwingDataType] = [
 ]
 
 struct WeekChartview: View {
-    var weekTotalSwingAverage = 0 // 전체 스윙 평균
-    var weekPerfectSwingAverage = 0 // 퍼펙트 스윙 평균
+    var weekTotalSwingAverage: Double = 0 // 전체 스윙 평균
+    var weekPerfectSwingAverage: Double = 0 // 퍼펙트 스윙 평균
     
     init() {
         var totalSum = 0
@@ -61,8 +61,8 @@ struct WeekChartview: View {
                 }
             }
         }
-        weekTotalSwingAverage = totalSum / weekTotalSwingData.count
-        weekPerfectSwingAverage = perfectSum / weekPerfectSwingData.count
+        weekTotalSwingAverage = Double(totalSum / weekTotalSwingData.count)
+        weekPerfectSwingAverage = Double(perfectSum / weekPerfectSwingData.count)
     }
     
     var body: some View {
@@ -100,7 +100,9 @@ struct WeekChartview: View {
             .padding()
             .frame(height: UIScreen.main.bounds.height*0.5)
             
-            PerfectSummaryChartView(titleLabel: "주간 활동", descriptionLabel: "7일", perfectSwingAverage: weekPerfectSwingAverage)
+            PerfectSummaryChartView(titleLabel: "주간 활동", descriptionLabel: "7일", perfectSwingAverage: Int(weekPerfectSwingAverage))
+            
+            WorkoutSummaryChartView(timeAverage: 4, caloryAverage: 200) //TODO: 인자값 바꾸기
         }
     }
 }

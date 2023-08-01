@@ -71,6 +71,13 @@
 		16BB115C2A735ADB00C096D9 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BB115B2A735ADB00C096D9 /* SelectView.swift */; };
 		B82111502A7413960043CE6D /* WorkoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B821114F2A7413960043CE6D /* WorkoutManager.swift */; };
 		B82111762A75629A0043CE6D /* ElapsedTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82111752A75629A0043CE6D /* ElapsedTimeView.swift */; };
+		B82111782A76947A0043CE6D /* RecordChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82111772A76947A0043CE6D /* RecordChartView.swift */; };
+		B87504722A778F740098167A /* WeekChartview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87504712A778F740098167A /* WeekChartview.swift */; };
+		B87504742A778F850098167A /* MonthChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87504732A778F850098167A /* MonthChartView.swift */; };
+		B87504762A778F8D0098167A /* SixMonthsChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87504752A778F8D0098167A /* SixMonthsChartView.swift */; };
+		B87504782A778F960098167A /* YearChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87504772A778F960098167A /* YearChartView.swift */; };
+		B875047A2A7790610098167A /* CustomSegmentedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87504792A7790610098167A /* CustomSegmentedView.swift */; };
+		B875047C2A7792B80098167A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B875047B2A7792B80098167A /* DateExtension.swift */; };
 		B87CEBFA2A70B2B00038BFDB /* TeringClassifier_totalData_window200.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBF92A70B2B00038BFDB /* TeringClassifier_totalData_window200.mlmodel */; };
 		B87CEBFC2A70B37E0038BFDB /* TennisClassifierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBFB2A70B37E0038BFDB /* TennisClassifierViewModel.swift */; };
 		B87CEBFE2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBFD2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel */; };
@@ -190,6 +197,13 @@
 		B821114E2A7409080043CE6D /* MC3-Tering-Watch-Watch-App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC3-Tering-Watch-Watch-App-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B821114F2A7413960043CE6D /* WorkoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutManager.swift; sourceTree = "<group>"; };
 		B82111752A75629A0043CE6D /* ElapsedTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeView.swift; sourceTree = "<group>"; };
+		B82111772A76947A0043CE6D /* RecordChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordChartView.swift; sourceTree = "<group>"; };
+		B87504712A778F740098167A /* WeekChartview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekChartview.swift; sourceTree = "<group>"; };
+		B87504732A778F850098167A /* MonthChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthChartView.swift; sourceTree = "<group>"; };
+		B87504752A778F8D0098167A /* SixMonthsChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixMonthsChartView.swift; sourceTree = "<group>"; };
+		B87504772A778F960098167A /* YearChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearChartView.swift; sourceTree = "<group>"; };
+		B87504792A7790610098167A /* CustomSegmentedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedView.swift; sourceTree = "<group>"; };
+		B875047B2A7792B80098167A /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		B87CEBF92A70B2B00038BFDB /* TeringClassifier_totalData_window200.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_totalData_window200.mlmodel; sourceTree = "<group>"; };
 		B87CEBFB2A70B37E0038BFDB /* TennisClassifierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TennisClassifierViewModel.swift; sourceTree = "<group>"; };
 		B87CEBFD2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_totalData_window100.mlmodel; sourceTree = "<group>"; };
@@ -273,6 +287,7 @@
 			children = (
 				160B1E892A6F94D600A708CC /* MainView.swift */,
 				160B1E8B2A6F94E100A708CC /* RingChartsView.swift */,
+				B87504702A778D3E0098167A /* ChartView */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -281,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				160B1E8D2A6F950C00A708CC /* ColorExtension.swift */,
+				B875047B2A7792B80098167A /* DateExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -307,6 +323,7 @@
 				160B1E9A2A6F960F00A708CC /* Font */,
 				160B1E992A6F960A00A708CC /* Gif */,
 				160B1ED62A6F96BE00A708CC /* CustomBackButton.swift */,
+				B87504792A7790610098167A /* CustomSegmentedView.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -586,6 +603,18 @@
 			path = ResultView;
 			sourceTree = "<group>";
 		};
+		B87504702A778D3E0098167A /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				B82111772A76947A0043CE6D /* RecordChartView.swift */,
+				B87504712A778F740098167A /* WeekChartview.swift */,
+				B87504732A778F850098167A /* MonthChartView.swift */,
+				B87504752A778F8D0098167A /* SixMonthsChartView.swift */,
+				B87504772A778F960098167A /* YearChartView.swift */,
+			);
+			path = ChartView;
+			sourceTree = "<group>";
+		};
 		B87CEBF82A70B29E0038BFDB /* MLModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -737,6 +766,7 @@
 				160B1E722A6F93BD00A708CC /* CameraView.swift in Sources */,
 				1687E2DD2A6F70DD0004D87A /* ViewModelPhone.swift in Sources */,
 				1687E2B92A6F6FD20004D87A /* ContentView.swift in Sources */,
+				B87504722A778F740098167A /* WeekChartview.swift in Sources */,
 				C99DF3392A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift in Sources */,
 				1687E3122A6F79900004D87A /* EmitterManager.swift in Sources */,
 				160B1E842A6F948300A708CC /* UserInfoSettingView.swift in Sources */,
@@ -744,9 +774,12 @@
 				1687E3222A6F7A300004D87A /* WorkOutDataModel.swift in Sources */,
 				160B1E762A6F93D400A708CC /* CameraModel.swift in Sources */,
 				160B1E822A6F947700A708CC /* SettingView.swift in Sources */,
+				B87504762A778F8D0098167A /* SixMonthsChartView.swift in Sources */,
 				160B1E7E2A6F944A00A708CC /* TodayDetailView.swift in Sources */,
 				160B1E7A2A6F940800A708CC /* EmitterView.swift in Sources */,
 				160B1E742A6F93CC00A708CC /* CameraViewModel.swift in Sources */,
+				B82111782A76947A0043CE6D /* RecordChartView.swift in Sources */,
+				B87504782A778F960098167A /* YearChartView.swift in Sources */,
 				160B1E862A6F948D00A708CC /* UserStrokeSettingView.swift in Sources */,
 				160B1E7C2A6F943600A708CC /* OnboardingView.swift in Sources */,
 				1687E2B72A6F6FD20004D87A /* MC3_TeringApp.swift in Sources */,
@@ -759,8 +792,11 @@
 				C99DF32B2A6FA4CA002DCED7 /* UserInfo.xcdatamodeld in Sources */,
 				160B1ED52A6F969A00A708CC /* GifView.swift in Sources */,
 				160B1E8C2A6F94E100A708CC /* RingChartsView.swift in Sources */,
+				B875047C2A7792B80098167A /* DateExtension.swift in Sources */,
+				B87504742A778F850098167A /* MonthChartView.swift in Sources */,
 				C99DF3382A6FA6C1002DCED7 /* UserData+CoreDataClass.swift in Sources */,
 				1687E2DF2A6F71180004D87A /* TestPhoneView.swift in Sources */,
+				B875047A2A7790610098167A /* CustomSegmentedView.swift in Sources */,
 				160B1E802A6F946100A708CC /* GuideView.swift in Sources */,
 				1687E31E2A6F7A0B0004D87A /* CoreDataManager.swift in Sources */,
 				C93885DC2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift in Sources */,

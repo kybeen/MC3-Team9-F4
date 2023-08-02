@@ -10,9 +10,9 @@ import SwiftUI
 
 //MARK: - 기록 탭뷰 하단 운동시간,칼로리 요약 차트
 struct WorkoutSummaryChartView: View {
-    var descriptionLabel: String = "7일간"
-    var timeAverage: Double
-    var caloryAverage: Double
+    var descriptionLabel: String = "7일"
+    var timeAverage: Int
+    var caloryAverage: Int
     
     var body: some View {
         ZStack {
@@ -23,7 +23,7 @@ struct WorkoutSummaryChartView: View {
                 .cornerRadius(13)
                 .padding(.top, 14)
             VStack(spacing: 0) {
-                Text("지난 \(descriptionLabel)간 운동시간과 소모한 칼로리는\n각 평균 \(String(format: "%.2f", timeAverage))시간, \(String(format: "%.2f", caloryAverage))칼로리 입니다.")
+                Text("지난 \(descriptionLabel)간 운동시간과 소모한 칼로리는\n각 평균 \(timeAverage)분, \(caloryAverage)칼로리 입니다.")
                     .font(.custom("Inter-SemiBold", size: 16))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .foregroundColor(Color.theme.teWhite)
@@ -49,47 +49,45 @@ struct WorkoutSummaryChartView: View {
                     RuleMark(
                         y:.value("Workout Time Average", timeAverage)
                     )
-                    .foregroundStyle(Color("TennisGreen"))
-                    .lineStyle(StrokeStyle(dash: [2.5]))
+                    .foregroundStyle(Color("TennisWhite"))
+                    .lineStyle(StrokeStyle(lineWidth: 2.5, dash: [2]))
                     .annotation(position: .leading, alignment: .leading) {
-                        HStack(alignment: .bottom, spacing: 0) {
-                            Text("\(String(format: "%.2f", timeAverage))")
+                        HStack(alignment: .lastTextBaseline, spacing: 0) {
+                            Text("\(timeAverage)")
                                 .font(.custom("Inter-SemiBold", size: 32))
-                            Text("시간")
+                            Text("분")
                                 .font(.custom("Inter-SemiBold", size: 12))
                         }
-                        .foregroundColor(Color("TennisSkyBlue"))
+                        .foregroundColor(Color("TennisWhite"))
                     }
                     
                     RuleMark(
                         y: .value("Burned Calory Average", caloryAverage)
                     )
                     .foregroundStyle(Color("TennisSkyBlue"))
-                    .lineStyle(StrokeStyle(dash: [2.5]))
+                    .lineStyle(StrokeStyle(lineWidth: 2.5, dash: [2]))
                     .annotation(position: .leading, alignment: .leading) {
-                        HStack(alignment: .bottom, spacing: 0) {
-                            Text("\(String(format: "%.2f", caloryAverage))")
+                        HStack(alignment: .lastTextBaseline, spacing: 0) {
+                            Text("\(caloryAverage)")
                                 .font(.custom("Inter-SemiBold", size: 32))
                             Text("kcal")
                                 .font(.custom("Inter-SemiBold", size: 12))
                         }
-                        .foregroundColor(Color("TennisWhite"))
+                        .foregroundColor(Color("TennisSkyBlue"))
                     }
                 }
                 .chartForegroundStyleScale([
-                    "전체 스윙 횟수": .linearGradient(colors: [Color("TennisGreen"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0.0), endPoint: .init(x: 0.5, y: 0.8)),
-                    "퍼펙트 스윙 횟수": .linearGradient(colors: [Color("TennisSkyBlue"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0), endPoint: .init(x: 0.5, y: 0.9))
+                    "전체 스윙 횟수": .linearGradient(colors: [Color("TennisSkyBlue"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0.0), endPoint: .init(x: 0.5, y: 0.8)),
+                    "퍼펙트 스윙 횟수": .linearGradient(colors: [Color("TennisWhite"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0.0), endPoint: .init(x: 0.5, y: 1.2))
                 ])
                 .chartXAxis(.hidden)
                 .chartYAxis(.hidden)
-                .frame(height: 160)
+                .frame(width: 220, height: 160)
                 .padding(.top, 30)
                 .padding(.leading, 70)
             }
             .padding(EdgeInsets(top: 10, leading: 15, bottom: 0, trailing: 15))
         }
-        .padding(.leading, 17)
-        .padding(.trailing, 17)
     }
 }
 

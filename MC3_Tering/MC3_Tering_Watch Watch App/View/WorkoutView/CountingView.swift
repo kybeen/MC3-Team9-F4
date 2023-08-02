@@ -126,27 +126,46 @@ struct ChekingSwingView: View {
     
     
     var body: some View {
-        ZStack {
-//            TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
-//                .frame(width: 150, height: 150, alignment: .center)
-            
-//            Text("\(tennisClassifierViewModel.timestamp)").foregroundColor(.blue) //MARK: 테스트용
-//
-            //MARK: - TimeCircleProgressBar를 NavigationLink에 넣지 않으면 한 번 스윙한 뒤 멈춤
-            // 스윙 결과 확인되면 MeasuringView로 넘어감
-            NavigationLink(destination: MeasuringView(), isActive: tennisClassifierViewModel.isSwingBinding, label: {
-                TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
-                    .frame(width: 150, height: 150, alignment: .center)
-//                EmptyView()
-            })
+        VStack {
+            TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
+                .frame(width: 150, height: 150, alignment: .center)
+        }
+        .background(
+            NavigationLink(destination: MeasuringView(), isActive: tennisClassifierViewModel.isSwingBinding) {
+                EmptyView()
+            }
+            .hidden()
             .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to remove button visuals
             .background(Color.clear) // Make the background transparent
             .disabled(true) // 터치 시 내비게이션 동작 막아둠
-        }
+        )
         .onAppear {
             rate()
             countSwing()
         }
+        .navigationBarBackButtonHidden()
+        
+//        ZStack {
+////            TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
+////                .frame(width: 150, height: 150, alignment: .center)
+//
+////            Text("\(tennisClassifierViewModel.timestamp)").foregroundColor(.blue) //MARK: 테스트용
+////
+//            //MARK: - TimeCircleProgressBar를 NavigationLink에 넣지 않으면 한 번 스윙한 뒤 멈춤
+//            // 스윙 결과 확인되면 MeasuringView로 넘어감
+//            NavigationLink(destination: MeasuringView(), isActive: tennisClassifierViewModel.isSwingBinding, label: {
+//                TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
+//                    .frame(width: 150, height: 150, alignment: .center)
+////                EmptyView()
+//            })
+//            .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to remove button visuals
+//            .background(Color.clear) // Make the background transparent
+//            .disabled(true) // 터치 시 내비게이션 동작 막아둠
+//        }
+//        .onAppear {
+//            rate()
+//            countSwing()
+//        }
     }
 }
 

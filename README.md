@@ -1,3 +1,74 @@
+# MC3-Team9-F4
+
+
+<br>
+
+<br>
+
+<div align="center">
+<img width = "100" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/e56932eb-ac55-40bb-9a43-0002bcaeb24e">
+  
+# Tering
+</div>
+
+<div align="center">
+요약 이미지
+<!-- <img width="393" height="852" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/c82c0121-69fb-4373-b3d8-6ace2b23c992"> -->
+
+<br>
+
+<br>
+
+[<img width = "200" src="https://github-production-user-asset-6210df.s3.amazonaws.com/120548537/251533420-0eb9b31b-8203-48b7-8dcd-3725a8c9da49.png">](https://www.apple.com/kr/store)
+  
+</div>
+
+<br>
+
+## 📑 Description
+  
+테린이들의 테니스 자세 연습을 도와주는 앱
+  
+**Feature 1**  
+- Core Motion, CoreML 을 활용한 스윙 동작 감지 및 분류
+
+**Feature 2**
+- feature
+
+<br>
+
+<br>
+  
+## 🔍 Preview
+<img width="393" height="852" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/c82c0121-69fb-4373-b3d8-6ace2b23c992"> <img width="198" height="242" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/adfc81b0-772e-4115-9f8d-38370205e63e">
+<br>
+
+<br>
+
+## 💻 Development Environment
+
+<img height="20" src="https://img.shields.io/badge/iOS-16.0+-lightgray">  <img height="20" src="https://img.shields.io/badge/Xcode-14.3-skyblue">  <img height="20" src="https://img.shields.io/badge/Swift-5.8.1-orange"> <img height="20" src="https://img.shields.io/badge/Platform-iOS | watchOS-lightgreen"> 
+
+<br>
+
+<br>
+  
+## 🛠️ Tools
+**Design**  
+  
+<img height="23" src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white"/>  
+
+**Cowork**  
+
+<img height="23" src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=GitHub&logoColor=white"/>  <img height="23" src="https://img.shields.io/badge/Notion-FFFFFF?style=flat-square&logo=Notion&logoColor=black"/>  <img height="23" src="https://img.shields.io/badge/Miro-F2CA02?style=flat-square&logo=Miro&logoColor=black"/>
+<img height="23" src="https://img.shields.io/badge/Figma-F24E1E?style=flat-square&logo=Figma&logoColor=white"/>  
+
+<br>
+
+<br>
+
+
+
 ## **커밋 컨벤션**
   
 <details>
@@ -200,7 +271,44 @@ ex) [Design] MyView - MyView 레이아웃 디자인
 |Bazzi|Dana|Rei|Ted|
 |:---:|:---:|:---:|:---:|
 |<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC2-morning-Team12-DreamLog/assets/59696697/b3c7fd61-2f75-4df4-afc9-e9bfaaf85c23" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC2-morning-Team12-DreamLog/assets/59696697/fdcaffc5-09b9-465b-966b-7dbbef472c79" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC2-morning-Team12-DreamLog/assets/59696697/2a186821-5e3b-4f17-8dee-be16065a8783" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC2-morning-Team12-DreamLog/assets/59696697/188a6cfd-203e-4d62-9805-d3e4fb08e73d" width="150">
-|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/moonkey48)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/dayjack)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/KLJH1025)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/Taerogrammer)|
+|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/DhKimy)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/dayeong233)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/kybeen)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/Taerogrammer)|
 
 <br>
 
+
+
+
+
+
+
+<!-- ========================
+
+
+
+## 👩‍💻🧑‍💻 Authors
+
+<table>
+  <tr align=center>
+    <td><img src="https://github.com/hyunjuntyler/readme-templates/assets/120548537/43640bd5-32f0-4b71-8753-1a47454ae502"></td>
+    <td><img src="https://github.com/hyunjuntyler/readme-templates/assets/120548537/43640bd5-32f0-4b71-8753-1a47454ae502"></td>
+    <td><img src="https://github.com/hyunjuntyler/readme-templates/assets/120548537/43640bd5-32f0-4b71-8753-1a47454ae502"></td>
+    <td><img src="https://github.com/hyunjuntyler/readme-templates/assets/120548537/43640bd5-32f0-4b71-8753-1a47454ae502"></td>
+  <tr align=center>
+    <td>Link</td>
+    <td>Link</td>
+    <td>Link</td>
+    <td>Link</td>
+  </tr>
+    <tr align=center>
+    <td>Bazzi</td>
+    <td>Dana</td>
+    <td>Rei</td>
+    <td>Ted</td>
+  </tr>
+  <tr align=center>
+    <td>iOS Developer</td>
+    <td>Designer</td>
+    <td>iOS Developer</td>
+    <td>iOS Developer</td>
+  </tr>
+</table> -->

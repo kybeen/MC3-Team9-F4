@@ -83,13 +83,13 @@ struct WeekChartview: View {
                     y:.value("Total Average", weekTotalSwingAverage)
                 )
                 .foregroundStyle(Color("TennisGreen"))
-                .lineStyle(StrokeStyle(dash: [2]))
+                .lineStyle(StrokeStyle(lineWidth: 2.5, dash: [2]))
                 
                 RuleMark(
                     y: .value("Perfect Average", weekPerfectSwingAverage)
                 )
                 .foregroundStyle(Color("TennisSkyBlue"))
-                .lineStyle(StrokeStyle(dash: [2]))
+                .lineStyle(StrokeStyle(lineWidth: 2.5, dash: [2]))
             }
             .chartForegroundStyleScale([
                 "전체 스윙 횟수": .linearGradient(colors: [Color("TennisGreen"), Color("TennisBlack")], startPoint: .init(x: 0.5, y: 0.0), endPoint: .init(x: 0.5, y: 0.8)),
@@ -100,9 +100,17 @@ struct WeekChartview: View {
             .padding()
             .frame(height: UIScreen.main.bounds.height*0.5)
             
-            PerfectSummaryChartView(titleLabel: "주간 활동", descriptionLabel: "7일", perfectSwingAverage: Int(weekPerfectSwingAverage))
-            
-            WorkoutSummaryChartView(timeAverage: 4, caloryAverage: 200) //TODO: 인자값 바꾸기
+            VStack(spacing: 0) {
+                Text("주간 활동")
+                    .font(.custom("Inter-Bold", size: 24))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                PerfectSummaryChartView(descriptionLabel: "7일", perfectSwingAverage: Int(weekPerfectSwingAverage))
+                CompareChartView(periodLabel1: "지난 7일간", periodLabel2: "그 전주", swingLabel: "포핸드", raisedCount: 20, raiseState: true)
+                CompareChartView(periodLabel1: "지난 7일간", periodLabel2: "그 전주", swingLabel: "백핸드", raisedCount: 20, raiseState: true)
+                WorkoutSummaryChartView(timeAverage: 76, caloryAverage: 200) //TODO: 인자값 바꾸기
+            }
+            .padding(.leading, 17)
+            .padding(.trailing, 17)
         }
     }
 }

@@ -122,7 +122,7 @@ struct MonthChartView: View {
                         y: .value("Count", element.count),
                         stacking: .unstacked // 바 차트 겹쳐서 보기 위한 파라미터
                     )
-                    .cornerRadius(5)
+//                    .cornerRadius(5)
                     .foregroundStyle(by: .value("Swing Type", eachType.swingDataType))
                 }
             }

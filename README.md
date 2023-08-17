@@ -80,7 +80,7 @@
 
 ## 🔩 Tech & Skills
 
-<img width="73" src="https://img.shields.io/badge/SwiftUI-blue"> <img width="86" src="https://img.shields.io/badge/WatchKit-blue"> <img width="170" src="https://img.shields.io/badge/Watch Connectivity-blue"> <img width="110" src="https://img.shields.io/badge/Core Motion-blue"> <img width="75" src="https://img.shields.io/badge/CoreML-blue"> <br>
+<img width="73" src="https://img.shields.io/badge/SwiftUI-blue"> <img width="86" src="https://img.shields.io/badge/WatchKit-blue"> <img width="170" src="https://img.shields.io/badge/Watch Connectivity-blue"> <img width="110" src="https://img.shields.io/badge/Core Motion-blue"> <img width="75" src="https://img.shields.io/badge/CoreML-blue"> <img width="95" src="https://img.shields.io/badge/Create ML-blue"> <br>
 
 <br>
 

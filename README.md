@@ -135,34 +135,7 @@ MC3_Tering
           │   └── 📄 TestPhoneView.swift
           │
           └── 🗂 Util 
-          │   └── 📄 GifView.swift
-  └── MC3_Tering_Watch Watch App
-          |── 🗂 MLModel
-          │   │── 📄 TeringClassifier_totalData_window100.mlmodel
-          │   │── 📄 TeringClassifier_totalData_window200.mlmodel
-          │   └── 📄 TennisClassifierViewModel.swift
-          │
-          |── 🗂 Model
-          │   │── 📄 ViewModelWatch.swift
-          │   │── 📄 SwingInfo.swift
-          │   │── 📄 ParticleEffect.swift
-          │   │── 📄 HealthStartInfo.swift
-          │   │── 📄 HealthResultInfo.swift
-          │   │── 📄 SwingList.swift
-          │   │── 📄 HealthKitManager.swift
-          │   │── 📄 Particle.swift
-          │   └── 📄 WorkoutManager.swift
-          │
-          |── 🗂 View
-          │   │── 📁 StartView
-          │   │── 📁 WorkoutView
-          │   │── 📁 ResultView
-          │   └── 📁 EtcView
-          |
-          └── 🗂 Extension 
-              │── 📄 ColorExtension.swift
-              │── 📄 CircleProgressBar.swift
-              └── 📄 ElapsedTimeView.swift
+              └── 📄 GifView.swift
               
 ```
 

@@ -26,14 +26,20 @@
 <br>
 
 ## 📑 Description
-  
-테린이들의 테니스 자세 연습을 도와주는 앱
-  
-**Feature 1**  
-- Core Motion, CoreML 을 활용한 스윙 동작 감지 및 분류
 
-**Feature 2**
-- feature
+#### 📆 2023. 06. 19. ~ 2023. 08. 04. (7 weeks)
+
+### 테링은 테린이들의 테니스 자세 연습을 도와주는 앱입니다. 🎾
+
+반복되는 자세 연습에 지친 테니스 초심자들이 애플워치를 통해 즉각적으로 피드백을 받으면서 재밌게 연습을 할 수 있도록 앱을 만들게 되었습니다.
+  
+
+### 👉 Feature 1. Core Motion, CoreML 을 활용한 스윙 동작 감지 및 분류
+  - 테니스 연습을 시작하면 애플워치에서 센서값을 추적합니다.
+  - 스윙이 감지되면 스윙 동작 감지 ML 모델이 자세를 예측합니다.
+  - 모델의 예측 결과에 따라 어떤 자세인지(포핸드/백핸드)와 자세의 정확도에 따른 평가(Perfect/Bad)를 보여줍니다.
+
+### 👉 Feature 2. 햅틱을 통한 
 
 <br>
 
@@ -162,7 +168,7 @@ MC3_Tering
 
 <br>
 
-## **커밋 컨벤션**
+## **📝 커밋 컨벤션**
   
 <details>
 <summary>팀 협업용 깃허브 컨벤션 문서 </summary>
@@ -363,9 +369,9 @@ ex) [Design] MyView - MyView 레이아웃 디자인
 
 |Bazzi|Dana|Rei|Ted|
 |:---:|:---:|:---:|:---:|
-|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC2-morning-Team12-DreamLog/assets/59696697/b3c7fd61-2f75-4df4-afc9-e9bfaaf85c23" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC2-morning-Team12-DreamLog/assets/59696697/fdcaffc5-09b9-465b-966b-7dbbef472c79" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC2-morning-Team12-DreamLog/assets/59696697/2a186821-5e3b-4f17-8dee-be16065a8783" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC2-morning-Team12-DreamLog/assets/59696697/188a6cfd-203e-4d62-9805-d3e4fb08e73d" width="150">
+|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/1d974d8c-6f47-407f-b1dd-7e479ff9cd06" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/110ed58e-ef48-444c-9936-fc1d9c801739" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/0ff80250-8f22-44c5-9343-ddd1fa05846f" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/d74d2f35-cada-49d9-9c4e-826afa466754" width="150">
 |[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/DhKimy)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/dayeong233)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/kybeen)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/Taerogrammer)|
-
+| **💻 Developer** | **🎨 Designer** | **💻 Developer** | **💻 Developer** |
 <br>
 
 
@@ -399,9 +405,9 @@ ex) [Design] MyView - MyView 레이아웃 디자인
     <td>Ted</td>
   </tr>
   <tr align=center>
-    <td>iOS Developer</td>
+    <td>Developer</td>
     <td>Designer</td>
-    <td>iOS Developer</td>
-    <td>iOS Developer</td>
+    <td>Developer</td>
+    <td>Developer</td>
   </tr>
 </table> -->

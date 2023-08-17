@@ -110,6 +110,7 @@
 
 ## 📁 **폴더링**
 
+- iOS
 ```
 MC3_Tering
   |
@@ -139,6 +140,7 @@ MC3_Tering
               
 ```
 
+- watchOS
 ```
 MC3_Tering
   |

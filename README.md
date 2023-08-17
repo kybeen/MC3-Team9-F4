@@ -42,12 +42,45 @@
 ## 🔍 Preview
 <img width="393" height="852" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/c82c0121-69fb-4373-b3d8-6ace2b23c992"> <img width="198" height="242" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/adfc81b0-772e-4115-9f8d-38370205e63e">
 <br>
+<!-- <br>
+
+## 🎥 **Preview**
+
+|PDF 파일 불러오기| 발표 정보 입력하기|
+|:---:|:---:|
+|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team17-ForJaeRin/assets/99160103/8df8b34b-7e37-4f4f-9219-40b6e9e3a01d"/>|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team17-ForJaeRin/assets/99160103/e39d8fa4-b8f7-4005-a640-4a598a3cbbea"/>|
+
+|발표 스크립트 작성하기| 발표 페이지 그룹 정하기|
+|:---:|:---:|
+|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team17-ForJaeRin/assets/99160103/ff27456b-6628-40f2-82bb-d258e33aed92"/>|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team17-ForJaeRin/assets/99160103/be665380-064a-4d46-9a01-068b860a6a35"/>|
+
+|발표 키워드 작성| 그룹 별 키워드 확인|
+|:---:|:---:|
+|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team17-ForJaeRin/assets/99160103/7a2b75d3-50e8-4431-b2ab-ea2b24a29aec"/>|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team17-ForJaeRin/assets/99160103/64b81c2a-232c-4a0a-ab03-472bd38bc175"/>|
+
+|발표 연습|발표 연습 상세 확인|
+|:---:|:---:|
+|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team17-ForJaeRin/assets/99160103/54d638df-745e-4042-9984-eac741824610"/>|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team17-ForJaeRin/assets/99160103/0a7f29a0-bffa-4199-8674-83b7d91b744c"/>|
+
+|이전 발표 프로젝트 불러오기| 이전 발표 연습 불러오기|
+|:---:|:---:|
+|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team17-ForJaeRin/assets/99160103/5eb9e572-3b9c-4b88-9554-326053b88ffe"/>|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team17-ForJaeRin/assets/99160103/74c5f7c7-0fd0-4b1c-bd7d-31df9ac22c66"/>|
+
+<br> -->
 
 <br>
 
 ## 💻 Development Environment
 
 <img height="20" src="https://img.shields.io/badge/iOS-16.0+-lightgray">  <img height="20" src="https://img.shields.io/badge/Xcode-14.3-skyblue">  <img height="20" src="https://img.shields.io/badge/Swift-5.8.1-orange"> <img height="20" src="https://img.shields.io/badge/Platform-iOS | watchOS-lightgreen"> 
+
+<br>
+
+<br>
+
+## 🔩 Tech & Skills
+
+<img width="73" src="https://img.shields.io/badge/SwiftUI-blue"> <img width="86" src="https://img.shields.io/badge/WatchKit-blue"> <img width="170" src="https://img.shields.io/badge/Watch Connectivity-blue"> <img width="110" src="https://img.shields.io/badge/Core Motion-blue"> <img width="75" src="https://img.shields.io/badge/CoreML-blue"> <br>
 
 <br>
 
@@ -67,7 +100,67 @@
 
 <br>
 
+<br>
 
+## 📁 **폴더링**
+
+```
+MC3_Tering
+  |
+  └── MC3_Tering
+          |── 🗂 Model
+          │   │── 📁 CongreteModel
+          │   │── 📁 CoreData
+          │   │── 📄 ViewModelPhone.swift
+          │   │── 📄 WorkoutDataModel.swift
+          │   └── 📄 UserDataModel.swift
+          │
+          |── 🗂 View
+          │   │── 📁 AppGuideView
+          │   │── 📁 CameraView
+          │   │── 📁 CongreteModalView
+          │   │── 📁 OnboardingView
+          │   │── 📁 TodayDetailView
+          │   │── 📁 GuideView
+          │   │── 📁 SettingView
+          │   │── 📁 MainView
+          │   │── 📁 Extension
+          │   │── 📄 ContentView.swift
+          │   └── 📄 TestPhoneView.swift
+          │
+          └── 🗂 Util 
+          │   └── 📄 GifView.swift
+  └── MC3_Tering_Watch Watch App
+          |── 🗂 MLModel
+          │   │── 📄 TeringClassifier_totalData_window100.mlmodel
+          │   │── 📄 TeringClassifier_totalData_window200.mlmodel
+          │   └── 📄 TennisClassifierViewModel.swift
+          │
+          |── 🗂 Model
+          │   │── 📄 ViewModelWatch.swift
+          │   │── 📄 SwingInfo.swift
+          │   │── 📄 ParticleEffect.swift
+          │   │── 📄 HealthStartInfo.swift
+          │   │── 📄 HealthResultInfo.swift
+          │   │── 📄 SwingList.swift
+          │   │── 📄 HealthKitManager.swift
+          │   │── 📄 Particle.swift
+          │   └── 📄 WorkoutManager.swift
+          │
+          |── 🗂 View
+          │   │── 📁 StartView
+          │   │── 📁 WorkoutView
+          │   │── 📁 ResultView
+          │   └── 📁 EtcView
+          |
+          └── 🗂 Extension 
+              │── 📄 ColorExtension.swift
+              │── 📄 CircleProgressBar.swift
+              └── 📄 ElapsedTimeView.swift
+              
+```
+
+<br>
 
 ## **커밋 컨벤션**
   

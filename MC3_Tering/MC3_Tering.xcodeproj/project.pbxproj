@@ -46,8 +46,6 @@
 		1687E2E72A6F72170004D87A /* SwingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2E62A6F72170004D87A /* SwingList.swift */; };
 		1687E2E92A6F721F0004D87A /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2E82A6F721F0004D87A /* Particle.swift */; };
 		1687E2EB2A6F72260004D87A /* ParticleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2EA2A6F72260004D87A /* ParticleEffect.swift */; };
-		1687E2ED2A6F72300004D87A /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2EC2A6F72300004D87A /* HealthKitManager.swift */; };
-		1687E2EF2A6F72540004D87A /* HealthStartInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2EE2A6F72540004D87A /* HealthStartInfo.swift */; };
 		1687E2F22A6F72ED0004D87A /* SwingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F12A6F72ED0004D87A /* SwingListView.swift */; };
 		1687E2F42A6F72F50004D87A /* SwingResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F32A6F72F50004D87A /* SwingResultView.swift */; };
 		1687E2F62A6F72FE0004D87A /* MeasuringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F52A6F72FE0004D87A /* MeasuringView.swift */; };
@@ -173,8 +171,6 @@
 		1687E2E62A6F72170004D87A /* SwingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingList.swift; sourceTree = "<group>"; };
 		1687E2E82A6F721F0004D87A /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
 		1687E2EA2A6F72260004D87A /* ParticleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleEffect.swift; sourceTree = "<group>"; };
-		1687E2EC2A6F72300004D87A /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
-		1687E2EE2A6F72540004D87A /* HealthStartInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStartInfo.swift; sourceTree = "<group>"; };
 		1687E2F12A6F72ED0004D87A /* SwingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingListView.swift; sourceTree = "<group>"; };
 		1687E2F32A6F72F50004D87A /* SwingResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingResultView.swift; sourceTree = "<group>"; };
 		1687E2F52A6F72FE0004D87A /* MeasuringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasuringView.swift; sourceTree = "<group>"; };
@@ -470,10 +466,8 @@
 				1687E2E22A6F714D0004D87A /* ViewModelWatch.swift */,
 				16AFA5452A72119D0097CC8F /* SwingInfo.swift */,
 				1687E2EA2A6F72260004D87A /* ParticleEffect.swift */,
-				1687E2EE2A6F72540004D87A /* HealthStartInfo.swift */,
 				16A219202A6FDDAD00952653 /* HealthResultInfo.swift */,
 				1687E2E62A6F72170004D87A /* SwingList.swift */,
-				1687E2EC2A6F72300004D87A /* HealthKitManager.swift */,
 				1687E2E82A6F721F0004D87A /* Particle.swift */,
 				B821114F2A7413960043CE6D /* WorkoutManager.swift */,
 			);
@@ -824,9 +818,7 @@
 				1687E2E52A6F716A0004D87A /* TestWatchView.swift in Sources */,
 				1687E3042A6F73360004D87A /* ResultView.swift in Sources */,
 				1687E2EB2A6F72260004D87A /* ParticleEffect.swift in Sources */,
-				1687E2ED2A6F72300004D87A /* HealthKitManager.swift in Sources */,
 				16AFA5462A72119D0097CC8F /* SwingInfo.swift in Sources */,
-				1687E2EF2A6F72540004D87A /* HealthStartInfo.swift in Sources */,
 				1687E2F42A6F72F50004D87A /* SwingResultView.swift in Sources */,
 				B87CEBFA2A70B2B00038BFDB /* TeringClassifier_totalData_window200.mlmodel in Sources */,
 				1687E2E92A6F721F0004D87A /* Particle.swift in Sources */,

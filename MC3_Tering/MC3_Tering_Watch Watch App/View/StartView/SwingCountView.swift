@@ -14,7 +14,6 @@ struct SwingCountView: View {
     @State private var isReadyViewActive = false
     @State private var strokeCount = 10
 
-//    @StateObject var healthManager = HealthKitManager()
     @EnvironmentObject var workoutManager: WorkoutManager
 
 //    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
@@ -43,8 +42,6 @@ struct SwingCountView: View {
                 .cornerRadius(40)
             }
             .onAppear {
-//                healthManager.requestAuthorization()
-//                healthManager.readCurrentCalories()
                 workoutManager.requestAuthorization()
                 
                 //MARK: - 클린 코드

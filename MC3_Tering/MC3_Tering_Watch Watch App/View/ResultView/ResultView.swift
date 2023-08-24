@@ -140,8 +140,6 @@ struct ResultEffectView: View {
 //MARK: - Tag(1)
 struct SwingRateView: View {
     @State var progressValue: Float = 0.0
-//    @State var perfectCount: Int = 30
-//    @State var badCount: Int = 30
     @State var fontSize: CGFloat = 20.0
     @EnvironmentObject var swingInfo: SwingInfo
     
@@ -162,53 +160,6 @@ struct SwingRateView: View {
 }
 
 //MARK: - Tag(2)
-//struct HealthKitView: View {
-//    @EnvironmentObject var swingListWrapper: SwingListWrapper
-//    //우선 타입 임의로 지정
-//    @State var workingMin: String = "00:00.00"
-//    @State private var bpm = 0
-//    @State var kcal: Int = 160
-//
-//    private var healthStore = HKHealthStore()
-//    let heartRateQuantity = HKUnit(from: "count/min")
-//
-//
-//    var body: some View {
-//        VStack(alignment: .leading) {
-//            Spacer()
-//            Text(workingMin)
-//                .font(.system(size: 40, weight: .medium))
-//                .foregroundColor(Color.watchColor.lightGreen)
-//                .padding(.bottom, 2)
-//
-//            Text("\(bpm) BPM")
-//                .font(.system(size: 20, weight: .medium))
-//
-//            Text("\(kcal) kcal")
-//                .font(.system(size: 20, weight: .medium))
-//                .padding(.bottom, 8)
-//
-//            Spacer()
-//            NavigationLink(destination: SwingListView(swingList: swingListWrapper.swingList)) {
-//                Text("완료")
-//                    .font(.system(size: 16, weight: .bold))
-//                    .foregroundColor(Color.black)
-//            }
-//
-//            .foregroundColor(Color.watchColor.black) // 2
-//            .background(Color.watchColor.lightGreen) // 3
-//            .cornerRadius(20)
-//
-//
-//        }
-//        .onAppear(perform: start)
-//    }
-//
-//}
-
-
-
-//MARK: - Tag(2) 도전
 struct HealthKitView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @State private var durationFormatter: DateComponentsFormatter = { // 운동 시간 formatter
@@ -217,11 +168,7 @@ struct HealthKitView: View {
         formatter.zeroFormattingBehavior = .pad
         return formatter
     }()
-//    @EnvironmentObject var swingListWrapper: SwingListWrapper
-    //우선 타입 임의로 지정
     
-//    @ObservedObject var healthManager = HealthKitManager()
-//    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
     @EnvironmentObject var healthResultInfo: HealthResultInfo
     @ObservedObject var model = ViewModelWatch()
     @EnvironmentObject var swingInfo: SwingInfo

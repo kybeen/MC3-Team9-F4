@@ -14,12 +14,8 @@ struct SwingCountView: View {
     @State private var isReadyViewActive = false
     @State private var strokeCount = 10
 
-//    @StateObject var healthManager = HealthKitManager()
     @EnvironmentObject var workoutManager: WorkoutManager
 
-//    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
-//    @EnvironmentObject var healthResultInfo: HealthResultInfo
-//    @State var selectedValue: Int = 0
     @EnvironmentObject var swingInfo: SwingInfo
 
     
@@ -30,7 +26,6 @@ struct SwingCountView: View {
                     .font(.system(size: 20, weight: .semibold))
                 Spacer()
                 HStack {
-                    //                countViewContainer()
                     selectingGoalView()
                 }
                 Spacer()
@@ -43,15 +38,7 @@ struct SwingCountView: View {
                 .cornerRadius(40)
             }
             .onAppear {
-//                healthManager.requestAuthorization()
-//                healthManager.readCurrentCalories()
                 workoutManager.requestAuthorization()
-                
-                //MARK: - 클린 코드
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                    getCurrentInfo()
-//                }
-                
             }
             .navigationBarBackButtonHidden()
             .navigationTitle("목록")
@@ -69,26 +56,10 @@ struct SwingCountView_Previews: PreviewProvider {
     }
 }
 
-//MARK: - Extension
-
-//extension SwingCountView {
-//    private func getCurrentInfo() {
-//        healthInfo.startCal = healthManager.currentCalories
-//
-//        healthInfo.startTime = Date()
-//
-//        print("time -> \(healthInfo.startTime)")
-//    }
-//
-//
-//}
-
-
 struct selectingGoalView: View {
     @State private var valueIndex: Int = 0
     let stepSize = 10
     let values: [Int]
-//    @Binding var selectedValue: Int
     @EnvironmentObject var swingInfo: SwingInfo
     
     init() {
@@ -98,7 +69,6 @@ struct selectingGoalView: View {
             tempValues.append(i)
         }
         self.values = tempValues
-//        self._selectedValue = selectedValue
     }
 
     var body: some View {

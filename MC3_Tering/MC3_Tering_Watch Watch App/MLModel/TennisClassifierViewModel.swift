@@ -179,19 +179,6 @@ class TennisClassifierViewModel: ObservableObject {
                         self.bufferRotY = []
                         self.bufferRotZ = []
                         self.isSwing = false // isSwing도 다시 false로 돌려놓는다.
-                        
-//                        // 아이폰으로 데이터 전송
-//                        self.watchViewModel.session.transferUserInfo([
-//                            "label": self.classLabel,
-//                            "result": self.resultLabel,
-//                            "confidence": self.confidence,
-//                            "forehandPerfectCount": self.forehandPerfectCount,
-//                            "forehandBadCount": self.forehandBadCount,
-//                            "backhandPerfectCount": self.backhandPerfectCount,
-//                            "backhandBadCount": self.backhandBadCount,
-//                            "totalCount": self.totalCount
-//                        ])
-//                        print("아이폰으로 데이터 전송 완료!!! ==> label: \(self.classLabel), result: \(self.resultLabel), confidence: \(self.confidence), forehandPerfectCount: \(self.forehandPerfectCount), forehandBadCount: \(self.forehandBadCount), backhandPerfectCount: \(self.backhandPerfectCount), backhandBadCount: \(self.backhandBadCount), totalCount: \(self.totalCount)")
                     }
                     else { // 버퍼 길이가 WINDOW_SIZE보다 작으면 계속 채워준다.
                         self.bufferAccX.append(deviceMotionData.userAcceleration.x)

@@ -227,59 +227,63 @@ struct HealthKitView: View {
     @EnvironmentObject var swingInfo: SwingInfo
     
     var body: some View {
-        if workoutManager.workout == nil {
-            ProgressView("운동 결과 저장 중...")
-                .navigationBarHidden(true)
-        } else {
-            VStack(alignment: .leading) {
-                Spacer()
-    //            let formattedTime = formatTime()
-    //            Text(formattedTime)
-    //                .font(.system(size: 40, weight: .medium))
-    //                .foregroundColor(Color.watchColor.lightGreen)
-    //                .padding(.bottom, 5)
-    //            Text("\(healthResultInfo.burningCal ?? 0) kcal")
-    //                .font(.system(size: 28, weight: .medium))
-    //                .padding(.bottom, 8)
-                Text(durationFormatter.string(from: workoutManager.workout?.duration ?? 0.0) ?? "")
-                    .font(.system(size: 40, weight: .medium))
-                    .foregroundColor(Color.watchColor.lightGreen)
-                    .padding(.top, 15)
-                    .padding(.bottom, 3)
-                Text(workoutManager.averageHeartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
-                    .font(.system(size: 28, weight: .medium))
-                    .padding(.bottom, 3)
-                Text(Measurement(
-                    value: workoutManager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0,
-                    unit: UnitEnergy.kilocalories).formatted(.measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number.precision(.fractionLength(0)))))
-                    .font(.system(size: 28, weight: .medium))
-                    .padding(.bottom, 3)
-                Spacer()
-    //            NavigationLink(destination: SwingCountView(swingList: swingListWrapper.swingList)) {
-    //                Text("완료")
-    //                    .font(.system(size: 20, weight: .bold))
-    //                    .foregroundColor(Color.black)
-    //            }
-                NavigationLink(destination: SwingCountView()) {
-                    Text("완료")
-                        .font(.system(size: 20, weight: .bold))
-                        .foregroundColor(Color.black)
+        VStack {
+            if workoutManager.isSaved == false {
+                Text("10초 미만의 운동 데이터는 저장되지 않습니다😭")
+            } else {
+                if workoutManager.workout == nil {
+                    ProgressView("운동 결과 저장 중...")
+                        .navigationBarHidden(true)
+                } else {
+                    VStack(alignment: .leading) {
+                        Spacer()
+            //            let formattedTime = formatTime()
+            //            Text(formattedTime)
+            //                .font(.system(size: 40, weight: .medium))
+            //                .foregroundColor(Color.watchColor.lightGreen)
+            //                .padding(.bottom, 5)
+            //            Text("\(healthResultInfo.burningCal ?? 0) kcal")
+            //                .font(.system(size: 28, weight: .medium))
+            //                .padding(.bottom, 8)
+                        Text(durationFormatter.string(from: workoutManager.workout?.duration ?? 0.0) ?? "")
+                            .font(.system(size: 40, weight: .medium))
+                            .foregroundColor(Color.watchColor.lightGreen)
+                            .padding(.top, 15)
+                            .padding(.bottom, 3)
+                        Text(workoutManager.averageHeartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
+                            .font(.system(size: 28, weight: .medium))
+                            .padding(.bottom, 3)
+                        Text(Measurement(
+                            value: workoutManager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0,
+                            unit: UnitEnergy.kilocalories).formatted(.measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number.precision(.fractionLength(0)))))
+                            .font(.system(size: 28, weight: .medium))
+                            .padding(.bottom, 3)
+                        Spacer()
+                    }
+                    .onAppear {
+                        print("===============================결과 확인===================================")
+                        print("저장된 평균 심박수 : \(healthResultInfo.averageHeartRate)")
+                        print("저장된 소모 칼로리 : \(healthResultInfo.burningCal)")
+                        print("저장된 운동 시간 : \(healthResultInfo.workOutTime)")
+                        print("저장된 운동일 : \(healthResultInfo.workOutDate)")
+                        print("======================================================================")
+                        sendSwingDataToPhone()
+                    }
                 }
-                .foregroundColor(Color.watchColor.black) // 2
-                .background(Color.watchColor.lightGreen) // 3
-                .cornerRadius(20)
             }
-            .onAppear {
-                print("===============================결과 확인===================================")
-                print("저장된 평균 심박수 : \(healthResultInfo.averageHeartRate)")
-                print("저장된 소모 칼로리 : \(healthResultInfo.burningCal)")
-                print("저장된 운동 시간 : \(healthResultInfo.workOutTime)")
-                print("저장된 운동일 : \(healthResultInfo.workOutDate)")
-                print("======================================================================")
-    //            healthManager.readCurrentCalories()
-                sendDataToPhone()
-                sendSwingDataToPhone()
+            
+            NavigationLink(destination: SwingCountView()) {
+                Text("완료")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(Color.black)
             }
+            .foregroundColor(Color.watchColor.black) // 2
+            .background(Color.watchColor.lightGreen) // 3
+            .cornerRadius(20)
+        }
+        .onDisappear {
+            workoutManager.isSaved = false
+            workoutManager.resetWorkout()
         }
     }
 
@@ -317,13 +321,6 @@ extension HealthKitView {
 //        }
 //        return "00:00:00"
 //    }
-    
-    private func sendDataToPhone() {
-//        self.model.session.transferUserInfo(["calories" : self.healthResultInfo.burningCal])
-//        self.model.session.transferUserInfo(["time" : self.healthResultInfo.workOutTime])
-//        self.model.session.transferUserInfo(["date" : self.healthResultInfo.workOutDate])
-        print("message send")
-    }
     
     private func sendSwingDataToPhone() {
         self.model.session.transferUserInfo([

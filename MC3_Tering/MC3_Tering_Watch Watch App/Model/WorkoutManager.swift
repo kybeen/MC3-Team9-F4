@@ -74,12 +74,6 @@ class WorkoutManager: NSObject, ObservableObject {
                     print("권한이 아직 없습니다.")
                 }
             }
-//            for type in typesToShare {
-//                print("\(type)권한 상태 확인 -> Share: \(self.healthStore.authorizationStatus(for: type))")
-//            }
-//            for type in typesToRead {
-//                print("\(type)권한 상태 확인 -> Share: \(self.healthStore.authorizationStatus(for: type))")
-//            }
         }
     }
     
@@ -117,6 +111,7 @@ class WorkoutManager: NSObject, ObservableObject {
     @Published var heartRate: Double = 0 // 실시간 심박수
     @Published var activeEnergy: Double = 0 // 소모 칼로리
     @Published var workout: HKWorkout? // Workout 데이터
+    @Published var isSaved = false // Workout 데이터 저장 여부 변수 (10초 이상일 때만 저장하도록)
     
     //MARK: - Workout 세션 진행 중 값 업데이트 해주는 함수
     func updateForStatistics(_ statistics: HKStatistics?) {
@@ -161,14 +156,29 @@ extension WorkoutManager: HKWorkoutSessionDelegate {
         
         // Workout 세션 상태 == 종료 시
         if toState == .ended {
-            builder?.endCollection(withEnd: date) { (success, error) in
-                // workout 샘플 수집 중단
-                self.builder?.finishWorkout { (workout, error) in
-                    DispatchQueue.main.async {
-                        self.workout = workout // 운동 종료 시 workout 데이터 저장
-                        print("workout 저장: \(workout) -> \(self.workout)")
+            // 운동 시간이 10초 미만이면 workout 데이터를 저장하지 않고 종료
+            if Int(builder?.elapsedTime(at: Date()) ?? 0) < 10 {
+                builder?.discardWorkout()
+                self.workout = nil
+                print("\n\n")
+                print("운동 시간이 10초 미만이라 workout 데이터가 저장되지 않고 종료되었습니다. -> 운동 시간: \(Int(builder?.elapsedTime(at: Date()) ?? 0))")
+                print("세션 상태: \(session?.state.rawValue)")
+                print("workout: \(self.workout)")
+                print("\n\n")
+            } else { // 10초 이상이면 저장
+                builder?.endCollection(withEnd: date) { (success, error) in
+                    // workout 샘플 수집 중단
+                    self.builder?.finishWorkout { (workout, error) in
+                        DispatchQueue.main.async {
+                            self.workout = workout // 운동 종료 시 workout 데이터 저장
+                        }
                     }
                 }
+                print("\n\n")
+                print("운동 시간이 10초 이상이라 workout 데이터를 저장하고 종료되었습니다. -> 운동 시간: \(Int(builder?.elapsedTime(at: Date()) ?? 0))")
+                print("세션 상태: \(session?.state.hashValue)")
+                print("workout: \(self.workout)")
+                print("\n\n")
             }
         }
     }

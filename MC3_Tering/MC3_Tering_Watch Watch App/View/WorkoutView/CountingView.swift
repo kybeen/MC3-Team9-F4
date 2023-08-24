@@ -85,16 +85,15 @@ struct QuitView: View {
                 
                 NavigationLink(destination: ResultView(), isActive: $showResultView, label: {
                     Button("종료") {
-//                        print("===============================운동 종료===================================")
-//                        print("운동시간---> \(workoutManager.builder?.elapsedTime(at: context.date) ?? 0)")
-//                        print("평균 심박수---> \(workoutManager.averageHeartRate)")
-//                        print("칼로리---> \(workoutManager.activeEnergy)")
-//                        print("======================================================================")
-                        
-                        // Workout 데이터 HealthResultInfo 모델에 저장
-                        healthResultInfo.workOutTime = Int(((workoutManager.builder?.elapsedTime(at: context.date) ?? 0) / 60).rounded()) // 운동 시간(초 -> 분 단위로 변환)
-                        healthResultInfo.burningCal = Int(workoutManager.activeEnergy.rounded()) // 소모 칼로리
-                        healthResultInfo.averageHeartRate = Int(workoutManager.averageHeartRate.rounded()) // 평균 심박수
+                        // Workout 데이터 HealthResultInfo 모델에 저장 (운동 시간이 10초 이상일 때만 저장)
+                        if Int(workoutManager.builder?.elapsedTime(at: context.date) ?? 0) >= 10 {
+                            healthResultInfo.workOutTime = Int(((workoutManager.builder?.elapsedTime(at: context.date) ?? 0) / 60).rounded()) // 운동 시간(초 -> 분 단위로 변환)
+                            healthResultInfo.burningCal = Int(workoutManager.activeEnergy.rounded()) // 소모 칼로리
+                            healthResultInfo.averageHeartRate = Int(workoutManager.averageHeartRate.rounded()) // 평균 심박수
+                            workoutManager.isSaved = true
+                        } else {
+                            print("10초 미만의 운동 결과는 저장되지 않습니다. -> \(Int(workoutManager.builder?.elapsedTime(at: context.date) ?? 0))초")
+                        }
                         
                         workoutManager.endWorkout() // 운동 세션 및 모션 감지 종료
                         showResultView = true

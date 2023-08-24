@@ -86,9 +86,9 @@
 		C93885D82A7352FD006FFB1A /* forehandSwing.gif in Resources */ = {isa = PBXBuildFile; fileRef = C93885D62A7352FD006FFB1A /* forehandSwing.gif */; };
 		C93885DB2A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885D92A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift */; };
 		C93885DC2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */; };
+		C95DC4742A97284A00649FF7 /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DC4722A97284A00649FF7 /* UserData+CoreDataClass.swift */; };
+		C95DC4752A97284A00649FF7 /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DC4732A97284A00649FF7 /* UserData+CoreDataProperties.swift */; };
 		C99DF32B2A6FA4CA002DCED7 /* UserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3292A6FA4CA002DCED7 /* UserInfo.xcdatamodeld */; };
-		C99DF3382A6FA6C1002DCED7 /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3342A6FA6C1002DCED7 /* UserData+CoreDataClass.swift */; };
-		C99DF3392A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3352A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift */; };
 		C9A645252A72930200B326C5 /* AppGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A645242A72930200B326C5 /* AppGuideView.swift */; };
 		C9AEE53F2A6FAADE0071C863 /* Inter-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3432A6FA755002DCED7 /* Inter-Black.otf */; };
 		C9AEE5402A6FAAE20071C863 /* Inter-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3492A6FA755002DCED7 /* Inter-BlackItalic.otf */; };
@@ -213,10 +213,10 @@
 		C93885D62A7352FD006FFB1A /* forehandSwing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = forehandSwing.gif; sourceTree = "<group>"; };
 		C93885D92A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C95DC4722A97284A00649FF7 /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		C95DC4732A97284A00649FF7 /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C99DF3282A6FA246002DCED7 /* MC3-Tering-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC3-Tering-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C99DF32A2A6FA4CA002DCED7 /* UserInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserInfo.xcdatamodel; sourceTree = "<group>"; };
-		C99DF3342A6FA6C1002DCED7 /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C99DF3352A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C99DF33C2A6FA754002DCED7 /* Inter-V.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-V.ttf"; sourceTree = "<group>"; };
 		C99DF33D2A6FA754002DCED7 /* Inter-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
 		C99DF33E2A6FA754002DCED7 /* Inter-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.otf"; sourceTree = "<group>"; };
@@ -527,8 +527,8 @@
 		1687E3102A6F79750004D87A /* UserData */ = {
 			isa = PBXGroup;
 			children = (
-				C99DF3342A6FA6C1002DCED7 /* UserData+CoreDataClass.swift */,
-				C99DF3352A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift */,
+				C95DC4722A97284A00649FF7 /* UserData+CoreDataClass.swift */,
+				C95DC4732A97284A00649FF7 /* UserData+CoreDataProperties.swift */,
 			);
 			path = UserData;
 			sourceTree = "<group>";
@@ -770,8 +770,8 @@
 				1687E2DD2A6F70DD0004D87A /* ViewModelPhone.swift in Sources */,
 				B82E484F2A7944B500E38151 /* PerfectSummaryChartView.swift in Sources */,
 				1687E2B92A6F6FD20004D87A /* ContentView.swift in Sources */,
+				C95DC4752A97284A00649FF7 /* UserData+CoreDataProperties.swift in Sources */,
 				B87504722A778F740098167A /* WeekChartview.swift in Sources */,
-				C99DF3392A6FA6C1002DCED7 /* UserData+CoreDataProperties.swift in Sources */,
 				1687E3122A6F79900004D87A /* EmitterManager.swift in Sources */,
 				160B1E842A6F948300A708CC /* UserInfoSettingView.swift in Sources */,
 				160B1E882A6F949900A708CC /* UserProfileSettingView.swift in Sources */,
@@ -800,11 +800,11 @@
 				B82E48512A79634400E38151 /* CompareChartView.swift in Sources */,
 				B875047C2A7792B80098167A /* DateExtension.swift in Sources */,
 				B87504742A778F850098167A /* MonthChartView.swift in Sources */,
-				C99DF3382A6FA6C1002DCED7 /* UserData+CoreDataClass.swift in Sources */,
 				1687E2DF2A6F71180004D87A /* TestPhoneView.swift in Sources */,
 				B875047A2A7790610098167A /* CustomSegmentedView.swift in Sources */,
 				160B1E802A6F946100A708CC /* GuideView.swift in Sources */,
 				1687E31E2A6F7A0B0004D87A /* CoreDataManager.swift in Sources */,
+				C95DC4742A97284A00649FF7 /* UserData+CoreDataClass.swift in Sources */,
 				C93885DC2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -979,7 +979,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = RCM87YWJ79;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Info.plist";
@@ -1000,7 +1000,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kybeen.com.ted.MC3-Tering";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1021,7 +1021,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = RCM87YWJ79;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Info.plist";
@@ -1063,7 +1063,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3_Tering_Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = RCM87YWJ79;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Watch-Watch-App-Info.plist";
@@ -1072,13 +1072,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "kybeen.com.ted.MC3-Tering";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kybeen.com.ted.MC3-Tering.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1098,7 +1098,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3_Tering_Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = RCM87YWJ79;
+				DEVELOPMENT_TEAM = UULN4L9KLP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Watch-Watch-App-Info.plist";
@@ -1107,13 +1107,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "kybeen.com.ted.MC3-Tering";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "kybeen.com.ted.MC3-Tering.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

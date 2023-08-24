@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UserDataModel: ObservableObject {
     static let shared = UserDataModel()
@@ -28,6 +29,7 @@ class UserDataModel: ObservableObject {
     @Published public var totalSwingCount = 0
     @Published public var totalPerfectCount = 0
     @Published public var userPerfectRatio = 0.0
+    @Published public var profileImage: Data?
     
     private let coreDataManager = CoreDataManager.shared
     
@@ -55,6 +57,8 @@ class UserDataModel: ObservableObject {
         totalSwingCount = Int(userData.totalSwingCount)
         totalPerfectCount = Int(userData.totalPerfectCount)
         userPerfectRatio = userData.userPerfectRatio
+        profileImage = userData.profileImage ?? Data()
+        
     }
     
     func saveUserData() {
@@ -88,6 +92,7 @@ class UserDataModel: ObservableObject {
         user.totalSwingCount = Int16(totalSwingCount)
         user.totalPerfectCount = Int16(totalPerfectCount)
         user.userPerfectRatio = userPerfectRatio
+        user.profileImage = profileImage
         
         coreDataManager.update(object: user)
     }

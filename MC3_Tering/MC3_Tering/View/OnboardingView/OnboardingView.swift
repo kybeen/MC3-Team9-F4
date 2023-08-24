@@ -30,6 +30,7 @@ struct OnboardingView: View {
     @State private var nickname = ""
     @State private var sex = "남성"
     @State var onboardingPage = 0
+    @State private var profileImage: Data?
     
     var body: some View {
         ZStack {
@@ -255,9 +256,14 @@ extension OnboardingView {
                 .onChange(of: selectedItem) { newItem in
                     Task {
                         // Retrieve selected asset in the form of Data
-                        if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                            selectedImageData = data
+                        if let newItem = newItem {
+                            // Retrieve selected asset in the form of Data
+                            if let data = try? await newItem.loadTransferable(type: Data.self) {
+                                selectedImageData = data
+                                profileImage = data
+                            }
                         }
+                        
                     }
                 }
         }
@@ -518,7 +524,7 @@ extension OnboardingView {
         newUserData.userTitle2_List = ["병아리"] as NSObject
         newUserData.username = nickname
         newUserData.weight = Int16(weight) ?? 60
-        
+        newUserData.profileImage = profileImage
         coreDataManager.update(object: newUserData)
     }
     

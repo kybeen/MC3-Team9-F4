@@ -67,27 +67,19 @@ extension UserProfileSettingView {
             ZStack(alignment: .center) {
                 Circle()
                     .foregroundColor(Color.theme.teGray)
-                if let selectedImageData,
-                   let uiImage = UIImage(data: selectedImageData) {
+                if let savedImage = userDataModel.profileImage,
+                   let uiImage = UIImage(data: savedImage) {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
                         .frame(maxWidth: 129, maxHeight: 129)
                         .cornerRadius(100)
                 } else {
-                    if selectedImageData != nil {
-                        Image(uiImage: UIImage(data: selectedImageData!)!)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: 129, maxHeight: 129)
-                            .cornerRadius(100)
-                    } else {
-                        Image(systemName: "photo")
-                            .resizable()
-                            .scaledToFit()
-                            .foregroundColor(Color.theme.teWhite)
-                            .frame(width: 45)
-                    }
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color.theme.teWhite)
+                        .frame(width: 45)
                 }
             }
             .frame(maxWidth: 129, maxHeight: 129)
@@ -115,11 +107,19 @@ extension UserProfileSettingView {
                     )
             }
             .onChange(of: selectedItem) { newItem in
+                
+                
                 Task {
                     // Retrieve selected asset in the form of Data
-                    if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                        selectedImageData = data
+                    if let newItem = newItem {
+                        // Retrieve selected asset in the form of Data
+                        if let data = try? await newItem.loadTransferable(type: Data.self) {
+                            selectedImageData = data
+                            userDataModel.profileImage = selectedImageData
+                            userDataModel.saveUserData()
+                        }
                     }
+                    
                 }
             }
         

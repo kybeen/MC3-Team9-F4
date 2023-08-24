@@ -37,11 +37,20 @@ extension SettingView {
             ZStack(alignment: .center) {
                 Circle()
                     .foregroundColor(Color.theme.teGray)
-                Image(systemName: "photo")
-                    .resizable()
-                    .scaledToFit()
-                    .foregroundColor(Color.theme.teWhite)
-                    .frame(width: 45)
+                if let savedImage = userDataModel.profileImage,
+                   let uiImage = UIImage(data: savedImage) {
+                    Image(uiImage: uiImage)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: 129, maxHeight: 129)
+                        .cornerRadius(100)
+                } else {
+                    Image(systemName: "photo")
+                        .resizable()
+                        .scaledToFit()
+                        .foregroundColor(Color.theme.teWhite)
+                        .frame(width: 45)
+                }
             }
             .frame(maxWidth: 129, maxHeight: 129)
             .padding(.bottom, 20)

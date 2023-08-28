@@ -31,6 +31,11 @@
 		1656EEAA2A709C5400651C04 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3452A6FA755002DCED7 /* Inter-BoldItalic.otf */; };
 		1656EEAB2A709CD900651C04 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34D2A6FA756002DCED7 /* Inter-SemiBold.otf */; };
 		1656EEAF2A70DC3100651C04 /* TedCountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656EEAE2A70DC3100651C04 /* TedCountingView.swift */; };
+		1687D1522A9C8A1D00F97008 /* UserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3292A6FA4CA002DCED7 /* UserInfo.xcdatamodeld */; };
+		1687D1532A9C8A3300F97008 /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */; };
+		1687D1542A9C8A3600F97008 /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885D92A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift */; };
+		1687D1552A9C8A3A00F97008 /* WorkOutDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3212A6F7A300004D87A /* WorkOutDataModel.swift */; };
+		1687D1562A9C8A7900F97008 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E31D2A6F7A0B0004D87A /* CoreDataManager.swift */; };
 		1687E2B72A6F6FD20004D87A /* MC3_TeringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2B62A6F6FD20004D87A /* MC3_TeringApp.swift */; };
 		1687E2B92A6F6FD20004D87A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2B82A6F6FD20004D87A /* ContentView.swift */; };
 		1687E2BB2A6F6FD30004D87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1687E2BA2A6F6FD30004D87A /* Assets.xcassets */; };
@@ -817,6 +822,8 @@
 				1687E2FE2A6F731C0004D87A /* SwingListCellView.swift in Sources */,
 				1687E2E52A6F716A0004D87A /* TestWatchView.swift in Sources */,
 				1687E3042A6F73360004D87A /* ResultView.swift in Sources */,
+				1687D1562A9C8A7900F97008 /* CoreDataManager.swift in Sources */,
+				1687D1552A9C8A3A00F97008 /* WorkOutDataModel.swift in Sources */,
 				1687E2EB2A6F72260004D87A /* ParticleEffect.swift in Sources */,
 				16AFA5462A72119D0097CC8F /* SwingInfo.swift in Sources */,
 				1687E2F42A6F72F50004D87A /* SwingResultView.swift in Sources */,
@@ -832,13 +839,16 @@
 				1687E2FC2A6F73140004D87A /* GuideView.swift in Sources */,
 				16BB115C2A735ADB00C096D9 /* SelectView.swift in Sources */,
 				16BB115A2A734C4500C096D9 /* SwingCompleteView.swift in Sources */,
+				1687D1542A9C8A3600F97008 /* WorkOutData+CoreDataClass.swift in Sources */,
 				1687E3022A6F732B0004D87A /* CompleteView.swift in Sources */,
 				B82111762A75629A0043CE6D /* ElapsedTimeView.swift in Sources */,
 				1687E3002A6F73230004D87A /* CountingView.swift in Sources */,
 				1687E2E32A6F714D0004D87A /* ViewModelWatch.swift in Sources */,
+				1687D1522A9C8A1D00F97008 /* UserInfo.xcdatamodeld in Sources */,
 				1687E2F22A6F72ED0004D87A /* SwingListView.swift in Sources */,
 				1687E2E72A6F72170004D87A /* SwingList.swift in Sources */,
 				B87CEBFC2A70B37E0038BFDB /* TennisClassifierViewModel.swift in Sources */,
+				1687D1532A9C8A3300F97008 /* WorkOutData+CoreDataProperties.swift in Sources */,
 				1687E2CB2A6F70270004D87A /* MC3_Tering_WatchApp.swift in Sources */,
 				1687E2FA2A6F730C0004D87A /* SwingCountView.swift in Sources */,
 				1687E3072A6F74700004D87A /* ColorExtension.swift in Sources */,
@@ -979,7 +989,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = 49256BK4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Info.plist";
@@ -1000,7 +1010,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ted.MC3-Tering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1021,7 +1031,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = 49256BK4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Info.plist";
@@ -1042,7 +1052,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ted.MC3-Tering";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RESOURCES_TARGETED_DEVICE_FAMILY = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1063,7 +1073,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3_Tering_Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = 49256BK4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Watch-Watch-App-Info.plist";
@@ -1072,13 +1082,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ted.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ted.MC3-Tering.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1098,7 +1108,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3_Tering_Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = 49256BK4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Watch-Watch-App-Info.plist";
@@ -1107,13 +1117,13 @@
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "To track and record heart rate data for health analysis.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.ted.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.MC3-Tering.watchkitapp";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ted.MC3-Tering.watchkitapp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;

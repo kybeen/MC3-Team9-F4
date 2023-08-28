@@ -36,7 +36,7 @@ struct SelectView: View {
 //                .background(Color.watchColor.lightBlack)
 //                .cornerRadius(40)
                 
-                NavigationLink(destination: ResultView(), isActive: $showResultView, label: {
+                NavigationLink(destination: ResultView(workoutDataModel: WorkOutDataModel()), isActive: $showResultView, label: {
                     Button("종료") {
                         // Workout 데이터 HealthResultInfo 모델에 저장 (운동 시간이 10초 이상일 때만 저장)
                         if Int(workoutManager.builder?.elapsedTime(at: context.date) ?? 0) >= 10 {

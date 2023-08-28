@@ -14,6 +14,11 @@ import HealthKit
 
 struct ResultView: View {
     @State private var selectedTab = 1
+    @ObservedObject var workoutDataModel: WorkOutDataModel
+    
+    init(workoutDataModel: WorkOutDataModel) {
+        self.workoutDataModel = workoutDataModel
+    }
     
     var body: some View {
         NavigationView {
@@ -47,6 +52,7 @@ struct ResultView: View {
             }
             .onAppear {
                 selectedTab = 1
+                workoutDataModel.saveWorkOutData()
             }
         }
         .navigationTitle("요약")

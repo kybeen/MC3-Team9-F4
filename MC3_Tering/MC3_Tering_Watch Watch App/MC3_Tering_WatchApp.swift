@@ -14,6 +14,7 @@ struct MC3_Tering_Watch_Watch_AppApp: App {
     @StateObject var healthResultInfo = HealthResultInfo()
     @StateObject var swingInfo = SwingInfo()
     @StateObject var workoutManager = WorkoutManager()
+    @StateObject var workoutData = WorkOutDataModel()
     
     var body: some Scene {
         WindowGroup {
@@ -27,6 +28,7 @@ struct MC3_Tering_Watch_Watch_AppApp: App {
                 .environmentObject(swingInfo)
                 .environmentObject(workoutManager)
             //이거 왜 이러는거임?
+            
         }
     }
 }

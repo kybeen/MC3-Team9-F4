@@ -9,7 +9,7 @@ import Foundation
 
 class WorkOutDataModel: ObservableObject {
     static let shared = WorkOutDataModel()
-    private init() {
+    init() {
         fetchWorkOutData()
         calTodayChartData()
     }
@@ -89,6 +89,7 @@ class WorkOutDataModel: ObservableObject {
         workout.workoutTime = Int16(workoutTime)
         
         coreDataManager.update(object: workout)
+        print("save workout Data Done")
     }
     
     func fetchTodayAndYesterdayWorkout() {

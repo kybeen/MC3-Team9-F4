@@ -291,6 +291,7 @@
 			children = (
 				160B1E892A6F94D600A708CC /* MainView.swift */,
 				160B1E8B2A6F94E100A708CC /* RingChartsView.swift */,
+				C95DC4762A9C308B00649FF7 /* RecordListView.swift */,
 				B87504702A778D3E0098167A /* ChartView */,
 			);
 			path = MainView;
@@ -458,7 +459,6 @@
 				1687E2DE2A6F71180004D87A /* TestPhoneView.swift */,
 				160B1E982A6F960000A708CC /* Resource */,
 				160B1E952A6F95D800A708CC /* Preview Content */,
-				C95DC4762A9C308B00649FF7 /* RecordListView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

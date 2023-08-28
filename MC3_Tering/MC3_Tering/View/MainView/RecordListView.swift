@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RecordListView: View {
+    @ObservedObject var workoutDataModel: WorkOutDataModel
+    
     let months = ["2023년 7월", "2023년 8월", "2023년 9월"] // 월 데이터
     let swingCount = 120
     var body: some View {
@@ -28,9 +30,7 @@ struct RecordListView: View {
                                 Rectangle()
                                     .fill(Color.theme.teDarkGray)
                                     .cornerRadius(15)
-                                
                                     .frame(height: 100)
-                                
                                 HStack(spacing: 0) {
                                     ZStack {
                                         Circle()
@@ -41,7 +41,6 @@ struct RecordListView: View {
                                             .scaledToFit()
                                             .frame(width: 35)
                                     }
-                                    
                                     VStack(alignment: .leading, spacing: 0) {
                                         HStack(spacing: 0) {
                                             

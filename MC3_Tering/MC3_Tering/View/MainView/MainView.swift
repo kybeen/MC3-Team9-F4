@@ -172,11 +172,12 @@ extension MainView {
             .scrollIndicators(.hidden)
             
             ScrollView {
-                RecordListView()
+                RecordListView(workoutDataModel: workoutDataModel)
                     .padding(.top, 2)
                     .padding(.horizontal, 16)
             }
             .tag(1)
+            .scrollIndicators(.hidden)
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

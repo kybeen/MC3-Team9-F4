@@ -165,14 +165,16 @@ extension MainView {
             
             ScrollView {
                 ringChartsContainer()
-                    .padding(.bottom, 40)
+                    .padding(.bottom, 30)
                 todaySummaryCountainer()
             } // end scroll view
             .tag(0)
             .scrollIndicators(.hidden)
             
             ScrollView {
-                
+                RecordListView()
+                    .padding(.top, 2)
+                    .padding(.horizontal, 16)
             }
             .tag(1)
             

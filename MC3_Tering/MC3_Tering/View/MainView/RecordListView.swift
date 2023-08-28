@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct RecordListView: View {
-    @ObservedObject var workoutDataModel: WorkOutDataModel
-    
-    let months = ["2023년 7월", "2023년 8월", "2023년 9월"] // 월 데이터
+    var something: [WorkOutData]
+    var months: [Int]
     let swingCount = 120
+    
     var body: some View {
-            ForEach(months, id: \.self) { month in
+        ForEach(months, id: \.self) { month in
                 Section(
-                    header: Text(month)
+                    header: Text("\(month)")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.custom("Inter-Bold", size: 20))
                         .foregroundColor(Color.theme.teWhite)
@@ -66,7 +66,7 @@ struct RecordListView: View {
                                     Spacer()
                                     VStack(spacing: 0) {
                                         HStack(spacing: 0) {
-                                            Text("2023. 8. 26  ")
+                                            Text("\(something[0].totalSwingCount)  ")
                                                 .font(.custom("Inter-Regular", size: 12))
                                             Image(systemName: "chevron.right")
                                                 .resizable()
@@ -86,12 +86,18 @@ struct RecordListView: View {
                     }
                 }
             }
+            .onAppear {
+                
+            }
         }
     
 }
 
 struct RecordListView_Previews: PreviewProvider {
+    @ObservedObject static var workoutDataModel = WorkOutDataModel.shared
+    @State static var workout = [WorkOutData()]
+    @State static var months = [1]
     static var previews: some View {
-        RecordListView()
+        RecordListView(something: workout, months: months)
     }
 }

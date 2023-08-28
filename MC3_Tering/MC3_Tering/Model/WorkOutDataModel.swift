@@ -16,7 +16,7 @@ class WorkOutDataModel: ObservableObject {
     
     @Published var id = 0
     @Published var burningCalories = 0
-    @Published var totalSwingCount = 0
+    @Published var totalSwingCount = 3
     @Published var workoutDate = Date()
     @Published var workoutTime = 0
     @Published var todayWorkoutDatum: [WorkOutData] = []
@@ -38,6 +38,59 @@ class WorkOutDataModel: ObservableObject {
             return
         }
         
+    }
+    
+    func fetchPast100DaysWorkOutData() -> [WorkOutData]? {
+        let entityName = "WorkOutData"
+        
+        // Calculate the date 100 days ago from today
+        let calendar = Calendar.current
+        let hundredDaysAgo = calendar.date(byAdding: .day, value: -100, to: Date()) ?? Date()
+        
+        // Create a predicate to filter by workoutDate
+        let predicate = NSPredicate(format: "workoutDate >= %@", hundredDaysAgo as NSDate)
+        
+        return coreDataManager.fetch(entityName: entityName, predicate: predicate) as? [WorkOutData]
+    }
+    
+    func calcPast100DaysStartAndLast() -> [Int]? {
+        let datum = fetchPast100DaysWorkOutData()
+        let startMonth = datum?[0].workoutDate
+        let lastMonth = datum?.last?.workoutDate
+        
+        print("calcPastStart : ", startMonth)
+        print("calcPastLast : ", lastMonth)
+        for i in  0..<3 {
+            
+        }
+        
+        return [0]
+    }
+    
+    func testCreate100Days() {
+        let entityName = "WorkOutData"
+        for i in stride(from: 100, to: 0, by: -1) {
+            if let newWorkOutData = coreDataManager.create(entityName: entityName, attributes: [:]) as? WorkOutData {
+                let newDate = Calendar.current.date(byAdding: .day, value: -i, to: Date()) ?? Date()
+                
+                // 새로운 WorkOutData를 현재 작업 대상으로 설정
+                let fetchResult = coreDataManager.fetch(entityName: entityName)
+                if let currentWorkOutData = fetchResult.first as? WorkOutData {
+                    currentWorkOutData.id = Int16(id)
+                    currentWorkOutData.burningCalories = Int16(burningCalories)
+                    currentWorkOutData.backhandPerfect = Int16(backhandPerfect)
+                    currentWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
+                    currentWorkOutData.forehandPerfect = Int16(forehandPerfect)
+                    currentWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
+                    currentWorkOutData.totalSwingCount = Int16(totalSwingCount)
+                    print(newDate)
+                    currentWorkOutData.workoutDate = newDate
+                    currentWorkOutData.workoutTime = Int16(workoutTime)
+                }
+                
+                coreDataManager.update(object: newWorkOutData)
+            }
+        }
     }
     
     func createWorkOutData() {

@@ -172,7 +172,13 @@ extension MainView {
             .scrollIndicators(.hidden)
             
             ScrollView {
-                RecordListView(workoutDataModel: workoutDataModel)
+                Button(action: {
+                    workoutDataModel.testCreate100Days()
+                }, label: {
+                    Text("workout 시험데이터 100개 생성")
+                })
+                
+                RecordListView(something: workoutDataModel.fetchPast100DaysWorkOutData() ?? [WorkOutData()], months: workoutDataModel.calcPast100DaysStartAndLast() ?? [0])
                     .padding(.top, 2)
                     .padding(.horizontal, 16)
             }

@@ -91,11 +91,6 @@ struct RecordListView: View {
                     }
                 }
             }
-            .onAppear {
-                months = workoutDataModel.fetchPast100DaysWorkoutdatabymonth()
-                print("month.first : ", months.first!)
-                print("month.last : ", months.keys)
-            }
         }
     
 }

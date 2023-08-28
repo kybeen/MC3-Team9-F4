@@ -27,6 +27,8 @@ class WorkOutDataModel: ObservableObject {
     @Published var backhandPerfect = 0
     @Published var backhandTotalCount = 0
     
+    var months: [String: [WorkOutData]] = [:]
+    
     private let coreDataManager = CoreDataManager.shared
     
     func fetchWorkOutData() {
@@ -53,18 +55,29 @@ class WorkOutDataModel: ObservableObject {
         return coreDataManager.fetch(entityName: entityName, predicate: predicate) as? [WorkOutData]
     }
     
-    func calcPast100DaysStartAndLast() -> [Int]? {
-        let datum = fetchPast100DaysWorkOutData()
-        let startMonth = datum?[0].workoutDate
-        let lastMonth = datum?.last?.workoutDate
+    func fetchPast100DaysWorkoutdatabymonth() -> [String: [WorkOutData]] {
+        let entityName = "WorkOutData"
+        let calendar = Calendar.current
+        var monthsData: [String: [WorkOutData]] = [:]
         
-        print("calcPastStart : ", startMonth)
-        print("calcPastLast : ", lastMonth)
-        for i in  0..<3 {
+        if let datum = fetchPast100DaysWorkOutData() {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy년 MM월"
             
+            for data in datum {
+                if let workoutDate = data.workoutDate {
+                    let yearMonth = calendar.component(.year, from: workoutDate)
+                    let month = calendar.component(.month, from: workoutDate)
+                    let monthKey = dateFormatter.string(from: workoutDate)
+                    
+                    if monthsData[monthKey] == nil {
+                        monthsData[monthKey] = []
+                    }
+                    monthsData[monthKey]?.append(data)
+                }
+            }
         }
-        
-        return [0]
+        return monthsData
     }
     
     func testCreate100Days() {
@@ -74,21 +87,20 @@ class WorkOutDataModel: ObservableObject {
                 let newDate = Calendar.current.date(byAdding: .day, value: -i, to: Date()) ?? Date()
                 
                 // 새로운 WorkOutData를 현재 작업 대상으로 설정
-                let fetchResult = coreDataManager.fetch(entityName: entityName)
-                if let currentWorkOutData = fetchResult.first as? WorkOutData {
-                    currentWorkOutData.id = Int16(id)
-                    currentWorkOutData.burningCalories = Int16(burningCalories)
-                    currentWorkOutData.backhandPerfect = Int16(backhandPerfect)
-                    currentWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
-                    currentWorkOutData.forehandPerfect = Int16(forehandPerfect)
-                    currentWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
-                    currentWorkOutData.totalSwingCount = Int16(totalSwingCount)
-                    print(newDate)
-                    currentWorkOutData.workoutDate = newDate
-                    currentWorkOutData.workoutTime = Int16(workoutTime)
-                }
+                let currentWorkOutData = newWorkOutData  // 새로운 객체를 현재 작업 대상으로 설정
                 
-                coreDataManager.update(object: newWorkOutData)
+                // 각 속성 값을 설정
+                currentWorkOutData.id = Int16(id)
+                currentWorkOutData.burningCalories = Int16(burningCalories)
+                currentWorkOutData.backhandPerfect = Int16(backhandPerfect)
+                currentWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
+                currentWorkOutData.forehandPerfect = Int16(forehandPerfect)
+                currentWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
+                currentWorkOutData.totalSwingCount = Int16(totalSwingCount)
+                currentWorkOutData.workoutDate = newDate
+                currentWorkOutData.workoutTime = Int16(workoutTime)
+                
+                coreDataManager.update(object: currentWorkOutData)  // 수정된 객체를 저장
             }
         }
     }
@@ -169,15 +181,15 @@ class WorkOutDataModel: ObservableObject {
             let latestDate = calendar.startOfDay(for: latestWorkout.workoutDate ?? Date())
             if latestDate == today {
                 yesterdayWorkoutDatum = yesterdayWorkoutData
-                print("latestDate if문 내부 어제 데이터 : ", yesterdayWorkoutDatum)
+//                print("latestDate if문 내부 어제 데이터 : ", yesterdayWorkoutDatum)
             } else {
                 yesterdayWorkoutDatum = yesterdayWorkoutData
-                print("latestDate else문 내부 어제 데이터 : ", yesterdayWorkoutDatum)
+//                print("latestDate else문 내부 어제 데이터 : ", yesterdayWorkoutDatum)
             }
         } else {
             print("No workout data found for yesterday")
         }
-        print("yesterdayWorkoutData if문 외부 어제 데이터 : ", yesterdayWorkoutDatum)
+//        print("yesterdayWorkoutData if문 외부 어제 데이터 : ", yesterdayWorkoutDatum)
     }
 
 
@@ -253,43 +265,37 @@ class WorkOutDataModel: ObservableObject {
     
     func createSampleWorkOutData(_ burningCalories: Int, _ forehandPerfect: Int, _ forehandTotalCount: Int, _ backhandPerfect: Int, _ backhandTotalCount: Int, _ totalSwingCount: Int, _ workoutDate: Date) {
         // 새로운 WorkOutData 객체를 생성
-        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
-            print("Failed to create WorkOutData object")
-            return
+        if let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData {
+            // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
+            newWorkOutData.burningCalories = Int16(burningCalories)
+            newWorkOutData.forehandPerfect = Int16(forehandPerfect)
+            newWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
+            newWorkOutData.backhandPerfect = Int16(backhandPerfect)
+            newWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
+            newWorkOutData.totalSwingCount = Int16(totalSwingCount)
+            newWorkOutData.workoutDate = workoutDate
+            newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
+            
+            // 저장
+            coreDataManager.update(object: newWorkOutData)
         }
-        
-        // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
-        newWorkOutData.burningCalories = Int16(burningCalories)
-        newWorkOutData.forehandPerfect = Int16(forehandPerfect)
-        newWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
-        newWorkOutData.backhandPerfect = Int16(backhandPerfect)
-        newWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
-        newWorkOutData.totalSwingCount = Int16(totalSwingCount)
-        newWorkOutData.workoutDate = workoutDate
-        newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
-        
-        // 저장
-        coreDataManager.update(object: newWorkOutData)
     }
     
     func createTodaySampleWorkOutData() {
         // 새로운 WorkOutData 객체를 생성
-        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
-            print("Failed to create WorkOutData object")
-            return
+        if let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData {
+            // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
+            newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
+            newWorkOutData.forehandPerfect = Int16(Int.random(in: 10...100))
+            newWorkOutData.forehandTotalCount = Int16(Int.random(in: 10...100))
+            newWorkOutData.backhandPerfect = Int16(Int.random(in: 10...100))
+            newWorkOutData.backhandTotalCount = Int16(Int.random(in: 10...100))
+            newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
+            newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: 0, to: Date()) ?? Date()
+            newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
+            
+            // 저장
+            coreDataManager.update(object: newWorkOutData)
         }
-        
-        // WorkOutData 엔티티의 속성을 기본값이 아닌 랜덤 값으로 설정
-        newWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
-        newWorkOutData.forehandPerfect = Int16(Int.random(in: 10...100))
-        newWorkOutData.forehandTotalCount = Int16(Int.random(in: 10...100))
-        newWorkOutData.backhandPerfect = Int16(Int.random(in: 10...100))
-        newWorkOutData.backhandTotalCount = Int16(Int.random(in: 10...100))
-        newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
-        newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: 0, to: Date()) ?? Date()
-        newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
-        
-        // 저장
-        coreDataManager.update(object: newWorkOutData)
     }
 }

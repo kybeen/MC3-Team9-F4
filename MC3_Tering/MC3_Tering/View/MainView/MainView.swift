@@ -21,6 +21,7 @@ struct MainView: View {
     @State var modalTitle2 = ""
     @State var modalAttainment = ""
     @State var modalGainTitle = ""
+    @State var months: [String : [WorkOutData]] = [:]
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -40,6 +41,7 @@ struct MainView: View {
                 userDataModel.fetchUserData()
                 workoutDataModel.fetchWorkOutData()
                 workoutDataModel.fetchTodayAndYesterdayWorkout()
+                months = workoutDataModel.fetchPast100DaysWorkoutdatabymonth()
             }
             .onDisappear {
                 userDataModel.saveUserData()
@@ -178,7 +180,7 @@ extension MainView {
                     Text("workout 시험데이터 100개 생성")
                 })
                 
-                RecordListView(something: workoutDataModel.fetchPast100DaysWorkOutData() ?? [WorkOutData()], months: workoutDataModel.calcPast100DaysStartAndLast() ?? [0])
+                RecordListView(workoutDataModel: workoutDataModel, months: months)
                     .padding(.top, 2)
                     .padding(.horizontal, 16)
             }

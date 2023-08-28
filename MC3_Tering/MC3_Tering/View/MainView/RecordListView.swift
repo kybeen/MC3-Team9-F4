@@ -8,21 +8,26 @@
 import SwiftUI
 
 struct RecordListView: View {
-    var something: [WorkOutData]
-    var months: [Int]
+    @ObservedObject var workoutDataModel: WorkOutDataModel
+    @State var months: [String: [WorkOutData]] = [:]
     let swingCount = 120
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy. M. d." // 원하는 날짜 형식을 설정합니다.
+        return formatter
+    }()
     
     var body: some View {
-        ForEach(months, id: \.self) { month in
+        ForEach(months.keys.sorted(by: >), id: \.self) { monthKey in
                 Section(
-                    header: Text("\(month)")
+                    header: Text("\(monthKey)")
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .font(.custom("Inter-Bold", size: 20))
                         .foregroundColor(Color.theme.teWhite)
                         .padding(.bottom, 12)
                         .padding(.top, 30)
                 ) {
-                    ForEach(1..<32, id: \.self) { day in
+                    ForEach(months[monthKey]!.sorted { $0.workoutDate ?? Date() > $1.workoutDate ?? Date() }, id: \.self) { data in
                         NavigationLink(destination: {
                             
                         }) {
@@ -44,7 +49,7 @@ struct RecordListView: View {
                                     VStack(alignment: .leading, spacing: 0) {
                                         HStack(spacing: 0) {
                                             
-                                            Text("\(swingCount)/\(swingCount)")
+                                            Text("\(data.totalSwingCount)/\(swingCount)")
                                                 .font(.custom("Inter-Regular", size: 24))
                                             Text("SWING")
                                                 .frame(height: 25, alignment: .bottom)
@@ -54,7 +59,7 @@ struct RecordListView: View {
                                         .frame(alignment: .bottom)
                                         .foregroundColor(Color.theme.teGreen)
                                         HStack(spacing: 0) {
-                                            Text("\(swingCount)/\(swingCount)")
+                                            Text("\(data.forehandPerfect + data.backhandPerfect)/\(data.totalSwingCount)")
                                                 .font(.custom("Inter-Regular", size: 24))
                                             Text("PER")
                                                 .frame(height: 25, alignment: .bottom)
@@ -66,7 +71,7 @@ struct RecordListView: View {
                                     Spacer()
                                     VStack(spacing: 0) {
                                         HStack(spacing: 0) {
-                                            Text("\(something[0].totalSwingCount)  ")
+                                            Text("\(dateFormatter.string(from: data.workoutDate ?? Date()))  ")
                                                 .font(.custom("Inter-Regular", size: 12))
                                             Image(systemName: "chevron.right")
                                                 .resizable()
@@ -87,7 +92,9 @@ struct RecordListView: View {
                 }
             }
             .onAppear {
-                
+                months = workoutDataModel.fetchPast100DaysWorkoutdatabymonth()
+                print("month.first : ", months.first!)
+                print("month.last : ", months.keys)
             }
         }
     
@@ -96,8 +103,8 @@ struct RecordListView: View {
 struct RecordListView_Previews: PreviewProvider {
     @ObservedObject static var workoutDataModel = WorkOutDataModel.shared
     @State static var workout = [WorkOutData()]
-    @State static var months = [1]
+    @State static var months = ["" : [WorkOutData()]]
     static var previews: some View {
-        RecordListView(something: workout, months: months)
+        RecordListView(workoutDataModel: workoutDataModel, months: months)
     }
 }

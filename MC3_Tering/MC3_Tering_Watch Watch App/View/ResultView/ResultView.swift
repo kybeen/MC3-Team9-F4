@@ -23,27 +23,22 @@ struct ResultView: View {
     var body: some View {
         NavigationView {
             TabView(selection: $selectedTab) {
-                VStack {
-                    ResultEffectView()
-                }
+                
+                ResultEffectView()
                 .tabItem{
                     Image(systemName: "tennisball.fill")
                         .foregroundColor(Color.watchColor.lightGreen)
                 }
                 .tag(0)
                 
-                VStack {
-                    SwingRateView()
-                }
+                SwingRateView()
                 .tabItem{
                     Image(systemName: "tennisball.fill")
                         .foregroundColor(Color.watchColor.lightGreen)
                 }
                 .tag(1)
                 
-                VStack {
-                    HealthKitView()
-                }
+                HealthKitView()
                 .tabItem{
                     Image(systemName: "tennisball.fill")
                         .foregroundColor(Color.watchColor.lightGreen)
@@ -188,28 +183,23 @@ struct HealthKitView: View {
                     ProgressView("운동 결과 저장 중...")
                         .navigationBarHidden(true)
                 } else {
-                    VStack(alignment: .leading) {
+                    VStack(spacing: 0) {
                         Spacer()
-            //            let formattedTime = formatTime()
-            //            Text(formattedTime)
-            //                .font(.system(size: 40, weight: .medium))
-            //                .foregroundColor(Color.watchColor.lightGreen)
-            //                .padding(.bottom, 5)
-            //            Text("\(healthResultInfo.burningCal ?? 0) kcal")
-            //                .font(.system(size: 28, weight: .medium))
-            //                .padding(.bottom, 8)
                         Text(durationFormatter.string(from: workoutManager.workout?.duration ?? 0.0) ?? "")
                             .font(.system(size: 40, weight: .medium))
                             .foregroundColor(Color.watchColor.lightGreen)
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.top, 15)
                             .padding(.bottom, 3)
                         Text(workoutManager.averageHeartRate.formatted(.number.precision(.fractionLength(0))) + " bpm")
                             .font(.system(size: 28, weight: .medium))
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.bottom, 3)
                         Text(Measurement(
                             value: workoutManager.workout?.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0,
                             unit: UnitEnergy.kilocalories).formatted(.measurement(width: .abbreviated, usage: .workout, numberFormatStyle: .number.precision(.fractionLength(0)))))
                             .font(.system(size: 28, weight: .medium))
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .padding(.bottom, 3)
                         Spacer()
                     }
@@ -232,8 +222,9 @@ struct HealthKitView: View {
             }
             .foregroundColor(Color.watchColor.black) // 2
             .background(Color.watchColor.lightGreen) // 3
-            .cornerRadius(20)
+            .cornerRadius(40)
         }
+        .padding(.horizontal, 5)
         .onDisappear {
             workoutManager.isSaved = false
             workoutManager.resetWorkout()

@@ -18,6 +18,14 @@ struct RecordListView: View {
     }()
     
     var body: some View {
+        if months.isEmpty {
+                Text("스윙 데이터가 존재하지 않습니다.")
+                    .font(.custom("Inter-Medium", size: 16))
+                    .padding(.top, 100)
+                    .opacity(0.5)
+        }
+        
+        
         ForEach(months.keys.sorted(by: >), id: \.self) { monthKey in
                 Section(
                     header: Text("\(monthKey)")
@@ -29,7 +37,9 @@ struct RecordListView: View {
                 ) {
                     ForEach(months[monthKey]!.sorted { $0.workoutDate ?? Date() > $1.workoutDate ?? Date() }, id: \.self) { data in
                         NavigationLink(destination: {
-//                            RecordDetailView(detailDay: data.workoutDate ?? Date(), totalSwingCount: Int(data.totalSwingCount), targetSwingCount: 120, perfectSwingCount: Int(data.perfectSwingCount), workoutTime: Int(data.workoutTime), calorieBurn: Int(data.calorieBurn))
+                            RecordDetailView(detailDay: data.workoutDate ?? Date(), totalSwingCount: Int(data.totalSwingCount), targetSwingCount: 120, perfectSwingCount: Int(data.backhandPerfect + data.forehandPerfect), workoutTime: Int(data.workoutTime), calorieBurn: Int(data.burningCalories))
+//                            RecordDetailView(detailDay: Date(), totalSwingCount: 120, targetSwingCount: 240, perfectSwingCount: 80, workoutTime: 60, calorieBurn: Int(data.burningCalories))
+                            
                         }) {
                             ZStack {
                                 Rectangle()

@@ -161,7 +161,6 @@ extension OnboardingView {
         Button(action: {
             if onboardingPage == 3 {
                 createUser()
-                createSampleWorkOutData()
                 isFirst = false
             } else {
                 onboardingPage += 1
@@ -528,24 +527,24 @@ extension OnboardingView {
         coreDataManager.update(object: newUserData)
     }
     
-    private func createSampleWorkOutData() {
-        let coreDataManager = CoreDataManager.shared
-        
-        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
-            print("Failed to create WorkOutData object")
-            return
-        }
-        
-        newWorkOutData.burningCalories = 0
-        newWorkOutData.backhandPerfect = 0
-        newWorkOutData.backhandTotalCount = 0
-        newWorkOutData.forehandPerfect = 0
-        newWorkOutData.forehandTotalCount = 0
-        newWorkOutData.totalSwingCount = 0
-        newWorkOutData.workoutDate = Date()
-        newWorkOutData.workoutTime = 0
-        
-        coreDataManager.update(object: newWorkOutData)
-        
-    }
+//    private func createSampleWorkOutData() {
+//        let coreDataManager = CoreDataManager.shared
+//        
+//        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
+//            print("Failed to create WorkOutData object")
+//            return
+//        }
+//        
+//        newWorkOutData.burningCalories = 0
+//        newWorkOutData.backhandPerfect = 0
+//        newWorkOutData.backhandTotalCount = 0
+//        newWorkOutData.forehandPerfect = 0
+//        newWorkOutData.forehandTotalCount = 0
+//        newWorkOutData.totalSwingCount = 0
+//        newWorkOutData.workoutDate = Date()
+//        newWorkOutData.workoutTime = 0
+//        
+//        coreDataManager.update(object: newWorkOutData)
+//        
+//    }
 }

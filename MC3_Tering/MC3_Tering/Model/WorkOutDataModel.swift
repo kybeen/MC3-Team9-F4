@@ -82,7 +82,7 @@ class WorkOutDataModel: ObservableObject {
     
     func testCreate100Days() {
         let entityName = "WorkOutData"
-        for i in stride(from: 100, to: 0, by: -1) {
+        for i in stride(from: 20, to: 0, by: -1) {
             if let newWorkOutData = coreDataManager.create(entityName: entityName, attributes: [:]) as? WorkOutData {
                 let newDate = Calendar.current.date(byAdding: .day, value: -i, to: Date()) ?? Date()
                 
@@ -91,10 +91,10 @@ class WorkOutDataModel: ObservableObject {
                 
                 // 각 속성 값을 설정
                 currentWorkOutData.id = Int16(id)
-                currentWorkOutData.burningCalories = Int16(burningCalories)
-                currentWorkOutData.backhandPerfect = Int16(backhandPerfect)
+                currentWorkOutData.burningCalories = Int16(Int.random(in: 200...500))
+                currentWorkOutData.backhandPerfect = Int16(Int.random(in: 20...60))
                 currentWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
-                currentWorkOutData.forehandPerfect = Int16(forehandPerfect)
+                currentWorkOutData.forehandPerfect = Int16(Int.random(in: 20...60))
                 currentWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
                 currentWorkOutData.totalSwingCount = Int16(totalSwingCount)
                 currentWorkOutData.workoutDate = newDate

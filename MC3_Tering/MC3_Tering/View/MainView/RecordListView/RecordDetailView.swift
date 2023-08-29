@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct RecordDetailView: View {
-    @State var detailDay: Date
-    @State var totalSwingCount: Int
-    @State var targetSwingCount: Int
-    @State var perfectSwingCount: Int
-    @State var workoutTime: Int
-    @State var calorieBurn: Int
+    var detailDay: Date
+    var totalSwingCount: Int
+    var targetSwingCount: Int
+    var perfectSwingCount: Int
+    var workoutTime: Int
+    var calorieBurn: Int
     
     var body: some View {
         ScrollView {
@@ -188,7 +188,5 @@ extension RecordDetailView {
                 .padding(.leading, 30)
                 .padding(.bottom, 16)
         }
-        
-        
     }
 }

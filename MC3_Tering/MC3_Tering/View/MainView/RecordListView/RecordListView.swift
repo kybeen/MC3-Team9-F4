@@ -29,7 +29,7 @@ struct RecordListView: View {
                 ) {
                     ForEach(months[monthKey]!.sorted { $0.workoutDate ?? Date() > $1.workoutDate ?? Date() }, id: \.self) { data in
                         NavigationLink(destination: {
-                            
+//                            RecordDetailView(detailDay: data.workoutDate ?? Date(), totalSwingCount: Int(data.totalSwingCount), targetSwingCount: 120, perfectSwingCount: Int(data.perfectSwingCount), workoutTime: Int(data.workoutTime), calorieBurn: Int(data.calorieBurn))
                         }) {
                             ZStack {
                                 Rectangle()

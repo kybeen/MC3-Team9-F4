@@ -15,6 +15,7 @@ import HealthKit
 struct ResultView: View {
     @State private var selectedTab = 1
     @ObservedObject var workoutDataModel: WorkOutDataModel
+    @EnvironmentObject var workoutManager: WorkoutManager
     
     init(workoutDataModel: WorkOutDataModel) {
         self.workoutDataModel = workoutDataModel
@@ -52,6 +53,10 @@ struct ResultView: View {
         }
         .navigationTitle("요약")
         .navigationBarBackButtonHidden()
+        .onDisappear {
+            workoutManager.isSaved = false
+            workoutManager.resetWorkout()
+        }
     }
 }
 
@@ -235,10 +240,10 @@ struct HealthKitView: View {
             .cornerRadius(40)
         }
         .padding(.horizontal, 5)
-        .onDisappear {
-            workoutManager.isSaved = false
-            workoutManager.resetWorkout()
-        }
+//        .onDisappear {
+//            workoutManager.isSaved = false
+//            workoutManager.resetWorkout()
+//        }
     }
 
 }

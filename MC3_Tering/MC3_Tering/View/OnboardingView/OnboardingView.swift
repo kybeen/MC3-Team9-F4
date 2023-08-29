@@ -10,11 +10,9 @@ import PhotosUI
 struct OnboardingView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) private var viewContext
-    
     let startDate = Calendar.current.date(from: DateComponents(year: 1900, month: 1, day: 1))!
     let endDate = Date()
     private let sexList = ["남성", "여성", "기타"]
-    
     @Binding var isFirst: Bool
     @State private var selectedItem: PhotosPickerItem? = nil
     @State private var selectedImageData: Data? = nil
@@ -31,6 +29,7 @@ struct OnboardingView: View {
     @State private var sex = "남성"
     @State var onboardingPage = 0
     @State private var profileImage: Data?
+    @State private var isKeyboardOn = false
     
     var body: some View {
         ZStack {
@@ -55,7 +54,7 @@ struct OnboardingView: View {
                     Spacer()
                     profileContainer()
                     Spacer()
-                    nextButton("다음", nickname.count > 0)
+                    nextButton("다음", nickname.count > 1)
                 case 2:
                     titleContainer("주로 사용하는 손", "을", "선택해주세요.", 2)
                     Spacer()
@@ -73,8 +72,11 @@ struct OnboardingView: View {
                 }
                 
             }
-//            .frame(maxHeight: 600)
             .padding(.horizontal, 18)
+        }
+        .onTapGesture {
+            isKeyboardOn = false
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         }
     }
 }
@@ -179,21 +181,18 @@ extension OnboardingView {
             }
         }
         .disabled(!isNicknameInput)
-        .padding(.bottom, 90)
+        .padding(.bottom, isKeyboardOn ? 10 : 90)
     }
     
     private func profileContainer() -> some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                profilePhotoContainer()
-                    .padding(.top, 26)
-                nicknameTextField()
-                    .padding(.top, 30)
-            }
-            
+        VStack(spacing: 0) {
+            profilePhotoContainer()
+                .padding(.top, 26)
+            nicknameTextField()
+                .padding(.top, 30)
         }
         .padding(.horizontal, 13.5)
-        .scrollDisabled(true)
+        .scrollDisabled(false)
         .scrollIndicators(.hidden)
     }
     
@@ -203,6 +202,9 @@ extension OnboardingView {
                 
             }) {
                 ZStack(alignment: .center) {
+                    /**
+                     maxWidth, maxHeight로 frame 설정 시, 키보드가 올라와도 비례해서 크기가 줄어들어 별도의 스크롤뷰 설정을 해주지 않아도 뷰가 크게 깨지지 않음.
+                     */
                     Circle()
                         .foregroundColor(Color.theme.teGray)
                     if let selectedImageData,
@@ -212,8 +214,6 @@ extension OnboardingView {
                             .scaledToFill()
                             .frame(maxWidth: 176, maxHeight: 176)
                             .cornerRadius(100)
-                        
-                        
                     } else {
                         if selectedImageData != nil {
                             Image(uiImage: UIImage(data: selectedImageData!)!)
@@ -273,9 +273,6 @@ extension OnboardingView {
             TextField("한글은 8자, 영문은 12자까지 입력 가능해요.", text: $nickname)
                 .frame(maxWidth: .infinity)
                 .padding(.bottom, 14)
-                .onTapGesture {
-                    UIApplication.shared.sendAction(#selector(UIResponder.becomeFirstResponder), to: nil, from: nil, for: nil)
-                }
                 .onChange(of: nickname, perform: { newText in
                     // 특수문자를 사용하지 못하도록 정규표현식을 사용하여 필터링합니다.
                     let regex = try! NSRegularExpression(pattern: "^[\\p{P}]*$", options: [])
@@ -304,7 +301,9 @@ extension OnboardingView {
                         }
                     }
                 })
-
+                .onTapGesture {
+                    isKeyboardOn = true
+                }
             Rectangle()
                 .frame(height: 1)
             Text("\(nickname.count)/12")
@@ -362,7 +361,6 @@ extension OnboardingView {
                             .foregroundColor(isLeftHandSelect ? Color.theme.teWhite : Color.theme.teGreen)
                     }
                 }
-                
             }
             Spacer()
         }
@@ -419,7 +417,6 @@ extension OnboardingView {
     private func pickerPopup() -> some View {
         HStack(spacing: 0) {
             VStack {
-                
                 HStack(spacing: 0) {
                     Button(action: {
                         isSetBirthDay.toggle()
@@ -526,25 +523,4 @@ extension OnboardingView {
         newUserData.profileImage = profileImage
         coreDataManager.update(object: newUserData)
     }
-    
-//    private func createSampleWorkOutData() {
-//        let coreDataManager = CoreDataManager.shared
-//        
-//        guard let newWorkOutData = coreDataManager.create(entityName: "WorkOutData", attributes: [:]) as? WorkOutData else {
-//            print("Failed to create WorkOutData object")
-//            return
-//        }
-//        
-//        newWorkOutData.burningCalories = 0
-//        newWorkOutData.backhandPerfect = 0
-//        newWorkOutData.backhandTotalCount = 0
-//        newWorkOutData.forehandPerfect = 0
-//        newWorkOutData.forehandTotalCount = 0
-//        newWorkOutData.totalSwingCount = 0
-//        newWorkOutData.workoutDate = Date()
-//        newWorkOutData.workoutTime = 0
-//        
-//        coreDataManager.update(object: newWorkOutData)
-//        
-//    }
 }

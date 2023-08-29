@@ -177,7 +177,17 @@ struct HealthKitView: View {
     var body: some View {
         VStack {
             if workoutManager.isSaved == false {
-                Text("10초 미만의 운동 데이터는 저장되지 않습니다😭")
+                VStack(alignment: .leading, spacing: 0) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .resizable()
+                        .frame(width: 35, height: 33)
+                        .padding(.top, 7)
+                        .padding(.bottom, 6)
+                    Text("10초 미만의 운동 데이터는\n저장되지 않습니다.")
+                        .font(.system(size: 18, weight: .medium))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Spacer()
+                }
             } else {
                 if workoutManager.workout == nil {
                     ProgressView("운동 결과 저장 중...")

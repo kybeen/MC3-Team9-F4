@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - 레이아웃 테스트용 뷰
 struct TestLayoutView: View {
     var body: some View {
         // ResultView.swift
@@ -67,35 +68,60 @@ struct TestLayoutView: View {
 //        .padding(.horizontal, 5)
         
         
-        // SelectView.swift
-    VStack(spacing: 0) {
-        Text("목표를 달성했어요. \n연습을 끝내시겠어요?")
-            .font(.system(size: 20))
-            .frame(maxWidth: .infinity, alignment: .leading)
-        Spacer()
+//        // SelectView.swift
+//    VStack(spacing: 0) {
+//        Text("목표를 달성했어요. \n연습을 끝내시겠어요?")
+//            .font(.system(size: 20))
+//            .frame(maxWidth: .infinity, alignment: .leading)
+//        Spacer()
+//
+//        NavigationLink(destination: CountingView()) {
+//            Text("이대로 계속하기")
+//                .font(.system(size: 20, weight: .bold))
+//                .foregroundColor(Color.black)
+//        }
+//        .background(Color.watchColor.lightGreen)
+//        .cornerRadius(40)
+//        .padding(.bottom, 11)
+//
+//        NavigationLink(destination: ResultView(workoutDataModel: WorkOutDataModel()), label: {
+//            Button("종료") {
+//                print("test")
+//            }
+//            .font(.system(size: 20, weight: .semibold))
+//            .foregroundColor(Color.white)
+//            .background(Color.watchColor.lightBlack)
+//            .cornerRadius(40)
+//        })
+//        .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to remove button visuals
+//    }
+//    .padding(.horizontal, 5)
         
-        NavigationLink(destination: CountingView()) {
-            Text("이대로 계속하기")
-                .font(.system(size: 20, weight: .bold))
-                .foregroundColor(Color.black)
-        }
-        .background(Color.watchColor.lightGreen)
-        .cornerRadius(40)
-        .padding(.bottom, 11)
         
-        NavigationLink(destination: ResultView(workoutDataModel: WorkOutDataModel()), label: {
-            Button("종료") {
-                print("test")
+        // 10초 미만 결과화면
+        VStack {
+            VStack(alignment: .leading, spacing: 0) {
+                Image(systemName: "exclamationmark.triangle.fill")
+                    .resizable()
+                    .frame(width: 35, height: 33)
+                    .padding(.top, 7)
+                    .padding(.bottom, 6)
+                Text("10초 미만의 운동 데이터는\n저장되지 않습니다.")
+                    .font(.system(size: 18, weight: .medium))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer()
             }
-            .font(.system(size: 20, weight: .semibold))
-            .foregroundColor(Color.white)
-            .background(Color.watchColor.lightBlack)
+
+            NavigationLink(destination: SwingCountView()) {
+                Text("완료")
+                    .font(.system(size: 20, weight: .bold))
+                    .foregroundColor(Color.black)
+            }
+            .foregroundColor(Color.watchColor.black) // 2
+            .background(Color.watchColor.lightGreen) // 3
             .cornerRadius(40)
-        })
-        .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to remove button visuals
-    }
-    .padding(.horizontal, 5)
-        
+        }
+        .padding(.horizontal, 5)
     }
 }
 

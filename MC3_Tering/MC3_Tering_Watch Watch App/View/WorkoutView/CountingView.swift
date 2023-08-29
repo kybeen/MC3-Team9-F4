@@ -56,9 +56,6 @@ struct QuitView: View {
 //    @State var swingLeft: Int = 10
     @State var showResultView = false
     
-//    @ObservedObject var healthManager = HealthKitManager()
-//    @EnvironmentObject var healthInfo: HealthStartInfo // Access the shared instance
-//    @EnvironmentObject var healthResultInfo: HealthResultInfo
     @ObservedObject var model = ViewModelWatch()
     @EnvironmentObject var swingInfo: SwingInfo
     
@@ -72,15 +69,17 @@ struct QuitView: View {
     
     var body: some View {
         TimelineView(MetricsTimelineSchedule(from: workoutManager.builder?.startDate ?? Date())) { context in
-            VStack(alignment: .leading) {
-                Spacer()
+            VStack(spacing: 0) {
                 // context의 cadence 값에 따라 subseconds를 보여줄지 말지 결정
                 ElapsedTimeView(elapsedTime: workoutManager.builder?.elapsedTime(at: context.date) ?? 0, showSubseconds: context.cadence == .live)
                     .font(.system(size: 40, weight: .medium))
                     .foregroundColor(Color.watchColor.lightGreen)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 7)
                 Text(swingInfo.swingLeft! > 0 ? "\(swingInfo.swingLeft!)번의 스윙이 남았어요.\n연습을 끝내시겠어요?" : "연습을 끝내시겠어요?")
                     .font(.system(size: 15))
-                Spacer()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.bottom, 25)
                 
                 NavigationLink(destination: ResultView(workoutDataModel: WorkOutDataModel()), isActive: $showResultView, label: {
                     Button("종료") {
@@ -104,6 +103,7 @@ struct QuitView: View {
                 })
                 .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to remove button visuals
             }
+            .padding(.horizontal, 5)
         }
     }
 }

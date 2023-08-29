@@ -15,9 +15,10 @@ struct SelectView: View {
     
     var body: some View {
         TimelineView(MetricsTimelineSchedule(from: workoutManager.builder?.startDate ?? Date())) { context in
-            VStack(alignment: .leading) {
+            VStack(spacing: 0) {
                 Text("목표를 달성했어요.\n연습을 끝내시겠어요?")
                     .font(.system(size: 20))
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.bottom, 16)
                 Spacer()
                 NavigationLink(destination: CountingView()) {
@@ -58,6 +59,7 @@ struct SelectView: View {
                 })
                 .buttonStyle(PlainButtonStyle()) // Use PlainButtonStyle to remove button visuals
             }
+            .padding(.horizontal, 5)
             .navigationBarBackButtonHidden()
         }
     }

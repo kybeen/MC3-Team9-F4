@@ -575,6 +575,7 @@
 		B82111712A74EC500043CE6D /* EtcView */ = {
 			isa = PBXGroup;
 			children = (
+				B84107DA2A9D9C24006A34E4 /* TestLayoutView.swift */,
 				1687E2CC2A6F70270004D87A /* ContentView.swift */,
 				1687E2FB2A6F73140004D87A /* GuideView.swift */,
 				1687E2FD2A6F731C0004D87A /* SwingListCellView.swift */,
@@ -611,7 +612,6 @@
 			isa = PBXGroup;
 			children = (
 				1687E3032A6F73360004D87A /* ResultView.swift */,
-				B84107DA2A9D9C24006A34E4 /* TestLayoutView.swift */,
 			);
 			path = ResultView;
 			sourceTree = "<group>";

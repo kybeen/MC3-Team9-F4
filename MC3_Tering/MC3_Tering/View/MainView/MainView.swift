@@ -21,6 +21,7 @@ struct MainView: View {
     @State var modalTitle2 = ""
     @State var modalAttainment = ""
     @State var modalGainTitle = ""
+    @State var months: [String : [WorkOutData]] = [:]
     
     var body: some View {
         NavigationStack(path: $path) {
@@ -40,6 +41,7 @@ struct MainView: View {
                 userDataModel.fetchUserData()
                 workoutDataModel.fetchWorkOutData()
                 workoutDataModel.fetchTodayAndYesterdayWorkout()
+                months = workoutDataModel.fetchPast100DaysWorkoutdatabymonth()
             }
             .onDisappear {
                 userDataModel.saveUserData()
@@ -165,31 +167,24 @@ extension MainView {
             
             ScrollView {
                 ringChartsContainer()
-                    .padding(.bottom, 40)
+                    .padding(.bottom, 30)
                 todaySummaryCountainer()
             } // end scroll view
             .tag(0)
             .scrollIndicators(.hidden)
             
             ScrollView {
-//                //MARK: - 빵빠레 테스트, 유저 정보 확인용 버튼
 //                Button(action: {
-//                    addUserCountData()
-//                    checkTitle1Gain()
-//                    checkTitle2Gain()
-//                }) {
-//                    Text("어제 운동 데이터 모델 만들기")
-//                }
-//                .padding(.bottom, 30)
-//
-//                Button(action: {
-//                    workoutDataModel.createTodaySampleWorkOutData()
-//                }) {
-//                    Text("오늘 운동 데이터 모델 만들기")
-//                }
-                RecordChartView()
+//                    workoutDataModel.testCreate100Days()
+//                }, label: {
+//                    Text("workout 시험데이터 100개 생성")
+//                })
+                RecordListView(workoutDataModel: workoutDataModel, months: months)
+                    .padding(.top, 2)
+                    .padding(.horizontal, 16)
             }
             .tag(1)
+            .scrollIndicators(.hidden)
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)

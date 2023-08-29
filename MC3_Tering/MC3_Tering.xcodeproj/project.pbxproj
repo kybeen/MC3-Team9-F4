@@ -93,6 +93,8 @@
 		C93885DC2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */; };
 		C95DC4742A97284A00649FF7 /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DC4722A97284A00649FF7 /* UserData+CoreDataClass.swift */; };
 		C95DC4752A97284A00649FF7 /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DC4732A97284A00649FF7 /* UserData+CoreDataProperties.swift */; };
+		C95DC4772A9C308B00649FF7 /* RecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DC4762A9C308B00649FF7 /* RecordListView.swift */; };
+		C98DDF4B2A9CDA1600E99C6E /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98DDF4A2A9CDA1600E99C6E /* RecordDetailView.swift */; };
 		C99DF32B2A6FA4CA002DCED7 /* UserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3292A6FA4CA002DCED7 /* UserInfo.xcdatamodeld */; };
 		C9A645252A72930200B326C5 /* AppGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A645242A72930200B326C5 /* AppGuideView.swift */; };
 		C9AEE53F2A6FAADE0071C863 /* Inter-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3432A6FA755002DCED7 /* Inter-Black.otf */; };
@@ -220,6 +222,8 @@
 		C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C95DC4722A97284A00649FF7 /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C95DC4732A97284A00649FF7 /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		C95DC4762A9C308B00649FF7 /* RecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListView.swift; sourceTree = "<group>"; };
+		C98DDF4A2A9CDA1600E99C6E /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
 		C99DF3282A6FA246002DCED7 /* MC3-Tering-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MC3-Tering-Info.plist"; sourceTree = SOURCE_ROOT; };
 		C99DF32A2A6FA4CA002DCED7 /* UserInfo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserInfo.xcdatamodel; sourceTree = "<group>"; };
 		C99DF33C2A6FA754002DCED7 /* Inter-V.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-V.ttf"; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 		160B1DC72A6F7AE300A708CC /* MainView */ = {
 			isa = PBXGroup;
 			children = (
+				C98DDF492A9CD9FD00E99C6E /* RecordListView */,
 				160B1E892A6F94D600A708CC /* MainView.swift */,
 				160B1E8B2A6F94E100A708CC /* RingChartsView.swift */,
 				B87504702A778D3E0098167A /* ChartView */,
@@ -633,6 +638,15 @@
 			path = MLModel;
 			sourceTree = "<group>";
 		};
+		C98DDF492A9CD9FD00E99C6E /* RecordListView */ = {
+			isa = PBXGroup;
+			children = (
+				C95DC4762A9C308B00649FF7 /* RecordListView.swift */,
+				C98DDF4A2A9CDA1600E99C6E /* RecordDetailView.swift */,
+			);
+			path = RecordListView;
+			sourceTree = "<group>";
+		};
 		C9A645232A72920000B326C5 /* AppGuideView */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +804,7 @@
 				B82111782A76947A0043CE6D /* RecordChartView.swift in Sources */,
 				B87504782A778F960098167A /* YearChartView.swift in Sources */,
 				160B1E862A6F948D00A708CC /* UserStrokeSettingView.swift in Sources */,
+				C95DC4772A9C308B00649FF7 /* RecordListView.swift in Sources */,
 				160B1E7C2A6F943600A708CC /* OnboardingView.swift in Sources */,
 				1687E2B72A6F6FD20004D87A /* MC3_TeringApp.swift in Sources */,
 				160B1E8E2A6F950C00A708CC /* ColorExtension.swift in Sources */,
@@ -806,6 +821,7 @@
 				B875047C2A7792B80098167A /* DateExtension.swift in Sources */,
 				B87504742A778F850098167A /* MonthChartView.swift in Sources */,
 				1687E2DF2A6F71180004D87A /* TestPhoneView.swift in Sources */,
+				C98DDF4B2A9CDA1600E99C6E /* RecordDetailView.swift in Sources */,
 				B875047A2A7790610098167A /* CustomSegmentedView.swift in Sources */,
 				160B1E802A6F946100A708CC /* GuideView.swift in Sources */,
 				1687E31E2A6F7A0B0004D87A /* CoreDataManager.swift in Sources */,

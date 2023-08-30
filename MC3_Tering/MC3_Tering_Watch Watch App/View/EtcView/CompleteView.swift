@@ -24,7 +24,7 @@ struct CompleteView: View {
                 }
         }
         .background(
-            NavigationLink(destination: ResultView(workoutDataModel: WorkOutDataModel()), isActive: $isResultViewPresented) {
+            NavigationLink(destination: ResultView(), isActive: $isResultViewPresented) {
                 EmptyView()
             }
             .hidden()

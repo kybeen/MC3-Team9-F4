@@ -168,7 +168,7 @@ struct HealthKitView: View {
         return formatter
     }()
     
-    @EnvironmentObject var healthResultInfo: HealthResultInfo
+    @EnvironmentObject var workoutResultInfo: WorkoutResultInfo
     @ObservedObject var model = ViewModelWatch()
     @EnvironmentObject var swingInfo: SwingInfo
     
@@ -213,10 +213,10 @@ struct HealthKitView: View {
                     }
                     .onAppear {
                         print("===============================결과 확인===================================")
-                        print("저장된 평균 심박수 : \(healthResultInfo.averageHeartRate)")
-                        print("저장된 소모 칼로리 : \(healthResultInfo.burningCal)")
-                        print("저장된 운동 시간 : \(healthResultInfo.workOutTime)")
-                        print("저장된 운동일 : \(healthResultInfo.workOutDate)")
+                        print("저장된 평균 심박수 : \(workoutResultInfo.averageHeartRate)")
+                        print("저장된 소모 칼로리 : \(workoutResultInfo.burningCal)")
+                        print("저장된 운동 시간 : \(workoutResultInfo.workOutTime)")
+                        print("저장된 운동일 : \(workoutResultInfo.workOutDate)")
                         print("======================================================================")
                         sendSwingDataToPhone()
                     }
@@ -241,7 +241,7 @@ struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         HealthKitView()
             .environmentObject(WorkoutManager())
-            .environmentObject(HealthResultInfo())
+            .environmentObject(WorkoutResultInfo())
     }
 }
 
@@ -254,10 +254,10 @@ extension HealthKitView {
             "backhandPerfect" : self.swingInfo.backhandPerfect,
             "totalBackhandCount" : self.swingInfo.totalBackhandCount,
             "selectedValue" : self.swingInfo.selectedValue,
-            "averageHeartRate" : healthResultInfo.averageHeartRate, // 평균 심박수
-            "burningCal" : healthResultInfo.burningCal, // 소모 칼로리
-            "workOutTime" : healthResultInfo.workOutTime, // 운동 시간
-            "workOutDate" : healthResultInfo.workOutDate // 운동일
+            "averageHeartRate" : workoutResultInfo.averageHeartRate, // 평균 심박수
+            "burningCal" : workoutResultInfo.burningCal, // 소모 칼로리
+            "workOutTime" : workoutResultInfo.workOutTime, // 운동 시간
+            "workOutDate" : workoutResultInfo.workOutDate // 운동일
         ])
     }
 }

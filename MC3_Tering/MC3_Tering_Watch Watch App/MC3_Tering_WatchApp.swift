@@ -9,14 +9,14 @@ import SwiftUI
 
 @main
 struct MC3_Tering_Watch_Watch_AppApp: App {
-    @StateObject var healthResultInfo = HealthResultInfo()
+    @StateObject var workoutResultInfo = WorkoutResultInfo()
     @StateObject var swingInfo = SwingInfo()
     @StateObject var workoutManager = WorkoutManager()
     
     var body: some Scene {
         WindowGroup {
             SwingCountView()
-                .environmentObject(healthResultInfo)
+                .environmentObject(workoutResultInfo)
                 .environmentObject(swingInfo)
                 .environmentObject(workoutManager)
         }

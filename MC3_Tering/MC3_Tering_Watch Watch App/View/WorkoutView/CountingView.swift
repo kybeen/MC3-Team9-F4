@@ -60,7 +60,7 @@ struct QuitView: View {
         formatter.zeroFormattingBehavior = .pad
         return formatter
     }()
-    @EnvironmentObject var healthResultInfo: HealthResultInfo
+    @EnvironmentObject var workoutResultInfo: WorkoutResultInfo
     
     var body: some View {
         TimelineView(MetricsTimelineSchedule(from: workoutManager.builder?.startDate ?? Date())) { context in
@@ -78,11 +78,11 @@ struct QuitView: View {
                 
                 NavigationLink(destination: ResultView(), isActive: $showResultView, label: {
                     Button("종료") {
-                        // Workout 데이터 HealthResultInfo 모델에 저장 (운동 시간이 10초 이상일 때만 저장)
+                        // Workout 데이터 WorkoutResultInfo 모델에 저장 (운동 시간이 10초 이상일 때만 저장)
                         if Int(workoutManager.builder?.elapsedTime(at: context.date) ?? 0) >= 10 {
-                            healthResultInfo.workOutTime = Int(((workoutManager.builder?.elapsedTime(at: context.date) ?? 0) / 60).rounded()) // 운동 시간(초 -> 분 단위로 변환)
-                            healthResultInfo.burningCal = Int(workoutManager.activeEnergy.rounded()) // 소모 칼로리
-                            healthResultInfo.averageHeartRate = Int(workoutManager.averageHeartRate.rounded()) // 평균 심박수
+                            workoutResultInfo.workOutTime = Int(((workoutManager.builder?.elapsedTime(at: context.date) ?? 0) / 60).rounded()) // 운동 시간(초 -> 분 단위로 변환)
+                            workoutResultInfo.burningCal = Int(workoutManager.activeEnergy.rounded()) // 소모 칼로리
+                            workoutResultInfo.averageHeartRate = Int(workoutManager.averageHeartRate.rounded()) // 평균 심박수
                             workoutManager.isSaved = true
                         } else {
                             print("10초 미만의 운동 결과는 저장되지 않습니다. -> \(Int(workoutManager.builder?.elapsedTime(at: context.date) ?? 0))초")

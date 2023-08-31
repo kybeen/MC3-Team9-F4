@@ -17,7 +17,7 @@ struct ReadyView: View {
     @State private var isCountingViewPresented: Bool = false
 
     @EnvironmentObject var swingInfo: SwingInfo
-    @EnvironmentObject var healthResultInfo: HealthResultInfo
+    @EnvironmentObject var workoutResultInfo: WorkoutResultInfo
     
     var body: some View {
         VStack {
@@ -51,7 +51,7 @@ extension ReadyView {
         swingInfo.forehandPerfect = 0
         swingInfo.backhandPerfect = 0
         swingInfo.swingLeft = swingInfo.selectedValue // 남은 스윙 횟수 = 선택값 으로 초기화
-        healthResultInfo.workOutDate = Date() // 운동 시작일 저장
+        workoutResultInfo.workOutDate = Date() // 운동 시작일 저장
     }
     
     private func startProgressAnimation() {

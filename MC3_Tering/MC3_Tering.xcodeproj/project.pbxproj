@@ -66,7 +66,7 @@
 		1687E31E2A6F7A0B0004D87A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E31D2A6F7A0B0004D87A /* CoreDataManager.swift */; };
 		1687E3202A6F7A270004D87A /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E31F2A6F7A260004D87A /* UserDataModel.swift */; };
 		1687E3222A6F7A300004D87A /* WorkOutDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3212A6F7A300004D87A /* WorkOutDataModel.swift */; };
-		16A219212A6FDDAD00952653 /* HealthResultInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A219202A6FDDAD00952653 /* HealthResultInfo.swift */; };
+		16A219212A6FDDAD00952653 /* WorkoutResultInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16A219202A6FDDAD00952653 /* WorkoutResultInfo.swift */; };
 		16AFA5462A72119D0097CC8F /* SwingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16AFA5452A72119D0097CC8F /* SwingInfo.swift */; };
 		16BB115A2A734C4500C096D9 /* SwingCompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BB11592A734C4500C096D9 /* SwingCompleteView.swift */; };
 		16BB115C2A735ADB00C096D9 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BB115B2A735ADB00C096D9 /* SelectView.swift */; };
@@ -189,7 +189,7 @@
 		1687E31D2A6F7A0B0004D87A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		1687E31F2A6F7A260004D87A /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		1687E3212A6F7A300004D87A /* WorkOutDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkOutDataModel.swift; sourceTree = "<group>"; };
-		16A219202A6FDDAD00952653 /* HealthResultInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthResultInfo.swift; sourceTree = "<group>"; };
+		16A219202A6FDDAD00952653 /* WorkoutResultInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutResultInfo.swift; sourceTree = "<group>"; };
 		16AFA5452A72119D0097CC8F /* SwingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingInfo.swift; sourceTree = "<group>"; };
 		16BB11592A734C4500C096D9 /* SwingCompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingCompleteView.swift; sourceTree = "<group>"; };
 		16BB115B2A735ADB00C096D9 /* SelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
@@ -468,7 +468,7 @@
 				1687E2E22A6F714D0004D87A /* ViewModelWatch.swift */,
 				16AFA5452A72119D0097CC8F /* SwingInfo.swift */,
 				1687E2EA2A6F72260004D87A /* ParticleEffect.swift */,
-				16A219202A6FDDAD00952653 /* HealthResultInfo.swift */,
+				16A219202A6FDDAD00952653 /* WorkoutResultInfo.swift */,
 				1687E2E82A6F721F0004D87A /* Particle.swift */,
 				B821114F2A7413960043CE6D /* WorkoutManager.swift */,
 			);
@@ -834,7 +834,7 @@
 				1687E2E92A6F721F0004D87A /* Particle.swift in Sources */,
 				1656EEAF2A70DC3100651C04 /* TedCountingView.swift in Sources */,
 				1687E3092A6F74790004D87A /* CircleProgressBar.swift in Sources */,
-				16A219212A6FDDAD00952653 /* HealthResultInfo.swift in Sources */,
+				16A219212A6FDDAD00952653 /* WorkoutResultInfo.swift in Sources */,
 				1687E2F82A6F73040004D87A /* ReadyView.swift in Sources */,
 				B87CEBFE2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel in Sources */,
 				B82111502A7413960043CE6D /* WorkoutManager.swift in Sources */,

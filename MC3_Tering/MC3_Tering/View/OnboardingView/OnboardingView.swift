@@ -168,6 +168,7 @@ extension OnboardingView {
                 onboardingPage += 1
                 print(onboardingPage)
             }
+            isKeyboardOn = false
         }) {
             ZStack {
                 Rectangle()
@@ -302,8 +303,11 @@ extension OnboardingView {
                         }
                     }
                 })
-                .onTapGesture {
-                    isKeyboardOn = true
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
+                        isKeyboardOn = true
+                    }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { notification in
+                    isKeyboardOn = false
                 }
             Rectangle()
                 .frame(height: 1)

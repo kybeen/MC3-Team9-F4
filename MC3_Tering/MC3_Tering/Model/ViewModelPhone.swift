@@ -6,16 +6,19 @@
 //
 
 import Foundation
+import SwiftUI
 import WatchConnectivity
 
 // watchOS와의 연결을 관리하는 클래스 -> NSObject, WCSessionDelegate 프로토콜을 준수해야 함
 // WCSessionDelegate 프로토콜 준수 시에 아래 3가지 델리게이트 메서드를 정의해줘야함
 class ViewModelPhone: NSObject, ObservableObject, WCSessionDelegate {
+    @ObservedObject var workoutDataModel = WorkOutDataModel.shared
+
     @Published var averageHeartRate = -1
     @Published var burningCalories = -1
     @Published var workOutTime = -1
     @Published var workOutDate: Date?
-    
+    @Published var selectedValue = -1
     @Published var totalSwingCount = -1
     @Published var forehandPerfect = -1
     @Published var totalForehandCount = -1
@@ -41,16 +44,29 @@ class ViewModelPhone: NSObject, ObservableObject, WCSessionDelegate {
     
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
         DispatchQueue.main.async {
-            self.averageHeartRate = userInfo["averageHeartRate"] as? Int ?? self.averageHeartRate // 평균 심박수
-            self.burningCalories = userInfo["burningCal"] as? Int ?? self.burningCalories // 소모 칼로리
-            self.workOutTime = userInfo["workOutTime"] as? Int ?? self.workOutTime // 운동 시간
-            self.workOutDate = userInfo["workOutDate"] as? Date ?? self.workOutDate // 운동 날짜
+//            self.averageHeartRate = userInfo["averageHeartRate"] as? Int ?? self.averageHeartRate // 평균 심박수
+//            self.burningCalories = userInfo["burningCal"] as? Int ?? self.burningCalories // 소모 칼로리
+//            self.workOutTime = userInfo["workOutTime"] as? Int ?? self.workOutTime // 운동 시간
+//            self.workOutDate = userInfo["workOutDate"] as? Date ?? self.workOutDate // 운동 날짜
+//
+//            self.totalSwingCount = userInfo["totalSwingCount"] as? Int ?? self.totalSwingCount
+//            self.forehandPerfect = userInfo["forehandPerfect"] as? Int ?? self.forehandPerfect
+//            self.totalForehandCount = userInfo["totalForehandCount"] as? Int ?? self.totalForehandCount
+//            self.backhandPerfect = userInfo["backhandPerfect"] as? Int ?? self.backhandPerfect
+//            self.totalBackhandCount = userInfo["totalBackhandCount"] as? Int ?? self.totalBackhandCount
             
-            self.totalSwingCount = userInfo["totalSwingCount"] as? Int ?? self.totalSwingCount
-            self.forehandPerfect = userInfo["forehandPerfect"] as? Int ?? self.forehandPerfect
-            self.totalForehandCount = userInfo["totalForehandCount"] as? Int ?? self.totalForehandCount
-            self.backhandPerfect = userInfo["backhandPerfect"] as? Int ?? self.backhandPerfect
-            self.totalBackhandCount = userInfo["totalBackhandCount"] as? Int ?? self.totalBackhandCount
+//            workoutDataModel.bu = userInfo["averageHeartRate"] as? Int ?? self.averageHeartRate // 평균 심박수
+            self.workoutDataModel.burningCalories = userInfo["burningCal"] as? Int ?? self.burningCalories // 소모 칼로리
+            self.workoutDataModel.workoutTime = userInfo["workOutTime"] as? Int ?? self.workOutTime // 운동 시간
+            self.workoutDataModel.workoutDate = userInfo["workOutDate"] as? Date ?? self.workOutDate! // 운동 날짜
+            self.workoutDataModel.selectedValue = userInfo["selectedValue"] as? Int ?? self.selectedValue
+            self.workoutDataModel.totalSwingCount = userInfo["totalSwingCount"] as? Int ?? self.totalSwingCount
+            self.workoutDataModel.forehandPerfect = userInfo["forehandPerfect"] as? Int ?? self.forehandPerfect
+            self.workoutDataModel.forehandTotalCount = userInfo["totalForehandCount"] as? Int ?? self.totalForehandCount
+            self.workoutDataModel.backhandPerfect = userInfo["backhandPerfect"] as? Int ?? self.backhandPerfect
+            self.workoutDataModel.backhandTotalCount = userInfo["totalBackhandCount"] as? Int ?? self.totalBackhandCount
+            self.workoutDataModel.createWorkOutData()
+
         }
     }
     

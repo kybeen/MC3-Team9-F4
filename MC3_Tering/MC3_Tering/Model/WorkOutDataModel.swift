@@ -26,7 +26,7 @@ class WorkOutDataModel: ObservableObject {
     @Published var forehandTotalCount = 0
     @Published var backhandPerfect = 0
     @Published var backhandTotalCount = 0
-    
+    @Published var selectedValue = 0
     var months: [String: [WorkOutData]] = [:]
     
     private let coreDataManager = CoreDataManager.shared
@@ -99,7 +99,7 @@ class WorkOutDataModel: ObservableObject {
                 currentWorkOutData.totalSwingCount = Int16(totalSwingCount)
                 currentWorkOutData.workoutDate = newDate
                 currentWorkOutData.workoutTime = Int16(workoutTime)
-                
+                currentWorkOutData.selectedValue = Int16(selectedValue)
                 coreDataManager.update(object: currentWorkOutData)  // 수정된 객체를 저장
             }
         }
@@ -107,23 +107,43 @@ class WorkOutDataModel: ObservableObject {
     
     func createWorkOutData() {
         let entityName = "WorkOutData"
+//        if let newWorkOutData = coreDataManager.create(entityName: entityName, attributes: [:]) as? WorkOutData {
+//
+//            // 새로운 WorkOutData를 현재 작업 대상으로 설정
+//            let fetchResult = coreDataManager.fetch(entityName: entityName)
+//            if let currentWorkOutData = fetchResult.first as? WorkOutData {
+//                currentWorkOutData.id = Int16(id)
+//                currentWorkOutData.burningCalories = Int16(burningCalories)
+//                currentWorkOutData.backhandPerfect = Int16(backhandPerfect)
+//                currentWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
+//                currentWorkOutData.forehandPerfect = Int16(forehandPerfect)
+//                currentWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
+//                currentWorkOutData.totalSwingCount = Int16(totalSwingCount)
+//                currentWorkOutData.workoutDate = workoutDate
+//                currentWorkOutData.workoutTime = Int16(workoutTime)
+//                currentWorkOutData.selectedValue = Int16(selectedValue)
+//                coreDataManager.update(object: newWorkOutData)
+//            }
+//
+//
+//        }
         if let newWorkOutData = coreDataManager.create(entityName: entityName, attributes: [:]) as? WorkOutData {
             
             // 새로운 WorkOutData를 현재 작업 대상으로 설정
-            let fetchResult = coreDataManager.fetch(entityName: entityName)
-            if let currentWorkOutData = fetchResult.first as? WorkOutData {
-                currentWorkOutData.id = Int16(id)
-                currentWorkOutData.burningCalories = Int16(burningCalories)
-                currentWorkOutData.backhandPerfect = Int16(backhandPerfect)
-                currentWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
-                currentWorkOutData.forehandPerfect = Int16(forehandPerfect)
-                currentWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
-                currentWorkOutData.totalSwingCount = Int16(totalSwingCount)
-                currentWorkOutData.workoutDate = workoutDate
-                currentWorkOutData.workoutTime = Int16(workoutTime)
-            }
+            let currentWorkOutData = newWorkOutData  // 새로운 객체를 현재 작업 대상으로 설정
             
-            coreDataManager.update(object: newWorkOutData)
+            // 각 속성 값을 설정
+            currentWorkOutData.id = Int16(id)
+            currentWorkOutData.burningCalories = Int16(burningCalories)
+            currentWorkOutData.backhandPerfect = Int16(backhandPerfect)
+            currentWorkOutData.backhandTotalCount = Int16(backhandTotalCount)
+            currentWorkOutData.forehandPerfect = Int16(forehandPerfect)
+            currentWorkOutData.forehandTotalCount = Int16(forehandTotalCount)
+            currentWorkOutData.totalSwingCount = Int16(totalSwingCount)
+            currentWorkOutData.workoutDate = workoutDate
+            currentWorkOutData.workoutTime = Int16(workoutTime)
+            currentWorkOutData.selectedValue = Int16(selectedValue)
+            coreDataManager.update(object: currentWorkOutData)  // 수정된 객체를 저장
         }
     }
     
@@ -152,7 +172,7 @@ class WorkOutDataModel: ObservableObject {
         workout.totalSwingCount = Int16(totalSwingCount)
         workout.workoutDate = workoutDate
         workout.workoutTime = Int16(workoutTime)
-        
+        workout.selectedValue = Int16(selectedValue)
         coreDataManager.update(object: workout)
         print("save workout Data Done")
     }
@@ -294,7 +314,7 @@ class WorkOutDataModel: ObservableObject {
             newWorkOutData.totalSwingCount = Int16(Int.random(in: 10...200))
             newWorkOutData.workoutDate = Calendar.current.date(byAdding: .day, value: 0, to: Date()) ?? Date()
             newWorkOutData.workoutTime = Int16(Int.random(in: 10...200))
-            
+            newWorkOutData.selectedValue = Int16(selectedValue)
             // 저장
             coreDataManager.update(object: newWorkOutData)
         }

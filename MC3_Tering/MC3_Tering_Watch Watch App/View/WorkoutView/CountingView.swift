@@ -51,7 +51,7 @@ struct QuitView: View {
     
     @State var showResultView = false
     
-    @ObservedObject var model = ViewModelWatch()
+    @EnvironmentObject var viewModelWatch: ViewModelWatch
     @EnvironmentObject var swingInfo: SwingInfo
     
     @State private var workoutTimeFormatter: DateComponentsFormatter = { // 운동 시간 formatter

@@ -48,7 +48,6 @@ struct ResultView: View {
         .navigationTitle("요약")
         .navigationBarBackButtonHidden()
         .onDisappear {
-            workoutManager.isSaved = false
             workoutManager.resetWorkout()
         }
     }
@@ -169,8 +168,10 @@ struct HealthKitView: View {
     }()
     
     @EnvironmentObject var workoutResultInfo: WorkoutResultInfo
-    @ObservedObject var model = ViewModelWatch()
+    @EnvironmentObject var viewModelWatch: ViewModelWatch
     @EnvironmentObject var swingInfo: SwingInfo
+    
+    @State private var isFirstAppear = false
     
     var body: some View {
         VStack {
@@ -212,13 +213,17 @@ struct HealthKitView: View {
                         Spacer()
                     }
                     .onAppear {
-                        print("===============================결과 확인===================================")
-                        print("저장된 평균 심박수 : \(workoutResultInfo.averageHeartRate)")
-                        print("저장된 소모 칼로리 : \(workoutResultInfo.burningCal)")
-                        print("저장된 운동 시간 : \(workoutResultInfo.workOutTime)")
-                        print("저장된 운동일 : \(workoutResultInfo.workOutDate)")
-                        print("======================================================================")
-                        sendSwingDataToPhone()
+                        if !isFirstAppear {
+                            print("===============================결과 확인===================================")
+                            print("저장된 평균 심박수 : \(workoutResultInfo.averageHeartRate)")
+                            print("저장된 소모 칼로리 : \(workoutResultInfo.burningCal)")
+                            print("저장된 운동 시간 : \(workoutResultInfo.workOutTime)")
+                            print("저장된 운동일 : \(workoutResultInfo.workOutDate)")
+                            print("======================================================================")
+                            sendSwingDataToPhone()
+                            
+                            isFirstAppear = true
+                        }
                     }
                 }
             }
@@ -247,7 +252,7 @@ struct ResultView_Previews: PreviewProvider {
 
 extension HealthKitView {
     private func sendSwingDataToPhone() {
-        self.model.session.transferUserInfo([
+        self.viewModelWatch.session.transferUserInfo([
             "totalSwingCount" : self.swingInfo.totalSwingCount,
             "forehandPerfect" : self.swingInfo.forehandPerfect,
             "totalForehandCount" : self.swingInfo.totalForehandCount,

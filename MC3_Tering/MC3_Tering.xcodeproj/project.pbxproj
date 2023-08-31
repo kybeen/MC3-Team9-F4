@@ -579,10 +579,8 @@
 			isa = PBXGroup;
 			children = (
 				1687E2FF2A6F73230004D87A /* CountingView.swift */,
-				1687E2F52A6F72FE0004D87A /* MeasuringView.swift */,
-				1687E2F32A6F72F50004D87A /* SwingResultView.swift */,
-				16BB11592A734C4500C096D9 /* SwingCompleteView.swift */,
-				16BB115B2A735ADB00C096D9 /* SelectView.swift */,
+				B84107F62AA0828E006A34E4 /* Measurement */,
+				B84107F72AA08321006A34E4 /* Complete */,
 			);
 			path = WorkoutView;
 			sourceTree = "<group>";
@@ -612,6 +610,24 @@
 				1687E2E82A6F721F0004D87A /* Particle.swift */,
 			);
 			path = Particle;
+			sourceTree = "<group>";
+		};
+		B84107F62AA0828E006A34E4 /* Measurement */ = {
+			isa = PBXGroup;
+			children = (
+				1687E2F52A6F72FE0004D87A /* MeasuringView.swift */,
+				1687E2F32A6F72F50004D87A /* SwingResultView.swift */,
+			);
+			path = Measurement;
+			sourceTree = "<group>";
+		};
+		B84107F72AA08321006A34E4 /* Complete */ = {
+			isa = PBXGroup;
+			children = (
+				16BB11592A734C4500C096D9 /* SwingCompleteView.swift */,
+				16BB115B2A735ADB00C096D9 /* SelectView.swift */,
+			);
+			path = Complete;
 			sourceTree = "<group>";
 		};
 		B87504702A778D3E0098167A /* ChartView */ = {

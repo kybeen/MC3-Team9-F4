@@ -57,8 +57,6 @@
 		1687E2F62A6F72FE0004D87A /* MeasuringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F52A6F72FE0004D87A /* MeasuringView.swift */; };
 		1687E2F82A6F73040004D87A /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F72A6F73040004D87A /* ReadyView.swift */; };
 		1687E2FA2A6F730C0004D87A /* SwingCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F92A6F730C0004D87A /* SwingCountView.swift */; };
-		1687E2FC2A6F73140004D87A /* GuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2FB2A6F73140004D87A /* GuideView.swift */; };
-		1687E2FE2A6F731C0004D87A /* SwingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2FD2A6F731C0004D87A /* SwingListCellView.swift */; };
 		1687E3002A6F73230004D87A /* CountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2FF2A6F73230004D87A /* CountingView.swift */; };
 		1687E3022A6F732B0004D87A /* CompleteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3012A6F732B0004D87A /* CompleteView.swift */; };
 		1687E3042A6F73360004D87A /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3032A6F73360004D87A /* ResultView.swift */; };
@@ -182,8 +180,6 @@
 		1687E2F52A6F72FE0004D87A /* MeasuringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasuringView.swift; sourceTree = "<group>"; };
 		1687E2F72A6F73040004D87A /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
 		1687E2F92A6F730C0004D87A /* SwingCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingCountView.swift; sourceTree = "<group>"; };
-		1687E2FB2A6F73140004D87A /* GuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuideView.swift; sourceTree = "<group>"; };
-		1687E2FD2A6F731C0004D87A /* SwingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingListCellView.swift; sourceTree = "<group>"; };
 		1687E2FF2A6F73230004D87A /* CountingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountingView.swift; sourceTree = "<group>"; };
 		1687E3012A6F732B0004D87A /* CompleteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteView.swift; sourceTree = "<group>"; };
 		1687E3032A6F73360004D87A /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
@@ -572,8 +568,6 @@
 			isa = PBXGroup;
 			children = (
 				B84107DA2A9D9C24006A34E4 /* TestLayoutView.swift */,
-				1687E2FB2A6F73140004D87A /* GuideView.swift */,
-				1687E2FD2A6F731C0004D87A /* SwingListCellView.swift */,
 				1687E3012A6F732B0004D87A /* CompleteView.swift */,
 				1656EEAD2A70DC2000651C04 /* Ted_CountingView */,
 			);
@@ -832,7 +826,6 @@
 			files = (
 				1687E2F62A6F72FE0004D87A /* MeasuringView.swift in Sources */,
 				1639E69C2AA063CE008AE6AC /* WorkOutData+CoreDataClass.swift in Sources */,
-				1687E2FE2A6F731C0004D87A /* SwingListCellView.swift in Sources */,
 				1639E6952AA062E4008AE6AC /* UserData+CoreDataClass.swift in Sources */,
 				1687E3042A6F73360004D87A /* ResultView.swift in Sources */,
 				1687D1562A9C8A7900F97008 /* CoreDataManager.swift in Sources */,
@@ -848,7 +841,6 @@
 				1687E2F82A6F73040004D87A /* ReadyView.swift in Sources */,
 				B87CEBFE2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel in Sources */,
 				B82111502A7413960043CE6D /* WorkoutManager.swift in Sources */,
-				1687E2FC2A6F73140004D87A /* GuideView.swift in Sources */,
 				16BB115C2A735ADB00C096D9 /* SelectView.swift in Sources */,
 				16BB115A2A734C4500C096D9 /* SwingCompleteView.swift in Sources */,
 				1687E3022A6F732B0004D87A /* CompleteView.swift in Sources */,

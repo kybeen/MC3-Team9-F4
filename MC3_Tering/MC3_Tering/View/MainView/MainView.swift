@@ -35,6 +35,25 @@ struct MainView: View {
                 VStack(spacing: 0) {
                     tabsContainer()
                     tabViewContainer()
+                    
+                    // TODO: - 데이터 확인용 코드 (나중에 삭제하기)
+//                    /// 데이터 잘 들어가고 있는지 확인
+//                    Button {
+//                        if self.model.session.isReachable {
+//                            self.reachable = "Yes"
+//                        }
+//                        else {
+//                            self.reachable = "No"
+//                        }
+//                    } label: {
+//                        Text("Update")
+//                    }
+//
+//                    //밑에 처럼 그냥 불러오기만 하면 됨
+//                    Text("receive from watch backhandperfect: \(workoutDataModel.backhandPerfect)")
+//                    Text("receive from watch total swing count: \(workoutDataModel.totalSwingCount)")
+//                    Text("receive from watch date: \(model.workOutDate ?? Date())")
+//                    Text("receive from watch total swing: \(model.totalSwingCount)")
                 }
                 .padding(.top, 20)
             }
@@ -192,11 +211,12 @@ extension MainView {
             .scrollIndicators(.hidden)
             
             ScrollView {
-                Button(action: {
-                    workoutDataModel.testCreate100Days()
-                }, label: {
-                    Text("workout 시험데이터 100개 생성")
-                })
+                // 시험 데이터 확인용 버튼
+//                Button(action: {
+//                    workoutDataModel.testCreate100Days()
+//                }, label: {
+//                    Text("workout 시험데이터 100개 생성")
+//                })
                 RecordListView(workoutDataModel: workoutDataModel, months: months)
                     .padding(.top, 2)
                     .padding(.horizontal, 16)

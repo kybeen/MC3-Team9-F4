@@ -371,20 +371,9 @@ extension OnboardingView {
         VStack(spacing: 0) {
             
             listComponent()
-            Rectangle()
-                .fill(Color.theme.teWhite)
-                .frame(height: 0.5)
-                .padding(.horizontal, 28)
             listComponent(title: "키 (cm)", isPresented: $isSetHeight, targetData: $height, pickerList: Array(130...260).map { String($0) }, suffix: "cm")
-            Rectangle()
-                .fill(Color.theme.teWhite)
-                .frame(height: 0.5)
-                .padding(.horizontal, 28)
             listComponent(title: "체중 (kg)", isPresented: $isSetWeight, targetData: $weight, pickerList: Array(30...200).map { String($0) }, suffix: "kg")
-            Rectangle()
-                .fill(Color.theme.teWhite)
-                .frame(height: 0.5)
-                .padding(.horizontal, 28)
+            
             listComponent(title: "성별", isPresented: $isSetAge, targetData: $sex, pickerList: sexList)
         }
         .background(Color.theme.teDarkGray)
@@ -393,43 +382,59 @@ extension OnboardingView {
     }
     
     private func listComponent() -> some View {
-        Button(action: {
-            isSetBirthDay = true
-        }) {
-            VStack(spacing: 0) {
-                HStack(spacing: 0) {
-                    Text("생년월일")
-                        .foregroundColor(Color.theme.teWhite)
-                    Spacer()
-                    Text(dateFormat(selectedDate))
-                        .foregroundColor(.gray)
+        
+        VStack(spacing: 0) {
+            Button(action: {
+                isSetBirthDay = true
+            }) {
+                VStack(spacing: 0) {
+                    HStack(spacing: 0) {
+                        Text("생년월일")
+                            .foregroundColor(Color.theme.teWhite)
+                        Spacer()
+                        Text(dateFormat(selectedDate))
+                            .foregroundColor(.gray)
+                    }
                 }
+                .padding(.horizontal, 28)
             }
-            .padding(.horizontal, 28)
+            .sheet(isPresented: $isSetBirthDay, content: {
+                pickerPopup()
+            })
+            .frame(height: 57)
+            Rectangle()
+                .fill(Color.theme.teWhite)
+                .frame(height: 0.1)
+                .padding(.horizontal, 20)
         }
-        .sheet(isPresented: $isSetBirthDay, content: {
-            pickerPopup()
-        })
-        .frame(height: 57)
+        
     }
     
     private func listComponent(title: String, isPresented: Binding<Bool>, targetData: Binding<String>, pickerList: [String], suffix: String = "") -> some View {
-        Button(action: {
-            isPresented.wrappedValue = true
-        }) {
-            HStack {
-                Text(title)
-                    .foregroundColor(Color.theme.teWhite)
-                Spacer()
-                Text("\(targetData.wrappedValue)\(suffix)")
-                    .foregroundColor(.gray)
+        VStack(spacing: 0) {
+            Button(action: {
+                isPresented.wrappedValue = true
+            }) {
+                HStack {
+                    Text(title)
+                        .foregroundColor(Color.theme.teWhite)
+                    Spacer()
+                    Text("\(targetData.wrappedValue)\(suffix)")
+                        .foregroundColor(.gray)
+                }
+                .padding(.horizontal, 28)
             }
-            .padding(.horizontal, 28)
+            .sheet(isPresented: isPresented, content: {
+                pickerPopup(targetData: targetData, pickerList: pickerList, isPresented: isPresented, suffix: suffix)
+            })
+            .frame(height: 57)
+            if title != "성별" {
+                Rectangle()
+                    .fill(Color.theme.teWhite)
+                    .frame(height: 0.4)
+                    .padding(.horizontal, 20)
+            }
         }
-        .sheet(isPresented: isPresented, content: {
-            pickerPopup(targetData: targetData, pickerList: pickerList, isPresented: isPresented, suffix: suffix)
-        })
-        .frame(height: 57)
     }
 
     private func pickerPopup() -> some View {

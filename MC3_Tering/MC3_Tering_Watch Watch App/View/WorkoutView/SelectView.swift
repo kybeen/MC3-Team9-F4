@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - 운동 목표 달성 시 선택 화면
 struct SelectView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @EnvironmentObject var healthResultInfo: HealthResultInfo
@@ -29,13 +30,6 @@ struct SelectView: View {
                 .background(Color.watchColor.lightGreen)
                 .cornerRadius(40)
                 Spacer()
-//                NavigationLink(destination: ResultView()) {
-//                    Text("종료")
-//                        .font(.system(size: 20, weight: .bold))
-//                        .foregroundColor(Color.white)
-//                }
-//                .background(Color.watchColor.lightBlack)
-//                .cornerRadius(40)
                 
                 NavigationLink(destination: ResultView(), isActive: $showResultView, label: {
                     Button("종료") {

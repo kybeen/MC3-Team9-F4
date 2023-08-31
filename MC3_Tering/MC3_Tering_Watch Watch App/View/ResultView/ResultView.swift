@@ -247,7 +247,6 @@ struct ResultView_Previews: PreviewProvider {
         HealthKitView()
             .environmentObject(WorkoutManager())
             .environmentObject(HealthResultInfo())
-//            .environmentObject(SwingListWrapper(swingList: SwingList(name: "포핸드", guideButton: "questionmark.circle", gifImage: "square")))
     }
 }
 

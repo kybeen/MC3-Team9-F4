@@ -35,24 +35,6 @@ struct MainView: View {
                 VStack(spacing: 0) {
                     tabsContainer()
                     tabViewContainer()
-                    
-                    /// 데이터 잘 들어가고 있는지 확인
-                    Button {
-                        if self.model.session.isReachable {
-                            self.reachable = "Yes"
-                        }
-                        else {
-                            self.reachable = "No"
-                        }
-                    } label: {
-                        Text("Update")
-                    }
-                    
-                    //밑에 처럼 그냥 불러오기만 하면 됨
-                    Text("receive from watch backhandperfect: \(workoutDataModel.backhandPerfect)")
-                    Text("receive from watch total swing count: \(workoutDataModel.totalSwingCount)")
-                    Text("receive from watch date: \(model.workOutDate ?? Date())")
-                    Text("receive from watch total swing: \(model.totalSwingCount)")
                 }
                 .padding(.top, 20)
             }

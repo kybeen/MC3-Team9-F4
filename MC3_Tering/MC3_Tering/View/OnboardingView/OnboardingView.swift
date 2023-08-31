@@ -63,7 +63,7 @@ struct OnboardingView: View {
                     nextButton()
                 case 3:
                     titleContainer("꼭 맞는 자세 교정", "을 위해", "추가정보를 입력해주세요.", 3)
-                    Spacer()
+                        .padding(.bottom, 46)
                     additionalDataInput()
                     Spacer()
                     nextButton("시작하기")
@@ -168,6 +168,7 @@ extension OnboardingView {
                 onboardingPage += 1
                 print(onboardingPage)
             }
+            isKeyboardOn = false
         }) {
             ZStack {
                 Rectangle()
@@ -212,6 +213,7 @@ extension OnboardingView {
                         Image(uiImage: uiImage)
                             .resizable()
                             .scaledToFill()
+                            .frame(minWidth: 80, minHeight: 80)
                             .frame(maxWidth: 176, maxHeight: 176)
                             .cornerRadius(100)
                     } else {
@@ -219,6 +221,7 @@ extension OnboardingView {
                             Image(uiImage: UIImage(data: selectedImageData!)!)
                                 .resizable()
                                 .scaledToFill()
+                                .frame(minWidth: 80, minHeight: 80)
                                 .frame(maxWidth: 129, maxHeight: 129)
                                 .cornerRadius(100)
                         } else {
@@ -230,6 +233,7 @@ extension OnboardingView {
                         }
                     }
                 }
+                .frame(minWidth: 80, minHeight: 80)
                 .frame(maxWidth: 176, maxHeight: 176)
                 .padding(.bottom, 22)
             }
@@ -301,8 +305,11 @@ extension OnboardingView {
                         }
                     }
                 })
-                .onTapGesture {
-                    isKeyboardOn = true
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { notification in
+                        isKeyboardOn = true
+                    }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { notification in
+                    isKeyboardOn = false
                 }
             Rectangle()
                 .frame(height: 1)
@@ -368,50 +375,73 @@ extension OnboardingView {
     }
     
     private func additionalDataInput() -> some View {
-        List {
-            Section {
-                listComponent()
-                listComponent(title: "키 (cm)", isPresented: $isSetHeight, targetData: $height, pickerList: Array(130...260).map { String($0) }, suffix: "cm")
-                listComponent(title: "체중 (kg)", isPresented: $isSetWeight, targetData: $weight, pickerList: Array(30...200).map { String($0) }, suffix: "kg")
-                listComponent(title: "성별", isPresented: $isSetAge, targetData: $sex, pickerList: sexList)
-            }
+        VStack(spacing: 0) {
+            
+            listComponent()
+            listComponent(title: "키 (cm)", isPresented: $isSetHeight, targetData: $height, pickerList: Array(130...260).map { String($0) }, suffix: "cm")
+            listComponent(title: "체중 (kg)", isPresented: $isSetWeight, targetData: $weight, pickerList: Array(30...200).map { String($0) }, suffix: "kg")
+            
+            listComponent(title: "성별", isPresented: $isSetAge, targetData: $sex, pickerList: sexList)
         }
+        .background(Color.theme.teDarkGray)
+        .cornerRadius(20)
+        
     }
     
     private func listComponent() -> some View {
-        Button(action: {
-            isSetBirthDay.toggle()
-        }) {
-            HStack(spacing: 0) {
-                Text("생년월일")
-                    .foregroundColor(Color.theme.teWhite)
-                Spacer()
-                Text(dateFormat(selectedDate))
-                    .foregroundColor(.gray)
+        
+        VStack(spacing: 0) {
+            Button(action: {
+                isSetBirthDay = true
+            }) {
+                VStack(spacing: 0) {
+                    HStack(spacing: 0) {
+                        Text("생년월일")
+                            .foregroundColor(Color.theme.teWhite)
+                        Spacer()
+                        Text(dateFormat(selectedDate))
+                            .foregroundColor(.gray)
+                    }
+                }
+                .padding(.horizontal, 28)
             }
+            .sheet(isPresented: $isSetBirthDay, content: {
+                pickerPopup()
+            })
+            .frame(height: 57)
+            Rectangle()
+                .fill(Color.theme.teWhite)
+                .frame(height: 0.1)
+                .padding(.horizontal, 20)
         }
-        .sheet(isPresented: $isSetBirthDay, content: {
-            pickerPopup()
-        })
-        .frame(height: 54)
+        
     }
     
     private func listComponent(title: String, isPresented: Binding<Bool>, targetData: Binding<String>, pickerList: [String], suffix: String = "") -> some View {
-        Button(action: {
-            isPresented.wrappedValue.toggle()
-        }) {
-            HStack {
-                Text(title)
-                    .foregroundColor(Color.theme.teWhite)
-                Spacer()
-                Text("\(targetData.wrappedValue)\(suffix)")
-                    .foregroundColor(.gray)
+        VStack(spacing: 0) {
+            Button(action: {
+                isPresented.wrappedValue = true
+            }) {
+                HStack {
+                    Text(title)
+                        .foregroundColor(Color.theme.teWhite)
+                    Spacer()
+                    Text("\(targetData.wrappedValue)\(suffix)")
+                        .foregroundColor(.gray)
+                }
+                .padding(.horizontal, 28)
+            }
+            .sheet(isPresented: isPresented, content: {
+                pickerPopup(targetData: targetData, pickerList: pickerList, isPresented: isPresented, suffix: suffix)
+            })
+            .frame(height: 57)
+            if title != "성별" {
+                Rectangle()
+                    .fill(Color.theme.teWhite)
+                    .frame(height: 0.4)
+                    .padding(.horizontal, 20)
             }
         }
-        .sheet(isPresented: isPresented, content: {
-            pickerPopup(targetData: targetData, pickerList: pickerList, isPresented: isPresented, suffix: suffix)
-        })
-        .frame(height: 54)
     }
 
     private func pickerPopup() -> some View {

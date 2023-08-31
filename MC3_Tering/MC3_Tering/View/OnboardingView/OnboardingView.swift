@@ -230,6 +230,7 @@ extension OnboardingView {
                         }
                     }
                 }
+                .frame(minWidth: 80, minHeight: 80)
                 .frame(maxWidth: 176, maxHeight: 176)
                 .padding(.bottom, 22)
             }

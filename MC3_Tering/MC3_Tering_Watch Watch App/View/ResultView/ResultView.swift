@@ -168,7 +168,7 @@ struct HealthKitView: View {
     }()
     
     @EnvironmentObject var workoutResultInfo: WorkoutResultInfo
-    @ObservedObject var model = ViewModelWatch()
+    @EnvironmentObject var viewModelWatch: ViewModelWatch
     @EnvironmentObject var swingInfo: SwingInfo
     
     @State private var isFirstAppear = false
@@ -252,7 +252,7 @@ struct ResultView_Previews: PreviewProvider {
 
 extension HealthKitView {
     private func sendSwingDataToPhone() {
-        self.model.session.transferUserInfo([
+        self.viewModelWatch.session.transferUserInfo([
             "totalSwingCount" : self.swingInfo.totalSwingCount,
             "forehandPerfect" : self.swingInfo.forehandPerfect,
             "totalForehandCount" : self.swingInfo.totalForehandCount,

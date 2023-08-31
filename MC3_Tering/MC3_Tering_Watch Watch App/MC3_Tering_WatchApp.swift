@@ -12,6 +12,7 @@ struct MC3_Tering_Watch_Watch_AppApp: App {
     @StateObject var workoutResultInfo = WorkoutResultInfo()
     @StateObject var swingInfo = SwingInfo()
     @StateObject var workoutManager = WorkoutManager()
+    @StateObject var viewModelWatch = ViewModelWatch()
     
     var body: some Scene {
         WindowGroup {
@@ -19,6 +20,7 @@ struct MC3_Tering_Watch_Watch_AppApp: App {
                 .environmentObject(workoutResultInfo)
                 .environmentObject(swingInfo)
                 .environmentObject(workoutManager)
+                .environmentObject(viewModelWatch)
         }
     }
 }

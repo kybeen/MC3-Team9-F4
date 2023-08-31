@@ -10,8 +10,7 @@ import CoreMotion
 import Foundation
 import SwiftUI
 
-//TODO: 필요 없는 코드 제거하기
-//MARK: 테니스 동작 분류 모델 관련 클래스
+// MARK: 테니스 동작 분류 모델 관련 클래스
 class TennisClassifierViewModel: ObservableObject {
     static let shared = TennisClassifierViewModel() // 싱글톤 인스턴스
     private init() {} // 외부에서 인스턴스를 생성하지 못하도록 private init로 선언
@@ -35,7 +34,7 @@ class TennisClassifierViewModel: ObservableObject {
     @Published var timestamp: Double = 0.0
     @Published var isSwing = false // 스윙 중인지 체크
     
-    //MARK: 바인딩용 프로퍼티
+    // MARK: 바인딩용 프로퍼티
     var isSwingBinding: Binding<Bool> {
         Binding<Bool>(
             get: { self.isSwing },
@@ -52,7 +51,7 @@ class TennisClassifierViewModel: ObservableObject {
     var bufferRotY: [Double] = []
     var bufferRotZ: [Double] = []
     
-    //MARK: 감지 시작
+    // MARK: 감지 시작
     func startMotionTracking() {
         self.isDetecting = true
         // 모델 불러오기
@@ -193,7 +192,7 @@ class TennisClassifierViewModel: ObservableObject {
         }
     }
     
-    //MARK: 감지 종료
+    // MARK: 감지 종료
     func stopMotionTracking() {
         motionManager.stopDeviceMotionUpdates()
         // 버퍼 초기화
@@ -207,17 +206,17 @@ class TennisClassifierViewModel: ObservableObject {
         self.isDetecting = false
     }
     
-    //MARK: 스윙 감지 알고리즘
+    // MARK: 스윙 감지 알고리즘
     func detectSwing(type: String, accX: Double, accY: Double, accZ: Double) -> Bool {
         let sumOfAbsAcc = abs(accX) + abs(accY) + abs(accZ)
         let subOfAccXZ = accX + accZ
         // 포핸드 기준
         if sumOfAbsAcc >= 6.0 && abs(accX) >= 3.0 && abs(accZ) >= 2.5 && abs(subOfAccXZ) <= 2.0 {
-            print("============================================================")
-            print("Acc 스칼라 합: \(sumOfAbsAcc)")
-            print("AccX와 AccZ의 합: \(subOfAccXZ)")
-            print("AccX: \(accX), AccY: \(accY), AccZ: \(accZ)")
-            print("============================================================")
+//            print("============================================================")
+//            print("Acc 스칼라 합: \(sumOfAbsAcc)")
+//            print("AccX와 AccZ의 합: \(subOfAccXZ)")
+//            print("AccX: \(accX), AccY: \(accY), AccZ: \(accZ)")
+//            print("============================================================")
             return true
         } else {
             //TODO: 백핸드도 데이터 확인 후 식 짜기

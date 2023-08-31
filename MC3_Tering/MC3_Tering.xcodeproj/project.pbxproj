@@ -36,7 +36,6 @@
 		1656EEA92A709C5000651C04 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34A2A6FA755002DCED7 /* Inter-Bold.otf */; };
 		1656EEAA2A709C5400651C04 /* Inter-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3452A6FA755002DCED7 /* Inter-BoldItalic.otf */; };
 		1656EEAB2A709CD900651C04 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34D2A6FA756002DCED7 /* Inter-SemiBold.otf */; };
-		1656EEAF2A70DC3100651C04 /* TedCountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656EEAE2A70DC3100651C04 /* TedCountingView.swift */; };
 		1687D1522A9C8A1D00F97008 /* UserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3292A6FA4CA002DCED7 /* UserInfo.xcdatamodeld */; };
 		1687D1552A9C8A3A00F97008 /* WorkOutDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3212A6F7A300004D87A /* WorkOutDataModel.swift */; };
 		1687D1562A9C8A7900F97008 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E31D2A6F7A0B0004D87A /* CoreDataManager.swift */; };
@@ -159,7 +158,6 @@
 		160B1ED62A6F96BE00A708CC /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
 		1639E6972AA063B7008AE6AC /* WorkOutData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		1639E6982AA063B7008AE6AC /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		1656EEAE2A70DC3100651C04 /* TedCountingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TedCountingView.swift; sourceTree = "<group>"; };
 		1687E2B32A6F6FD20004D87A /* MC3_Tering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC3_Tering.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1687E2B62A6F6FD20004D87A /* MC3_TeringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_TeringApp.swift; sourceTree = "<group>"; };
 		1687E2B82A6F6FD20004D87A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -365,14 +363,6 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		1656EEAD2A70DC2000651C04 /* Ted_CountingView */ = {
-			isa = PBXGroup;
-			children = (
-				1656EEAE2A70DC3100651C04 /* TedCountingView.swift */,
-			);
-			path = Ted_CountingView;
-			sourceTree = "<group>";
-		};
 		1687E2AA2A6F6FD20004D87A = {
 			isa = PBXGroup;
 			children = (
@@ -561,7 +551,6 @@
 			children = (
 				B84107DA2A9D9C24006A34E4 /* TestLayoutView.swift */,
 				1687E3012A6F732B0004D87A /* CompleteView.swift */,
-				1656EEAD2A70DC2000651C04 /* Ted_CountingView */,
 			);
 			path = EtcView;
 			sourceTree = "<group>";
@@ -860,7 +849,6 @@
 				16AFA5462A72119D0097CC8F /* SwingInfo.swift in Sources */,
 				1687E2F42A6F72F50004D87A /* SwingResultView.swift in Sources */,
 				1687E2E92A6F721F0004D87A /* Particle.swift in Sources */,
-				1656EEAF2A70DC3100651C04 /* TedCountingView.swift in Sources */,
 				1687E3092A6F74790004D87A /* CircleProgressBar.swift in Sources */,
 				16A219212A6FDDAD00952653 /* WorkoutResultInfo.swift in Sources */,
 				1687E2F82A6F73040004D87A /* ReadyView.swift in Sources */,

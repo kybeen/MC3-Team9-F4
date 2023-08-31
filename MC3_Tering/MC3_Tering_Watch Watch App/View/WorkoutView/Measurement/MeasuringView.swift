@@ -7,13 +7,11 @@
 
 import SwiftUI
 
-//MARK: - 후보 View
+//MARK: - "측정 중..." 애나메이션 화면
 struct MeasuringView: View {
     @State private var isSwingResultViewPresented = false
     @State private var measuringString:String = ""
     @State private var bounceHeight: BounceHeight? = nil
-    
-//    @Binding var selectedValue: Int
     
     @EnvironmentObject var swingInfo: SwingInfo
     

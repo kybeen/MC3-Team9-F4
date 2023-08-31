@@ -11,7 +11,7 @@ import WatchKit
 import SpriteKit
 import HealthKit
 
-
+// MARK: - 운동 결과화면 탭뷰
 struct ResultView: View {
     @State private var selectedTab = 1
     @EnvironmentObject var workoutManager: WorkoutManager
@@ -55,7 +55,6 @@ struct ResultView: View {
 }
 
 //MARK: - Tag(0) 파티클 뷰
-
 struct ResultEffectView: View {
     
     @State private var offsets: [CGSize] = []
@@ -137,7 +136,7 @@ struct ResultEffectView: View {
 
 
 
-//MARK: - Tag(1)
+// MARK: - Tag(1) 원형 바 운동 결과 뷰
 struct SwingRateView: View {
     @State var progressValue: Float = 0.0
     @State var fontSize: CGFloat = 20.0
@@ -159,7 +158,7 @@ struct SwingRateView: View {
     }
 }
 
-//MARK: - Tag(2)
+// MARK: - Tag(2) Workout 결과 확인 뷰
 struct HealthKitView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @State private var durationFormatter: DateComponentsFormatter = { // 운동 시간 formatter
@@ -169,7 +168,7 @@ struct HealthKitView: View {
         return formatter
     }()
     
-    @EnvironmentObject var healthResultInfo: HealthResultInfo
+    @EnvironmentObject var workoutResultInfo: WorkoutResultInfo
     @ObservedObject var model = ViewModelWatch()
     @EnvironmentObject var swingInfo: SwingInfo
     
@@ -214,10 +213,10 @@ struct HealthKitView: View {
                     }
                     .onAppear {
                         print("===============================결과 확인===================================")
-                        print("저장된 평균 심박수 : \(healthResultInfo.averageHeartRate)")
-                        print("저장된 소모 칼로리 : \(healthResultInfo.burningCal)")
-                        print("저장된 운동 시간 : \(healthResultInfo.workOutTime)")
-                        print("저장된 운동일 : \(healthResultInfo.workOutDate)")
+                        print("저장된 평균 심박수 : \(workoutResultInfo.averageHeartRate)")
+                        print("저장된 소모 칼로리 : \(workoutResultInfo.burningCal)")
+                        print("저장된 운동 시간 : \(workoutResultInfo.workOutTime)")
+                        print("저장된 운동일 : \(workoutResultInfo.workOutDate)")
                         print("======================================================================")
                         sendSwingDataToPhone()
                     }
@@ -234,10 +233,6 @@ struct HealthKitView: View {
             .cornerRadius(40)
         }
         .padding(.horizontal, 5)
-//        .onDisappear {
-//            workoutManager.isSaved = false
-//            workoutManager.resetWorkout()
-//        }
     }
 
 }
@@ -246,35 +241,11 @@ struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
         HealthKitView()
             .environmentObject(WorkoutManager())
-            .environmentObject(HealthResultInfo())
-//            .environmentObject(SwingListWrapper(swingList: SwingList(name: "포핸드", guideButton: "questionmark.circle", gifImage: "square")))
+            .environmentObject(WorkoutResultInfo())
     }
 }
 
 extension HealthKitView {
-//    private func formatTime(_ timeInterval: TimeInterval) -> String {
-//        let formatter = DateComponentsFormatter()
-//        formatter.allowedUnits = [.hour, .minute, .second]
-//        formatter.zeroFormattingBehavior = .pad
-//
-//        return formatter.string(from: timeInterval) ?? "00:00:00"
-//    }
-    
-//    // The formatTime function remains the same as shown in the previous response
-//    private func formatTime() -> String {
-//        if let startTime = healthInfo.startTime {
-//            let currentTime = Date()
-//            let timeInterval = currentTime.timeIntervalSince(startTime)
-//
-//            let formatter = DateComponentsFormatter()
-//            formatter.allowedUnits = [.hour, .minute, .second]
-//            formatter.zeroFormattingBehavior = .pad
-//
-//            return formatter.string(from: timeInterval) ?? "00:00:00"
-//        }
-//        return "00:00:00"
-//    }
-    
     private func sendSwingDataToPhone() {
         self.model.session.transferUserInfo([
             "totalSwingCount" : self.swingInfo.totalSwingCount,
@@ -283,118 +254,10 @@ extension HealthKitView {
             "backhandPerfect" : self.swingInfo.backhandPerfect,
             "totalBackhandCount" : self.swingInfo.totalBackhandCount,
             "selectedValue" : self.swingInfo.selectedValue,
-            "averageHeartRate" : healthResultInfo.averageHeartRate, // 평균 심박수
-            "burningCal" : healthResultInfo.burningCal, // 소모 칼로리
-            "workOutTime" : healthResultInfo.workOutTime, // 운동 시간
-            "workOutDate" : healthResultInfo.workOutDate // 운동일
+            "averageHeartRate" : workoutResultInfo.averageHeartRate, // 평균 심박수
+            "burningCal" : workoutResultInfo.burningCal, // 소모 칼로리
+            "workOutTime" : workoutResultInfo.workOutTime, // 운동 시간
+            "workOutDate" : workoutResultInfo.workOutDate // 운동일
         ])
     }
 }
-
-
-//MARK: - Tag(0) 실험
-
-//MARK: - Tag(0) : 기울임에 따라 움직이기 성공
-
-//struct ResultEffectView: View {
-//    @State private var offsets: [CGSize] = []
-//    @State private var perfectCount: Int = 3
-//
-//    private let motionManager = CMMotionManager()
-//
-//    var body: some View {
-//        ZStack {
-//            ForEach(offsets.indices, id: \.self) { index in
-//                Image("tennisBall")
-//                    .resizable()
-//                    .frame(width: 30, height: 30)
-//                    .padding()
-//                    .offset(x: validOffset(at: index).width, y: validOffset(at: index).height)
-//                    .animation(.easeOut(duration: 0.5))
-//            }
-//        }
-//        .onAppear {
-//            initializeOffsets()
-//            startMotionUpdates()
-//        }
-//        .onDisappear {
-//            stopMotionUpdates()
-//        }
-//    }
-//
-//    private func initializeOffsets() {
-//        offsets = Array(repeating: .zero, count: perfectCount)
-//    }
-//
-//    private func validOffset(at index: Int) -> CGSize {
-//        guard index >= 0 && index < offsets.count else {
-//            return .zero
-//        }
-//        return offsets[index]
-//    }
-//
-//    private func startMotionUpdates() {
-//        guard motionManager.isDeviceMotionAvailable else { return }
-//
-//        motionManager.deviceMotionUpdateInterval = 0.2
-//        motionManager.startDeviceMotionUpdates(to: OperationQueue.main) { (motion, error) in
-//            guard let motion = motion else { return }
-//
-//            let pitch = motion.attitude.pitch
-//            let roll = motion.attitude.roll
-//
-//            DispatchQueue.main.async {
-//                self.updateOffsets(pitch: pitch, roll: roll)
-//            }
-//        }
-//    }
-//
-//
-//    private func updateOffsets(pitch: Double, roll: Double) {
-//        offsets.indices.forEach { index in
-//            let randomOffset = CGSize(width: CGFloat.random(in: -50...50), height: CGFloat.random(in: -50...50))
-//            offsets[index] = CGSize(width: CGFloat(roll) * 100 + randomOffset.width, height: CGFloat(pitch) * 100 + randomOffset.height)
-//        }
-//    }
-//
-//    private func stopMotionUpdates() {
-//        motionManager.stopDeviceMotionUpdates()
-//    }
-//}
-
-//MARK: - 기본 폭죽 (움직이기 없이)
-//struct ResultEffectView: View {
-//
-//
-//    @State private var isLiked: [Bool] = [false, false, false]
-//
-//    var body: some View {
-//        VStack {
-//            HStack(spacing: 20) {
-//                CustomButton(systemImage: "tennisBall", status: isLiked[0], activeTint: .pink, inActiveTint: .gray) {
-//                    isLiked[0].toggle()
-//                }
-//                CustomButton(systemImage: "tennisBall", status: isLiked[1], activeTint: .pink, inActiveTint: .gray) {
-//                    isLiked[1].toggle()
-//                }
-//                CustomButton(systemImage: "tennisBall", status: isLiked[2], activeTint: .pink, inActiveTint: .gray) {
-//                    isLiked[2].toggle()
-//                }
-//            }
-//        }
-//    }
-//
-//
-//    @ViewBuilder
-//    func CustomButton(systemImage: String, status: Bool, activeTint: Color, inActiveTint: Color, onTap: @escaping () -> ()) -> some View {
-//        Button(action: onTap) {
-//            Image(systemImage)
-//                .resizable()
-//                .frame(width: 30, height: 30)
-//                .foregroundColor(status ? activeTint : inActiveTint)
-//                .particleEffect(systemImage: systemImage, font: .title2, status: status, activeTint: activeTint, inActiveTint: inActiveTint)
-//                .padding(.horizontal, 18)
-//                .padding(.vertical, 8)
-//        }
-//    }
-//}

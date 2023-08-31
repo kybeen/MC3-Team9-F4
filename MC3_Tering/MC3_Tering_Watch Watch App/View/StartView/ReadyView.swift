@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - 운동 시작 준비 화면 (3 2 1 시작)
 struct ReadyView: View {
     @State private var progressValue: Float = 0.0
     @State private var countValue: String = ""
@@ -15,9 +16,8 @@ struct ReadyView: View {
     let readyStatus = ["준비", "3", "2", "1", "시작!"]
     @State private var isCountingViewPresented: Bool = false
 
-//    @Binding var selectedValue: Int
     @EnvironmentObject var swingInfo: SwingInfo
-    @EnvironmentObject var healthResultInfo: HealthResultInfo
+    @EnvironmentObject var workoutResultInfo: WorkoutResultInfo
     
     var body: some View {
         VStack {
@@ -51,7 +51,7 @@ extension ReadyView {
         swingInfo.forehandPerfect = 0
         swingInfo.backhandPerfect = 0
         swingInfo.swingLeft = swingInfo.selectedValue // 남은 스윙 횟수 = 선택값 으로 초기화
-        healthResultInfo.workOutDate = Date() // 운동 시작일 저장
+        workoutResultInfo.workOutDate = Date() // 운동 시작일 저장
     }
     
     private func startProgressAnimation() {

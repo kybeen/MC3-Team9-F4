@@ -12,7 +12,6 @@ struct Particle: Identifiable {
     var randomX: CGFloat = 0
     var randomY: CGFloat = 0
     var scale: CGFloat = 1
-    
     var opacity: CGFloat = 1
     
     mutating func reset() {

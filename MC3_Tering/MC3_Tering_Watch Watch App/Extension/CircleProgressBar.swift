@@ -71,44 +71,6 @@ struct ResultCircleProgressBar: View {
     }
 }
 
-
-//MARK: - CircleProgressBar 확인용
-
-//struct ContentView: View {
-//    @State var progressValue: Float = 0.0
-//    @State var countValue: String = ""
-//    @State var counting: Int = 0
-//    @State var fontSize: CGFloat = 48.0
-//    let readyStatus = ["준비", "3", "2", "1", "시작!"]
-//
-//
-//    var body: some View {
-//        VStack {
-//            TimeCircleProgressBar(progress: self.$progressValue, count: self.$countValue, fontSize: $fontSize)
-//                .frame(width: 150, height: 150, alignment: .center)
-//                .onAppear {
-//                    startProgressAnimation()
-//                }
-//        }
-//    }
-//
-//    func startProgressAnimation() {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-//            withAnimation(.easeInOut(duration: 1.0)) {
-//                self.progressValue += 0.3
-//                self.counting += 1
-//            }
-//            if self.progressValue >= 1.0 {
-//                self.countValue = readyStatus[counting]
-//
-//            } else {
-//                self.countValue = readyStatus[counting]
-//                self.startProgressAnimation()
-//            }
-//        }
-//    }
-//}
-
 //MARK: - ResultCircleProgressBar 확인용
 
 struct ContentView: View {

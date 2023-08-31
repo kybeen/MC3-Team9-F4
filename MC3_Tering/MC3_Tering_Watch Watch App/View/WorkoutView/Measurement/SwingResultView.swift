@@ -7,13 +7,12 @@
 
 import SwiftUI
 
+// MARK: - 판별된 스윙 결과 확인 화면
 struct SwingResultView: View {
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     @State private var isSwingCountViewPresented = false
     @State private var isSwingCompleteViewPresented = false
-    
-//    @Binding var selectedValue: Int
     
     @EnvironmentObject var swingInfo: SwingInfo
     
@@ -26,11 +25,7 @@ struct SwingResultView: View {
             Circle()
                 .foregroundColor(resultColor)
                 .frame(width: 150, height: 150, alignment: .center)
-            
-//                Text("\(tennisClassifierViewModel.classLabel)") //MARK: 테스트용
-//                //Forehand, Backhand
                 
-            //TODO: 결과에 따른 색상 처리 필요
             Text("\(tennisClassifierViewModel.resultLabel)!")
                 .font(.system(size: 32, weight: .bold))
                 .foregroundColor(Color.watchColor.black)

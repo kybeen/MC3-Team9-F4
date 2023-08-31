@@ -50,7 +50,6 @@
 		1687E2DD2A6F70DD0004D87A /* ViewModelPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2DC2A6F70DD0004D87A /* ViewModelPhone.swift */; };
 		1687E2DF2A6F71180004D87A /* TestPhoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2DE2A6F71180004D87A /* TestPhoneView.swift */; };
 		1687E2E32A6F714D0004D87A /* ViewModelWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2E22A6F714D0004D87A /* ViewModelWatch.swift */; };
-		1687E2E72A6F72170004D87A /* SwingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2E62A6F72170004D87A /* SwingList.swift */; };
 		1687E2E92A6F721F0004D87A /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2E82A6F721F0004D87A /* Particle.swift */; };
 		1687E2EB2A6F72260004D87A /* ParticleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2EA2A6F72260004D87A /* ParticleEffect.swift */; };
 		1687E2F42A6F72F50004D87A /* SwingResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F32A6F72F50004D87A /* SwingResultView.swift */; };
@@ -173,7 +172,6 @@
 		1687E2DC2A6F70DD0004D87A /* ViewModelPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelPhone.swift; sourceTree = "<group>"; };
 		1687E2DE2A6F71180004D87A /* TestPhoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPhoneView.swift; sourceTree = "<group>"; };
 		1687E2E22A6F714D0004D87A /* ViewModelWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelWatch.swift; sourceTree = "<group>"; };
-		1687E2E62A6F72170004D87A /* SwingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingList.swift; sourceTree = "<group>"; };
 		1687E2E82A6F721F0004D87A /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
 		1687E2EA2A6F72260004D87A /* ParticleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleEffect.swift; sourceTree = "<group>"; };
 		1687E2F32A6F72F50004D87A /* SwingResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingResultView.swift; sourceTree = "<group>"; };
@@ -471,7 +469,6 @@
 				16AFA5452A72119D0097CC8F /* SwingInfo.swift */,
 				1687E2EA2A6F72260004D87A /* ParticleEffect.swift */,
 				16A219202A6FDDAD00952653 /* HealthResultInfo.swift */,
-				1687E2E62A6F72170004D87A /* SwingList.swift */,
 				1687E2E82A6F721F0004D87A /* Particle.swift */,
 				B821114F2A7413960043CE6D /* WorkoutManager.swift */,
 			);
@@ -850,7 +847,6 @@
 				1687E3002A6F73230004D87A /* CountingView.swift in Sources */,
 				1687E2E32A6F714D0004D87A /* ViewModelWatch.swift in Sources */,
 				1687D1522A9C8A1D00F97008 /* UserInfo.xcdatamodeld in Sources */,
-				1687E2E72A6F72170004D87A /* SwingList.swift in Sources */,
 				B87CEBFC2A70B37E0038BFDB /* TennisClassifierViewModel.swift in Sources */,
 				1687E2CB2A6F70270004D87A /* MC3_Tering_WatchApp.swift in Sources */,
 				1687E2FA2A6F730C0004D87A /* SwingCountView.swift in Sources */,

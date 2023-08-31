@@ -463,12 +463,9 @@
 		1687E2E02A6F71300004D87A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B84107F52AA08206006A34E4 /* Particle */,
+				B84107F42AA081EF006A34E4 /* Workout */,
 				1687E2E22A6F714D0004D87A /* ViewModelWatch.swift */,
-				16AFA5452A72119D0097CC8F /* SwingInfo.swift */,
-				1687E2EA2A6F72260004D87A /* ParticleEffect.swift */,
-				16A219202A6FDDAD00952653 /* WorkoutResultInfo.swift */,
-				1687E2E82A6F721F0004D87A /* Particle.swift */,
-				B821114F2A7413960043CE6D /* WorkoutManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -596,6 +593,25 @@
 				1687E3032A6F73360004D87A /* ResultView.swift */,
 			);
 			path = ResultView;
+			sourceTree = "<group>";
+		};
+		B84107F42AA081EF006A34E4 /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				B821114F2A7413960043CE6D /* WorkoutManager.swift */,
+				16A219202A6FDDAD00952653 /* WorkoutResultInfo.swift */,
+				16AFA5452A72119D0097CC8F /* SwingInfo.swift */,
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
+		B84107F52AA08206006A34E4 /* Particle */ = {
+			isa = PBXGroup;
+			children = (
+				1687E2EA2A6F72260004D87A /* ParticleEffect.swift */,
+				1687E2E82A6F721F0004D87A /* Particle.swift */,
+			);
+			path = Particle;
 			sourceTree = "<group>";
 		};
 		B87504702A778D3E0098167A /* ChartView */ = {

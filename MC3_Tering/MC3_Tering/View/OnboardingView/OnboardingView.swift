@@ -213,6 +213,7 @@ extension OnboardingView {
                         Image(uiImage: uiImage)
                             .resizable()
                             .scaledToFill()
+                            .frame(minWidth: 80, minHeight: 80)
                             .frame(maxWidth: 176, maxHeight: 176)
                             .cornerRadius(100)
                     } else {
@@ -220,6 +221,7 @@ extension OnboardingView {
                             Image(uiImage: UIImage(data: selectedImageData!)!)
                                 .resizable()
                                 .scaledToFill()
+                                .frame(minWidth: 80, minHeight: 80)
                                 .frame(maxWidth: 129, maxHeight: 129)
                                 .cornerRadius(100)
                         } else {

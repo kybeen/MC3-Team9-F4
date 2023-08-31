@@ -22,7 +22,9 @@ struct MainView: View {
     @State var modalAttainment = ""
     @State var modalGainTitle = ""
     @State var months: [String : [WorkOutData]] = [:]
-    
+    @ObservedObject var model = ViewModelPhone()    //데이터 불러오는 곳에 선언
+    @State var reachable = "No"
+
     var body: some View {
         NavigationStack(path: $path) {
             // ZStack 으로 처리
@@ -33,6 +35,24 @@ struct MainView: View {
                 VStack(spacing: 0) {
                     tabsContainer()
                     tabViewContainer()
+                    
+                    /// 데이터 잘 들어가고 있는지 확인
+                    Button {
+                        if self.model.session.isReachable {
+                            self.reachable = "Yes"
+                        }
+                        else {
+                            self.reachable = "No"
+                        }
+                    } label: {
+                        Text("Update")
+                    }
+                    
+                    //밑에 처럼 그냥 불러오기만 하면 됨
+                    Text("receive from watch backhandperfect: \(workoutDataModel.backhandPerfect)")
+                    Text("receive from watch total swing count: \(workoutDataModel.totalSwingCount)")
+                    Text("receive from watch date: \(model.workOutDate ?? Date())")
+                    Text("receive from watch total swing: \(model.totalSwingCount)")
                 }
                 .padding(.top, 20)
             }
@@ -45,7 +65,7 @@ struct MainView: View {
             }
             .onDisappear {
                 userDataModel.saveUserData()
-                workoutDataModel.saveWorkOutData()
+//                workoutDataModel.saveWorkOutData()    // saveWatchData()로 이동
             }
             
         }
@@ -61,7 +81,23 @@ struct MainView: View {
             }
         })
     }
-        
+}
+
+extension MainView {
+    
+    /// 워치에서 받아온 데이터들을 workoutDataModel에 넣어주고 저장
+//    private func saveWatchData() {
+//        workoutDataModel.backhandPerfect = model.backhandPerfect
+//        workoutDataModel.backhandTotalCount = model.totalBackhandCount
+//        workoutDataModel.forehandPerfect = model.forehandPerfect
+//        workoutDataModel.forehandTotalCount = model.totalForehandCount
+//        workoutDataModel.totalSwingCount = model.totalSwingCount
+//        workoutDataModel.burningCalories = model.burningCalories
+//        workoutDataModel.workoutTime = model.workOutTime
+//        workoutDataModel.workoutDate = model.workOutDate ?? Date()
+//        workoutDataModel.saveWorkOutData()
+//
+//    }
 }
 
 struct BackgroundBlurView: UIViewRepresentable {
@@ -174,11 +210,11 @@ extension MainView {
             .scrollIndicators(.hidden)
             
             ScrollView {
-//                Button(action: {
-//                    workoutDataModel.testCreate100Days()
-//                }, label: {
-//                    Text("workout 시험데이터 100개 생성")
-//                })
+                Button(action: {
+                    workoutDataModel.testCreate100Days()
+                }, label: {
+                    Text("workout 시험데이터 100개 생성")
+                })
                 RecordListView(workoutDataModel: workoutDataModel, months: months)
                     .padding(.top, 2)
                     .padding(.horizontal, 16)

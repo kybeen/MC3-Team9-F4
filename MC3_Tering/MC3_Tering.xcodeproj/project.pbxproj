@@ -25,6 +25,12 @@
 		160B1E972A6F95F100A708CC /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 160B1E962A6F95F100A708CC /* Media.xcassets */; };
 		160B1ED52A6F969A00A708CC /* GifView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160B1ED42A6F969A00A708CC /* GifView.swift */; };
 		160B1ED72A6F96BE00A708CC /* CustomBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160B1ED62A6F96BE00A708CC /* CustomBackButton.swift */; };
+		1639E6952AA062E4008AE6AC /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DC4722A97284A00649FF7 /* UserData+CoreDataClass.swift */; };
+		1639E6962AA062E6008AE6AC /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DC4732A97284A00649FF7 /* UserData+CoreDataProperties.swift */; };
+		1639E6992AA063B7008AE6AC /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1639E6972AA063B7008AE6AC /* WorkOutData+CoreDataClass.swift */; };
+		1639E69A2AA063B7008AE6AC /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1639E6982AA063B7008AE6AC /* WorkOutData+CoreDataProperties.swift */; };
+		1639E69B2AA063CB008AE6AC /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1639E6982AA063B7008AE6AC /* WorkOutData+CoreDataProperties.swift */; };
+		1639E69C2AA063CE008AE6AC /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1639E6972AA063B7008AE6AC /* WorkOutData+CoreDataClass.swift */; };
 		1656EEA72A709C4900651C04 /* Inter-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3432A6FA755002DCED7 /* Inter-Black.otf */; };
 		1656EEA82A709C4D00651C04 /* Inter-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF3492A6FA755002DCED7 /* Inter-BlackItalic.otf */; };
 		1656EEA92A709C5000651C04 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34A2A6FA755002DCED7 /* Inter-Bold.otf */; };
@@ -32,8 +38,6 @@
 		1656EEAB2A709CD900651C04 /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C99DF34D2A6FA756002DCED7 /* Inter-SemiBold.otf */; };
 		1656EEAF2A70DC3100651C04 /* TedCountingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1656EEAE2A70DC3100651C04 /* TedCountingView.swift */; };
 		1687D1522A9C8A1D00F97008 /* UserInfo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C99DF3292A6FA4CA002DCED7 /* UserInfo.xcdatamodeld */; };
-		1687D1532A9C8A3300F97008 /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */; };
-		1687D1542A9C8A3600F97008 /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885D92A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift */; };
 		1687D1552A9C8A3A00F97008 /* WorkOutDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E3212A6F7A300004D87A /* WorkOutDataModel.swift */; };
 		1687D1562A9C8A7900F97008 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E31D2A6F7A0B0004D87A /* CoreDataManager.swift */; };
 		1687E2B72A6F6FD20004D87A /* MC3_TeringApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2B62A6F6FD20004D87A /* MC3_TeringApp.swift */; };
@@ -90,8 +94,6 @@
 		B87CEBFE2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B87CEBFD2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel */; };
 		C93885D72A7352FD006FFB1A /* backhandSwing.gif in Resources */ = {isa = PBXBuildFile; fileRef = C93885D52A7352FD006FFB1A /* backhandSwing.gif */; };
 		C93885D82A7352FD006FFB1A /* forehandSwing.gif in Resources */ = {isa = PBXBuildFile; fileRef = C93885D62A7352FD006FFB1A /* forehandSwing.gif */; };
-		C93885DB2A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885D92A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift */; };
-		C93885DC2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */; };
 		C95DC4742A97284A00649FF7 /* UserData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DC4722A97284A00649FF7 /* UserData+CoreDataClass.swift */; };
 		C95DC4752A97284A00649FF7 /* UserData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DC4732A97284A00649FF7 /* UserData+CoreDataProperties.swift */; };
 		C95DC4772A9C308B00649FF7 /* RecordListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95DC4762A9C308B00649FF7 /* RecordListView.swift */; };
@@ -162,6 +164,8 @@
 		160B1E962A6F95F100A708CC /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		160B1ED42A6F969A00A708CC /* GifView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifView.swift; sourceTree = "<group>"; };
 		160B1ED62A6F96BE00A708CC /* CustomBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackButton.swift; sourceTree = "<group>"; };
+		1639E6972AA063B7008AE6AC /* WorkOutData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		1639E6982AA063B7008AE6AC /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		1656EEAE2A70DC3100651C04 /* TedCountingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TedCountingView.swift; sourceTree = "<group>"; };
 		1687E2B32A6F6FD20004D87A /* MC3_Tering.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MC3_Tering.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1687E2B62A6F6FD20004D87A /* MC3_TeringApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_TeringApp.swift; sourceTree = "<group>"; };
@@ -220,8 +224,6 @@
 		B87CEBFD2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TeringClassifier_totalData_window100.mlmodel; sourceTree = "<group>"; };
 		C93885D52A7352FD006FFB1A /* backhandSwing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = backhandSwing.gif; sourceTree = "<group>"; };
 		C93885D62A7352FD006FFB1A /* forehandSwing.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = forehandSwing.gif; sourceTree = "<group>"; };
-		C93885D92A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataClass.swift"; sourceTree = "<group>"; };
-		C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WorkOutData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C95DC4722A97284A00649FF7 /* UserData+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataClass.swift"; sourceTree = "<group>"; };
 		C95DC4732A97284A00649FF7 /* UserData+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		C95DC4762A9C308B00649FF7 /* RecordListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordListView.swift; sourceTree = "<group>"; };
@@ -530,8 +532,8 @@
 		1687E30F2A6F796D0004D87A /* WorkOutData */ = {
 			isa = PBXGroup;
 			children = (
-				C93885D92A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift */,
-				C93885DA2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift */,
+				1639E6972AA063B7008AE6AC /* WorkOutData+CoreDataClass.swift */,
+				1639E6982AA063B7008AE6AC /* WorkOutData+CoreDataProperties.swift */,
 			);
 			path = WorkOutData;
 			sourceTree = "<group>";
@@ -806,13 +808,13 @@
 				160B1E742A6F93CC00A708CC /* CameraViewModel.swift in Sources */,
 				B82111782A76947A0043CE6D /* RecordChartView.swift in Sources */,
 				B87504782A778F960098167A /* YearChartView.swift in Sources */,
+				1639E6992AA063B7008AE6AC /* WorkOutData+CoreDataClass.swift in Sources */,
 				160B1E862A6F948D00A708CC /* UserStrokeSettingView.swift in Sources */,
 				C95DC4772A9C308B00649FF7 /* RecordListView.swift in Sources */,
 				160B1E7C2A6F943600A708CC /* OnboardingView.swift in Sources */,
 				1687E2B72A6F6FD20004D87A /* MC3_TeringApp.swift in Sources */,
 				160B1E8E2A6F950C00A708CC /* ColorExtension.swift in Sources */,
 				160B1ED72A6F96BE00A708CC /* CustomBackButton.swift in Sources */,
-				C93885DB2A74FCA6006FFB1A /* WorkOutData+CoreDataClass.swift in Sources */,
 				160B1E782A6F93FF00A708CC /* CongreteModalView.swift in Sources */,
 				1687E3142A6F79970004D87A /* HapticManager.swift in Sources */,
 				B82E48532A7967C600E38151 /* WorkoutSummaryChartView.swift in Sources */,
@@ -829,7 +831,7 @@
 				160B1E802A6F946100A708CC /* GuideView.swift in Sources */,
 				1687E31E2A6F7A0B0004D87A /* CoreDataManager.swift in Sources */,
 				C95DC4742A97284A00649FF7 /* UserData+CoreDataClass.swift in Sources */,
-				C93885DC2A74FCA6006FFB1A /* WorkOutData+CoreDataProperties.swift in Sources */,
+				1639E69A2AA063B7008AE6AC /* WorkOutData+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,8 +840,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1687E2F62A6F72FE0004D87A /* MeasuringView.swift in Sources */,
+				1639E69C2AA063CE008AE6AC /* WorkOutData+CoreDataClass.swift in Sources */,
 				1687E2FE2A6F731C0004D87A /* SwingListCellView.swift in Sources */,
 				1687E2E52A6F716A0004D87A /* TestWatchView.swift in Sources */,
+				1639E6952AA062E4008AE6AC /* UserData+CoreDataClass.swift in Sources */,
 				1687E3042A6F73360004D87A /* ResultView.swift in Sources */,
 				1687D1562A9C8A7900F97008 /* CoreDataManager.swift in Sources */,
 				1687D1552A9C8A3A00F97008 /* WorkOutDataModel.swift in Sources */,
@@ -858,8 +862,8 @@
 				1687E2FC2A6F73140004D87A /* GuideView.swift in Sources */,
 				16BB115C2A735ADB00C096D9 /* SelectView.swift in Sources */,
 				16BB115A2A734C4500C096D9 /* SwingCompleteView.swift in Sources */,
-				1687D1542A9C8A3600F97008 /* WorkOutData+CoreDataClass.swift in Sources */,
 				1687E3022A6F732B0004D87A /* CompleteView.swift in Sources */,
+				1639E6962AA062E6008AE6AC /* UserData+CoreDataProperties.swift in Sources */,
 				B84107DB2A9D9C24006A34E4 /* TestLayoutView.swift in Sources */,
 				B82111762A75629A0043CE6D /* ElapsedTimeView.swift in Sources */,
 				1687E3002A6F73230004D87A /* CountingView.swift in Sources */,
@@ -868,10 +872,10 @@
 				1687E2F22A6F72ED0004D87A /* SwingListView.swift in Sources */,
 				1687E2E72A6F72170004D87A /* SwingList.swift in Sources */,
 				B87CEBFC2A70B37E0038BFDB /* TennisClassifierViewModel.swift in Sources */,
-				1687D1532A9C8A3300F97008 /* WorkOutData+CoreDataProperties.swift in Sources */,
 				1687E2CB2A6F70270004D87A /* MC3_Tering_WatchApp.swift in Sources */,
 				1687E2FA2A6F730C0004D87A /* SwingCountView.swift in Sources */,
 				1687E3072A6F74700004D87A /* ColorExtension.swift in Sources */,
+				1639E69B2AA063CB008AE6AC /* WorkOutData+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,7 +1013,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = 49256BK4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Info.plist";
@@ -1051,7 +1055,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = 49256BK4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Info.plist";
@@ -1093,7 +1097,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3_Tering_Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = 49256BK4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Watch-Watch-App-Info.plist";
@@ -1128,7 +1132,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MC3_Tering_Watch Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = UULN4L9KLP;
+				DEVELOPMENT_TEAM = 49256BK4G3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MC3-Tering-Watch-Watch-App-Info.plist";

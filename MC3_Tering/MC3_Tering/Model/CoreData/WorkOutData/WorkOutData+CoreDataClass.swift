@@ -2,7 +2,7 @@
 //  WorkOutData+CoreDataClass.swift
 //  MC3_Tering
 //
-//  Created by 김동현 on 2023/07/29.
+//  Created by 김태형 on 2023/08/31.
 //
 //
 

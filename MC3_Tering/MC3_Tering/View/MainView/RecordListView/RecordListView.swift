@@ -10,7 +10,6 @@ import SwiftUI
 struct RecordListView: View {
     @ObservedObject var workoutDataModel: WorkOutDataModel
     @State var months: [String: [WorkOutData]] = [:]
-    let swingCount = 120
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy. M. d." // 원하는 날짜 형식을 설정합니다.
@@ -37,9 +36,7 @@ struct RecordListView: View {
                 ) {
                     ForEach(months[monthKey]!.sorted { $0.workoutDate ?? Date() > $1.workoutDate ?? Date() }, id: \.self) { data in
                         NavigationLink(destination: {
-                            RecordDetailView(detailDay: data.workoutDate ?? Date(), totalSwingCount: Int(data.totalSwingCount), targetSwingCount: 120, perfectSwingCount: Int(data.backhandPerfect + data.forehandPerfect), workoutTime: Int(data.workoutTime), calorieBurn: Int(data.burningCalories))
-//                            RecordDetailView(detailDay: Date(), totalSwingCount: 120, targetSwingCount: 240, perfectSwingCount: 80, workoutTime: 60, calorieBurn: Int(data.burningCalories))
-                            
+                            RecordDetailView(detailDay: data.workoutDate ?? Date(), totalSwingCount: Int(data.totalSwingCount), targetSwingCount: Int(data.selectedValue), perfectSwingCount: Int(data.backhandPerfect + data.forehandPerfect), workoutTime: Int(data.workoutTime), calorieBurn: Int(data.burningCalories))                            
                         }) {
                             ZStack {
                                 Rectangle()
@@ -59,7 +56,7 @@ struct RecordListView: View {
                                     VStack(alignment: .leading, spacing: 0) {
                                         HStack(spacing: 0) {
                                             
-                                            Text("\(data.totalSwingCount)/\(swingCount)")
+                                            Text("\(data.totalSwingCount)/\(data.selectedValue)")
                                                 .font(.custom("Inter-Regular", size: 24))
                                             Text("SWING")
                                                 .frame(height: 25, alignment: .bottom)

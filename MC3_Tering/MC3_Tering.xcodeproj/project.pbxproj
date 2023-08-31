@@ -54,7 +54,6 @@
 		1687E2E72A6F72170004D87A /* SwingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2E62A6F72170004D87A /* SwingList.swift */; };
 		1687E2E92A6F721F0004D87A /* Particle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2E82A6F721F0004D87A /* Particle.swift */; };
 		1687E2EB2A6F72260004D87A /* ParticleEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2EA2A6F72260004D87A /* ParticleEffect.swift */; };
-		1687E2F22A6F72ED0004D87A /* SwingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F12A6F72ED0004D87A /* SwingListView.swift */; };
 		1687E2F42A6F72F50004D87A /* SwingResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F32A6F72F50004D87A /* SwingResultView.swift */; };
 		1687E2F62A6F72FE0004D87A /* MeasuringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F52A6F72FE0004D87A /* MeasuringView.swift */; };
 		1687E2F82A6F73040004D87A /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2F72A6F73040004D87A /* ReadyView.swift */; };
@@ -181,7 +180,6 @@
 		1687E2E62A6F72170004D87A /* SwingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingList.swift; sourceTree = "<group>"; };
 		1687E2E82A6F721F0004D87A /* Particle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Particle.swift; sourceTree = "<group>"; };
 		1687E2EA2A6F72260004D87A /* ParticleEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticleEffect.swift; sourceTree = "<group>"; };
-		1687E2F12A6F72ED0004D87A /* SwingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingListView.swift; sourceTree = "<group>"; };
 		1687E2F32A6F72F50004D87A /* SwingResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwingResultView.swift; sourceTree = "<group>"; };
 		1687E2F52A6F72FE0004D87A /* MeasuringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasuringView.swift; sourceTree = "<group>"; };
 		1687E2F72A6F73040004D87A /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
@@ -579,7 +577,6 @@
 				1687E2CC2A6F70270004D87A /* ContentView.swift */,
 				1687E2FB2A6F73140004D87A /* GuideView.swift */,
 				1687E2FD2A6F731C0004D87A /* SwingListCellView.swift */,
-				1687E2F12A6F72ED0004D87A /* SwingListView.swift */,
 				1687E3012A6F732B0004D87A /* CompleteView.swift */,
 				1656EEAD2A70DC2000651C04 /* Ted_CountingView */,
 			);
@@ -865,7 +862,6 @@
 				1687E3002A6F73230004D87A /* CountingView.swift in Sources */,
 				1687E2E32A6F714D0004D87A /* ViewModelWatch.swift in Sources */,
 				1687D1522A9C8A1D00F97008 /* UserInfo.xcdatamodeld in Sources */,
-				1687E2F22A6F72ED0004D87A /* SwingListView.swift in Sources */,
 				1687E2E72A6F72170004D87A /* SwingList.swift in Sources */,
 				B87CEBFC2A70B37E0038BFDB /* TennisClassifierViewModel.swift in Sources */,
 				1687E2CB2A6F70270004D87A /* MC3_Tering_WatchApp.swift in Sources */,

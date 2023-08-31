@@ -44,7 +44,6 @@
 		1687E2B92A6F6FD20004D87A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2B82A6F6FD20004D87A /* ContentView.swift */; };
 		1687E2BB2A6F6FD30004D87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1687E2BA2A6F6FD30004D87A /* Assets.xcassets */; };
 		1687E2CB2A6F70270004D87A /* MC3_Tering_WatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2CA2A6F70270004D87A /* MC3_Tering_WatchApp.swift */; };
-		1687E2CD2A6F70270004D87A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687E2CC2A6F70270004D87A /* ContentView.swift */; };
 		1687E2CF2A6F70280004D87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1687E2CE2A6F70280004D87A /* Assets.xcassets */; };
 		1687E2D22A6F70280004D87A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1687E2D12A6F70280004D87A /* Preview Assets.xcassets */; };
 		1687E2D52A6F70280004D87A /* MC3_Tering_Watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 1687E2C82A6F70270004D87A /* MC3_Tering_Watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -171,7 +170,6 @@
 		1687E2BA2A6F6FD30004D87A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1687E2C82A6F70270004D87A /* MC3_Tering_Watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MC3_Tering_Watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1687E2CA2A6F70270004D87A /* MC3_Tering_WatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MC3_Tering_WatchApp.swift; sourceTree = "<group>"; };
-		1687E2CC2A6F70270004D87A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1687E2CE2A6F70280004D87A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1687E2D12A6F70280004D87A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1687E2DC2A6F70DD0004D87A /* ViewModelPhone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelPhone.swift; sourceTree = "<group>"; };
@@ -574,7 +572,6 @@
 			isa = PBXGroup;
 			children = (
 				B84107DA2A9D9C24006A34E4 /* TestLayoutView.swift */,
-				1687E2CC2A6F70270004D87A /* ContentView.swift */,
 				1687E2FB2A6F73140004D87A /* GuideView.swift */,
 				1687E2FD2A6F731C0004D87A /* SwingListCellView.swift */,
 				1687E3012A6F732B0004D87A /* CompleteView.swift */,
@@ -849,7 +846,6 @@
 				1687E3092A6F74790004D87A /* CircleProgressBar.swift in Sources */,
 				16A219212A6FDDAD00952653 /* HealthResultInfo.swift in Sources */,
 				1687E2F82A6F73040004D87A /* ReadyView.swift in Sources */,
-				1687E2CD2A6F70270004D87A /* ContentView.swift in Sources */,
 				B87CEBFE2A710C600038BFDB /* TeringClassifier_totalData_window100.mlmodel in Sources */,
 				B82111502A7413960043CE6D /* WorkoutManager.swift in Sources */,
 				1687E2FC2A6F73140004D87A /* GuideView.swift in Sources */,

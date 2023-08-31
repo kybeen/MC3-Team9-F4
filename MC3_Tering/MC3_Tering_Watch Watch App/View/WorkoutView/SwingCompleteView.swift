@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - 운동 목표 달성 완료 원형 바 화면
 struct SwingCompleteView: View {
     
     @State var progressValue: Float = 0.0

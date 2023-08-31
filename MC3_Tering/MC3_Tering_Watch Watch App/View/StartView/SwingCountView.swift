@@ -7,10 +7,8 @@
 
 import SwiftUI
 
-//MARK: - 시작 버튼 맨 밑으로 보내기
-
+// MARK: - 운동 목표 스윙 개수 설정 화면
 struct SwingCountView: View {
-//    let swingList: SwingList
     @State private var isReadyViewActive = false
     @State private var strokeCount = 10
 
@@ -49,7 +47,6 @@ struct SwingCountView: View {
 
 struct SwingCountView_Previews: PreviewProvider {
     static var previews: some View {
-//        SwingCountView(swingList: swingLists[0])
         SwingCountView()
             .environmentObject(WorkoutManager())
             .environmentObject(SwingInfo())

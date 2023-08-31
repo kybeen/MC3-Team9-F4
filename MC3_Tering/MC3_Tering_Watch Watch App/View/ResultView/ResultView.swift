@@ -11,7 +11,7 @@ import WatchKit
 import SpriteKit
 import HealthKit
 
-
+// MARK: - 운동 결과화면 탭뷰
 struct ResultView: View {
     @State private var selectedTab = 1
     @EnvironmentObject var workoutManager: WorkoutManager
@@ -55,7 +55,6 @@ struct ResultView: View {
 }
 
 //MARK: - Tag(0) 파티클 뷰
-
 struct ResultEffectView: View {
     
     @State private var offsets: [CGSize] = []
@@ -137,7 +136,7 @@ struct ResultEffectView: View {
 
 
 
-//MARK: - Tag(1)
+// MARK: - Tag(1) 원형 바 운동 결과 뷰
 struct SwingRateView: View {
     @State var progressValue: Float = 0.0
     @State var fontSize: CGFloat = 20.0
@@ -159,7 +158,7 @@ struct SwingRateView: View {
     }
 }
 
-//MARK: - Tag(2)
+// MARK: - Tag(2) Workout 결과 확인 뷰
 struct HealthKitView: View {
     @EnvironmentObject var workoutManager: WorkoutManager
     @State private var durationFormatter: DateComponentsFormatter = { // 운동 시간 formatter
@@ -234,10 +233,6 @@ struct HealthKitView: View {
             .cornerRadius(40)
         }
         .padding(.horizontal, 5)
-//        .onDisappear {
-//            workoutManager.isSaved = false
-//            workoutManager.resetWorkout()
-//        }
     }
 
 }

@@ -45,6 +45,9 @@ struct SwingResultView: View {
             getSwingColor()
             swingCompleteView()
         }
+        .onDisappear {
+            tennisClassifierViewModel.startMotionTracking() // 측정 결과 확인이 끝나면 device motion 추적 다시 시작
+        }
         .background(
             NavigationLink(destination: CountingView(), isActive: $isSwingCountViewPresented) {
                 EmptyView()

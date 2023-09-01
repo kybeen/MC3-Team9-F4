@@ -14,6 +14,7 @@ struct MeasuringView: View {
     @State private var bounceHeight: BounceHeight? = nil
     
     @EnvironmentObject var swingInfo: SwingInfo
+    @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     
     func bounceAnimation() {
         
@@ -72,6 +73,7 @@ struct MeasuringView: View {
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.isSwingResultViewPresented = true
+                tennisClassifierViewModel.pauseMotionTracking() // 측정 중에는 device motion 추적 일시중지
             }
         }
         .background(

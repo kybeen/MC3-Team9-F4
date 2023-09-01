@@ -9,6 +9,7 @@ import Foundation
 import HealthKit
 import SwiftUI
 
+// MARK: - Workout 세션 관련 동작을 처리하는 클래스
 class WorkoutManager: NSObject, ObservableObject {
     @StateObject var tennisClassifierViewModel = TennisClassifierViewModel.shared
     

@@ -10,10 +10,22 @@ import CoreMotion
 import Foundation
 import SwiftUI
 
-// MARK: 테니스 동작 분류 모델 관련 클래스
+// MARK: - 테니스 동작 분류 모델 관련 클래스
 class TennisClassifierViewModel: ObservableObject {
     static let shared = TennisClassifierViewModel() // 싱글톤 인스턴스
-    private init() {} // 외부에서 인스턴스를 생성하지 못하도록 private init로 선언
+    // 외부에서 인스턴스를 생성하지 못하도록 private init로 선언
+    private init() {
+        // 모델 불러오기
+        guard let modelURL = Bundle.main.url(forResource: self.MODEL_NAME, withExtension: "mlmodelc") else {
+            fatalError("Failed to locate the model file.")
+        }
+        guard let model = try? TeringClassifier_totalData_window100(contentsOf: modelURL) else {
+            fatalError("Failed to create the model.")
+        }
+        mlModel = model
+        print("🤖모델 불러오기 성공!!! : \(mlModel)")
+    }
+    
     @Published var isDetecting = false // device motion 추적 중인지
     let motionManager = CMMotionManager()
     
@@ -34,7 +46,7 @@ class TennisClassifierViewModel: ObservableObject {
     @Published var timestamp: Double = 0.0
     @Published var isSwing = false // 스윙 중인지 체크
     
-    // MARK: 바인딩용 프로퍼티
+    // MARK: isSwing 바인딩용 프로퍼티
     var isSwingBinding: Binding<Bool> {
         Binding<Bool>(
             get: { self.isSwing },
@@ -51,17 +63,19 @@ class TennisClassifierViewModel: ObservableObject {
     var bufferRotY: [Double] = []
     var bufferRotZ: [Double] = []
     
-    // MARK: 감지 시작
+    var mlModel: TeringClassifier_totalData_window100
+    
+    // MARK: - 감지 시작
     func startMotionTracking() {
         self.isDetecting = true
-        // 모델 불러오기
-        guard let modelURL = Bundle.main.url(forResource: self.MODEL_NAME, withExtension: "mlmodelc") else {
-            fatalError("Failed to locate the model file.")
-        }
-        guard let model = try? TeringClassifier_totalData_window100(contentsOf: modelURL) else {
-            fatalError("Failed to create the model.")
-        }
-        print("모델 불러오기 성공!!! : \(model)")
+//        // 모델 불러오기
+//        guard let modelURL = Bundle.main.url(forResource: self.MODEL_NAME, withExtension: "mlmodelc") else {
+//            fatalError("Failed to locate the model file.")
+//        }
+//        guard let model = try? TeringClassifier_totalData_window100(contentsOf: modelURL) else {
+//            fatalError("Failed to create the model.")
+//        }
+//        print("모델 불러오기 성공!!! : \(model)")
         guard motionManager.isDeviceMotionAvailable else {
             print("Device motion service is not available.")
             return
@@ -140,7 +154,7 @@ class TennisClassifierViewModel: ObservableObject {
                             stateIn: MultiArrayStateIn
                         )
                         // 예측 수행
-                        guard let output = try? model.prediction(input: input) else {
+                        guard let output = try? self.mlModel.prediction(input: input) else {
                             fatalError("Failed to predict.")
                         }
                         let label = output.label
@@ -192,7 +206,20 @@ class TennisClassifierViewModel: ObservableObject {
         }
     }
     
-    // MARK: 감지 종료
+    // MARK: - 스윙 측정 중 감지 일시정지
+    func pauseMotionTracking() {
+        motionManager.stopDeviceMotionUpdates()
+        // 버퍼 초기화
+        self.bufferAccX = []
+        self.bufferAccY = []
+        self.bufferAccZ = []
+        self.bufferRotX = []
+        self.bufferRotY = []
+        self.bufferRotZ = []
+        print("👉 모션 트래킹 일시정지")
+    }
+    
+    // MARK: - 감지 종료
     func stopMotionTracking() {
         motionManager.stopDeviceMotionUpdates()
         // 버퍼 초기화

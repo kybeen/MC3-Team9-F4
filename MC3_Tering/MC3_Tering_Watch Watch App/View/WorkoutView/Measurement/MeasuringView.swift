@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-//MARK: - "측정 중..." 애나메이션 화면
+//MARK: - "측정 중..." 애니메이션 화면
 struct MeasuringView: View {
     @State private var isSwingResultViewPresented = false
     @State private var measuringString:String = ""
@@ -41,32 +41,6 @@ struct MeasuringView: View {
             bounceHeight = .none
             measuringString += "."
         }
-        
-        withAnimation(Animation.easeOut(duration: 0.3).delay(2)) {
-            bounceHeight = .up60
-            measuringString = ""
-        }
-        withAnimation(Animation.easeInOut(duration: 0.04).delay(2)) {
-            bounceHeight = .up60
-        }
-        withAnimation(Animation.easeIn(duration: 0.3).delay(2.34)) {
-            bounceHeight = .base
-            measuringString += "."
-        }
-        withAnimation(Animation.easeOut(duration: 0.2).delay(2.64)) {
-            bounceHeight = .up30
-        }
-        withAnimation(Animation.easeIn(duration: 0.2).delay(2.84)) {
-            bounceHeight = .base
-            measuringString += "."
-        }
-        withAnimation(Animation.easeOut(duration: 0.1).delay(3.04)) {
-            bounceHeight = .up10
-            measuringString += "."
-        }
-        withAnimation(Animation.easeIn(duration: 0.1).delay(3.14)) {
-            bounceHeight = .none
-        }
     }
     
     var body: some View {
@@ -96,7 +70,7 @@ struct MeasuringView: View {
             DispatchQueue.main.asyncAfter(deadline: .now()) {
                 bounceAnimation()
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 self.isSwingResultViewPresented = true
             }
         }

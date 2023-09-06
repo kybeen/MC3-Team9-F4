@@ -31,6 +31,8 @@ struct OnboardingView: View {
     @State private var profileImage: Data?
     @State private var isKeyboardOn = false
     
+    let isSmallDevice: Bool = UIScreen.main.bounds.height <= 736.0
+    
     var body: some View {
         ZStack {
             if onboardingPage == 0 {
@@ -73,6 +75,9 @@ struct OnboardingView: View {
                 
             }
             .padding(.horizontal, 18)
+        }
+        .onAppear {
+            print("높이: \(UIScreen.main.bounds.height)")
         }
         // 키보드 올라왔을 때 safeArea 침범하는 현상 방지
         .padding(.top, isKeyboardOn ? UIApplication
@@ -126,7 +131,8 @@ extension OnboardingView {
                 }
                 .padding(.leading, 18)
             }
-            .padding(.top, 10)
+            .padding(.top, isSmallDevice ? (isKeyboardOn ? 80 : 10) : 0)
+//            .padding(.top, isKeyboardOn ? 80 : 10)
             .padding(.bottom, isKeyboardOn ? 10 : 78)
             VStack(spacing: 0) {
                 HStack(spacing: 0) {

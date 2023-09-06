@@ -52,7 +52,7 @@ private struct RingChartView: View {
                     .foregroundStyle(LinearGradient(colors: colors, startPoint: .bottom, endPoint: .top))
                     .shadow(color: .black, radius: 8, x: 0, y: 4) // 그림자 추가
                 
-                let count: Int = Int((self.value / ringMaxValue).rounded(.up))
+                let count: Int = Int((self.value / ringMaxValue == 0 ? 1 : ringMaxValue).rounded(.up))
                 
                 if count > 1 {
                     ForEach (1..<count, id: \.self) { circleValue in

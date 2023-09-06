@@ -74,6 +74,13 @@ struct OnboardingView: View {
             }
             .padding(.horizontal, 18)
         }
+        // 키보드 올라왔을 때 safeArea 침범하는 현상 방지
+        .padding(.top, isKeyboardOn ? UIApplication
+            .shared
+            .connectedScenes
+            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+            .first { $0.isKeyWindow }?.safeAreaInsets.top : 0
+        )
         .onTapGesture {
             isKeyboardOn = false
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -103,7 +110,10 @@ extension OnboardingView {
                 HStack(spacing: 0) {
                     if pageNumber != 0 {
                         Button(action: {
-                            onboardingPage -= 1
+                            if onboardingPage > 0 {
+                                onboardingPage -= 1
+                            }
+                            isKeyboardOn = false
                         }) {
                             Image(systemName: "chevron.left")
                                 .resizable()
@@ -116,7 +126,8 @@ extension OnboardingView {
                 }
                 .padding(.leading, 18)
             }
-            .padding(.bottom, 78)
+            .padding(.top, 10)
+            .padding(.bottom, isKeyboardOn ? 10 : 78)
             VStack(spacing: 0) {
                 HStack(spacing: 0) {
                     Text(boldString)
@@ -182,7 +193,8 @@ extension OnboardingView {
             }
         }
         .disabled(!isNicknameInput)
-        .padding(.bottom, isKeyboardOn ? 10 : 90)
+        .padding(.bottom, 90)
+//        .padding(.bottom, isKeyboardOn ? 40 : 90)
     }
     
     private func profileContainer() -> some View {

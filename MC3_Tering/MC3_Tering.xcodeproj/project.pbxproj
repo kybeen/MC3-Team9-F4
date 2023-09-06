@@ -1014,7 +1014,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Tering;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "공유할 사진 촬영과 커스텀을 위해 카메라 사용 권한이 필요합니다.";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 촬영한 후 저장하기 위해 얼범 쓰기 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 촬영한 후 저장하기 위해 앨범 쓰기 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 등록하기 위해 사진 저장 공간 사용 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1060,7 +1060,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Tering;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSCameraUsageDescription = "공유할 사진 촬영과 커스텀을 위해 카메라 사용 권한이 필요합니다.";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 촬영한 후 저장하기 위해 얼범 쓰기 권한이 필요합니다.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "사진을 촬영한 후 저장하기 위해 앨범 쓰기 권한이 필요합니다.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 등록하기 위해 사진 저장 공간 사용 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1106,7 +1106,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Tering;
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "운동 기록 저장을 위해 심박수 데이터에 접근할 권한이 필요합니다.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "운동 기록 수집을 위해 심박수 데이터에 접근할 권한이 필요합니다.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "운동 기록 저장을 위해 심박수 데이터에 접근할 권한이 필요합니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "운동 기록 생성을 위해 심박수 데이터에 접근할 권한이 필요합니다.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1145,7 +1145,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Tering;
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "운동 기록 저장을 위해 심박수 데이터에 접근할 권한이 필요합니다.";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "운동 기록 수집을 위해 심박수 데이터에 접근할 권한이 필요합니다.";
-				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "운동 기록 저장을 위해 심박수 데이터에 접근할 권한이 필요합니다.";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "운동 기록 생성을 위해 심박수 데이터에 접근할 권한이 필요합니다.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.MC3-Tering";
 				LD_RUNPATH_SEARCH_PATHS = (

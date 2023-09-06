@@ -179,14 +179,20 @@ class WorkOutDataModel: ObservableObject {
     
     func fetchTodayAndYesterdayWorkout() {
         let entityName = "WorkOutData"
+        let allWorkoutData = coreDataManager.fetch(entityName: entityName) as? [WorkOutData] ?? []
         
-        // Get today's date
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: Date())
+        // Get today's date in Korean timezone
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
         
-        // Create a predicate to filter by workoutDate
-        let todayPredicate = NSPredicate(format: "workoutDate >= %@", today as NSDate)
-        let yesterdayPredicate = NSPredicate(format: "workoutDate < %@", today as NSDate)
+        // Calculate the start and end date for today
+        let todayStart = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!
+        let todayEnd = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: Date())!
+        let yesterdayStart = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: findLatestDate(excludingToday: allWorkoutData, in: calendar) ?? Date())!
+        let yesterdayEnd = calendar.date(bySettingHour: 23, minute: 59, second: 59, of: findLatestDate(excludingToday: allWorkoutData, in: calendar) ?? Date())!
+        // Create predicates to filter by workoutDate
+        let todayPredicate = NSPredicate(format: "workoutDate >= %@ AND workoutDate <= %@", todayStart as NSDate, todayEnd as NSDate)
+        let yesterdayPredicate = NSPredicate(format: "workoutDate >= %@ AND workoutDate <= %@", yesterdayStart as NSDate, yesterdayEnd as NSDate)
         
         let todayFetchResult = coreDataManager.fetch(entityName: entityName, predicate: todayPredicate)
         let yesterdayFetchResult = coreDataManager.fetch(entityName: entityName, predicate: yesterdayPredicate)
@@ -196,24 +202,34 @@ class WorkOutDataModel: ObservableObject {
             return
         }
         
-        todayWorkoutDatum = todayWorkoutData
-        
-        if let yesterdayWorkoutData = yesterdayFetchResult as? [WorkOutData], let latestWorkout = yesterdayWorkoutData.max(by: { $0.workoutDate ?? Date() < $1.workoutDate ?? Date() }) {
-            let latestDate = calendar.startOfDay(for: latestWorkout.workoutDate ?? Date())
-            if latestDate == today {
-                yesterdayWorkoutDatum = yesterdayWorkoutData
-//                print("latestDate if문 내부 어제 데이터 : ", yesterdayWorkoutDatum)
-            } else {
-                yesterdayWorkoutDatum = yesterdayWorkoutData
-//                print("latestDate else문 내부 어제 데이터 : ", yesterdayWorkoutDatum)
-            }
-        } else {
+        guard let yesterdayWorkoutData = yesterdayFetchResult as? [WorkOutData] else {
             print("No workout data found for yesterday")
+            return
         }
-//        print("yesterdayWorkoutData if문 외부 어제 데이터 : ", yesterdayWorkoutDatum)
+        
+        todayWorkoutDatum = todayWorkoutData
+        yesterdayWorkoutDatum = yesterdayWorkoutData
     }
 
+    func findLatestDate(excludingToday workoutData: [WorkOutData], in calendar: Calendar) -> Date? {
+        let todayStart = calendar.date(bySettingHour: 0, minute: 0, second: 0, of: Date())!
 
+        // Filter out workoutData for today
+        let filteredData = workoutData.filter { data in
+            if let workoutDate = data.workoutDate {
+                let startOfDay = calendar.startOfDay(for: workoutDate)
+                return startOfDay != todayStart
+            }
+            return false
+        }
+
+        // Find the latest date among the filtered data
+        if let latestWorkout = filteredData.max(by: { $0.workoutDate ?? Date() < $1.workoutDate ?? Date() }) {
+            return calendar.startOfDay(for: latestWorkout.workoutDate ?? Date())
+        }
+
+        return nil
+    }
     
     /**
      isToday 파라미터 기본값은 true, false로 하면 직전일의 데이터를 불러온다.

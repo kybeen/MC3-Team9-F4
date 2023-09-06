@@ -74,6 +74,13 @@ struct OnboardingView: View {
             }
             .padding(.horizontal, 18)
         }
+        // 키보드 올라왔을 때 safeArea 침범하는 현상 방지
+        .padding(.top, UIApplication
+            .shared
+            .connectedScenes
+            .flatMap { ($0 as? UIWindowScene)?.windows ?? [] }
+            .first { $0.isKeyWindow }?.safeAreaInsets.top
+        )
         .onTapGesture {
             isKeyboardOn = false
             UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -103,7 +110,9 @@ extension OnboardingView {
                 HStack(spacing: 0) {
                     if pageNumber != 0 {
                         Button(action: {
-                            onboardingPage -= 1
+                            if onboardingPage > 0 {
+                                onboardingPage -= 1
+                            }
                         }) {
                             Image(systemName: "chevron.left")
                                 .resizable()

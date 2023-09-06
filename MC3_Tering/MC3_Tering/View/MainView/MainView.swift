@@ -212,11 +212,11 @@ extension MainView {
             
             ScrollView {
 //                 시험 데이터 확인용 버튼
-                Button(action: {
-                    workoutDataModel.testCreate100Days()
-                }, label: {
-                    Text("workout 시험데이터 100개 생성")
-                })
+//                Button(action: {
+//                    workoutDataModel.testCreate100Days()
+//                }, label: {
+//                    Text("workout 시험데이터 100개 생성")
+//                })
                 RecordListView(workoutDataModel: workoutDataModel, months: months)
                     .padding(.top, 2)
                     .padding(.horizontal, 16)

@@ -8,21 +8,18 @@
 import CoreML
 import CoreMotion
 
-let MODEL_NAME = "TeringClassifier_totalData_window100"
-let STATE_INPUT_SIZE = 400      // LSTM 모델 stateIn 인풋 사이즈
-let WINDOW_SIZE = 100           // 슬라이딩 윈도우 사이즈
-let PRE_BUFFER_SIZE = 30        // 스윙 감지 전 미리 채워놓을 버퍼 사이즈 (100->30 / 200->70) (WINDOW_SIZE에 따른 값)
-let FREQUENCY = 50              // 데이터 빈도수
-let THRESHOLD: Double = 0.8     // Perfect-Bad 기준 probability
-
-// MARK: - 테니스 동작 분류 모델 관련 클래스
+/// 테니스 동작 분류 모델 관련 클래스
 class TennisClassifierViewModel: ObservableObject {
+    private let MODEL_NAME = "TeringClassifier_totalData_window100"
+    private let STATE_INPUT_SIZE = 400      // LSTM 모델 stateIn 인풋 사이즈
+    private let WINDOW_SIZE = 100           // 슬라이딩 윈도우 사이즈
+    private let PRE_BUFFER_SIZE = 30        // 스윙 감지 전 미리 채워놓을 버퍼 사이즈 (100->30 / 200->70) (WINDOW_SIZE에 따른 값)
+    private let FREQUENCY = 50              // 데이터 빈도수
+    private let THRESHOLD: Double = 0.8     // Perfect-Bad 기준 probability
     
     static let shared = TennisClassifierViewModel() // 싱글톤 인스턴스
     
-    // 외부에서 인스턴스를 생성하지 못하도록 private init로 선언
     private init() {
-        
         // 모델 불러오기
         guard let modelURL = Bundle.main.url(forResource: MODEL_NAME, withExtension: "mlmodelc") else {
             fatalError("Failed to locate the model file.")
@@ -33,7 +30,7 @@ class TennisClassifierViewModel: ObservableObject {
         mlModel = model
     }
     
-    let motionManager = CMMotionManager()
+    private let motionManager = CMMotionManager()
     @Published var isDetecting = false              // device motion 데이터를 추적 중인지 여부
     @Published var isSwing = false                  // 스윙 중인지 체크
     
@@ -58,9 +55,8 @@ class TennisClassifierViewModel: ObservableObject {
     
     var mlModel: TeringClassifier_totalData_window100 // 스윙 동작 분류 모델
     
-    // MARK: - 감지 시작
+    /// 모션 데이터 감지 시작
     func startMotionTracking() {
-        
         isDetecting = true
         
         guard motionManager.isDeviceMotionAvailable else {
@@ -71,7 +67,8 @@ class TennisClassifierViewModel: ObservableObject {
         motionManager.deviceMotionUpdateInterval = 1.0 / Double(FREQUENCY) // 센서 데이터 빈도수 설정
         
         // Device Motion 데이터 업데이트 시작
-        motionManager.startDeviceMotionUpdates(to: .main) { (deviceMotion, error) in
+        motionManager.startDeviceMotionUpdates(to: .main) { [weak self] (deviceMotion, error) in
+            guard let self else { return }
             
             guard let deviceMotionData = deviceMotion, error == nil else {
                 print("Failed to get device motion data: \(error?.localizedDescription ?? "Unknown error")")
@@ -86,18 +83,17 @@ class TennisClassifierViewModel: ObservableObject {
             
             if self.bufferRotZ.count < PRE_BUFFER_SIZE {
                 self.appendDeviceMotionDataToBuffer(deviceMotionData) // 버퍼 채우기
-                
+
             } else {
                 if self.isSwing == false {
-                    // 스윙 중이라는 것이 감지되면
+                    // 스윙 감지
                     if self.detectSwing(deviceMotionData) {
                         self.isSwing = true
-                        
                     } else {
                         self.removeFirstDeviceMotionDataInBuffer() // 버퍼 내부 크기 유지
                     }
                     
-                } else { // isSwing == true 일 때
+                } else { // isSwing == true
                     // 버퍼 길이가 WINDOW_SIZE에 도달하면 인풋을 만들고 예측을 수행
                     if self.bufferRotZ.count >= WINDOW_SIZE {
                         let input = self.generateModelInput() // 인풋
@@ -115,33 +111,27 @@ class TennisClassifierViewModel: ObservableObject {
                         
                     } else { // 버퍼 길이가 WINDOW_SIZE보다 작으면 계속 채워준다.
                         self.appendDeviceMotionDataToBuffer(deviceMotionData)
-                        
                     }
-                    
                 }
-                
             }
         }
     }
     
-    // MARK: - 스윙 측정 중 감지 일시정지
+    /// 스윙 측정 중 감지 일시정지
     func pauseMotionTracking() {
-        
         motionManager.stopDeviceMotionUpdates()
         resetBuffers() // 버퍼 초기화
     }
     
-    // MARK: - 감지 종료
+    /// 감지 종료
     func stopMotionTracking() {
-        
         motionManager.stopDeviceMotionUpdates()
         resetBuffers() // 버퍼 초기화
         isDetecting = false
     }
     
-    // MARK: 스윙 중 여부를 판단하는 메서드
-    func detectSwing(_ deviceMotionData: CMDeviceMotion) -> Bool {
-        
+    /// 스윙 중 여부를 판단하는 메서드
+    private func detectSwing(_ deviceMotionData: CMDeviceMotion) -> Bool {
         let accX = deviceMotionData.userAcceleration.x
         let accY = deviceMotionData.userAcceleration.y
         let accZ = deviceMotionData.userAcceleration.z
@@ -158,9 +148,8 @@ class TennisClassifierViewModel: ObservableObject {
         }
     }
     
-    // MARK: - 모델 인풋 생성 메서드
-    func generateModelInput() -> TeringClassifier_totalData_window100Input {
-        
+    /// 모델 인풋 생성 메서드
+    private func generateModelInput() -> TeringClassifier_totalData_window100Input {
         // 인풋 생성
         let multiArrayAccX = try! MLMultiArray(bufferAccX)
         let multiArrayAccY = try! MLMultiArray(bufferAccY)
@@ -183,9 +172,8 @@ class TennisClassifierViewModel: ObservableObject {
         return input
     }
     
-    // MARK: - 스윙 분류 결과 처리 메서드
-    func updateToPredictResult(label: String, prob: Double) {
-        
+    /// 스윙 분류 결과 처리 메서드
+    private func updateToPredictResult(label: String, prob: Double) {
         classLabel = label
         confidence = String(prob)
         
@@ -217,9 +205,8 @@ class TennisClassifierViewModel: ObservableObject {
         totalCount += 1
     }
     
-    // MARK: - 버퍼 초기화 메서드
-    func resetBuffers() {
-        
+    /// 버퍼 초기화 메서드
+    private func resetBuffers() {
         bufferAccX = []
         bufferAccY = []
         bufferAccZ = []
@@ -228,9 +215,8 @@ class TennisClassifierViewModel: ObservableObject {
         bufferRotZ = []
     }
     
-    // MARK: - 들어온 Device Motion 데이터를 버퍼에 추가해주는 메서드
-    func appendDeviceMotionDataToBuffer(_ deviceMotionData: CMDeviceMotion) {
-        
+    /// 들어온 Device Motion 데이터를 버퍼에 추가해주는 메서드
+    private func appendDeviceMotionDataToBuffer(_ deviceMotionData: CMDeviceMotion) {
         bufferAccX.append(deviceMotionData.userAcceleration.x)
         bufferAccY.append(deviceMotionData.userAcceleration.y)
         bufferAccZ.append(deviceMotionData.userAcceleration.z)
@@ -239,9 +225,8 @@ class TennisClassifierViewModel: ObservableObject {
         bufferRotZ.append(deviceMotionData.rotationRate.z)
     }
     
-    // MARK: - 버퍼의 가장 앞에 있는 Deveice Motion 데이터를 제거해주는 메서드
-    func removeFirstDeviceMotionDataInBuffer() {
-        
+    /// 버퍼의 가장 앞에 있는 Deveice Motion 데이터를 제거해주는 메서드
+    private func removeFirstDeviceMotionDataInBuffer() {
         bufferAccX.removeFirst()
         bufferAccY.removeFirst()
         bufferAccZ.removeFirst()

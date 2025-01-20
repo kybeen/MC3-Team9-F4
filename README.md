@@ -6,13 +6,13 @@
 <br>
 
 <div align="center">
-<img width = "100" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/e56932eb-ac55-40bb-9a43-0002bcaeb24e">
-  
+<img width = "100" src="https://github.com/user-attachments/assets/372ce78f-da84-4e09-bd43-a7030a612d40">
+
 # Tering(테링)
 </div>
 
 <div align="center">
-<img width="250" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/b7f4581c-e35c-4451-bf86-af90d091bcee"> <img width="250" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/9e9a7bc0-7471-4345-ae4c-f22547cbb9ec">
+<img width="250" src="https://github.com/user-attachments/assets/df119e6b-b62b-48d6-b8bb-5a7c721a876e"> <img width="250" src="https://github.com/user-attachments/assets/30b22dd8-0cbb-4e24-b831-ce0f306fdd62">
 <!-- <img width="393" height="852" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/c82c0121-69fb-4373-b3d8-6ace2b23c992"> -->
 
 <br>
@@ -55,15 +55,15 @@
 
 |(iOS) 오늘의 스윙 기록 확인| (iOS) 이전 스윙 데이터 확인|
 |:---:|:---:|
-|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/38561bb0-894b-4001-8f9a-b3f6e75b27a4"/>|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/b4711d10-e6a9-43d0-aafc-e54c3b8edeaa"/>|
+|<img width="80%" src="https://github.com/user-attachments/assets/fe0ee3ad-c613-4106-ad63-44158dec23a1"/>|<img width="80%" src="https://github.com/user-attachments/assets/d72868d9-d9f8-43ea-9539-ece3e15dd71b"/>|
 
 | (watchOS) 목표 스윙 개수 설정 | (watchOS) 테니스 연습 시작 | (watchOS) 스윙 감지 및 동작 분류 |
 |:---:|:---:|:---:|
-|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/786b5c74-cd16-4b5c-bd58-a35408906059"/>|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/d2740669-259f-48fb-a28b-275a4ada4756"/>|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/33d11ddc-2a06-46c0-855d-f939a8f4eec2"/>|
+|<img width="80%" src="https://github.com/user-attachments/assets/8dfb4104-ca63-48c8-977a-a43ac2eefe0f"/>|<img width="80%" src="https://github.com/user-attachments/assets/7635d642-67c4-4900-aeb5-56c58f568ed6"/>|<img width="80%" src="https://github.com/user-attachments/assets/e455e919-89c4-4988-8038-bdc73c10069c"/>|
 
 | (watchOS) 스윙 분류 결과 확인 | (watchOS) 테니스 연습 결과 확인 | (watchOS) 운동 데이터 확인 |
 |:---:|:---:|:---:|
-|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/3cd06ae1-a04b-47f0-8e5f-b97d9b276546"/>|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/1610c7d4-3a73-42e7-90a6-2ba44bf5a242"/>|<img width="80%" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/5a641623-124d-4037-bfb3-2a0d661f3b74"/>|
+|<img width="80%" src="https://github.com/user-attachments/assets/ab43b71e-6e55-436b-9954-2ee4d63a33b4"/>|<img width="80%" src="https://github.com/user-attachments/assets/223f0f96-f83c-4fee-84eb-823d38f02e4f"/>|<img width="80%" src="https://github.com/user-attachments/assets/2d52c2d4-03a2-4364-a80e-efaa745fdaca"/>|
 
 <br>
 
@@ -391,13 +391,10 @@ ex) [Design] MyView - MyView 레이아웃 디자인
 
 |Bazzi|Dana|Rei|Ted|
 |:---:|:---:|:---:|:---:|
-|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/1d974d8c-6f47-407f-b1dd-7e479ff9cd06" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/110ed58e-ef48-444c-9936-fc1d9c801739" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/0ff80250-8f22-44c5-9343-ddd1fa05846f" width="150">|<img alt="" src="https://github.com/DeveloperAcademy-POSTECH/MC3-Team9-F4/assets/89764127/d74d2f35-cada-49d9-9c4e-826afa466754" width="150">
+|<img alt="" src="https://github.com/user-attachments/assets/b598a3ef-df85-467d-afe8-694c2ddc4ef4" width="150">|<img alt="" src="https://github.com/user-attachments/assets/e7af9d3f-bd34-413e-806d-8be6815915ce" width="150">|<img alt="" src="https://github.com/user-attachments/assets/f2d4a8d9-3406-426d-9368-08f853a00db9" width="150">|<img alt="" src="https://github.com/user-attachments/assets/74297560-3450-4c69-8489-58a139dd7db7" width="150">
 |[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/DhKimy)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/dayeong233)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/kybeen)|[<img src="https://img.shields.io/badge/Github-black?style=for-the-badge&logo=github&logoColor=white" alt="Github Blog Badge"/>](https://github.com/Taerogrammer)|
 | **💻 Developer** | **🎨 Designer** | **💻 Developer** | **💻 Developer** |
 <br>
-
-
-
 
 
 
